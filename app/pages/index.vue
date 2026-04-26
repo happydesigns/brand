@@ -112,7 +112,7 @@ const utilityColors = guide.colors.slice(6)
               identity principles
             </HDSectionLabel>
             <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-              A warm, structured system for brand documentation that can be reused.
+              A warm, thoughtful system for brand documentation that can be reused.
             </h2>
             <p class="mt-6 max-w-xl text-base leading-8 text-sand-700 dark:text-sand-300">
               The guide separates brand-specific decisions from the documentation pattern. Future guides can replace the data while keeping the same overview, detail pages, and component examples.
@@ -244,7 +244,7 @@ const utilityColors = guide.colors.slice(6)
               voice
             </HDSectionLabel>
             <h2 class="mt-8 text-3xl font-semibold leading-tight sm:text-4xl">
-              The brand sounds structured, warm, precise, and maintainable.
+              The brand sounds thoughtful, warm, precise, and maintainable.
             </h2>
             <div class="mt-8 flex flex-wrap gap-2">
               <UBadge

@@ -9,7 +9,7 @@ A useful brand guide documents how the brand sounds in headings, labels, errors,
 
 ## Attributes
 
-- Structured
+- Thoughtful
 - Warm
 - Precise
 - Maintainable

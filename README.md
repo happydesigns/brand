@@ -1,6 +1,6 @@
 # happydesigns brand layer
 
-Reusable Nuxt UI brand layer for happydesigns: structured design for the modern web.
+Reusable Nuxt UI brand layer for happydesigns: thoughtful design for the modern web.
 
 This package provides Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logo and brand primitives, frame/grid primitives, and a small visual QA playground.
 
@@ -72,7 +72,7 @@ Logo components use the supplied final SVG assets in `app/assets/logos`. The tex
 
 ## Brand System Notes
 
-The visual system should feel modern, warm, fresh, professional, design-led, technically excellent, approachable, clean, sustainable, and structured without becoming sterile.
+The visual system should feel modern, warm, fresh, professional, design-led, technically excellent, approachable, clean, sustainable, and thoughtful without becoming sterile.
 
 Structure comes first. Use visible frames, fine borders, quiet grids, and warm neutrals as the main system. Artistic gestures belong in controlled canvas areas such as `HDColorField` — not as global wallpaper.
 

@@ -34,6 +34,6 @@ font-family: "Geist Mono", "SFMono-Regular", ui-monospace, monospace;
 
 ## Sample
 
-> Structured design for the modern web.
+> Thoughtful design for the modern web.
 
 `tokens.colors.coral = #F28564`

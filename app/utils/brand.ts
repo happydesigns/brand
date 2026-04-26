@@ -1,7 +1,7 @@
 export const happydesignsBrand = {
   name: 'happydesigns',
   packageName: '@happydesigns/brand',
-  claim: 'Structured design for the modern web.',
+  claim: 'Thoughtful design for the modern web.',
   logoAssetPaths: {
     wordmark: 'app/assets/logos/happydesigns.svg',
     wordmarkDark: 'app/assets/logos/happydesigns-dark.svg',

@@ -123,7 +123,7 @@ export const brandGuide = {
       name: 'Bricolage Grotesque',
       role: 'Primary sans',
       stack: '"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif',
-      sample: 'Structured design for the modern web.',
+      sample: 'Thoughtful design for the modern web.',
       notes: 'Warm and practical for headings, navigation, labels, and body copy.'
     },
     {
@@ -142,7 +142,7 @@ export const brandGuide = {
     { name: 'Badges', purpose: 'Mark metadata or state.', guidance: 'Use compact rounded badges for short status labels only.' }
   ],
   voice: {
-    attributes: ['Structured', 'warm', 'precise', 'maintainable'],
+    attributes: ['Thoughtful', 'warm', 'precise', 'maintainable'],
     dos: [
       'Use concrete nouns and direct verbs.',
       'Explain decisions through reusable rules.',

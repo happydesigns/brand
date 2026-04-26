@@ -5,7 +5,7 @@ export default defineAppConfig({
   },
   seo: {
     title: 'happydesigns brand guide',
-    description: 'Structured design guidance for the happydesigns brand system.'
+    description: 'Thoughtful design guidance for the happydesigns brand system.'
   },
   header: {
     title: 'happydesigns',
