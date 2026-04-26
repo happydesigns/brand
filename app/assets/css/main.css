@@ -15,8 +15,8 @@
 
   --color-sand-50: #FAF7F2;
   --color-sand-100: #F3EEE8;
-  --color-sand-200: #E9E4DC;
-  --color-sand-300: #D8D0C5;
+  --color-sand-150: #F1ECE6;
+  --color-sand-200: #E9E4DC;  --color-sand-300: #D8D0C5;
   --color-sand-400: #B8AEA2;
   --color-sand-500: #8F857A;
   --color-sand-600: #6B625A;
@@ -180,7 +180,7 @@ body {
 }
 
 .prose thead {
-  background: linear-gradient(90deg, #fcf8f4 0%, #fff2ed 100%);
+  background: var(--color-sand-150);
 }
 
 .prose th,
@@ -189,15 +189,27 @@ body {
 }
 
 .prose tbody tr {
-  background: color-mix(in srgb, #fcf8f4 70%, transparent);
+  background: var(--color-warm-white);
 }
 
 .prose tbody tr:nth-child(even) {
-  background: color-mix(in srgb, #eaf4f5 42%, transparent);
+  background: var(--color-sand-100);
 }
 
 .prose tbody tr:hover {
   background: #fff;
+}
+
+.dark .prose tbody tr {
+  background: var(--color-graphite);
+}
+
+.dark .prose tbody tr:nth-child(even) {
+  background: var(--color-sand-900);
+}
+
+.dark .prose tbody tr:hover {
+  background: var(--color-sand-800);
 }
 
 .hd-color-chip {
