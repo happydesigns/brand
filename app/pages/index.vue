@@ -307,18 +307,19 @@ const utilityColors = guide.colors.slice(6)
               logo use
             </HDSectionLabel>
             <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10">
-              <div class="bg-warm-white p-8 dark:bg-graphite">
-                <div class="flex min-h-40 items-center justify-center rounded-sm border border-sand-300 bg-white dark:border-white/10 dark:bg-white/5">
+              <div class="bg-warm-white p-8">
+                <div class="flex min-h-40 items-center justify-center rounded-sm border border-sand-300 bg-white">
                   <HDLogo
                     variant="wordmark"
+                    mode="light"
                     size="lg"
                   />
                 </div>
                 <p class="mt-4 font-mono text-xs uppercase tracking-[0.14em] text-sand-500">
-                  Primary surface
+                  Light surface
                 </p>
               </div>
-              <div class="bg-graphite p-8">
+              <div class="bg-graphite p-8 dark:bg-sand-900/50">
                 <div class="flex min-h-40 items-center justify-center rounded-sm border border-white/10 bg-graphite">
                   <HDLogo
                     variant="wordmark"
