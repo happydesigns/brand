@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="inline-block h-2 w-[9px] shrink-0"
+    class="inline-block h-2 w-2.25 shrink-0"
     viewBox="0 0 9 8"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

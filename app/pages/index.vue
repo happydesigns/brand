@@ -8,7 +8,7 @@ const utilityColors = guide.colors.slice(6)
 <template>
   <div class="min-h-screen bg-warm-white text-graphite dark:bg-graphite dark:text-sand-50">
     <div class="mx-auto w-full max-w-(--ui-container) overflow-hidden border-x border-sand-300 bg-warm-white dark:border-white/10 dark:bg-graphite">
-      <section class="grid min-h-[640px] border-b border-sand-300 dark:border-white/10 lg:grid-cols-[1fr_.95fr]">
+      <section class="grid min-h-160 border-b border-sand-300 dark:border-white/10 lg:grid-cols-[1fr_.95fr]">
         <div class="flex flex-col border-b border-sand-300 bg-warm-white dark:border-white/10 dark:bg-graphite lg:border-b-0 lg:border-r">
           <div class="flex flex-1 flex-col justify-center px-7 py-16 sm:px-12">
             <div class="max-w-3xl">
@@ -214,7 +214,7 @@ const utilityColors = guide.colors.slice(6)
                     color="neutral"
                     variant="outline"
                   >
-                    {{ font.stack.split(',')[0].replaceAll('"', '') }}
+                    {{ font.stack.split(',')[0]?.replaceAll('"', '') }}
                   </UBadge>
                 </div>
                 <p
