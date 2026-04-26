@@ -7,8 +7,7 @@ const { isEnabled, locales } = useDocusI18n()
 const { subNavigationMode } = useSubNavigation()
 
 const links = computed(() => [
-  { label: 'Overview', to: '/' },
-  { label: 'Docs', to: '/docs' },
+  { label: 'Overview', to: '/docs' },
   ...guide.sections.map(section => ({
     label: section.title,
     to: `/docs/${section.slug}`
