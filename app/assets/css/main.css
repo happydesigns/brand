@@ -16,13 +16,15 @@
   --color-sand-50: #FAF7F2;
   --color-sand-100: #F3EEE8;
   --color-sand-150: #F1ECE6;
-  --color-sand-200: #E9E4DC;  --color-sand-300: #D8D0C5;
+  --color-sand-200: #E9E4DC;
+  --color-sand-300: #D8D0C5;
   --color-sand-400: #B8AEA2;
   --color-sand-500: #8F857A;
   --color-sand-600: #6B625A;
   --color-sand-700: #4A433E;
   --color-sand-800: #2E2926;
   --color-sand-900: #181512;
+  --color-sand-950: #0D0B09;
 
   --color-coral-50: #FFF2ED;
   --color-coral-100: #FFE2D8;
@@ -34,6 +36,7 @@
   --color-coral-700: #B84B31;
   --color-coral-800: #873622;
   --color-coral-900: #542116;
+  --color-coral-950: #311009;
 
   --color-peach-50: #FFF8F4;
   --color-peach-100: #FFEDE2;
@@ -41,6 +44,11 @@
   --color-peach-300: #F6CBB6;
   --color-peach-400: #EAAE91;
   --color-peach-500: #D89273;
+  --color-peach-600: #BE7253;
+  --color-peach-700: #97543A;
+  --color-peach-800: #6E3C28;
+  --color-peach-900: #472618;
+  --color-peach-950: #27130C;
 
   --color-petrol-50: #EAF4F5;
   --color-petrol-100: #D0E6E8;
@@ -52,6 +60,7 @@
   --color-petrol-700: #1F3F4A;
   --color-petrol-800: #183039;
   --color-petrol-900: #101F26;
+  --color-petrol-950: #070F13;
 
   --color-butter-50: #FFF9DF;
   --color-butter-100: #FFF0B8;
@@ -59,6 +68,11 @@
   --color-butter-300: #E8CE69;
   --color-butter-400: #CFAA3D;
   --color-butter-500: #A77D22;
+  --color-butter-600: #7E5D18;
+  --color-butter-700: #5C4311;
+  --color-butter-800: #3C2C0B;
+  --color-butter-900: #221A06;
+  --color-butter-950: #120E02;
 
   --color-plum-50: #F4F1F6;
   --color-plum-100: #E6DFEA;
@@ -68,6 +82,9 @@
   --color-plum-500: #71617F;
   --color-plum-600: #574B63;
   --color-plum-700: #3F3748;
+  --color-plum-800: #2B2430;
+  --color-plum-900: #1A161E;
+  --color-plum-950: #0D0B10;
 
   --color-seafoam-50: #EEFBF5;
   --color-seafoam-100: #D3F5E3;
@@ -77,6 +94,9 @@
   --color-seafoam-500: #1FA573;
   --color-seafoam-600: #178858;
   --color-seafoam-700: #126144;
+  --color-seafoam-800: #0D4531;
+  --color-seafoam-900: #082A1D;
+  --color-seafoam-950: #04150E;
 
   --color-rose-50: #FFF1F1;
   --color-rose-100: #FFE0DF;
@@ -88,13 +108,14 @@
   --color-rose-700: #72302E;
   --color-rose-800: #4D2322;
   --color-rose-900: #311817;
+  --color-rose-950: #1C0E0D;
 }
 
 :root {
   --ui-container: var(--container-8xl);
   --ui-bg: var(--color-warm-white);
   --ui-bg-muted: var(--color-sand-50);
-  --ui-bg-elevated: #fcf8f4;
+  --ui-bg-elevated: var(--color-sand-150);
   --ui-bg-accented: var(--color-sand-100);
   --ui-text: var(--color-graphite);
   --ui-text-muted: var(--color-sand-600);

@@ -1,11 +1,3 @@
-<script setup lang="ts">
-withDefaults(defineProps<{
-  orientation?: 'left' | 'right' | 'top' | 'bottom'
-}>(), {
-  orientation: 'left'
-})
-</script>
-
 <template>
   <svg
     class="inline-block h-2 w-[9px] shrink-0"

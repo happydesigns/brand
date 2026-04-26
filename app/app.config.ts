@@ -1,4 +1,4 @@
-export default defineAppConfig(({
+export default defineAppConfig({
   docus: {
     locale: 'en',
     colorMode: ''
@@ -59,7 +59,7 @@ export default defineAppConfig(({
         {
           color: 'neutral',
           variant: 'outline',
-          class: 'border-sand-300 bg-[#fcf8f4] text-graphite hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-sand-100 dark:hover:bg-white/10'
+          class: 'border-sand-300 bg-sand-150 text-graphite hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-sand-100 dark:hover:bg-white/10'
         },
         {
           color: 'secondary',
@@ -177,4 +177,4 @@ export default defineAppConfig(({
       }
     }
   }
-}) as never)
+})

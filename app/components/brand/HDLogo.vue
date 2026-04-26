@@ -1,6 +1,6 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
-  variant?: 'wordmark' | 'symbol' | 'lockup'
+  variant?: 'wordmark' | 'symbol'
   mode?: 'auto' | 'light' | 'dark' | 'mono'
   size?: 'sm' | 'md' | 'lg'
   as?: string

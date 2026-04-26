@@ -5,8 +5,7 @@
   "version": "0.1.0",
   "description": "Reusable Nuxt UI brand layer for happydesigns.",
   "exports": {
-    ".": "./nuxt.config.ts",
-    "./brand": "./app/utils/brand.ts"
+    ".": "./nuxt.config.ts"
   },
   "scripts": {
     "build": "nuxt build",

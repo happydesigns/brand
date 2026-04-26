@@ -31,7 +31,7 @@ For local workspace usage, point `extends` at this package directory or install 
 
 Peach is intentionally not mapped as a Nuxt UI semantic color. It is available as raw Tailwind tokens and should appear in controlled canvas areas, logo fields, and atmospheric accents.
 
-Coral should not become the default large CTA surface everywhere. Use graphite for premium filled actions and coral for focus rings, dots, active states, notches, and precise signature details.
+Coral should not become the default large CTA surface everywhere. Use graphite for premium filled actions and coral for focus rings, dots, active states, and precise signature details.
 
 ## Nuxt UI Mapping
 
@@ -62,21 +62,19 @@ The layer does not bundle external font files. Add font loading in the consuming
 
 ## Components
 
-- `HDBrandMark`
-- `HDWordmark`
-- `HDLogo`
-- `HDSectionLabel`
-- `HDFrame`
-- `HDColorField`
-- `HDNotch`
-
-Logo components use the supplied final SVG assets in `app/assets/logos`. The text-only logo is used for website display. The favicon artwork is reserved for favicon and app-icon usage. Do not place the icon directly beside the wordmark as a lockup; they are separate brand assets.
+- `HDBrandMark` — the favicon-derived symbol, used standalone or as an app icon in product contexts
+- `HDWordmark` — the text logo, for headers and document covers
+- `HDLogo` — combines `HDBrandMark` and `HDWordmark`; use `variant="wordmark"` or `variant="symbol"`
+- `HDSectionLabel` — eyebrow label with the brand dot, used to open sections
+- `HDDot` — the coral oval from the logo, reused as a recurring visual motif in design elements
+- `HDColorField` — atmospheric canvas panel for brand color moments
+Logo components use the supplied final SVG assets in `app/assets/logos`. The text-only wordmark is used for website display. The favicon mark is reserved for favicon and app-icon usage. Do not combine them as a lockup — they are intentionally separate brand assets.
 
 ## Brand System Notes
 
 The visual system should feel modern, warm, fresh, professional, design-led, technically excellent, approachable, clean, sustainable, and structured without becoming sterile.
 
-Structure comes first. Use visible frames, fine borders, quiet grids, and warm neutrals as the main system. Artistic gestures belong in controlled canvas areas such as `HDColorField`, not as global wallpaper.
+Structure comes first. Use visible frames, fine borders, quiet grids, and warm neutrals as the main system. Artistic gestures belong in controlled canvas areas such as `HDColorField` — not as global wallpaper.
 
 ## Development
 
