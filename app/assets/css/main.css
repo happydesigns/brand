@@ -180,7 +180,7 @@ body {
 }
 
 .prose thead {
-  background: #fcf8f4;
+  background: linear-gradient(90deg, #fcf8f4 0%, #fff2ed 100%);
 }
 
 .prose th,
@@ -189,7 +189,11 @@ body {
 }
 
 .prose tbody tr {
-  background: color-mix(in srgb, #fcf8f4 64%, transparent);
+  background: color-mix(in srgb, #fcf8f4 70%, transparent);
+}
+
+.prose tbody tr:nth-child(even) {
+  background: color-mix(in srgb, #eaf4f5 42%, transparent);
 }
 
 .prose tbody tr:hover {

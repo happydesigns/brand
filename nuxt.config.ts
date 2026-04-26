@@ -28,7 +28,7 @@ export default defineNuxtConfig({
     prose: true
   },
 
-  compatibilityDate: '2025-01-15',
+  compatibilityDate: 'latest',
 
   eslint: {
     config: {

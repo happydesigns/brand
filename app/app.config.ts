@@ -87,12 +87,12 @@ export default defineAppConfig(({
     },
     pageCard: {
       slots: {
-        root: 'rounded-sm bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:bg-sand-800/35 dark:hover:!bg-sand-800/55'
+        root: 'rounded-sm bg-[linear-gradient(135deg,#fcf8f4_0%,#fff2ed_100%)] shadow-none transition-colors hover:!bg-white hover:!bg-none dark:bg-sand-800/35 dark:hover:!bg-sand-800/55'
       },
       variants: {
         variant: {
           outline: {
-            root: 'bg-[#fcf8f4] ring-sand-300 hover:!bg-white dark:bg-sand-800/35 dark:ring-white/10 dark:hover:!bg-sand-800/55'
+            root: 'bg-[linear-gradient(135deg,#fcf8f4_0%,#fff2ed_100%)] ring-sand-300 hover:!bg-white hover:!bg-none dark:bg-sand-800/35 dark:ring-white/10 dark:hover:!bg-sand-800/55'
           }
         }
       }
@@ -100,9 +100,9 @@ export default defineAppConfig(({
     page: {
       slots: {
         root: 'lg:gap-0',
-        left: 'lg:border-r lg:border-sand-300 dark:lg:border-white/10',
+        left: 'bg-peach-50/35 lg:border-r lg:border-sand-300 dark:bg-white/[0.025] dark:lg:border-white/10',
         center: 'lg:px-10',
-        right: 'lg:border-l lg:border-sand-300 dark:lg:border-white/10 lg:pl-8'
+        right: 'bg-peach-50/35 lg:border-l lg:border-sand-300 dark:bg-white/[0.025] dark:lg:border-white/10 lg:pl-8'
       }
     },
     pageAside: {
@@ -113,9 +113,21 @@ export default defineAppConfig(({
         topFooter: 'from-warm-white dark:from-graphite'
       }
     },
+    pageAnchors: {
+      slots: {
+        linkLeading: 'bg-white ring-sand-300 text-coral-500 group-hover:bg-coral-500 group-hover:ring-coral-500 group-hover:text-white dark:bg-white/5 dark:ring-white/10',
+        link: 'hover:text-coral-700 dark:hover:text-coral-300'
+      }
+    },
+    pageHeader: {
+      slots: {
+        root: 'relative border-b border-sand-300 bg-[linear-gradient(135deg,#fff8f4_0%,#fcf8f4_55%,#eaf4f5_100%)] py-8 lg:-mx-10 lg:px-10 dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(242,133,100,0.08)_0%,rgba(36,36,35,0)_55%,rgba(47,99,116,0.12)_100%)]',
+        description: 'text-sand-700 dark:text-sand-300'
+      }
+    },
     contentSurround: {
       slots: {
-        link: 'rounded-sm border border-sand-300 bg-[#fcf8f4] hover:!bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55',
+        link: 'rounded-sm border border-sand-300 bg-[linear-gradient(135deg,#fcf8f4_0%,#eaf4f5_100%)] hover:!bg-white hover:!bg-none dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55',
         linkLeading: 'bg-white ring-sand-300 group-hover:bg-coral-50 group-hover:ring-coral-500/50 dark:bg-white/5 dark:ring-white/10 dark:group-hover:bg-coral-400/10'
       }
     },
