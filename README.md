@@ -1,64 +1,88 @@
-# Nuxt Starter Template
+# happydesigns brand layer
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Reusable Nuxt UI brand layer for happydesigns: structured design for the modern web.
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+This package provides Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logo and brand primitives, frame/grid primitives, and a small visual QA playground.
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+## Usage
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+Extend the layer from a Nuxt project:
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
-
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
+```ts
+export default defineNuxtConfig({
+  extends: ['@happydesigns/brand']
+})
 ```
 
-## Deploy your own
+For local workspace usage, point `extends` at this package directory or install it under the package name `@happydesigns/brand`.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+## Color Roles
 
-## Setup
+- `coral` is the signature accent and logo dot. Canonical value: `#F28564`.
+- `graphite` is the premium text and filled-control color. Canonical value: `#242423`.
+- `warm-white` is the default page ground. Canonical value: `#FAF7F2`.
+- `peach` is atmosphere and logo-field color. Canonical value: `#FFE4D4`.
+- `petrol` is the technical counterweight for developer, module, and system signals.
+- `butter` is a soft warning color.
+- `plum` is quiet informational color.
+- `seafoam` is constructive success and sustainability color.
+- `sand` is the warm neutral scale for borders, muted surfaces, and secondary UI.
+- `rose` is restrained destructive and error color.
 
-Make sure to install the dependencies:
+Peach is intentionally not mapped as a Nuxt UI semantic color. It is available as raw Tailwind tokens and should appear in controlled canvas areas, logo fields, and atmospheric accents.
+
+Coral should not become the default large CTA surface everywhere. Use graphite for premium filled actions and coral for focus rings, dots, active states, notches, and precise signature details.
+
+## Nuxt UI Mapping
+
+The layer configures Nuxt UI semantic colors:
+
+```ts
+primary: 'coral'
+secondary: 'petrol'
+success: 'seafoam'
+info: 'plum'
+warning: 'butter'
+error: 'rose'
+neutral: 'sand'
+```
+
+It also adds light-touch defaults for buttons, badges, cards, inputs, textarea, select, tabs, alerts, and keyboard hints.
+
+## Typography
+
+The brand font stack is:
+
+```css
+--font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+--font-mono: "Geist Mono", "SFMono-Regular", ui-monospace, monospace;
+```
+
+The layer does not bundle external font files. Add font loading in the consuming app if those fonts are not already available.
+
+## Components
+
+- `HDBrandMark`
+- `HDWordmark`
+- `HDLogo`
+- `HDSectionLabel`
+- `HDFrame`
+- `HDColorField`
+- `HDNotch`
+
+Logo components use the supplied final SVG assets in `app/assets/logos`. The text-only logo is used for website display. The favicon artwork is reserved for favicon and app-icon usage. Do not place the icon directly beside the wordmark as a lockup; they are separate brand assets.
+
+## Brand System Notes
+
+The visual system should feel modern, warm, fresh, professional, design-led, technically excellent, approachable, clean, sustainable, and structured without becoming sterile.
+
+Structure comes first. Use visible frames, fine borders, quiet grids, and warm neutrals as the main system. Artistic gestures belong in controlled canvas areas such as `HDColorField`, not as global wallpaper.
+
+## Development
 
 ```bash
 pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
 pnpm dev
+pnpm typecheck
+pnpm lint
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.

@@ -1,3 +1,7 @@
+const cssPath = decodeURIComponent(
+  new URL('./app/assets/css/main.css', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')
+)
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -5,11 +9,27 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
+  $meta: {
+    name: 'happydesigns-brand'
+  },
+
+  components: [
+    {
+      path: '~/components/brand',
+      pathPrefix: false
+    },
+    '~/components'
+  ],
+
   devtools: {
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
+  css: [cssPath],
+
+  ui: {
+    prose: true
+  },
 
   routeRules: {
     '/': { prerender: true }
