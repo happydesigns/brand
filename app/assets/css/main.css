@@ -94,7 +94,7 @@
   --ui-container: var(--container-8xl);
   --ui-bg: var(--color-warm-white);
   --ui-bg-muted: var(--color-sand-50);
-  --ui-bg-elevated: #fffaf6;
+  --ui-bg-elevated: #fcf8f4;
   --ui-bg-accented: var(--color-sand-100);
   --ui-text: var(--color-graphite);
   --ui-text-muted: var(--color-sand-600);
@@ -166,4 +166,9 @@ body {
 
 .dark .hd-line-panel {
   background: color-mix(in srgb, var(--ui-bg-elevated) 88%, transparent);
+}
+
+.prose a {
+  text-decoration-color: var(--color-coral-500);
+  text-underline-offset: 0.18em;
 }

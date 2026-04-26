@@ -59,7 +59,7 @@ export default defineAppConfig(({
         {
           color: 'neutral',
           variant: 'outline',
-          class: 'border-sand-300 bg-warm-white text-graphite hover:bg-sand-100 dark:border-white/15 dark:bg-transparent dark:text-sand-100 dark:hover:bg-white/5'
+          class: 'border-sand-300 bg-[#fcf8f4] text-graphite hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-sand-100 dark:hover:bg-white/10'
         },
         {
           color: 'secondary',
@@ -80,9 +80,14 @@ export default defineAppConfig(({
     },
     card: {
       slots: {
-        root: 'rounded-sm border border-sand-200 bg-warm-white/90 shadow-none dark:border-white/10 dark:bg-sand-800/35',
+        root: 'rounded-sm border border-sand-200 bg-[#fcf8f4] shadow-none transition-colors hover:bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:bg-sand-800/55',
         header: 'border-b border-sand-200 dark:border-white/10',
         footer: 'border-t border-sand-200 dark:border-white/10'
+      }
+    },
+    pageCard: {
+      slots: {
+        root: 'rounded-sm border border-sand-200 bg-[#fcf8f4] shadow-none transition-colors hover:bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:bg-sand-800/55'
       }
     },
     input: {
