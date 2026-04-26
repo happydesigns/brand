@@ -9,18 +9,18 @@ Color decisions are documented as named tokens first, then mapped to interface i
 
 ## Palette
 
-| Token | Hex | Role |
-| --- | --- | --- |
-| `warmWhite` | `#FAF7F2` | Page background |
-| `graphite` | `#242423` | Text and premium fills |
-| `coral` | `#F28564` | Signature accent |
-| `peach` | `#FFE4D4` | Logo field and atmosphere |
-| `petrol` | `#2F6374` | Technical counterweight |
-| `butter` | `#E8CE69` | Soft warning |
-| `plum` | `#71617F` | Quiet information |
-| `seafoam` | `#1FA573` | Constructive success |
-| `sand` | `#E9E4DC` | Lines and muted surfaces |
-| `rose` | `#BD4D49` | Restrained errors |
+| Color | Token | Hex | Role |
+| --- | --- | --- | --- |
+| <span class="hd-color-chip" style="--chip: #FAF7F2"></span> | `warmWhite` | `#FAF7F2` | Page background |
+| <span class="hd-color-chip" style="--chip: #242423"></span> | `graphite` | `#242423` | Text and premium fills |
+| <span class="hd-color-chip" style="--chip: #F28564"></span> | `coral` | `#F28564` | Signature accent |
+| <span class="hd-color-chip" style="--chip: #FFE4D4"></span> | `peach` | `#FFE4D4` | Logo field and atmosphere |
+| <span class="hd-color-chip" style="--chip: #2F6374"></span> | `petrol` | `#2F6374` | Technical counterweight |
+| <span class="hd-color-chip" style="--chip: #E8CE69"></span> | `butter` | `#E8CE69` | Soft warning |
+| <span class="hd-color-chip" style="--chip: #71617F"></span> | `plum` | `#71617F` | Quiet information |
+| <span class="hd-color-chip" style="--chip: #1FA573"></span> | `seafoam` | `#1FA573` | Constructive success |
+| <span class="hd-color-chip" style="--chip: #E9E4DC"></span> | `sand` | `#E9E4DC` | Lines and muted surfaces |
+| <span class="hd-color-chip" style="--chip: #BD4D49"></span> | `rose` | `#BD4D49` | Restrained errors |
 
 ## Semantic Roles
 

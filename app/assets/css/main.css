@@ -99,8 +99,8 @@
   --ui-text: var(--color-graphite);
   --ui-text-muted: var(--color-sand-600);
   --ui-text-dimmed: var(--color-sand-500);
-  --ui-border: var(--color-sand-200);
-  --ui-border-muted: var(--color-sand-100);
+  --ui-border: var(--color-sand-300);
+  --ui-border-muted: var(--color-sand-300);
   --ui-primary: var(--color-coral-500);
   --ui-secondary: var(--color-petrol-500);
   --ui-success: var(--color-seafoam-500);
@@ -171,4 +171,37 @@ body {
 .prose a {
   text-decoration-color: var(--color-coral-500);
   text-underline-offset: 0.18em;
+}
+
+.prose table {
+  overflow: hidden;
+  border: 1px solid var(--color-sand-300);
+  border-radius: 4px;
+}
+
+.prose thead {
+  background: #fcf8f4;
+}
+
+.prose th,
+.prose td {
+  border-color: var(--color-sand-300) !important;
+}
+
+.prose tbody tr {
+  background: color-mix(in srgb, #fcf8f4 64%, transparent);
+}
+
+.prose tbody tr:hover {
+  background: #fff;
+}
+
+.hd-color-chip {
+  display: inline-block;
+  width: 2.75rem;
+  height: 1.25rem;
+  vertical-align: middle;
+  border: 1px solid var(--color-sand-300);
+  border-radius: 3px;
+  background: var(--chip);
 }

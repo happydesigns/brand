@@ -80,14 +80,43 @@ export default defineAppConfig(({
     },
     card: {
       slots: {
-        root: 'rounded-sm border border-sand-200 bg-[#fcf8f4] shadow-none transition-colors hover:bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:bg-sand-800/55',
-        header: 'border-b border-sand-200 dark:border-white/10',
-        footer: 'border-t border-sand-200 dark:border-white/10'
+        root: 'rounded-sm border border-sand-300 bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55',
+        header: 'border-b border-sand-300 dark:border-white/10',
+        footer: 'border-t border-sand-300 dark:border-white/10'
       }
     },
     pageCard: {
       slots: {
-        root: 'rounded-sm border border-sand-200 bg-[#fcf8f4] shadow-none transition-colors hover:bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:bg-sand-800/55'
+        root: 'rounded-sm border border-sand-300 bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55'
+      },
+      variants: {
+        variant: {
+          outline: {
+            root: 'bg-[#fcf8f4] ring-sand-300 hover:!bg-white dark:bg-sand-800/35 dark:ring-white/10 dark:hover:!bg-sand-800/55'
+          }
+        }
+      }
+    },
+    page: {
+      slots: {
+        root: 'lg:gap-0',
+        left: 'lg:border-r lg:border-sand-300 dark:lg:border-white/10',
+        center: 'lg:px-10',
+        right: 'lg:border-l lg:border-sand-300 dark:lg:border-white/10 lg:pl-8'
+      }
+    },
+    pageAside: {
+      slots: {
+        root: 'lg:pe-6 lg:ps-6 lg:ms-0',
+        topHeader: 'bg-warm-white dark:bg-graphite',
+        topBody: 'bg-warm-white dark:bg-graphite',
+        topFooter: 'from-warm-white dark:from-graphite'
+      }
+    },
+    contentSurround: {
+      slots: {
+        link: 'rounded-sm border border-sand-300 bg-[#fcf8f4] hover:!bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55',
+        linkLeading: 'bg-white ring-sand-300 group-hover:bg-coral-50 group-hover:ring-coral-500/50 dark:bg-white/5 dark:ring-white/10 dark:group-hover:bg-coral-400/10'
       }
     },
     input: {
