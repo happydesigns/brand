@@ -138,22 +138,7 @@ const featuredColors = guide.colors.slice(0, 6)
         </div>
       </section>
 
-      <section class="grid lg:grid-cols-[.8fr_1.2fr]">
-        <div class="border-b border-sand-300 bg-graphite p-7 text-sand-50 dark:border-white/10 sm:p-12 lg:border-b-0 lg:border-r">
-          <HDSectionLabel class="text-sand-300">
-            identity snapshot
-          </HDSectionLabel>
-          <HDLogo
-            class="mt-9"
-            variant="wordmark"
-            mode="dark"
-            size="md"
-          />
-          <p class="mt-7 max-w-md text-sm leading-7 text-sand-300">
-            This landing page acts as the brand-specific overview. The pages linked above provide the detailed source of truth.
-          </p>
-        </div>
-
+      <section>
         <div class="p-7 sm:p-12">
           <HDSectionLabel>
             palette preview

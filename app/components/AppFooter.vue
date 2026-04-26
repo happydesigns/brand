@@ -36,8 +36,8 @@ const contactLinks = [
 </script>
 
 <template>
-  <footer class="border-t border-white/10 bg-graphite text-sand-50">
-    <div class="mx-auto w-full max-w-(--ui-container) border-x border-white/10">
+  <footer class="bg-warm-white text-sand-50 dark:bg-graphite">
+    <div class="mx-auto w-full max-w-(--ui-container) border-x border-white/10 bg-graphite">
       <div class="grid border-b border-white/10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div class="border-b border-white/10 p-7 sm:p-10 lg:border-b-0 lg:border-r">
           <HDLogo
