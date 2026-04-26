@@ -33,6 +33,12 @@ const contactLinks = [
   { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank', icon: 'i-lucide-globe' },
   { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', icon: 'i-simple-icons-github' }
 ]
+
+const meta = computed(() => [
+  `Copyright (c) ${year} happydesigns`,
+  'Reusable brand guide structure',
+  'Built with Nuxt and Docus'
+])
 </script>
 
 <template>
@@ -94,23 +100,13 @@ const contactLinks = [
         </div>
       </div>
 
-      <div class="flex justify-center border-b border-white/10 px-7 py-16 sm:px-12 lg:py-20">
-        <HDWordmark
-          mode="dark"
-          size="lg"
-          class="[&_img]:h-16 sm:[&_img]:h-24 lg:[&_img]:h-36"
-        />
-      </div>
-
-      <div class="grid border-b border-white/10 font-mono text-xs text-sand-400 md:grid-cols-[1fr_1fr_1fr]">
-        <div class="border-b border-white/10 px-7 py-5 md:border-b-0 md:border-r sm:px-10">
-          Copyright &copy; {{ year }} happydesigns
-        </div>
-        <div class="border-b border-white/10 px-7 py-5 md:border-b-0 md:border-r sm:px-10">
-          {{ guide.brand.packageName }}
-        </div>
-        <div class="px-7 py-5 sm:px-10">
-          Nuxt 4 / Docus 5 / Brand layer v0.1
+      <div class="grid border-b border-white/10 text-xs text-sand-400 md:grid-cols-[1fr_1fr_1fr]">
+        <div
+          v-for="item in meta"
+          :key="item"
+          class="border-b border-white/10 px-7 py-5 md:border-b-0 md:border-r last:md:border-r-0 sm:px-10"
+        >
+          {{ item }}
         </div>
       </div>
     </div>

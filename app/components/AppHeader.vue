@@ -67,7 +67,7 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
         />
       </template>
 
-      <UContentSearchButton class="lg:hidden" />
+      <UContentSearchButton />
 
       <ClientOnly v-if="!forcedColorMode">
         <UColorModeButton />

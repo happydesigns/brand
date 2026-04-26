@@ -28,10 +28,6 @@ export default defineNuxtConfig({
     prose: true
   },
 
-  routeRules: {
-    '/': { prerender: true }
-  },
-
   compatibilityDate: '2025-01-15',
 
   eslint: {
