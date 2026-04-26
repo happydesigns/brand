@@ -1,6 +1,6 @@
 <template>
   <UMain>
-    <UContainer class="border-x border-sand-300 bg-warm-white dark:border-white/10 dark:bg-graphite">
+    <UContainer class="border-x border-default bg-default">
       <UPage>
         <template #left>
           <UPageAside>

@@ -118,16 +118,26 @@
   --ui-bg-elevated: var(--color-sand-150);
   --ui-bg-accented: var(--color-sand-100);
   --ui-text: var(--color-graphite);
+  --ui-text-highlighted: var(--color-graphite);
   --ui-text-muted: var(--color-sand-600);
   --ui-text-dimmed: var(--color-sand-500);
   --ui-border: var(--color-sand-300);
-  --ui-border-muted: var(--color-sand-300);
+  --ui-border-muted: var(--color-sand-200);
   --ui-primary: var(--color-coral-500);
   --ui-secondary: var(--color-petrol-500);
   --ui-success: var(--color-seafoam-500);
   --ui-info: var(--color-plum-500);
   --ui-warning: var(--color-butter-300);
   --ui-error: var(--color-rose-500);
+
+  --hd-text-body: var(--color-sand-700);
+  --hd-text-label: var(--color-plum-600);
+  --hd-bg-surface: white;
+  --hd-bg-card: white;
+  --hd-bg-inset: var(--color-sand-50);
+  --hd-bg-separator: var(--color-sand-300);
+  --hd-bg-tinted: color-mix(in srgb, var(--color-sand-200) 55%, transparent);
+  --hd-bg-hover: var(--color-peach-50);
 
   color-scheme: light;
 }
@@ -138,6 +148,7 @@
   --ui-bg-elevated: var(--color-sand-800);
   --ui-bg-accented: rgba(250, 247, 242, 0.06);
   --ui-text: var(--color-sand-100);
+  --ui-text-highlighted: var(--color-sand-50);
   --ui-text-muted: var(--color-sand-300);
   --ui-text-dimmed: var(--color-sand-400);
   --ui-border: rgba(250, 247, 242, 0.12);
@@ -149,7 +160,54 @@
   --ui-warning: var(--color-butter-200);
   --ui-error: var(--color-rose-300);
 
+  --hd-text-body: var(--color-sand-300);
+  --hd-text-label: var(--color-sand-300);
+  --hd-bg-surface: var(--color-graphite);
+  --hd-bg-card: rgba(255, 255, 255, 0.05);
+  --hd-bg-inset: rgba(255, 255, 255, 0.05);
+  --hd-bg-separator: rgba(255, 255, 255, 0.10);
+  --hd-bg-tinted: color-mix(in srgb, var(--color-sand-800) 25%, transparent);
+  --hd-bg-hover: rgba(255, 255, 255, 0.10);
+
   color-scheme: dark;
+}
+
+@utility bg-surface {
+  background-color: var(--hd-bg-surface);
+}
+
+@utility bg-card {
+  background-color: var(--hd-bg-card);
+}
+
+@utility bg-inset {
+  background-color: var(--hd-bg-inset);
+}
+
+@utility bg-separator {
+  background-color: var(--hd-bg-separator);
+}
+
+@utility bg-tinted {
+  background-color: var(--hd-bg-tinted);
+}
+
+@utility bg-hover {
+  background-color: var(--hd-bg-hover);
+}
+
+@utility text-body {
+  color: var(--hd-text-body);
+}
+
+@utility text-label {
+  color: var(--hd-text-label);
+}
+
+@utility divide-default {
+  & > * + * {
+    border-color: var(--ui-border);
+  }
 }
 
 html {

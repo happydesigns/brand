@@ -6,19 +6,19 @@ const utilityColors = guide.colors.slice(6)
 </script>
 
 <template>
-  <div class="min-h-screen bg-warm-white text-graphite dark:bg-graphite dark:text-sand-50">
-    <div class="mx-auto w-full max-w-(--ui-container) overflow-hidden border-x border-sand-300 bg-warm-white dark:border-white/10 dark:bg-graphite">
-      <section class="grid min-h-160 border-b border-sand-300 dark:border-white/10 lg:grid-cols-[1fr_.95fr]">
-        <div class="flex flex-col border-b border-sand-300 bg-warm-white dark:border-white/10 dark:bg-graphite lg:border-b-0 lg:border-r">
+  <div class="min-h-screen bg-default">
+    <div class="mx-auto w-full max-w-(--ui-container) overflow-hidden border-x border-default bg-default">
+      <section class="grid min-h-160 border-b border-default lg:grid-cols-[1fr_.95fr]">
+        <div class="flex flex-col border-b border-default bg-default lg:border-b-0 lg:border-r">
           <div class="flex flex-1 flex-col justify-center px-7 py-16 sm:px-12">
             <div class="max-w-3xl">
               <HDSectionLabel>
                 {{ guide.brand.name }} brand guide
               </HDSectionLabel>
-              <h1 class="mt-8 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-graphite dark:text-sand-50 sm:text-7xl">
+              <h1 class="mt-8 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-highlighted sm:text-7xl">
                 {{ guide.brand.claim }}
               </h1>
-              <p class="mt-8 max-w-2xl text-lg leading-8 text-sand-700 dark:text-sand-300">
+              <p class="mt-8 max-w-2xl text-lg leading-8 text-body">
                 A reusable guide structure for documenting a brand from overview to implementation: colors, typography, logos, components, and voice.
               </p>
 
@@ -41,24 +41,24 @@ const utilityColors = guide.colors.slice(6)
           </div>
         </div>
 
-        <div class="flex items-center justify-center bg-sand-200/55 p-7 dark:bg-sand-800/25 sm:p-12">
-          <div class="w-full max-w-xl overflow-hidden rounded-md border border-sand-300 bg-warm-white shadow-none dark:border-white/10 dark:bg-graphite">
-            <div class="flex items-center justify-between border-b border-sand-300 px-4 py-3 font-mono text-xs text-plum-600 dark:border-white/10 dark:text-plum-200">
+        <div class="flex items-center justify-center bg-tinted p-7 sm:p-12">
+          <div class="w-full max-w-xl overflow-hidden rounded-md border border-default bg-default shadow-none">
+            <div class="flex items-center justify-between border-b border-default px-4 py-3 font-mono text-xs text-plum-600 dark:text-plum-200">
               <div class="flex gap-2">
                 <span class="size-2.5 rounded-full bg-sand-400" />
                 <span class="size-2.5 rounded-full bg-sand-300" />
                 <span class="size-2.5 rounded-full bg-sand-300" />
               </div>
               <span>{{ guide.brand.packageName }}</span>
-              <span class="rounded-sm border border-sand-200 px-2 py-1 dark:border-white/10">v0.1</span>
+              <span class="rounded-sm border border-muted px-2 py-1">v0.1</span>
             </div>
 
             <div class="grid md:grid-cols-2">
-              <div class="border-b border-sand-300 p-5 dark:border-white/10 md:border-b-0 md:border-r">
+              <div class="border-b border-default p-5 md:border-b-0 md:border-r">
                 <p class="font-mono text-xs text-sand-500">
                   guide.md
                 </p>
-                <div class="mt-4 rounded-sm border border-sand-200 bg-sand-50 p-5 font-mono text-xs leading-6 dark:border-white/10 dark:bg-white/5">
+                <div class="mt-4 rounded-sm border border-muted bg-inset p-5 font-mono text-xs leading-6">
                   <p class="text-coral-500">
                     # {{ guide.brand.name }}
                   </p>
@@ -84,7 +84,7 @@ const utilityColors = guide.colors.slice(6)
                     v-for="section in guide.sections.slice(0, 3)"
                     :key="section.slug"
                     :to="`/docs/${section.slug}`"
-                    class="flex items-center justify-between rounded-sm border border-sand-200 bg-white px-3 py-2 text-sm font-medium hover:bg-peach-50 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                    class="flex items-center justify-between rounded-sm border border-muted bg-card px-3 py-2 text-sm font-medium hover:bg-hover"
                   >
                     <span class="inline-flex items-center gap-2">
                       <UIcon
@@ -105,19 +105,19 @@ const utilityColors = guide.colors.slice(6)
         </div>
       </section>
 
-      <section class="border-b border-sand-300 dark:border-white/10">
+      <section class="border-b border-default">
         <div class="grid lg:grid-cols-[.82fr_1.18fr]">
-          <div class="border-b border-sand-300 p-7 dark:border-white/10 sm:p-12 lg:border-b-0 lg:border-r">
+          <div class="border-b border-default p-7 sm:p-12 lg:border-b-0 lg:border-r">
             <HDSectionLabel>
               identity principles
             </HDSectionLabel>
             <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
               A warm, thoughtful system for brand documentation that can be reused.
             </h2>
-            <p class="mt-6 max-w-xl text-base leading-8 text-sand-700 dark:text-sand-300">
+            <p class="mt-6 max-w-xl text-base leading-8 text-body">
               The guide separates brand-specific decisions from the documentation pattern. Future guides can replace the data while keeping the same overview, detail pages, and component examples.
             </p>
-            <div class="mt-8 divide-y divide-sand-300 border-y border-sand-300 dark:divide-white/10 dark:border-white/10">
+            <div class="mt-8 divide-y divide-default border-y border-default">
               <div
                 v-for="principle in guide.principles"
                 :key="principle"
@@ -135,11 +135,11 @@ const utilityColors = guide.colors.slice(6)
             <HDSectionLabel>
               palette preview
             </HDSectionLabel>
-            <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2">
+            <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-default bg-separator sm:grid-cols-2">
               <div
                 v-for="color in featuredColors"
                 :key="color.token"
-                class="bg-white p-4 dark:bg-graphite"
+                class="bg-surface p-4"
               >
                 <div
                   class="h-20 rounded-sm border border-black/5"
@@ -153,16 +153,16 @@ const utilityColors = guide.colors.slice(6)
                     {{ color.hex }}
                   </p>
                 </div>
-                <p class="mt-1 text-sm text-sand-600 dark:text-sand-300">
+                <p class="mt-1 text-sm text-muted">
                   {{ color.role }}
                 </p>
               </div>
             </div>
-            <div class="mt-4 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="mt-4 grid gap-px overflow-hidden rounded-sm border border-default bg-separator sm:grid-cols-2 lg:grid-cols-4">
               <div
                 v-for="color in utilityColors"
                 :key="color.token"
-                class="bg-white p-4 dark:bg-graphite"
+                class="bg-surface p-4"
               >
                 <div
                   class="h-10 rounded-sm border border-black/5"
@@ -171,7 +171,7 @@ const utilityColors = guide.colors.slice(6)
                 <p class="mt-3 font-mono text-xs">
                   {{ color.token }}
                 </p>
-                <p class="mt-1 text-xs text-sand-600 dark:text-sand-300">
+                <p class="mt-1 text-xs text-muted">
                   {{ color.role }}
                 </p>
               </div>
@@ -189,9 +189,9 @@ const utilityColors = guide.colors.slice(6)
         </div>
       </section>
 
-      <section class="border-b border-sand-300 dark:border-white/10">
+      <section class="border-b border-default">
         <div class="grid lg:grid-cols-2">
-          <div class="border-b border-sand-300 p-7 dark:border-white/10 sm:p-12 lg:border-b-0 lg:border-r">
+          <div class="border-b border-default p-7 sm:p-12 lg:border-b-0 lg:border-r">
             <HDSectionLabel>
               typography
             </HDSectionLabel>
@@ -199,7 +199,7 @@ const utilityColors = guide.colors.slice(6)
               <div
                 v-for="font in guide.fonts"
                 :key="font.name"
-                class="rounded-sm border border-sand-300 bg-white p-6 dark:border-white/10 dark:bg-white/5"
+                class="rounded-sm border border-default bg-card p-6"
               >
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   <div>
@@ -223,7 +223,7 @@ const utilityColors = guide.colors.slice(6)
                 >
                   {{ font.sample }}
                 </p>
-                <p class="mt-5 text-sm leading-6 text-sand-600 dark:text-sand-300">
+                <p class="mt-5 text-sm leading-6 text-muted">
                   {{ font.notes }}
                 </p>
               </div>
@@ -257,8 +257,8 @@ const utilityColors = guide.colors.slice(6)
               </UBadge>
             </div>
 
-            <div class="mt-8 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2">
-              <div class="bg-white p-5 dark:bg-graphite">
+            <div class="mt-8 grid gap-px overflow-hidden rounded-sm border border-default bg-separator sm:grid-cols-2">
+              <div class="bg-surface p-5">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-petrol-700 dark:text-petrol-200">
                   Do
                 </p>
@@ -266,13 +266,13 @@ const utilityColors = guide.colors.slice(6)
                   <li
                     v-for="item in guide.voice.dos"
                     :key="item"
-                    class="text-sm leading-6 text-sand-700 dark:text-sand-300"
+                    class="text-sm leading-6 text-body"
                   >
                     {{ item }}
                   </li>
                 </ul>
               </div>
-              <div class="bg-white p-5 dark:bg-graphite">
+              <div class="bg-surface p-5">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
                   Do not
                 </p>
@@ -280,7 +280,7 @@ const utilityColors = guide.colors.slice(6)
                   <li
                     v-for="item in guide.voice.donts"
                     :key="item"
-                    class="text-sm leading-6 text-sand-700 dark:text-sand-300"
+                    class="text-sm leading-6 text-body"
                   >
                     {{ item }}
                   </li>
@@ -300,13 +300,13 @@ const utilityColors = guide.colors.slice(6)
         </div>
       </section>
 
-      <section class="border-b border-sand-300 dark:border-white/10">
+      <section class="border-b border-default">
         <div class="grid lg:grid-cols-[1.1fr_.9fr]">
-          <div class="border-b border-sand-300 p-7 dark:border-white/10 sm:p-12 lg:border-b-0 lg:border-r">
+          <div class="border-b border-default p-7 sm:p-12 lg:border-b-0 lg:border-r">
             <HDSectionLabel>
               logo use
             </HDSectionLabel>
-            <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10">
+            <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-default bg-separator">
               <div class="bg-warm-white p-8">
                 <div class="flex min-h-40 items-center justify-center rounded-sm border border-sand-300 bg-white">
                   <HDLogo
@@ -347,9 +347,9 @@ const utilityColors = guide.colors.slice(6)
             <HDSectionLabel>
               interface use
             </HDSectionLabel>
-            <div class="mt-7 rounded-sm border border-sand-300 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-              <div class="rounded-sm border border-sand-300 bg-warm-white p-4 dark:border-white/10 dark:bg-graphite">
-                <div class="flex items-center justify-between gap-4 border-b border-sand-300 pb-4 dark:border-white/10">
+            <div class="mt-7 rounded-sm border border-default bg-card p-5">
+              <div class="rounded-sm border border-default bg-default p-4">
+                <div class="flex items-center justify-between gap-4 border-b border-default pb-4">
                   <div>
                     <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
                       Project
@@ -371,16 +371,16 @@ const utilityColors = guide.colors.slice(6)
                     <span class="text-sm font-medium">Token name</span>
                     <input
                       value="coral"
-                      class="h-10 rounded-sm border border-sand-300 bg-white px-3 text-sm outline-none focus:border-coral-500 dark:border-white/10 dark:bg-white/5"
+                      class="h-10 rounded-sm border border-default bg-card px-3 text-sm outline-none focus:border-coral-500"
                       readonly
                     >
                   </label>
                   <div class="grid grid-cols-[1fr_auto] gap-3">
-                    <div class="rounded-sm border border-sand-300 bg-white p-3 dark:border-white/10 dark:bg-white/5">
+                    <div class="rounded-sm border border-default bg-card p-3">
                       <p class="text-sm font-medium">
                         Accent state
                       </p>
-                      <p class="mt-1 text-xs leading-5 text-sand-600 dark:text-sand-300">
+                      <p class="mt-1 text-xs leading-5 text-muted">
                         Clear borders, small radius, coral emphasis.
                       </p>
                     </div>

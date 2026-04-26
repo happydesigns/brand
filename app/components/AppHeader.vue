@@ -34,7 +34,7 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
         v-for="link in links"
         :key="link.to"
         :to="link.to"
-        class="text-sand-700 transition hover:text-graphite aria-[current=page]:text-graphite dark:text-sand-300 dark:hover:text-sand-50 dark:aria-[current=page]:text-sand-50"
+        class="text-body transition hover:text-highlighted aria-[current=page]:text-highlighted"
       >
         {{ link.label }}
       </NuxtLink>

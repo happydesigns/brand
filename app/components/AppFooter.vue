@@ -42,7 +42,7 @@ const meta = computed(() => [
 </script>
 
 <template>
-  <footer class="bg-warm-white text-sand-50 dark:bg-graphite">
+  <footer class="bg-graphite text-sand-50">
     <div class="mx-auto w-full max-w-(--ui-container) border-x border-white/10 bg-graphite">
       <div class="grid border-b border-white/10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div class="border-b border-white/10 p-7 sm:p-10 lg:border-b-0 lg:border-r">
@@ -90,7 +90,6 @@ const meta = computed(() => [
             >
               <NuxtLink
                 :to="link.to"
-                :target="link.target"
                 class="text-sm leading-6 text-sand-300 hover:text-sand-50"
               >
                 {{ link.label }}
