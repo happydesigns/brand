@@ -29,9 +29,9 @@ const columns = computed(() => [
 ])
 
 const contactLinks = [
-  { label: 'hello@happydesigns.de', to: 'mailto:hello@happydesigns.de' },
-  { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank' },
-  { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank' }
+  { label: 'hello@happydesigns.de', to: 'mailto:hello@happydesigns.de', icon: 'i-lucide-mail' },
+  { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank', icon: 'i-lucide-globe' },
+  { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', icon: 'i-simple-icons-github' }
 ]
 </script>
 
@@ -52,19 +52,19 @@ const contactLinks = [
             Brand documentation for the happydesigns identity system, built to be reusable for future guides.
           </p>
 
-          <div class="mt-8 grid gap-3">
+          <div class="mt-8 flex flex-wrap gap-2">
             <NuxtLink
               v-for="link in contactLinks"
               :key="link.label"
               :to="link.to"
               :target="link.target"
-              class="group flex items-center justify-between rounded-sm border border-white/10 px-3 py-2 text-sm text-sand-200 transition hover:border-coral-500/70 hover:text-warm-white"
+              class="inline-flex items-center gap-2 rounded-sm border border-white/10 px-2.5 py-1.5 text-xs font-medium text-sand-300 transition hover:border-coral-500/70 hover:text-warm-white"
             >
-              <span>{{ link.label }}</span>
               <UIcon
-                name="i-lucide-arrow-up-right"
-                class="size-4 text-coral-500 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                :name="link.icon"
+                class="size-3.5 text-coral-500"
               />
+              <span>{{ link.label }}</span>
             </NuxtLink>
           </div>
         </div>
