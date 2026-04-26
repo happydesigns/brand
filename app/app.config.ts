@@ -80,14 +80,14 @@ export default defineAppConfig(({
     },
     card: {
       slots: {
-        root: 'rounded-sm border border-sand-300 bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55',
+        root: 'rounded-sm bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:bg-sand-800/35 dark:hover:!bg-sand-800/55',
         header: 'border-b border-sand-300 dark:border-white/10',
         footer: 'border-t border-sand-300 dark:border-white/10'
       }
     },
     pageCard: {
       slots: {
-        root: 'rounded-sm border border-sand-300 bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:border-white/10 dark:bg-sand-800/35 dark:hover:!bg-sand-800/55'
+        root: 'rounded-sm bg-[#fcf8f4] shadow-none transition-colors hover:!bg-white dark:bg-sand-800/35 dark:hover:!bg-sand-800/55'
       },
       variants: {
         variant: {
