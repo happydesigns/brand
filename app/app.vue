@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const guide = useBrandGuide()
 const title = 'happydesigns brand layer'
 const description = 'Structured design for the modern web.'
 
@@ -46,6 +47,14 @@ useSeoMeta({
       </template>
 
       <template #right>
+        <UNavigationMenu
+          class="hidden lg:block"
+          :items="guide.sections.map(section => ({
+            label: section.title,
+            to: `/${section.slug}`,
+            icon: section.icon
+          }))"
+        />
         <UButton
           to="https://github.com/happydesigns"
           target="_blank"

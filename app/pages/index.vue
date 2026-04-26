@@ -1,24 +1,7 @@
 <script setup lang="ts">
-const brand = useHappydesignsBrand()
+const guide = useBrandGuide()
 
-const swatches = [
-  ['warm-white', brand.colors.warmWhite, 'page highlight'],
-  ['graphite', brand.colors.graphite, 'text and premium fills'],
-  ['coral', brand.colors.coral, 'signature accent'],
-  ['peach', brand.colors.peach, 'logo field and atmosphere'],
-  ['petrol', brand.colors.petrol, 'technical counterweight'],
-  ['butter', brand.colors.butter, 'soft warning'],
-  ['plum', brand.colors.plum, 'quiet information'],
-  ['seafoam', brand.colors.seafoam, 'constructive success'],
-  ['sand', brand.colors.sand, 'lines and muted surfaces'],
-  ['rose', brand.colors.rose, 'restrained errors']
-] as const
-
-const partners = ['Nordholz Supply', 'Field Studies', 'Stadtwerke OH', 'Rasmussen & Kohl', 'Hanse Digital', 'Kustenkontor']
-const fieldSamples = ['peach', 'petrol', 'seafoam'] as const
-const inputValue = ref('Durable interfaces, precise systems.')
-const textareaValue = ref('Structure first. Artistic gesture second.')
-const selectValue = ref('design-system')
+const featuredColors = guide.colors.slice(0, 6)
 </script>
 
 <template>
@@ -27,60 +10,32 @@ const selectValue = ref('design-system')
       <section class="grid min-h-[640px] border-b border-sand-300 dark:border-white/10 lg:grid-cols-[1fr_.95fr]">
         <div class="flex flex-col border-b border-sand-300 bg-warm-white dark:border-white/10 dark:bg-graphite lg:border-b-0 lg:border-r">
           <div class="flex flex-1 flex-col justify-center px-7 py-16 sm:px-12">
-            <div class="max-w-2xl">
-              <HDSectionLabel>happydesigns - studio</HDSectionLabel>
-              <h1 class="mt-8 max-w-2xl text-5xl font-semibold leading-[0.98] tracking-normal text-graphite dark:text-sand-50 sm:text-7xl">
-                Structured design for the modern web<span class="text-coral-500">.</span>
+            <div class="max-w-3xl">
+              <HDSectionLabel>
+                {{ guide.brand.name }} brand guide
+              </HDSectionLabel>
+              <h1 class="mt-8 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-graphite dark:text-sand-50 sm:text-7xl">
+                {{ guide.brand.claim }}
               </h1>
-              <p class="mt-8 max-w-xl text-lg leading-8 text-sand-700 dark:text-sand-300">
-                A Nuxt UI brand layer for warm, precise, maintainable web systems with visible structure and controlled brand expression.
+              <p class="mt-8 max-w-2xl text-lg leading-8 text-sand-700 dark:text-sand-300">
+                A reusable guide structure for documenting a brand from overview to implementation: colors, typography, logos, components, and voice.
               </p>
 
-              <div class="mt-8 flex flex-wrap gap-3">
+              <div class="mt-9 flex flex-wrap gap-3">
                 <UButton
-                  label="Primary action"
+                  to="/colors"
+                  label="Explore guide"
                   icon="i-lucide-arrow-right"
                   trailing
-                  color="primary"
                 />
                 <UButton
-                  label="Explore tokens"
-                  icon="i-lucide-layers-3"
+                  to="/components"
+                  label="View components"
+                  icon="i-lucide-component"
                   color="neutral"
                   variant="outline"
                 />
               </div>
-
-              <ProseCodeGroup sync="install-manager">
-                <ProsePre
-                  filename="pnpm"
-                  language="bash"
-                  code="pnpm add @happydesigns/brand"
-                >
-                  <code>pnpm add @happydesigns/brand</code>
-                </ProsePre>
-                <ProsePre
-                  filename="npm"
-                  language="bash"
-                  code="npm install @happydesigns/brand"
-                >
-                  <code>npm install @happydesigns/brand</code>
-                </ProsePre>
-                <ProsePre
-                  filename="yarn"
-                  language="bash"
-                  code="yarn add @happydesigns/brand"
-                >
-                  <code>yarn add @happydesigns/brand</code>
-                </ProsePre>
-                <ProsePre
-                  filename="bun"
-                  language="bash"
-                  code="bun add @happydesigns/brand"
-                >
-                  <code>bun add @happydesigns/brand</code>
-                </ProsePre>
-              </ProseCodeGroup>
             </div>
           </div>
         </div>
@@ -93,46 +48,55 @@ const selectValue = ref('design-system')
                 <span class="size-2.5 rounded-full bg-sand-300" />
                 <span class="size-2.5 rounded-full bg-sand-300" />
               </div>
-              <span>happydesigns/brand</span>
+              <span>{{ guide.brand.packageName }}</span>
               <span class="rounded-sm border border-sand-200 px-2 py-1 dark:border-white/10">v0.1</span>
             </div>
 
             <div class="grid md:grid-cols-2">
               <div class="border-b border-sand-300 p-5 dark:border-white/10 md:border-b-0 md:border-r">
                 <p class="font-mono text-xs text-sand-500">
-                  source.md
+                  guide.md
                 </p>
                 <div class="mt-4 rounded-sm border border-sand-200 bg-sand-50 p-5 font-mono text-xs leading-6 dark:border-white/10 dark:bg-white/5">
                   <p class="text-coral-500">
-                    # Structured design
+                    # {{ guide.brand.name }}
                   </p>
                   <p class="mt-4">
-                    A **brand layer** built for Nuxt UI, tokens, components, and long-lived systems.
+                    Overview plus detailed pages for tokens, assets, components, and voice.
                   </p>
                   <p class="mt-4 text-coral-500">
-                    ::callout
+                    ::principle
                   </p>
-                  <p>Structure you can see.</p>
+                  <p>{{ guide.principles[0] }}</p>
                 </div>
               </div>
               <div class="p-5">
                 <p class="font-mono text-xs text-sand-500">
-                  rendered
+                  sections
                 </p>
-                <div class="mt-4 space-y-4">
+                <div class="mt-4 space-y-3">
                   <HDLogo
                     variant="wordmark"
                     size="md"
                   />
-                  <p class="text-sm leading-6 text-sand-700 dark:text-sand-300">
-                    Semantic Nuxt UI colors mapped to a warm, structured brand system.
-                  </p>
-                  <UAlert
-                    color="success"
-                    variant="subtle"
-                    icon="i-lucide-check"
-                    title="Structure you can see."
-                  />
+                  <NuxtLink
+                    v-for="section in guide.sections.slice(0, 3)"
+                    :key="section.slug"
+                    :to="`/${section.slug}`"
+                    class="flex items-center justify-between rounded-sm border border-sand-200 bg-white px-3 py-2 text-sm font-medium hover:bg-peach-50 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                  >
+                    <span class="inline-flex items-center gap-2">
+                      <UIcon
+                        :name="section.icon"
+                        class="size-4 text-coral-500"
+                      />
+                      {{ section.title }}
+                    </span>
+                    <UIcon
+                      name="i-lucide-arrow-right"
+                      class="size-4 text-sand-500"
+                    />
+                  </NuxtLink>
                 </div>
               </div>
             </div>
@@ -141,159 +105,82 @@ const selectValue = ref('design-system')
       </section>
 
       <section class="border-b border-sand-300 dark:border-white/10">
-        <div class="border-b border-sand-300 px-7 py-4 dark:border-white/10">
-          <HDSectionLabel>trusted by small, serious teams</HDSectionLabel>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-6">
-          <div
-            v-for="partner in partners"
-            :key="partner"
-            class="border-b border-r border-sand-300 px-6 py-9 text-center last:border-r-0 dark:border-white/10 lg:border-b-0"
-          >
-            <p class="font-medium">
-              {{ partner }}
-            </p>
-            <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-sand-500">
-              system
-            </p>
+        <div class="px-7 py-12 sm:px-12">
+          <HDSectionLabel>
+            guide sections
+          </HDSectionLabel>
+          <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10 md:grid-cols-2 lg:grid-cols-5">
+            <NuxtLink
+              v-for="section in guide.sections"
+              :key="section.slug"
+              :to="`/${section.slug}`"
+              class="group bg-white p-5 transition hover:bg-peach-50 dark:bg-graphite dark:hover:bg-white/5"
+            >
+              <UIcon
+                :name="section.icon"
+                class="size-5 text-coral-500"
+              />
+              <p class="mt-5 text-lg font-semibold">
+                {{ section.title }}
+              </p>
+              <p class="mt-2 text-sm leading-6 text-sand-600 dark:text-sand-300">
+                {{ section.summary }}
+              </p>
+              <div class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-petrol-700 dark:text-petrol-200">
+                Open
+                <UIcon
+                  name="i-lucide-arrow-right"
+                  class="size-4 transition group-hover:translate-x-0.5"
+                />
+              </div>
+            </NuxtLink>
           </div>
         </div>
       </section>
 
-      <section class="grid border-b border-sand-300 dark:border-white/10 lg:grid-cols-[.72fr_1.28fr]">
-        <div class="border-b border-sand-300 bg-graphite p-7 text-sand-50 dark:border-white/10 lg:border-b-0 lg:border-r">
-          <HDSectionLabel class="text-sand-400">identity assets</HDSectionLabel>
-          <div class="mt-10 space-y-8">
-            <div>
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-sand-400">
-                wordmark
-              </p>
-              <HDLogo
-                class="mt-3"
-                variant="wordmark"
-                mode="dark"
-                size="md"
-              />
-            </div>
-            <div>
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-sand-400">
-                app icon
-              </p>
-              <HDBrandMark
-                class="mt-3"
-                tile
-                size="md"
-              />
-            </div>
-          </div>
+      <section class="grid lg:grid-cols-[.8fr_1.2fr]">
+        <div class="border-b border-sand-300 bg-graphite p-7 text-sand-50 dark:border-white/10 sm:p-12 lg:border-b-0 lg:border-r">
+          <HDSectionLabel class="text-sand-300">
+            identity snapshot
+          </HDSectionLabel>
+          <HDLogo
+            class="mt-9"
+            variant="wordmark"
+            mode="dark"
+            size="md"
+          />
+          <p class="mt-7 max-w-md text-sm leading-7 text-sand-300">
+            This landing page acts as the brand-specific overview. The pages linked above provide the detailed source of truth.
+          </p>
         </div>
 
-        <div class="bg-warm-white p-7 dark:bg-sand-800/20">
-          <HDSectionLabel>color roles</HDSectionLabel>
-          <div class="mt-6 grid gap-px overflow-hidden rounded-sm border border-sand-200 bg-sand-200 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+        <div class="p-7 sm:p-12">
+          <HDSectionLabel>
+            palette preview
+          </HDSectionLabel>
+          <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-sand-300 bg-sand-300 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
             <div
-              v-for="[name, hex, role] in swatches"
-              :key="name"
-              class="bg-warm-white p-4 dark:bg-graphite"
+              v-for="color in featuredColors"
+              :key="color.token"
+              class="bg-white p-4 dark:bg-graphite"
             >
               <div
-                class="h-16 rounded-sm border border-black/5"
-                :style="{ backgroundColor: hex }"
+                class="h-20 rounded-sm border border-black/5"
+                :style="{ backgroundColor: color.hex }"
               />
               <div class="mt-4 flex items-baseline justify-between gap-3">
-                <p class="font-mono text-xs text-graphite dark:text-sand-100">
-                  {{ name }}
+                <p class="font-mono text-xs">
+                  {{ color.token }}
                 </p>
-                <p class="font-mono text-[0.68rem] text-sand-500">
-                  {{ hex }}
+                <p class="font-mono text-xs text-sand-500">
+                  {{ color.hex }}
                 </p>
               </div>
-              <p class="mt-1 text-xs text-sand-600 dark:text-sand-300">
-                {{ role }}
+              <p class="mt-1 text-sm text-sand-600 dark:text-sand-300">
+                {{ color.role }}
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="grid lg:grid-cols-2">
-        <div class="border-b border-sand-300 bg-warm-white p-7 dark:border-white/10 dark:bg-graphite lg:border-b-0 lg:border-r">
-          <HDSectionLabel>typography and fields</HDSectionLabel>
-          <p class="mt-8 max-w-xl text-3xl font-semibold leading-tight">
-            Bricolage Grotesque keeps the system warm without losing precision.
-          </p>
-          <div class="mt-8 grid gap-3 sm:grid-cols-3">
-            <HDColorField
-              v-for="color in fieldSamples"
-              :key="color"
-              :color="color"
-              class="min-h-24"
-            >
-              <p class="font-mono text-xs uppercase tracking-[0.14em]">
-                {{ color }}
-              </p>
-            </HDColorField>
-          </div>
-        </div>
-
-        <div class="bg-sand-50 p-7 dark:bg-sand-800/20">
-          <HDSectionLabel>nuxt ui controls</HDSectionLabel>
-          <UCard class="mt-8 max-w-xl">
-            <div class="grid gap-4">
-              <UFormField label="Project note">
-                <UInput
-                  v-model="inputValue"
-                  icon="i-lucide-type"
-                  class="w-full"
-                />
-              </UFormField>
-
-              <UFormField label="System intent">
-                <UTextarea
-                  v-model="textareaValue"
-                  :rows="4"
-                  class="w-full"
-                />
-              </UFormField>
-
-              <UFormField label="Work type">
-                <USelect
-                  v-model="selectValue"
-                  class="w-full"
-                  :items="[
-                    { label: 'Design system', value: 'design-system' },
-                    { label: 'Nuxt module', value: 'nuxt-module' },
-                    { label: 'Web application', value: 'web-application' }
-                  ]"
-                />
-              </UFormField>
-
-              <div class="flex flex-wrap items-center gap-2 pt-2">
-                <UButton
-                  label="Save system"
-                  icon="i-lucide-save"
-                />
-                <UButton
-                  label="Review"
-                  icon="i-lucide-search-check"
-                  color="neutral"
-                  variant="outline"
-                />
-                <UBadge
-                  color="secondary"
-                  variant="subtle"
-                >
-                  Nuxt layer
-                </UBadge>
-                <UBadge
-                  color="success"
-                  variant="subtle"
-                >
-                  maintainable
-                </UBadge>
-              </div>
-            </div>
-          </UCard>
         </div>
       </section>
     </div>

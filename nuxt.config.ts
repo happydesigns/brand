@@ -32,7 +32,12 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/colors': { prerender: true },
+    '/typography': { prerender: true },
+    '/logos': { prerender: true },
+    '/components': { prerender: true },
+    '/voice': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
