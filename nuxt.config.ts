@@ -1,12 +1,9 @@
-const cssPath = decodeURIComponent(
-  new URL('./app/assets/css/main.css', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')
-)
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  extends: ['docus'],
+
   modules: [
-    '@nuxt/eslint',
-    '@nuxt/ui'
+    '@nuxt/eslint'
   ],
 
   $meta: {
@@ -25,7 +22,7 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: [cssPath],
+  css: ['~/assets/css/main.css'],
 
   ui: {
     prose: true
@@ -33,11 +30,8 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/colors': { prerender: true },
-    '/typography': { prerender: true },
-    '/logos': { prerender: true },
-    '/components': { prerender: true },
-    '/voice': { prerender: true }
+    '/docs': { prerender: true },
+    '/docs/**': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',

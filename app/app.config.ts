@@ -1,4 +1,40 @@
-export default defineAppConfig({
+export default defineAppConfig(({
+  docus: {
+    locale: 'en',
+    colorMode: ''
+  },
+  seo: {
+    title: 'happydesigns brand guide',
+    description: 'Structured design guidance for the happydesigns brand system.'
+  },
+  header: {
+    title: 'happydesigns',
+    logo: {
+      light: '/app-icon.png',
+      dark: '/app-icon.png',
+      alt: 'happydesigns',
+      class: 'rounded-sm'
+    }
+  },
+  socials: {
+    github: 'https://github.com/happydesigns'
+  },
+  toc: {
+    title: 'On this page',
+    bottom: {
+      title: 'Brand system',
+      links: [{
+        icon: 'i-lucide-home',
+        label: 'Overview',
+        to: '/',
+        target: '_self'
+      }]
+    }
+  },
+  assistant: {
+    floatingInput: false,
+    explainWithAi: false
+  },
   ui: {
     colors: {
       primary: 'coral',
@@ -95,4 +131,4 @@ export default defineAppConfig({
       }
     }
   }
-})
+}) as never)

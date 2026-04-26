@@ -23,13 +23,13 @@ const featuredColors = guide.colors.slice(0, 6)
 
               <div class="mt-9 flex flex-wrap gap-3">
                 <UButton
-                  to="/colors"
+                  to="/docs/colors"
                   label="Explore guide"
                   icon="i-lucide-arrow-right"
                   trailing
                 />
                 <UButton
-                  to="/components"
+                  to="/docs/components"
                   label="View components"
                   icon="i-lucide-component"
                   color="neutral"
@@ -82,7 +82,7 @@ const featuredColors = guide.colors.slice(0, 6)
                   <NuxtLink
                     v-for="section in guide.sections.slice(0, 3)"
                     :key="section.slug"
-                    :to="`/${section.slug}`"
+                    :to="`/docs/${section.slug}`"
                     class="flex items-center justify-between rounded-sm border border-sand-200 bg-white px-3 py-2 text-sm font-medium hover:bg-peach-50 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
                   >
                     <span class="inline-flex items-center gap-2">
@@ -113,7 +113,7 @@ const featuredColors = guide.colors.slice(0, 6)
             <NuxtLink
               v-for="section in guide.sections"
               :key="section.slug"
-              :to="`/${section.slug}`"
+              :to="`/docs/${section.slug}`"
               class="group bg-white p-5 transition hover:bg-peach-50 dark:bg-graphite dark:hover:bg-white/5"
             >
               <UIcon
