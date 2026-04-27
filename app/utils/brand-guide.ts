@@ -82,10 +82,10 @@ export const brandGuide = {
       slug: 'logos',
       title: 'Logos',
       eyebrow: 'identity assets',
-      summary: 'Wordmark, app icon, favicon, asset paths, and usage rules.',
-      description: 'Logo documentation keeps the source files, output files, clearspace expectations, and common placements in one place so identity work is repeatable.',
+      summary: 'Logo forms, lockups, brand roles, and practical usage guidance.',
+      description: 'The logo system separates core identity marks from controlled combinations. Wordmark, symbol, and reduced symbol are logo forms. Horizontal, reduced horizontal, and vertical signature compositions are lockups.',
       icon: 'i-lucide-badge-check',
-      anchors: ['Assets', 'Usage', 'Placement']
+      anchors: ['Logo forms', 'Lockups', 'Choosing the right form', 'Header usage', 'Footer usage']
     },
     {
       slug: 'components',
@@ -155,9 +155,19 @@ export const brandGuide = {
     ]
   },
   assets: [
-    { name: 'Wordmark', path: happydesignsBrand.logoAssetPaths.wordmark, usage: 'Default identity mark for headers, covers, and documentation.' },
-    { name: 'Dark wordmark', path: happydesignsBrand.logoAssetPaths.wordmarkDark, usage: 'Use on graphite or other dark surfaces.' },
-    { name: 'Favicon SVG', path: happydesignsBrand.logoAssetPaths.faviconSvg, usage: 'Browser tab and small vector contexts.' },
+    { name: 'Wordmark', path: happydesignsBrand.logoAssetPaths.wordmark, usage: 'Default identity for headers, navigation, documentation, and slim horizontal layouts.' },
+    { name: 'Wordmark inverse', path: happydesignsBrand.logoAssetPaths.wordmarkInverse, usage: 'Wordmark for dark surfaces.' },
+    { name: 'Symbol', path: happydesignsBrand.logoAssetPaths.symbol, usage: 'Favicon, app icon, social avatars, square contexts, and brand moments. Unchanged across light and dark.' },
+    { name: 'Symbol reduced', path: happydesignsBrand.logoAssetPaths.symbolReduced, usage: 'Simplified h + coral dot for constrained, monochrome, or production contexts.' },
+    { name: 'Symbol reduced inverse', path: happydesignsBrand.logoAssetPaths.symbolReducedInverse, usage: 'Reduced symbol for dark surfaces.' },
+    { name: 'Symbol reduced tile', path: happydesignsBrand.logoAssetPaths.symbolReducedTile, usage: 'Reduced symbol on a light tile. Use when the raw reduced symbol needs a stable bounding surface.' },
+    { name: 'Symbol reduced tile inverse', path: happydesignsBrand.logoAssetPaths.symbolReducedTileInverse, usage: 'Reduced symbol on a dark tile.' },
+    { name: 'Lockup', path: happydesignsBrand.logoAssetPaths.lockup, usage: 'Full symbol + wordmark for brand introductions, covers, and teaching moments.' },
+    { name: 'Lockup inverse', path: happydesignsBrand.logoAssetPaths.lockupInverse, usage: 'Lockup for dark surfaces.' },
+    { name: 'Lockup reduced', path: happydesignsBrand.logoAssetPaths.lockupReduced, usage: 'Reduced symbol + wordmark for production, print, and constrained horizontal contexts.' },
+    { name: 'Lockup reduced inverse', path: happydesignsBrand.logoAssetPaths.lockupReducedInverse, usage: 'Reduced lockup for dark surfaces.' },
+    { name: 'Brand signature', path: happydesignsBrand.logoAssetPaths.signature, usage: 'Standardized brand composition for footers, proposals, and brand-owned sections.' },
+    { name: 'Brand signature inverse', path: happydesignsBrand.logoAssetPaths.signatureInverse, usage: 'Brand signature for dark surfaces.' },
     { name: 'App icon PNG', path: happydesignsBrand.logoAssetPaths.publicAppIcon, usage: 'Touch icon and square app contexts.' }
   ]
 } satisfies BrandGuide

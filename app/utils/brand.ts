@@ -3,10 +3,32 @@ export const happydesignsBrand = {
   packageName: '@happydesigns/brand',
   claim: 'Thoughtful design for the modern web.',
   logoAssetPaths: {
-    wordmark: 'app/assets/logos/happydesigns.svg',
-    wordmarkDark: 'app/assets/logos/happydesigns-dark.svg',
-    faviconSvg: 'app/assets/logos/happydesigns-favicon.svg',
-    faviconPng: 'app/assets/logos/happydesigns-favicon.png',
+    // Primary everyday identity
+    wordmark: 'app/assets/logos/happydesigns-wordmark.svg',
+    wordmarkInverse: 'app/assets/logos/happydesigns-wordmark-inverse.svg',
+
+    // Primary symbol
+    symbol: 'app/assets/logos/happydesigns-symbol.svg',
+
+    // Utility / production symbols
+    symbolReduced: 'app/assets/logos/happydesigns-symbol-reduced.svg',
+    symbolReducedInverse: 'app/assets/logos/happydesigns-symbol-reduced-inverse.svg',
+    symbolReducedTile: 'app/assets/logos/happydesigns-symbol-reduced-tile.svg',
+    symbolReducedTileInverse: 'app/assets/logos/happydesigns-symbol-reduced-tile-inverse.svg',
+
+    // Teaching / introduction lockups
+    lockup: 'app/assets/logos/happydesigns-lockup.svg',
+    lockupInverse: 'app/assets/logos/happydesigns-lockup-inverse.svg',
+
+    // Constrained / production lockups
+    lockupReduced: 'app/assets/logos/happydesigns-lockup-reduced.svg',
+    lockupReducedInverse: 'app/assets/logos/happydesigns-lockup-reduced-inverse.svg',
+
+    // Brand-owned compositions
+    signature: 'app/assets/logos/happydesigns-signature.svg',
+    signatureInverse: 'app/assets/logos/happydesigns-signature-inverse.svg',
+
+    // Public / build output
     publicFavicon: '/favicon.svg',
     publicAppIcon: '/app-icon.png'
   },

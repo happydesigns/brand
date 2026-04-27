@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import favicon from '~/assets/logos/happydesigns-favicon.svg'
+import symbol from '~/assets/logos/happydesigns-symbol.svg'
 
 const props = withDefaults(defineProps<{
   tile?: boolean
@@ -27,7 +27,7 @@ const monoClass = computed(() => props.mode === 'mono' && 'grayscale')
     aria-hidden="true"
   >
     <img
-      :src="favicon"
+      :src="symbol"
       alt=""
       class="size-full"
       :class="monoClass"
