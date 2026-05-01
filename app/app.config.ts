@@ -156,6 +156,15 @@ export default defineAppConfig({
       base: 'rounded-[3px] border border-sand-300 bg-sand-100 font-mono text-graphite shadow-none dark:border-white/15 dark:bg-white/5 dark:text-sand-100'
     },
     prose: {
+      th: {
+        base: 'py-3 px-4 font-semibold text-sm border-e border-b first:border-s border-t border-sand-300 bg-sand-100 text-graphite dark:border-white/10 dark:bg-white/5 dark:text-sand-100'
+      },
+      td: {
+        base: 'py-3 px-4 text-sm align-top border-e border-b first:border-s border-sand-300 text-sand-700 [&_code]:text-xs/5 [&_p]:my-0 [&_p]:leading-6 [&_ul]:my-0 [&_ol]:my-0 [&_ul]:ps-4.5 [&_ol]:ps-4.5 [&_li]:leading-6 [&_li]:my-0.5 dark:border-white/10 dark:text-sand-300'
+      },
+      code: {
+        base: 'inline-block rounded-[3px] border border-sand-300 bg-sand-100 px-1.5 py-0.5 font-mono text-[0.85em] font-medium text-petrol-700 dark:border-white/15 dark:bg-white/5 dark:text-petrol-200'
+      },
       codeGroup: {
         slots: {
           root: 'bg-white dark:bg-graphite',
@@ -166,7 +175,11 @@ export default defineAppConfig({
       },
       pre: {
         slots: {
-          base: 'border-sand-300 bg-warm-white text-graphite dark:border-white/10 dark:bg-sand-800/45 dark:text-sand-50'
+          root: 'relative my-6 group',
+          header: 'flex items-center gap-1.5 rounded-t-sm border border-sand-300 border-b-0 bg-sand-100 px-4 py-3 dark:border-white/10 dark:bg-white/5',
+          filename: 'font-mono text-xs text-plum-600 dark:text-sand-300',
+          copy: 'absolute right-[11px] top-[11px] transition lg:opacity-0 lg:group-hover:opacity-100',
+          base: 'group overflow-x-auto whitespace-pre-wrap break-words rounded-sm border border-l-[3px] border-sand-300 border-l-petrol-500 bg-warm-white px-4 py-3 font-mono text-sm/7 text-graphite focus:outline-none **:[.line.highlight]:-mx-4 **:[.line.highlight]:bg-petrol-50 **:[.line.highlight]:px-4 **:[.line]:block dark:border-white/10 dark:border-l-petrol-300 dark:bg-sand-800/45 dark:text-sand-50 dark:**:[.line.highlight]:bg-petrol-400/10'
         }
       }
     }
