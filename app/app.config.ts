@@ -8,13 +8,7 @@ export default defineAppConfig({
     description: 'Thoughtful design guidance for the happydesigns brand system.'
   },
   header: {
-    title: 'happydesigns',
-    logo: {
-      light: '/app-icon.png',
-      dark: '/app-icon.png',
-      alt: 'happydesigns',
-      class: 'rounded-sm'
-    }
+    title: 'happydesigns'
   },
   socials: {
     github: 'https://github.com/happydesigns'
