@@ -9,6 +9,9 @@ Typography defines the reading voice of happydesigns. It should feel warm, moder
 
 The current guide defines font roles and behavior, not a rigid final type scale. Use the examples here as direction for hierarchy and application.
 
+::typography-showcase
+::
+
 ## Type Roles
 
 | Role | Typeface | Use |
@@ -56,6 +59,20 @@ Do not use mono simply to make something feel technical. If the content is norma
 - Keep body copy calm, readable, and easy to scan.
 - Use one clear hierarchy per view; avoid many competing heading styles.
 - Keep letter spacing at `0` for normal prose and display text.
+
+## Hierarchy In Practice
+
+Use hierarchy to show what matters first. A typical happydesigns page should have one clear anchor, a small number of supporting headings, readable body copy, and compact metadata.
+
+| Level | Behavior | Example |
+| --- | --- | --- |
+| Page title | Largest type, strong weight, tight but readable line-height. | `Thoughtful design for the modern web.` |
+| Section heading | Confident but smaller than the page title. | `A calm system for durable web work.` |
+| Body copy | Comfortable measure, relaxed line-height, no decorative styling. | `The system connects warm expression with technical clarity.` |
+| Label | Compact, restrained, used to aid scanning. | `Logo forms`, `tokens and roles` |
+| Metadata | Mono only when the content is technical or exact. | `@happydesigns/brand`, `v0.1`, `--ui-primary` |
+
+Do not stack several page-title treatments in one view. If everything is loud, nothing has hierarchy.
 
 ## Heading Behavior
 
@@ -129,6 +146,15 @@ Use code blocks for implementation examples:
 | Button label | Short verb phrase. Example: "Start a project", "Save changes", "Copy token". |
 | Metadata | Mono only when it names a token, file, package, or version. |
 | Error text | Primary sans, calm and specific. Reserve mono for the exact technical object if needed. |
+
+### Before And After
+
+| Before | After | Why |
+| --- | --- | --- |
+| A hero, section heading, and card title all set at nearly the same size. | One large page title, smaller section headings, compact card titles. | The reader can understand the page order immediately. |
+| A paragraph set in mono because the topic is technical. | Normal prose in Bricolage Grotesque, exact names in mono. | Technical content stays readable while exact references remain clear. |
+| Uppercase labels with wide tracking on every small text element. | Uppercase labels only for section markers and compact metadata. | The system stays structured without feeling mechanical. |
+| Coral applied to every heading and button. | Graphite text, graphite primary buttons, coral focus and activation details. | Coral remains a signature accent instead of background noise. |
 
 ## Do
 

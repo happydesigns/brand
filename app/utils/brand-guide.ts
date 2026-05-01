@@ -76,7 +76,7 @@ export const brandGuide = {
       summary: 'Type roles, hierarchy, rhythm, and practical writing samples.',
       description: 'Typography defines the reading voice of the brand. The guide captures font roles, hierarchy behavior, mono usage, and practical examples for clear happydesigns communication.',
       icon: 'i-lucide-type',
-      anchors: ['Type roles', 'Primary typeface', 'Mono typeface', 'Hierarchy principles', 'Practical examples']
+      anchors: ['Type roles', 'Primary typeface', 'Mono typeface', 'Hierarchy principles', 'Hierarchy in practice', 'Practical examples']
     },
     {
       slug: 'logos',
