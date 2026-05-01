@@ -13,13 +13,13 @@ links:
     to: /docs/components
 ---
 
-The happydesigns guide is structured so the same documentation model can be reused for future brands. The landing page gives the brand-specific overview; these docs hold the detailed rules.
+The happydesigns guide documents the identity system behind thoughtful design for the modern web. These pages define the foundations, assets, interface patterns, and writing rules that keep the brand warm, precise, and consistent.
 
 ## Principles
 
 - Use visible structure before decoration.
 - Keep the system warm, precise, and restrained.
-- Document decisions as reusable tokens and patterns.
+- Document decisions as durable tokens and patterns.
 - Prefer durable defaults over one-off brand moments.
 
 ## Sections
@@ -34,11 +34,11 @@ The happydesigns guide is structured so the same documentation model can be reus
   :::
 
   :::u-page-card{title="Logos" icon="i-lucide-badge-check" to="/docs/logos"}
-  Wordmark, app icon, favicon, asset paths, and usage rules.
+  Logo forms, lockups, asset roles, and practical usage rules.
   :::
 
   :::u-page-card{title="Components" icon="i-lucide-component" to="/docs/components"}
-  Reusable UI examples that prove the brand in product contexts.
+  Interface examples that show the brand in product contexts.
   :::
 
   :::u-page-card{title="Voice" icon="i-lucide-message-square-text" to="/docs/voice"}

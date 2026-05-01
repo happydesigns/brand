@@ -17,7 +17,7 @@ A useful brand guide documents how the brand sounds in headings, labels, errors,
 ## Do
 
 - Use concrete nouns and direct verbs.
-- Explain decisions through reusable rules.
+- Explain decisions through durable rules.
 - Keep interface labels short and action-oriented.
 
 ## Do Not

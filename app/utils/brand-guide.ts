@@ -56,7 +56,7 @@ export const brandGuide = {
   principles: [
     'Use visible structure before decoration.',
     'Keep the system warm, precise, and restrained.',
-    'Document decisions as reusable tokens and patterns.',
+    'Document decisions as durable tokens and patterns.',
     'Prefer durable defaults over one-off brand moments.'
   ],
   sections: [
@@ -65,7 +65,7 @@ export const brandGuide = {
       title: 'Colors',
       eyebrow: 'tokens and roles',
       summary: 'Core palette, semantic roles, and practical usage guidance.',
-      description: 'Color decisions are documented as named tokens first, then mapped to interface intent. This keeps future brand guides portable while preserving local expression.',
+      description: 'Color decisions are documented as named tokens first, then mapped to interface intent. This keeps happydesigns calm, structured, and expressive in the right moments.',
       icon: 'i-lucide-palette',
       anchors: ['Palette', 'Semantic roles', 'Usage rules']
     },
@@ -74,7 +74,7 @@ export const brandGuide = {
       title: 'Typography',
       eyebrow: 'fonts and hierarchy',
       summary: 'Type families, hierarchy, rhythm, and sample applications.',
-      description: 'Typography defines the reading voice of the brand. The guide captures font roles, fallback stacks, sizing principles, and samples that can be swapped for another brand.',
+      description: 'Typography defines the reading voice of the brand. The guide captures font roles, fallback stacks, sizing principles, and samples for clear happydesigns communication.',
       icon: 'i-lucide-type',
       anchors: ['Families', 'Hierarchy', 'Samples']
     },
@@ -91,8 +91,8 @@ export const brandGuide = {
       slug: 'components',
       title: 'Components',
       eyebrow: 'interface system',
-      summary: 'Reusable UI examples that prove the brand in product contexts.',
-      description: 'Component guidance connects brand tokens to real interface states. Each future guide can replace the data while keeping the same documentation shell.',
+      summary: 'UI examples that carry the happydesigns brand into product contexts.',
+      description: 'Component guidance connects brand tokens to real interface states. Interfaces should feel structured, approachable, and technically excellent.',
       icon: 'i-lucide-component',
       anchors: ['Buttons', 'Forms', 'Cards']
     },
@@ -145,7 +145,7 @@ export const brandGuide = {
     attributes: ['Thoughtful', 'warm', 'precise', 'maintainable'],
     dos: [
       'Use concrete nouns and direct verbs.',
-      'Explain decisions through reusable rules.',
+      'Explain decisions through durable rules.',
       'Keep interface labels short and action-oriented.'
     ],
     donts: [

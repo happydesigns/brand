@@ -36,7 +36,7 @@ const contactLinks = [
 
 const meta = computed(() => [
   `Copyright (c) ${year} happydesigns`,
-  'Reusable brand guide structure',
+  'Thoughtful design for the modern web',
   'Built with Nuxt and Docus'
 ])
 </script>
@@ -55,7 +55,7 @@ const meta = computed(() => [
             {{ guide.brand.claim }}
           </p>
           <p class="mt-5 max-w-sm text-sm leading-7 text-sand-300">
-            Brand documentation for the happydesigns identity system, built to be reusable for future guides.
+            Brand documentation for the happydesigns identity system, from foundational tokens to practical interface use.
           </p>
 
           <div class="mt-8 flex flex-wrap gap-2">

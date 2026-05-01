@@ -19,7 +19,7 @@ const utilityColors = guide.colors.slice(6)
                 {{ guide.brand.claim }}
               </h1>
               <p class="mt-8 max-w-2xl text-lg leading-8 text-body">
-                A reusable guide structure for documenting a brand from overview to implementation: colors, typography, logos, components, and voice.
+                The practical source of truth for the happydesigns identity: colors, typography, logos, components, and voice working together with care.
               </p>
 
               <div class="mt-9 flex flex-wrap gap-3">
@@ -63,7 +63,7 @@ const utilityColors = guide.colors.slice(6)
                     # {{ guide.brand.name }}
                   </p>
                   <p class="mt-4">
-                    Overview plus detailed pages for tokens, assets, components, and voice.
+                    Identity principles, tokens, assets, components, and voice for thoughtful web work.
                   </p>
                   <p class="mt-4 text-coral-500">
                     ::principle
@@ -112,10 +112,10 @@ const utilityColors = guide.colors.slice(6)
               identity principles
             </HDSectionLabel>
             <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-              A warm, thoughtful system for brand documentation that can be reused.
+              A calm, precise system for thoughtful digital products.
             </h2>
             <p class="mt-6 max-w-xl text-base leading-8 text-body">
-              The guide separates brand-specific decisions from the documentation pattern. Future guides can replace the data while keeping the same overview, detail pages, and component examples.
+              The happydesigns system connects warm expression with technical clarity, so every page, interface, and brand moment feels considered without becoming decorative.
             </p>
             <div class="mt-8 divide-y divide-default border-y border-default">
               <div

@@ -1,11 +1,11 @@
 ---
 title: Components
-description: Reusable UI examples that prove the brand in product contexts.
+description: UI examples that carry the happydesigns brand into product contexts.
 navigation:
   icon: i-lucide-component
 ---
 
-Component guidance connects brand tokens to real interface states. The same documentation shape can be reused for future brands while the underlying token data changes.
+Component guidance connects brand tokens to real interface states. The system should feel calm, structured, and technically precise without losing warmth.
 
 ## Buttons
 

@@ -50,4 +50,4 @@ Dark-surface variants use the suffix `-inverse`. The suffix `-dark` is not used.
 
 The reduced symbol and reduced lockup are utility/production variants, not primary brand marks.
 
-The brand signature is a reusable brand application, not the canonical logo.
+The brand signature is a standardized brand application, not the canonical logo.
