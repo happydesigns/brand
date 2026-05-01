@@ -73,10 +73,10 @@ export const brandGuide = {
       slug: 'typography',
       title: 'Typography',
       eyebrow: 'fonts and hierarchy',
-      summary: 'Type families, hierarchy, rhythm, and sample applications.',
-      description: 'Typography defines the reading voice of the brand. The guide captures font roles, fallback stacks, sizing principles, and samples for clear happydesigns communication.',
+      summary: 'Type roles, hierarchy, rhythm, and practical writing samples.',
+      description: 'Typography defines the reading voice of the brand. The guide captures font roles, hierarchy behavior, mono usage, and practical examples for clear happydesigns communication.',
       icon: 'i-lucide-type',
-      anchors: ['Families', 'Hierarchy', 'Samples']
+      anchors: ['Type roles', 'Primary typeface', 'Mono typeface', 'Hierarchy principles', 'Practical examples']
     },
     {
       slug: 'logos',
@@ -91,19 +91,19 @@ export const brandGuide = {
       slug: 'components',
       title: 'Components',
       eyebrow: 'interface system',
-      summary: 'UI examples that carry the happydesigns brand into product contexts.',
-      description: 'Component guidance connects brand tokens to real interface states. Interfaces should feel structured, approachable, and technically excellent.',
+      summary: 'UI guidance for carrying the happydesigns brand into product contexts.',
+      description: 'Component guidance connects brand tokens to real interface states. Interfaces should feel useful first, then warm, structured, and technically excellent.',
       icon: 'i-lucide-component',
-      anchors: ['Buttons', 'Forms', 'Cards']
+      anchors: ['Component philosophy', 'Buttons', 'Forms and focus states', 'Color behavior', 'Do']
     },
     {
       slug: 'voice',
       title: 'Voice',
       eyebrow: 'messaging',
-      summary: 'Writing traits, do and do-not rules, and interface copy guidance.',
-      description: 'A useful brand guide documents how the brand sounds in headings, labels, errors, and supporting copy, not only how it looks.',
+      summary: 'Writing traits, examples, and interface copy guidance.',
+      description: 'Voice guidance defines how happydesigns sounds across marketing, documentation, interface labels, CTAs, and error states.',
       icon: 'i-lucide-message-square-text',
-      anchors: ['Attributes', 'Do', 'Do not']
+      anchors: ['Voice attributes', 'Writing principles', 'Marketing copy', 'Interface copy', 'Error and validation copy']
     }
   ],
   colors: [
@@ -138,11 +138,12 @@ export const brandGuide = {
     { name: 'Primary action', purpose: 'Move the user forward.', guidance: 'Use graphite fills with coral focus treatment for confident, brand-owned actions.' },
     { name: 'Secondary action', purpose: 'Offer an alternate path.', guidance: 'Use outlined or subtle treatments to keep hierarchy clear.' },
     { name: 'Form fields', purpose: 'Collect structured input.', guidance: 'Keep labels plain, borders visible, and focus states aligned to the coral accent.' },
-    { name: 'Cards and panels', purpose: 'Frame repeated content.', guidance: 'Use small radii, direct borders, and minimal shadow so structure remains visible.' },
-    { name: 'Badges', purpose: 'Mark metadata or state.', guidance: 'Use compact rounded badges for short status labels only.' }
+    { name: 'Cards and panels', purpose: 'Frame repeated content.', guidance: 'Use fine borders, direct spacing, and minimal shadow so structure remains visible.' },
+    { name: 'Badges and status', purpose: 'Mark metadata or state.', guidance: 'Use compact badges for short labels only, with color tied to semantic intent.' },
+    { name: 'Alerts and feedback', purpose: 'Explain state changes.', guidance: 'Keep messages calm, specific, and recovery-oriented.' }
   ],
   voice: {
-    attributes: ['Thoughtful', 'warm', 'precise', 'maintainable'],
+    attributes: ['Thoughtful', 'warm', 'precise', 'practical', 'maintainable'],
     dos: [
       'Use concrete nouns and direct verbs.',
       'Explain decisions through durable rules.',
