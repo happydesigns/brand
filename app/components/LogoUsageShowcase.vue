@@ -15,103 +15,187 @@ import signatureInverse from '~/assets/logos/happydesigns-signature-inverse.svg'
 
 type LogoItem = {
   title: string
-  asset: string
-  assetName: string
-  inverse?: string
-  inverseName?: string
-  tile?: string
-  tileName?: string
-  tileInverse?: string
-  tileInverseName?: string
+  variants: {
+    label: string
+    asset: string
+    assetName: string
+    surface: 'light' | 'dark' | 'object'
+    previewClass?: string
+  }[]
   role: string
   usage: string
   note?: string
-  previewClass?: string
+  previewLayout?: string
 }
 
 const logoForms: LogoItem[] = [
   {
     title: 'Wordmark',
-    asset: wordmark,
-    assetName: 'happydesigns-wordmark.svg',
-    inverse: wordmarkInverse,
-    inverseName: 'happydesigns-wordmark-inverse.svg',
+    variants: [
+      {
+        label: 'Light surface',
+        asset: wordmark,
+        assetName: 'happydesigns-wordmark.svg',
+        surface: 'light',
+        previewClass: 'h-auto w-full max-w-[28rem]'
+      },
+      {
+        label: 'Inverse surface',
+        asset: wordmarkInverse,
+        assetName: 'happydesigns-wordmark-inverse.svg',
+        surface: 'dark',
+        previewClass: 'h-auto w-full max-w-[28rem]'
+      }
+    ],
     role: 'Default identity mark',
-    usage: 'Headers, navigation, documentation, slim horizontal contexts',
-    previewClass: 'h-12 max-w-full'
+    usage: 'Headers, navigation, documentation, slim horizontal contexts'
   },
   {
     title: 'Symbol',
-    asset: symbol,
-    assetName: 'happydesigns-symbol.svg',
+    variants: [
+      {
+        label: 'Original colors',
+        asset: symbol,
+        assetName: 'happydesigns-symbol.svg',
+        surface: 'object',
+        previewClass: 'size-36'
+      }
+    ],
     role: 'Primary standalone symbol',
-    usage: 'Favicon, app icon, social avatar, GitHub avatar, square contexts, brand moments',
+    usage: 'Favicon, app icon, social/GitHub avatar, square contexts, brand moments',
     note: 'The full symbol keeps its original colors across light and dark mode. It behaves like a branded object, not a UI surface.',
-    previewClass: 'size-24'
+    previewLayout: 'grid-cols-1'
   },
   {
     title: 'Reduced symbol',
-    asset: symbolReduced,
-    assetName: 'happydesigns-symbol-reduced.svg',
-    inverse: symbolReducedInverse,
-    inverseName: 'happydesigns-symbol-reduced-inverse.svg',
-    tile: symbolReducedTile,
-    tileName: 'happydesigns-symbol-reduced-tile.svg',
-    tileInverse: symbolReducedTileInverse,
-    tileInverseName: 'happydesigns-symbol-reduced-tile-inverse.svg',
+    variants: [
+      {
+        label: 'Raw mark',
+        asset: symbolReduced,
+        assetName: 'happydesigns-symbol-reduced.svg',
+        surface: 'light',
+        previewClass: 'size-28'
+      },
+      {
+        label: 'Raw inverse',
+        asset: symbolReducedInverse,
+        assetName: 'happydesigns-symbol-reduced-inverse.svg',
+        surface: 'dark',
+        previewClass: 'size-28'
+      },
+      {
+        label: 'Tile',
+        asset: symbolReducedTile,
+        assetName: 'happydesigns-symbol-reduced-tile.svg',
+        surface: 'light',
+        previewClass: 'size-28'
+      },
+      {
+        label: 'Tile inverse',
+        asset: symbolReducedTileInverse,
+        assetName: 'happydesigns-symbol-reduced-tile-inverse.svg',
+        surface: 'dark',
+        previewClass: 'size-28'
+      }
+    ],
     role: 'Utility / production symbol',
-    usage: 'Pens, stamps, engraving, embroidery, compact UI marks, tiny controlled contexts, limited-color production',
-    previewClass: 'size-20'
+    usage: 'Pens, stamps, engraving, embroidery, compact UI marks, limited-color production',
+    previewLayout: 'grid-cols-2'
   }
 ]
 
 const lockups: LogoItem[] = [
   {
-    title: 'Vertical lockup / signature',
-    asset: signature,
-    assetName: 'happydesigns-signature.svg',
-    inverse: signatureInverse,
-    inverseName: 'happydesigns-signature-inverse.svg',
-    role: 'Brand signature',
-    usage: 'Footer, contact sections, proposal closing pages, presentation endings, social banners, brand guide intro/outro, about sections',
-    note: 'This is the preferred footer treatment when there is enough vertical space.',
-    previewClass: 'h-32 max-w-full'
-  },
-  {
     title: 'Horizontal lockup',
-    asset: lockup,
-    assetName: 'happydesigns-lockup.svg',
-    inverse: lockupInverse,
-    inverseName: 'happydesigns-lockup-inverse.svg',
+    variants: [
+      {
+        label: 'Light surface',
+        asset: lockup,
+        assetName: 'happydesigns-lockup.svg',
+        surface: 'light',
+        previewClass: 'h-auto w-full max-w-[34rem]'
+      },
+      {
+        label: 'Inverse surface',
+        asset: lockupInverse,
+        assetName: 'happydesigns-lockup-inverse.svg',
+        surface: 'dark',
+        previewClass: 'h-auto w-full max-w-[34rem]'
+      }
+    ],
     role: 'Standard symbol + wordmark lockup',
-    usage: 'Brand introductions, covers, launch graphics, cases where the symbol/name relationship needs to be taught',
-    note: 'Avoid in cramped headers.',
-    previewClass: 'h-16 max-w-full'
+    usage: 'Brand introductions, covers, launch graphics, teaching the symbol/name relationship',
+    note: 'Avoid in cramped headers.'
   },
   {
     title: 'Reduced horizontal lockup',
-    asset: lockupReduced,
-    assetName: 'happydesigns-lockup-reduced.svg',
-    inverse: lockupReducedInverse,
-    inverseName: 'happydesigns-lockup-reduced-inverse.svg',
+    variants: [
+      {
+        label: 'Light surface',
+        asset: lockupReduced,
+        assetName: 'happydesigns-lockup-reduced.svg',
+        surface: 'light',
+        previewClass: 'h-auto w-full max-w-[32rem]'
+      },
+      {
+        label: 'Inverse surface',
+        asset: lockupReducedInverse,
+        assetName: 'happydesigns-lockup-reduced-inverse.svg',
+        surface: 'dark',
+        previewClass: 'h-auto w-full max-w-[32rem]'
+      }
+    ],
     role: 'Utility / production lockup',
-    usage: 'Pens, small print, monochrome applications, narrow horizontal placements, compact "made by happydesigns" marks',
-    previewClass: 'h-12 max-w-full'
+    usage: 'Pens, small print, monochrome applications, narrow placements'
+  },
+  {
+    title: 'Vertical lockup / signature',
+    variants: [
+      {
+        label: 'Light surface',
+        asset: signature,
+        assetName: 'happydesigns-signature.svg',
+        surface: 'light',
+        previewClass: 'h-auto w-full max-w-[24rem]'
+      },
+      {
+        label: 'Inverse surface',
+        asset: signatureInverse,
+        assetName: 'happydesigns-signature-inverse.svg',
+        surface: 'dark',
+        previewClass: 'h-auto w-full max-w-[24rem]'
+      }
+    ],
+    role: 'Brand signature',
+    usage: 'Footer, contact sections, proposal endings, presentation endings, social banners, brand intro/outro',
+    note: 'Preferred footer treatment when enough vertical space is available.'
   }
 ]
 
 const showcases = [
   {
     title: 'Logo forms',
-    intro: 'Core identity marks with distinct jobs.',
+    intro: 'Core identity marks with distinct jobs: wordmark, symbol, and reduced symbol.',
     items: logoForms
   },
   {
     title: 'Lockups',
-    intro: 'Standardized combinations of logo forms.',
+    intro: 'Controlled combinations for moments where symbol and name should appear together.',
     items: lockups
   }
 ]
+
+function previewSurfaceClass(surface: LogoItem['variants'][number]['surface']) {
+  return {
+    light: 'border-sand-300 bg-warm-white',
+    dark: 'border-white/10 bg-graphite',
+    object: 'border-sand-300 bg-sand-100 dark:border-white/10 dark:bg-sand-900'
+  }[surface]
+}
+
+function previewLabelClass(surface: LogoItem['variants'][number]['surface']) {
+  return surface === 'dark' ? 'text-sand-300' : 'text-sand-600'
+}
 </script>
 
 <template>
@@ -130,37 +214,38 @@ const showcases = [
         </p>
       </div>
 
-      <div class="grid gap-px overflow-hidden rounded-sm border border-default bg-separator lg:grid-cols-3">
+      <div class="space-y-4">
         <article
           v-for="item in showcase.items"
           :key="item.title"
-          class="flex flex-col bg-surface"
+          class="grid overflow-hidden rounded-sm border border-default bg-surface lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.9fr)]"
         >
-          <div class="grid min-h-56 place-items-center border-b border-default bg-tinted p-8">
-            <img
-              v-if="item.inverse"
-              :src="item.asset"
-              :alt="item.title"
-              class="block w-auto object-contain dark:hidden"
-              :class="item.previewClass"
+          <div
+            class="grid min-h-80 gap-3 border-b border-default bg-tinted p-4 sm:p-5 lg:border-b-0 lg:border-r"
+            :class="item.previewLayout || 'grid-cols-1 sm:grid-cols-2'"
+          >
+            <figure
+              v-for="variant in item.variants"
+              :key="variant.assetName"
+              class="grid min-h-44 place-items-center rounded-sm border p-5 sm:p-7"
+              :class="previewSurfaceClass(variant.surface)"
             >
-            <img
-              v-if="item.inverse"
-              :src="item.inverse"
-              :alt="item.title"
-              class="hidden w-auto object-contain dark:block"
-              :class="item.previewClass"
-            >
-            <img
-              v-else
-              :src="item.asset"
-              :alt="item.title"
-              class="block w-auto object-contain"
-              :class="item.previewClass"
-            >
+              <img
+                :src="variant.asset"
+                :alt="`${item.title} - ${variant.label}`"
+                class="block w-auto object-contain"
+                :class="variant.previewClass"
+              >
+              <figcaption
+                class="mt-4 font-mono text-[0.68rem] uppercase leading-none tracking-[0.12em]"
+                :class="previewLabelClass(variant.surface)"
+              >
+                {{ variant.label }}
+              </figcaption>
+            </figure>
           </div>
 
-          <div class="flex flex-1 flex-col p-5">
+          <div class="flex flex-1 flex-col p-5 sm:p-6">
             <h3 class="text-lg font-semibold tracking-normal text-highlighted">
               {{ item.title }}
             </h3>
@@ -188,34 +273,20 @@ const showcases = [
                 <dt class="font-medium text-highlighted">
                   Assets
                 </dt>
-                <dd class="flex flex-wrap gap-2 pt-1">
-                  <UBadge
-                    color="neutral"
-                    variant="outline"
+                <dd class="space-y-1.5 pt-1">
+                  <div
+                    v-for="variant in item.variants"
+                    :key="variant.assetName"
+                    class="flex items-center gap-2 rounded-sm border border-muted bg-inset px-2.5 py-1.5 text-xs text-muted"
                   >
-                    {{ item.assetName }}
-                  </UBadge>
-                  <UBadge
-                    v-if="item.inverse"
-                    color="neutral"
-                    variant="outline"
-                  >
-                    {{ item.inverseName }}
-                  </UBadge>
-                  <UBadge
-                    v-if="item.tile"
-                    color="neutral"
-                    variant="outline"
-                  >
-                    {{ item.tileName }}
-                  </UBadge>
-                  <UBadge
-                    v-if="item.tileInverse"
-                    color="neutral"
-                    variant="outline"
-                  >
-                    {{ item.tileInverseName }}
-                  </UBadge>
+                    <UIcon
+                      name="i-lucide-file"
+                      class="size-3.5 shrink-0 text-dimmed"
+                    />
+                    <span class="min-w-0 break-all font-mono leading-5">
+                      {{ variant.assetName }}
+                    </span>
+                  </div>
                 </dd>
               </div>
             </dl>
