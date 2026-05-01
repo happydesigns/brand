@@ -61,7 +61,7 @@ const logoForms: LogoItem[] = [
         previewClass: 'size-36'
       }
     ],
-    role: 'Primary standalone symbol',
+    role: 'Primary symbol',
     usage: 'Favicon, app icon, social/GitHub avatar, square contexts, brand moments',
     note: 'The full symbol keeps its original colors across light and dark mode. It behaves like a branded object, not a UI surface.',
     previewLayout: 'grid-cols-1'

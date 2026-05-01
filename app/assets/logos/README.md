@@ -5,7 +5,7 @@
 - `happydesigns-wordmark.svg` — typographic happydesigns. logo for light surfaces.
 - `happydesigns-wordmark-inverse.svg` — typographic happydesigns. logo for dark surfaces.
 
-## Primary standalone symbol
+## Primary symbol
 
 - `happydesigns-symbol.svg` — full colorful symbol with h-shape, soft peach field, coral dot, and white rounded tile. Unchanged across light and dark mode.
 

@@ -62,13 +62,13 @@ The layer does not bundle external font files. Add font loading in the consuming
 
 ## Components
 
-- `HDBrandMark` — the favicon-derived symbol, used standalone or as an app icon in product contexts
-- `HDWordmark` — the text logo, for headers and document covers
-- `HDLogo` — combines `HDBrandMark` and `HDWordmark`; use `variant="wordmark"` or `variant="symbol"`
+- `HDBrandMark` — the full happydesigns symbol, used for app icons, social avatars, square contexts, and brand moments
+- `HDWordmark` — the default identity mark for headers, navigation, documentation, and slim horizontal layouts
+- `HDLogo` — role-based logo renderer; use `variant="wordmark"`, `variant="symbol"`, `variant="lockup"`, or `variant="signature"`
 - `HDSectionLabel` — eyebrow label with the brand dot, used to open sections
 - `HDDot` — the coral oval from the logo, reused as a recurring visual motif in design elements
 - `HDColorField` — atmospheric canvas panel for brand color moments
-Logo components use the supplied final SVG assets in `app/assets/logos`. The text-only wordmark is used for website display. The favicon mark is reserved for favicon and app-icon usage. Do not combine them as a lockup — they are intentionally separate brand assets.
+Logo components use the supplied final SVG assets in `app/assets/logos`. The wordmark is the everyday identity for website and documentation headers. The full symbol is the square mark for favicon, app icon, social/GitHub avatar, covers, and brand moments. Lockups are controlled compositions for introductions, covers, production contexts, and brand-owned sections; they should not replace the wordmark in cramped headers.
 
 ## Brand System Notes
 

@@ -10,7 +10,7 @@ import signatureDark from '~/assets/logos/happydesigns-signature-inverse.svg'
 const props = withDefaults(defineProps<{
   /**
    * wordmark  - typographic name only (default for headers and navigation)
-   * symbol    - symbol mark (favicon, app icon, square contexts)
+   * symbol    - full symbol mark (favicon, app icon, square contexts)
    * lockup    - full symbol + wordmark (introductions and teaching moments)
    * signature - vertical lockup for footers and brand-owned sections
    */
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<{
   /**
    * auto  - follows system dark/light mode
    * light - forces light-surface variant
-   * dark  - forces dark-surface variant
+   * dark  - forces inverse variant for dark surfaces
    */
   mode?: 'auto' | 'light' | 'dark'
   size?: 'sm' | 'md' | 'lg' | 'xl'
