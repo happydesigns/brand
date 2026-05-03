@@ -91,6 +91,28 @@ export default defineAppConfig({
         }
       }
     },
+    pageHero: {
+      slots: {
+        container: 'py-20 sm:py-24 lg:py-28 gap-10 sm:gap-y-14',
+        title: 'font-semibold leading-[0.98] tracking-normal',
+        description: 'text-body'
+      }
+    },
+    pageSection: {
+      slots: {
+        container: 'py-12 sm:py-14 lg:py-16 gap-8 sm:gap-10',
+        title: 'font-semibold tracking-normal',
+        description: 'text-body'
+      }
+    },
+    pageCTA: {
+      slots: {
+        root: 'rounded-sm',
+        container: 'px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12',
+        title: 'font-semibold tracking-normal',
+        description: 'text-body'
+      }
+    },
     page: {
       slots: {
         root: 'lg:gap-0',
@@ -140,6 +162,13 @@ export default defineAppConfig({
         base: 'bg-warm-white text-graphite ring-sand-300 focus-visible:ring-coral-500 dark:bg-sand-800/80 dark:text-sand-100 dark:ring-white/15 dark:focus-visible:ring-coral-400'
       }
     },
+    formField: {
+      slots: {
+        label: 'text-sm font-medium text-highlighted',
+        help: 'text-xs/5 text-muted',
+        hint: 'font-mono text-xs text-muted'
+      }
+    },
     tabs: {
       defaultVariants: {
         color: 'primary',
@@ -167,7 +196,7 @@ export default defineAppConfig({
       },
       codeGroup: {
         slots: {
-          root: 'bg-white dark:bg-graphite',
+          root: 'overflow-hidden rounded-md bg-white dark:bg-graphite',
           list: 'border-sand-300 bg-white dark:border-white/10 dark:bg-graphite',
           indicator: 'border border-sand-300 bg-warm-white shadow-none dark:border-white/10 dark:bg-sand-800/45',
           trigger: 'text-sand-700 data-[state=active]:bg-warm-white data-[state=active]:text-graphite data-[state=active]:ring-1 data-[state=active]:ring-sand-300 dark:text-sand-300 dark:data-[state=active]:bg-sand-800/45 dark:data-[state=active]:text-sand-50 dark:data-[state=active]:ring-white/10'

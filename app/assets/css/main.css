@@ -291,6 +291,33 @@ body {
   background: var(--color-sand-800);
 }
 
+.shiki {
+  color: var(--shiki-light, var(--shiki-default, currentColor));
+}
+
+.shiki span {
+  color: var(--shiki-light, var(--shiki-default, currentColor));
+  font-style: var(--shiki-light-font-style, var(--shiki-default-font-style));
+  font-weight: var(--shiki-light-font-weight, var(--shiki-default-font-weight));
+  text-decoration: var(--shiki-light-text-decoration, var(--shiki-default-text-decoration));
+}
+
+.dark .shiki {
+  color: var(--shiki-dark, var(--shiki-default, currentColor));
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark, var(--shiki-default, currentColor));
+  font-style: var(--shiki-dark-font-style, var(--shiki-default-font-style));
+  font-weight: var(--shiki-dark-font-weight, var(--shiki-default-font-weight));
+  text-decoration: var(--shiki-dark-text-decoration, var(--shiki-default-text-decoration));
+}
+
+.hd-install-code .language-bash .line:first-child > span:first-child,
+.hd-install-code .shiki span[style*="#FFCB6B"] {
+  color: var(--color-sand-50) !important;
+}
+
 .hd-color-chip {
   display: inline-block;
   width: 2.75rem;

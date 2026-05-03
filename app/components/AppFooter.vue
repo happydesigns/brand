@@ -34,11 +34,10 @@ const contactLinks = [
   { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', icon: 'i-simple-icons-github' }
 ]
 
-const meta = computed(() => [
-  `Copyright (c) ${year} happydesigns`,
-  'Thoughtful design for the modern web',
-  'Built with Nuxt and Docus'
-])
+const footerMeta = computed(() => ({
+  copyright: `Copyright (c) ${year} happydesigns`,
+  builtWith: 'Built with Nuxt and Docus'
+}))
 </script>
 
 <template>
@@ -99,13 +98,12 @@ const meta = computed(() => [
         </div>
       </div>
 
-      <div class="grid border-b border-white/10 text-xs text-sand-400 md:grid-cols-[1fr_1fr_1fr]">
-        <div
-          v-for="item in meta"
-          :key="item"
-          class="border-b border-white/10 px-7 py-5 md:border-b-0 md:border-r last:md:border-r-0 sm:px-10"
-        >
-          {{ item }}
+      <div class="grid border-b border-white/10 text-xs text-sand-400 md:grid-cols-2 lg:grid-cols-[1.3fr_3fr]">
+        <div class="border-b border-white/10 px-7 py-5 md:border-b-0 md:border-r sm:px-10">
+          {{ footerMeta.copyright }}
+        </div>
+        <div class="px-7 py-5 sm:px-10 md:text-right">
+          {{ footerMeta.builtWith }}
         </div>
       </div>
     </div>

@@ -26,7 +26,12 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
 
 <template>
   <UHeader
-    :ui="{ center: 'flex-1' }"
+    :ui="{
+      root: 'border-b border-default bg-default/95 backdrop-blur',
+      container: 'max-w-(--ui-container) border-x border-default',
+      center: 'flex-1',
+      right: 'gap-1.5'
+    }"
     :class="{ 'flex flex-col': subNavigationMode === 'header' }"
   >
     <nav class="hidden items-center justify-center gap-7 text-sm font-medium lg:flex">
