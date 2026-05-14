@@ -35,7 +35,7 @@ const contactLinks = [
 ]
 
 const footerMeta = computed(() => ({
-  copyright: `Copyright (c) ${year} happydesigns`,
+  copyright: `Copyright © ${year} happydesigns`,
   builtWith: 'Built with Nuxt and Docus'
 }))
 </script>
