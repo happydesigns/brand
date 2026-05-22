@@ -151,17 +151,17 @@ const { data: installContent } = await useAsyncData('home-install-code', async (
 })
 
 const sectionCardUi = {
-  root: 'overflow-hidden rounded-sm bg-default shadow-none hover:bg-default dark:bg-graphite dark:hover:bg-graphite',
+  root: 'hd-section-card overflow-hidden rounded-sm !bg-guide-frame shadow-none transition-none',
   body: 'p-0 sm:p-0'
 }
 
 const staticCardUi = {
-  root: 'rounded-sm bg-white shadow-none hover:bg-white dark:bg-white/5 dark:hover:bg-white/5',
+  root: 'hd-static-card rounded-sm !bg-guide-card shadow-none transition-none',
   body: 'p-5 sm:p-5'
 }
 
 const badgeUi = {
-  base: 'rounded-sm bg-sand-100 text-graphite ring-sand-300 dark:bg-white/10 dark:text-sand-100 dark:ring-white/15'
+  base: 'rounded-sm bg-guide-chip text-guide-chip ring-guide-chip'
 }
 </script>
 
@@ -178,17 +178,17 @@ const badgeUi = {
         :ui="{
           container: 'grid max-w-none gap-0 !px-0 !py-0 sm:!px-0 sm:!py-0 lg:!px-0 lg:grid-cols-[1fr_.95fr] lg:items-stretch',
           wrapper: 'flex min-h-[580px] flex-col justify-center border-b border-default bg-default px-7 py-16 sm:px-12 sm:py-20 lg:min-h-[660px] lg:border-b-0 lg:border-r',
-          headline: 'font-mono text-xs uppercase tracking-[0.14em] text-plum-700 dark:text-sand-300 before:mr-2 before:inline-block before:size-2 before:rounded-full before:bg-coral-500',
+          headline: 'font-mono text-xs uppercase tracking-[0.14em] text-label before:mr-2 before:inline-block before:size-2 before:rounded-full before:bg-coral-500',
           title: 'max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-highlighted sm:text-7xl',
           description: 'max-w-2xl text-lg leading-8 text-body',
           links: 'mt-9 flex flex-wrap gap-3',
-          body: 'm-0 flex h-full min-h-[580px] bg-sand-150 p-0 lg:min-h-[660px] dark:bg-sand-900/35'
+          body: 'm-0 flex h-full min-h-[580px] bg-guide-band p-0 lg:min-h-[660px]'
         }"
       >
         <template #default>
-          <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-sand-150 p-8 sm:p-12 lg:min-h-[660px] dark:bg-sand-900/35">
-            <div class="w-full max-w-xl overflow-hidden rounded-md border border-default bg-default shadow-none">
-              <div class="flex items-center justify-between border-b border-default px-4 py-3 font-mono text-xs text-plum-600 dark:text-plum-200">
+          <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-guide-band p-8 sm:p-12 lg:min-h-[660px]">
+            <div class="w-full max-w-xl overflow-hidden rounded-md border border-default bg-guide-card shadow-none">
+              <div class="flex items-center justify-between border-b border-default px-4 py-3 font-mono text-xs text-label">
                 <div class="flex gap-2">
                   <span class="size-2.5 rounded-full bg-sand-400" />
                   <span class="size-2.5 rounded-full bg-sand-300" />
@@ -200,17 +200,17 @@ const badgeUi = {
 
               <div class="grid md:grid-cols-2">
                 <div class="border-b border-default p-5 md:border-b-0 md:border-r">
-                  <p class="font-mono text-xs text-sand-500">
+                  <p class="font-mono text-xs text-meta">
                     guide.md
                   </p>
-                  <div class="mt-4 rounded-sm border border-muted bg-inset p-5 font-mono text-xs leading-6">
-                    <p class="text-coral-500">
+                  <div class="mt-4 rounded-sm border border-muted bg-guide-canvas p-5 font-mono text-xs leading-6">
+                    <p class="text-accent">
                       # {{ guide.brand.name }}
                     </p>
                     <p class="mt-4">
                       Identity principles, tokens, assets, components, and voice for thoughtful web work.
                     </p>
-                    <p class="mt-4 text-coral-500">
+                    <p class="mt-4 text-accent">
                       ::principle
                     </p>
                     <p>{{ guide.principles[0] }}</p>
@@ -218,7 +218,7 @@ const badgeUi = {
                 </div>
 
                 <div class="p-5">
-                  <p class="font-mono text-xs text-sand-500">
+                  <p class="font-mono text-xs text-meta">
                     sections
                   </p>
                   <div class="mt-4 space-y-3">
@@ -235,13 +235,13 @@ const badgeUi = {
                       <span class="inline-flex items-center gap-2">
                         <UIcon
                           :name="section.icon"
-                          class="size-4 text-coral-500"
+                          class="size-4 text-accent"
                         />
                         {{ section.title }}
                       </span>
                       <UIcon
                         name="i-lucide-arrow-right"
-                        class="size-4 text-sand-500"
+                        class="size-4 text-meta"
                       />
                     </NuxtLink>
                   </div>
@@ -255,7 +255,7 @@ const badgeUi = {
       <LandingSpacer />
 
       <UPageSection
-        class="border-b border-default bg-sand-150 dark:bg-sand-900/35"
+        class="border-b border-default bg-guide-band"
         :ui="{ container: 'px-7 py-8 sm:px-12 sm:py-10' }"
       >
         <UCard
@@ -280,19 +280,19 @@ const badgeUi = {
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
                   Guide route
                 </p>
-                <p class="font-mono text-xs text-sand-500">
+                <p class="font-mono text-xs text-meta">
                   Foundations -> Identity -> Application
                 </p>
               </div>
 
-              <div class="grid gap-px overflow-hidden rounded-sm border border-default bg-separator lg:grid-cols-3">
+              <div class="grid gap-px overflow-hidden rounded-sm bg-separator ring ring-default lg:grid-cols-3">
                 <div
                   v-for="group in guideGroups"
                   :key="group.title"
-                  class="bg-white p-5 dark:bg-white/5"
+                  class="bg-guide-card p-5"
                 >
                   <div class="flex items-start justify-between gap-3">
-                    <p class="font-mono text-xs text-coral-500">
+                    <p class="font-mono text-xs text-accent">
                       {{ group.number }}
                     </p>
                     <div class="flex -space-x-1">
@@ -303,7 +303,7 @@ const badgeUi = {
                       >
                         <UIcon
                           :name="section.icon"
-                          class="size-3.5 text-coral-500"
+                          class="size-3.5 text-accent"
                         />
                       </span>
                     </div>
@@ -324,7 +324,7 @@ const badgeUi = {
                       {{ section.title }}
                       <UIcon
                         name="i-lucide-arrow-right"
-                        class="size-3 text-sand-500"
+                        class="size-3 text-meta"
                       />
                     </NuxtLink>
                   </div>
@@ -333,7 +333,7 @@ const badgeUi = {
             </div>
           </div>
 
-          <div class="border-t border-default bg-white dark:bg-white/5">
+          <div class="border-t border-default bg-guide-card">
             <div class="border-b border-default px-6 py-3 sm:px-8">
               <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
                 Operating principles
@@ -343,7 +343,7 @@ const badgeUi = {
               <div
                 v-for="principle in guide.principles"
                 :key="principle"
-                class="flex gap-3 bg-white p-5 dark:bg-white/5"
+                class="flex gap-3 bg-guide-card p-5"
               >
                 <span class="mt-2 size-1.5 shrink-0 rounded-full bg-coral-500" />
                 <p class="text-sm font-medium leading-6 text-highlighted">
@@ -357,7 +357,7 @@ const badgeUi = {
 
       <LandingSpacer />
 
-      <div class="border-b border-default bg-sand-150 dark:bg-sand-900/35">
+      <div class="border-b border-default bg-guide-band">
       <UPageSection
         class="bg-transparent"
         :ui="{ container: 'px-7 pt-10 pb-0 sm:px-12 sm:pt-12 lg:pt-12 lg:pb-0' }"
@@ -367,8 +367,8 @@ const badgeUi = {
           :ui="sectionCardUi"
         >
           <div class="grid lg:grid-cols-[.42fr_.58fr]">
-            <div class="border-b border-default bg-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+            <div class="border-b border-default bg-guide-frame p-6 sm:p-8 lg:border-b-0 lg:border-r">
+              <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent">
                 01 / Foundations
               </p>
               <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
@@ -388,8 +388,8 @@ const badgeUi = {
                   root: 'gap-0',
                   item: 'gap-4',
                   container: 'pt-1',
-                  indicator: 'bg-warm-white text-coral-500 ring-1 ring-sand-300 group-data-[state=completed]:bg-warm-white group-data-[state=completed]:text-coral-500 group-data-[state=active]:bg-graphite group-data-[state=active]:text-warm-white dark:bg-white/5 dark:ring-white/10 dark:group-data-[state=completed]:bg-white/5 dark:group-data-[state=active]:bg-sand-100 dark:group-data-[state=active]:text-graphite',
-                  separator: 'bg-sand-300 group-data-[state=completed]:bg-sand-300 dark:bg-white/10 dark:group-data-[state=completed]:bg-white/10',
+                  indicator: 'bg-guide-panel text-accent ring-1 ring-guide-border group-data-[state=completed]:bg-guide-panel group-data-[state=completed]:text-accent group-data-[state=active]:bg-guide-step-active group-data-[state=active]:text-guide-step-active',
+                  separator: 'bg-separator group-data-[state=completed]:bg-separator',
                   title: 'text-sm font-semibold text-highlighted',
                   description: 'text-sm leading-6 text-muted',
                   wrapper: 'pb-7'
@@ -398,7 +398,7 @@ const badgeUi = {
             </div>
 
             <div class="grid gap-px bg-separator lg:grid-rows-[auto_1fr]">
-              <div class="bg-default p-6 sm:p-8">
+              <div class="bg-guide-frame p-6 sm:p-8">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   <HDSectionLabel>
                     palette preview
@@ -413,11 +413,11 @@ const badgeUi = {
                     size="sm"
                   />
                 </div>
-                <div class="mt-7 grid gap-px overflow-hidden rounded-sm border border-default bg-separator sm:grid-cols-2">
+                <div class="mt-7 grid gap-px overflow-hidden rounded-sm bg-separator ring ring-default sm:grid-cols-2">
                   <div
                     v-for="color in featuredColors"
                     :key="color.token"
-                    class="bg-white p-4 dark:bg-white/5"
+                    class="bg-guide-card p-4"
                   >
                     <div
                       class="h-16 rounded-sm border border-black/5"
@@ -427,7 +427,7 @@ const badgeUi = {
                       <p class="font-mono text-xs">
                         {{ color.token }}
                       </p>
-                      <p class="font-mono text-xs text-sand-500">
+                      <p class="font-mono text-xs text-meta">
                         {{ color.hex }}
                       </p>
                     </div>
@@ -438,7 +438,7 @@ const badgeUi = {
                 </div>
               </div>
 
-              <div class="bg-default p-6 sm:p-8">
+              <div class="bg-guide-frame p-6 sm:p-8">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   <HDSectionLabel>
                     typography
@@ -463,7 +463,7 @@ const badgeUi = {
                         <p class="text-lg font-semibold">
                           {{ primaryFont.name }}
                         </p>
-                        <p class="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-sand-500">
+                        <p class="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-meta">
                           {{ primaryFont.role }}
                         </p>
                       </div>
@@ -487,7 +487,7 @@ const badgeUi = {
                     <p class="font-mono text-sm font-semibold">
                       {{ monoFont.name }}
                     </p>
-                    <p class="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-sand-500">
+                    <p class="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-meta">
                       {{ monoFont.role }}
                     </p>
                     <p class="mt-7 font-mono text-base font-semibold leading-7">
@@ -509,8 +509,8 @@ const badgeUi = {
           variant="outline"
           :ui="sectionCardUi"
         >
-          <div class="border-b border-default bg-default p-6 sm:p-8">
-            <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+          <div class="border-b border-default bg-guide-frame p-6 sm:p-8">
+            <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent">
               02 / Identity behavior
             </p>
             <h2 class="mt-8 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
@@ -519,7 +519,7 @@ const badgeUi = {
           </div>
 
           <div class="grid lg:grid-cols-[1.05fr_.95fr]">
-            <div class="border-b border-default bg-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
+            <div class="border-b border-default bg-guide-frame p-6 sm:p-8 lg:border-b-0 lg:border-r">
               <HDSectionLabel>
                 logo use
               </HDSectionLabel>
@@ -544,7 +544,7 @@ const badgeUi = {
                   variant="outline"
                   :ui="staticCardUi"
                 >
-                  <div class="flex min-h-36 items-center justify-center rounded-sm border border-default bg-inset">
+                  <div class="flex min-h-36 items-center justify-center rounded-sm border border-default bg-guide-canvas">
                     <HDLogo
                       variant="wordmark"
                       size="lg"
@@ -561,7 +561,7 @@ const badgeUi = {
                   variant="outline"
                   :ui="staticCardUi"
                 >
-                  <div class="flex min-h-36 items-center justify-center rounded-sm border border-default bg-inset">
+                  <div class="flex min-h-36 items-center justify-center rounded-sm border border-default bg-guide-canvas">
                     <HDLogo
                       variant="symbol"
                       size="xl"
@@ -586,7 +586,7 @@ const badgeUi = {
               />
             </div>
 
-            <div class="bg-default p-6 sm:p-8">
+            <div class="bg-guide-frame p-6 sm:p-8">
               <HDSectionLabel>
                 voice
               </HDSectionLabel>
@@ -612,7 +612,7 @@ const badgeUi = {
                   variant="outline"
                   :ui="staticCardUi"
                 >
-                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-petrol-700 dark:text-petrol-200">
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-technical">
                     Do
                   </p>
                   <ul class="mt-5 space-y-4">
@@ -629,7 +629,7 @@ const badgeUi = {
                   variant="outline"
                   :ui="staticCardUi"
                 >
-                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent">
                     Do not
                   </p>
                   <ul class="mt-5 space-y-4">
@@ -667,8 +667,8 @@ const badgeUi = {
           :ui="sectionCardUi"
         >
           <div class="grid lg:grid-cols-[.42fr_.58fr]">
-            <div class="border-b border-default bg-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+            <div class="border-b border-default bg-guide-frame p-6 sm:p-8 lg:border-b-0 lg:border-r">
+              <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent">
                 03 / Interface application
               </p>
               <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
@@ -693,7 +693,7 @@ const badgeUi = {
                 >
                   <div class="flex items-start justify-between gap-4">
                     <div>
-                      <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+                      <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent">
                         Review state
                       </p>
                       <p class="mt-1 text-base font-semibold">
@@ -730,7 +730,7 @@ const badgeUi = {
             </div>
 
             <div class="grid gap-px bg-separator lg:grid-rows-[auto_1fr]">
-              <div class="bg-default p-6 sm:p-8">
+              <div class="bg-guide-frame p-6 sm:p-8">
                 <HDSectionLabel>
                   component behavior
                 </HDSectionLabel>
@@ -746,7 +746,7 @@ const badgeUi = {
                   <template #content="{ item }">
                     <div
                       v-if="item.value === 'forms'"
-                      class="grid gap-4 rounded-sm border border-default bg-white p-4 dark:bg-white/5 sm:grid-cols-2"
+                      class="grid gap-4 rounded-sm bg-guide-card p-4 ring ring-default sm:grid-cols-2"
                     >
                       <UFormField
                         name="projectName"
@@ -774,7 +774,7 @@ const badgeUi = {
 
                     <div
                       v-else
-                      class="grid gap-4 rounded-sm border border-default bg-white p-4 dark:bg-white/5"
+                      class="grid gap-4 rounded-sm bg-guide-card p-4 ring ring-default"
                     >
                       <USwitch
                         label="Use visible structure"
@@ -797,7 +797,7 @@ const badgeUi = {
                 </UTabs>
               </div>
 
-              <div class="bg-default p-6 sm:p-8">
+              <div class="bg-guide-frame p-6 sm:p-8">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   <HDSectionLabel>
                     interface use
@@ -819,7 +819,7 @@ const badgeUi = {
                 >
                   <div class="flex items-start justify-between gap-4 border-b border-default pb-5">
                     <div>
-                      <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+                      <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent">
                         Project settings
                       </p>
                       <p class="mt-1 text-lg font-semibold">
@@ -899,7 +899,7 @@ const badgeUi = {
       <LandingSpacer />
 
       <UPageSection
-        class="bg-default"
+        class="border-b border-default bg-guide-band"
         :ui="{ container: 'px-7 py-12 sm:px-12 sm:py-14' }"
       >
         <UPageCTA
@@ -909,7 +909,7 @@ const badgeUi = {
           orientation="horizontal"
           variant="outline"
           :ui="{
-            root: 'rounded-sm bg-white shadow-none dark:bg-graphite',
+            root: 'rounded-sm bg-guide-card shadow-none',
             container: 'gap-8 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[.75fr_1fr]',
             title: 'text-3xl font-semibold leading-tight sm:text-4xl',
             description: 'text-base leading-8 text-body',
@@ -919,7 +919,7 @@ const badgeUi = {
         >
           <template #default>
             <div id="install-package">
-              <p class="mb-3 font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
+              <p class="mb-3 font-mono text-xs uppercase tracking-[0.14em] text-accent">
                 Install
               </p>
               <div class="dark">
