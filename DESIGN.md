@@ -19,18 +19,17 @@ Use visible structure before decoration. Fine borders, controlled spacing, clear
 
 ## Surface Hierarchy
 
-Use shared semantic utilities for repeated guide surfaces instead of pairing one-off light and dark classes on each element.
+Use Nuxt UI primitives and Tailwind classes for repeated guide surfaces. Do not add a parallel CSS-variable utility layer for one page unless a pattern is reused across the brand layer.
 
-- `bg-guide-band` is the wide section band that creates rhythm between major parts of the landing page. In light mode it is the darker beige field; in dark mode it is the lifted graphite field used for large split sections, such as the hero media field.
-- `bg-guide-frame` is the outer framed module surface. In light mode it is warm white (`#FAF7F2`), while pure white is reserved for content cards. In dark mode it shares the lifted graphite field with the band to avoid a stack of similar gray values.
-- `bg-guide-card` is the static content-card surface for guide route cards, color cells, operating principles, typography, logo, voice, and component samples. It should be the clearest resting surface: white in light mode and `#2F2F2E` in dark mode.
-- `bg-guide-panel` is reserved for small secondary elements inside components, such as timeline indicators. It should not introduce another major section tone.
-- `bg-guide-canvas` is for asset previews, code-like insets, and other placed objects inside a panel.
-- `text-accent`, `text-technical`, `text-meta`, and `text-label` should be preferred over direct paired classes such as `text-petrol-700 dark:text-petrol-200`.
+- Section bands use `bg-sand-150 dark:bg-[#282827]` to create rhythm around major framed content.
+- Framed content panels use `bg-warm-white dark:bg-[#282827]`; in light mode this must stay `#FAF7F2`.
+- Static content cards and examples use `bg-white dark:bg-[#2F2F2E]` so they remain the clearest resting surface.
+- Asset previews and code-like insets use quieter inner surfaces such as `bg-sand-50 dark:bg-graphite`.
+- Coral, petrol, metadata, and separator color should be applied with direct Tailwind classes near the Nuxt UI component that needs them.
 
-New landing-page surfaces should first choose one of those roles. Add a new semantic utility only when a genuinely new hierarchy level appears.
+New landing-page surfaces should first reuse those classes. Add a shared utility only when a genuinely reusable brand-layer primitive appears.
 
-Static guide cards should not signal interactivity through hover states. Use the section/card surface roles, borders, spacing, and type hierarchy to create emphasis at rest.
+Static guide cards should not signal interactivity through hover states. Use surface contrast, borders, spacing, and type hierarchy to create emphasis at rest.
 
 ## Page Composition
 

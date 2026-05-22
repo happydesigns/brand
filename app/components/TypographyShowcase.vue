@@ -31,7 +31,7 @@ const monoExamples = [
 </script>
 
 <template>
-  <div class="not-prose my-10 overflow-hidden rounded-sm border border-default bg-separator">
+  <div class="not-prose my-10 overflow-hidden rounded-sm border border-default bg-sand-300 dark:bg-white/10">
     <section class="grid gap-px md:grid-cols-[1.2fr_.8fr]">
       <div class="bg-surface p-6 sm:p-8">
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
@@ -44,13 +44,13 @@ const monoExamples = [
           Warm, modern, and readable enough to carry both brand expression and product documentation.
         </p>
         <div class="mt-8 grid gap-3 font-semibold text-highlighted sm:grid-cols-3">
-          <div class="rounded-sm border border-default bg-card p-4 text-4xl leading-none">
+          <div class="rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-4 text-4xl leading-none">
             Aa
           </div>
-          <div class="rounded-sm border border-default bg-card p-4 text-4xl leading-none">
+          <div class="rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-4 text-4xl leading-none">
             123
           </div>
-          <div class="rounded-sm border border-default bg-card p-4 text-4xl leading-none">
+          <div class="rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-4 text-4xl leading-none">
             web
           </div>
         </div>
@@ -140,7 +140,7 @@ const monoExamples = [
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-label">
           Interface pattern
         </p>
-        <div class="mt-5 rounded-sm border border-default bg-card p-5">
+        <div class="mt-5 rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-5">
           <p class="font-mono text-xs text-plum-600 dark:text-plum-200">
             project.status
           </p>
