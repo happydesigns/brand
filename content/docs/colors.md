@@ -172,11 +172,12 @@ Semantic tokens map a named role to the appropriate palette shade for each color
 | Token | Light | Dark |
 | --- | --- | --- |
 | `--ui-bg` | `warmWhite` <span class="hd-color-chip" style="--chip: #FAF7F2"></span> | `graphite` <span class="hd-color-chip" style="--chip: #242423"></span> |
-| `--ui-bg-muted` | `sand-50` <span class="hd-color-chip" style="--chip: #FAF7F2"></span> | `graphite` <span class="hd-color-chip" style="--chip: #242423"></span> |
-| `--ui-bg-elevated` | `sand-150` <span class="hd-color-chip" style="--chip: #F1ECE6"></span> | `sand-800` <span class="hd-color-chip" style="--chip: #2E2926"></span> |
-| `--ui-bg-accented` | `sand-100` <span class="hd-color-chip" style="--chip: #F3EEE8"></span> | `warm-white / 6%` |
-| `--hd-bg-surface` | `white` <span class="hd-color-chip" style="--chip: #FFFFFF"></span> | `graphite` <span class="hd-color-chip" style="--chip: #242423"></span> |
-| `--hd-bg-card` | `white` <span class="hd-color-chip" style="--chip: #FFFFFF"></span> | `white / 5%` |
+| `--ui-bg-muted` | `white` <span class="hd-color-chip" style="--chip: #FFFFFF"></span> | `lifted graphite` <span class="hd-color-chip" style="--chip: #2F2F2E"></span> |
+| `--ui-bg-elevated` | `sand-150` <span class="hd-color-chip" style="--chip: #F1ECE6"></span> | `soft graphite` <span class="hd-color-chip" style="--chip: #282827"></span> |
+| `--ui-bg-accented` | `sand-300` <span class="hd-color-chip" style="--chip: #D8D0C5"></span> | `warm-white / 12%` |
+| `--ui-bg-inverted` | `graphite` <span class="hd-color-chip" style="--chip: #242423"></span> | `sand-100` <span class="hd-color-chip" style="--chip: #F3EEE8"></span> |
+| `--hd-bg-surface` | `--ui-bg` | `--ui-bg` |
+| `--hd-bg-card` | `--ui-bg-muted` | `--ui-bg-muted` |
 | `--hd-bg-inset` | `sand-50` <span class="hd-color-chip" style="--chip: #FAF7F2"></span> | `white / 5%` |
 | `--hd-bg-separator` | `sand-300` <span class="hd-color-chip" style="--chip: #D8D0C5"></span> | `white / 10%` |
 | `--hd-bg-tinted` | `sand-200 / 55%` | `sand-800 / 25%` |
@@ -190,6 +191,7 @@ Semantic tokens map a named role to the appropriate palette shade for each color
 | `--ui-text-highlighted` | `graphite` <span class="hd-color-chip" style="--chip: #242423"></span> | `sand-50` <span class="hd-color-chip" style="--chip: #FAF7F2"></span> |
 | `--ui-text-muted` | `sand-600` <span class="hd-color-chip" style="--chip: #6B625A"></span> | `sand-300` <span class="hd-color-chip" style="--chip: #D8D0C5"></span> |
 | `--ui-text-dimmed` | `sand-500` <span class="hd-color-chip" style="--chip: #8F857A"></span> | `sand-400` <span class="hd-color-chip" style="--chip: #B8AEA2"></span> |
+| `--ui-text-inverted` | `warmWhite` <span class="hd-color-chip" style="--chip: #FAF7F2"></span> | `graphite` <span class="hd-color-chip" style="--chip: #242423"></span> |
 | `--hd-text-body` | `sand-700` <span class="hd-color-chip" style="--chip: #4A433E"></span> | `sand-300` <span class="hd-color-chip" style="--chip: #D8D0C5"></span> |
 | `--hd-text-label` | `plum-600` <span class="hd-color-chip" style="--chip: #574B63"></span> | `sand-300` <span class="hd-color-chip" style="--chip: #D8D0C5"></span> |
 
@@ -221,6 +223,7 @@ Every token has a corresponding Tailwind utility. Use these in components — no
 | `bg-muted` | `--ui-bg-muted` |
 | `bg-elevated` | `--ui-bg-elevated` |
 | `bg-accented` | `--ui-bg-accented` |
+| `bg-inverted` | `--ui-bg-inverted` |
 | `bg-surface` | `--hd-bg-surface` |
 | `bg-card` | `--hd-bg-card` |
 | `bg-inset` | `--hd-bg-inset` |
@@ -231,6 +234,7 @@ Every token has a corresponding Tailwind utility. Use these in components — no
 | `text-highlighted` | `--ui-text-highlighted` |
 | `text-muted` | `--ui-text-muted` |
 | `text-dimmed` | `--ui-text-dimmed` |
+| `text-inverted` | `--ui-text-inverted` |
 | `text-body` | `--hd-text-body` |
 | `text-label` | `--hd-text-label` |
 | `border-default` | `--ui-border` |

@@ -149,17 +149,17 @@ export default defineAppConfig({
     },
     input: {
       slots: {
-        base: 'bg-warm-white text-graphite ring-sand-300 focus-visible:ring-coral-500 dark:bg-sand-800/80 dark:text-sand-100 dark:ring-white/15 dark:focus-visible:ring-coral-400'
+        base: 'bg-default text-highlighted ring-default focus-visible:ring-primary'
       }
     },
     textarea: {
       slots: {
-        base: 'bg-warm-white text-graphite ring-sand-300 focus-visible:ring-coral-500 dark:bg-sand-800/80 dark:text-sand-100 dark:ring-white/15 dark:focus-visible:ring-coral-400'
+        base: 'bg-default text-highlighted ring-default focus-visible:ring-primary'
       }
     },
     select: {
       slots: {
-        base: 'bg-warm-white text-graphite ring-sand-300 focus-visible:ring-coral-500 dark:bg-sand-800/80 dark:text-sand-100 dark:ring-white/15 dark:focus-visible:ring-coral-400'
+        base: 'bg-default text-highlighted ring-default focus-visible:ring-primary'
       }
     },
     formField: {

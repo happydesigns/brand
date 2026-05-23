@@ -19,15 +19,15 @@ Use visible structure before decoration. Fine borders, controlled spacing, clear
 
 ## Surface Hierarchy
 
-Use Nuxt UI primitives and Tailwind classes for repeated guide surfaces. Do not add a parallel CSS-variable utility layer for one page unless a pattern is reused across the brand layer.
+Use Nuxt UI primitives and semantic Tailwind utilities for repeated guide surfaces. The light/dark pairing belongs in the token definitions, not in every page component.
 
-- Section bands use `bg-sand-150 dark:bg-[#282827]` to create rhythm around major framed content.
-- Framed content panels use `bg-warm-white dark:bg-[#282827]`; in light mode this must stay `#FAF7F2`.
-- Static content cards and examples use `bg-white dark:bg-[#2F2F2E]` so they remain the clearest resting surface.
-- Asset previews and code-like insets use quieter inner surfaces such as `bg-sand-50 dark:bg-graphite`.
-- Coral, petrol, metadata, and separator color should be applied with direct Tailwind classes near the Nuxt UI component that needs them.
+- Page and panel surfaces use `bg-default`.
+- Section bands use `bg-elevated` to create rhythm around major framed content.
+- Static content cards and examples use `bg-muted` so they remain the clearest resting surface.
+- Grid gaps and structural dividers use `bg-accented` with normal `border-default` or `border-muted` rules.
+- Coral, petrol, metadata, and inverted states use semantic utilities such as `text-primary`, `text-secondary`, `text-dimmed`, `bg-inverted`, and `text-inverted`.
 
-New landing-page surfaces should first reuse those classes. Add a shared utility only when a genuinely reusable brand-layer primitive appears.
+New landing-page surfaces should first reuse Nuxt UI semantic utilities. Add a custom utility only when Nuxt UI does not provide the needed role.
 
 Static guide cards should not signal interactivity through hover states. Use surface contrast, borders, spacing, and type hierarchy to create emphasis at rest.
 
