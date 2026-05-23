@@ -54,10 +54,10 @@ export type BrandGuide = {
 export const brandGuide = {
   brand: happydesignsBrand,
   principles: [
-    'Use visible structure before decoration.',
-    'Keep the system warm, precise, and restrained.',
-    'Document decisions as durable tokens and patterns.',
-    'Prefer durable defaults over one-off brand moments.'
+    'Structure before decoration.',
+    'Warm, precise, restrained.',
+    'Decisions become tokens.',
+    'Durable defaults over one-offs.'
   ],
   sections: [
     {

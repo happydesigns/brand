@@ -9,19 +9,19 @@ const guideGroups = [
   {
     number: '01',
     title: 'Foundations',
-    description: 'Color roles and type hierarchy create the calm base.',
+    description: 'Color and type create the calm base.',
     sections: guide.sections.filter(section => ['colors', 'typography'].includes(section.slug))
   },
   {
     number: '02',
     title: 'Identity',
-    description: 'Logo choices and voice define how happydesigns is recognized.',
+    description: 'Logo choices and voice shape recognition.',
     sections: guide.sections.filter(section => ['logos', 'voice'].includes(section.slug))
   },
   {
     number: '03',
     title: 'Application',
-    description: 'Components turn the system into repeated product behavior.',
+    description: 'Components carry the system into product UI.',
     sections: guide.sections.filter(section => section.slug === 'components')
   }
 ]
@@ -29,17 +29,17 @@ const guideGroups = [
 const foundationTimelineItems = [
   {
     title: 'Start with roles',
-    description: 'Warm white, graphite, sand, coral, and petrol define the base before extra expression appears.',
+    description: 'Warm white, graphite, sand, coral, and petrol set the base before expression appears.',
     avatar: { text: '01' }
   },
   {
     title: 'Set hierarchy',
-    description: 'Use Bricolage for readable structure and mono only when the content is exact or technical.',
+    description: 'Use Bricolage for structure, and mono only for exact or technical content.',
     avatar: { text: '02' }
   },
   {
     title: 'Add restraint',
-    description: 'Coral marks focus and signature details. It should not become decoration on every surface.',
+    description: 'Coral marks focus and signature details, not every surface.',
     avatar: { text: '03' }
   }
 ]
@@ -72,15 +72,15 @@ const interfaceTabs = [
 const interfaceChecklist = [
   {
     label: 'Visible borders',
-    description: 'Structure is readable before color is added.'
+    description: 'Make structure readable before color.'
   },
   {
     label: 'Coral focus',
-    description: 'The accent marks interaction, not decoration.'
+    description: 'Use coral for focus and active details.'
   },
   {
     label: 'Compact labels',
-    description: 'Metadata stays precise and easy to scan.'
+    description: 'Keep metadata precise.'
   }
 ]
 
@@ -209,7 +209,7 @@ const heroBrandTheme = {
 const interfaceFormState = reactive({
   projectName: 'Website refresh',
   status: 'Ready for review',
-  note: 'Graphite carries the save action. Coral appears in focus and active details, not as a large default surface.'
+  note: 'Graphite carries the save action. Coral stays in focus and active details.'
 })
 
 const heroLinks = [
@@ -230,7 +230,7 @@ const heroLinks = [
 
 const ctaLinks = [
   {
-    label: 'Open docs overview',
+    label: 'Open docs',
     icon: 'i-lucide-arrow-right',
     trailing: true,
     to: '/docs'
@@ -300,7 +300,7 @@ const badgeUi = {
     <div class="mx-auto w-full max-w-(--ui-container) overflow-hidden border-x border-default bg-default">
       <UPageHero
         :title="guide.brand.claim"
-        description="The practical source of truth for the happydesigns identity: colors, typography, logos, components, and voice working together with care."
+        description="The happydesigns source of truth for identity, interface patterns, and Nuxt UI implementation."
         :links="heroLinks"
         headline="happydesigns brand guide"
         orientation="horizontal"
@@ -429,7 +429,7 @@ const badgeUi = {
                 Start with structure, then add expression.
               </h2>
               <p class="mt-6 max-w-xl text-base leading-8 text-body">
-                Read the guide as a working sequence: foundations first, identity behavior next, interface application last.
+                Read it as a sequence: foundations first, identity next, application last.
               </p>
             </div>
 
@@ -533,7 +533,7 @@ const badgeUi = {
                   Color and type set the pace before anything becomes decorative.
                 </h2>
                 <p class="mt-6 max-w-xl text-base leading-8 text-body">
-                  Use the palette and typography to create calm hierarchy first. Coral, petrol, Bricolage, and mono each have a job.
+                  Start with color roles and type hierarchy. Coral, petrol, Bricolage, and mono each have a job.
                 </p>
 
                 <UTimeline
@@ -563,7 +563,7 @@ const badgeUi = {
                     </HDSectionLabel>
                     <UButton
                       to="/docs/colors"
-                      label="Color details"
+                      label="Open colors"
                       icon="i-lucide-arrow-right"
                       trailing
                       color="neutral"
@@ -603,7 +603,7 @@ const badgeUi = {
                     </HDSectionLabel>
                     <UButton
                       to="/docs/typography"
-                      label="Typography details"
+                      label="Open typography"
                       icon="i-lucide-arrow-right"
                       trailing
                       color="neutral"
@@ -682,10 +682,10 @@ const badgeUi = {
                   logo use
                 </HDSectionLabel>
                 <h3 class="mt-8 max-w-2xl text-3xl font-semibold leading-tight">
-                  Use the wordmark first, then choose the mark that fits the job.
+                  Start with the wordmark.
                 </h3>
                 <p class="mt-5 max-w-2xl text-base leading-8 text-body">
-                  The wordmark, symbol, and lockups do different jobs. Use the wordmark for everyday identity, and use lockups when the relationship between symbol and name should be shown.
+                  Default to the wordmark. Use the symbol for square contexts, and lockups when symbol and name should appear together.
                 </p>
                 <div class="mt-6 flex flex-wrap gap-2">
                   <UBadge
@@ -712,7 +712,7 @@ const badgeUi = {
                       Wordmark
                     </p>
                     <p class="mt-2 text-sm leading-6 text-muted">
-                      Default mark for headers, documentation, navigation, and slim horizontal layouts.
+                      Default for headers, docs, navigation, and slim horizontal layouts.
                     </p>
                   </UCard>
                   <UCard
@@ -729,13 +729,13 @@ const badgeUi = {
                       Symbol
                     </p>
                     <p class="mt-2 text-sm leading-6 text-muted">
-                      Square mark for favicon, app icon, social avatars, and controlled brand moments.
+                      For favicon, app icon, social avatars, and controlled brand moments.
                     </p>
                   </UCard>
                 </div>
                 <UButton
                   to="/docs/logos"
-                  label="Logo details"
+                  label="Open logos"
                   icon="i-lucide-arrow-right"
                   trailing
                   color="neutral"
@@ -752,7 +752,7 @@ const badgeUi = {
                   Keep the voice clear before clever.
                 </h3>
                 <p class="mt-5 max-w-2xl text-base leading-8 text-body">
-                  happydesigns should sound thoughtful, warm, precise, and practical. Technical writing can be exact without becoming cold.
+                  happydesigns should sound thoughtful, warm, precise, and practical. Technical copy can be exact without becoming cold.
                 </p>
                 <div class="mt-8 flex flex-wrap gap-2">
                   <UBadge
@@ -804,7 +804,7 @@ const badgeUi = {
 
                 <UButton
                   to="/docs/voice"
-                  label="Voice details"
+                  label="Open voice"
                   icon="i-lucide-arrow-right"
                   trailing
                   color="neutral"
@@ -830,16 +830,16 @@ const badgeUi = {
                   03 / Interface application
                 </p>
                 <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-                  Components turn the brand system into everyday product behavior.
+                  Components turn the system into product behavior.
                 </h2>
                 <p class="mt-6 max-w-xl text-base leading-8 text-body">
-                  Interfaces should feel useful before they feel branded. Use borders, spacing, focus states, and compact labels to make the system clear in repeated work.
+                  Interfaces should feel useful before branded. Borders, spacing, focus states, and compact labels carry the system in repeated work.
                 </p>
 
                 <div class="mt-10 grid gap-3">
                   <UAlert
-                    title="Pattern ready"
-                    description="Feedback states stay calm, specific, and tied to useful action."
+                    title="Calm feedback"
+                    description="State changes explain what happened and what to do next."
                     icon="i-lucide-circle-check"
                     color="success"
                     variant="subtle"
@@ -909,7 +909,7 @@ const badgeUi = {
                         <UFormField
                           name="projectName"
                           label="Project name"
-                          help="Inputs stay plain, bordered, and easy to scan."
+                          help="Plain, bordered, easy to scan."
                         >
                           <UInput
                             v-model="interfaceFormState.projectName"
@@ -920,7 +920,7 @@ const badgeUi = {
                         <UFormField
                           name="status"
                           label="Status"
-                          help="Selects use semantic labels before color."
+                          help="Semantic labels before color."
                         >
                           <USelect
                             v-model="interfaceFormState.status"
@@ -936,13 +936,13 @@ const badgeUi = {
                       >
                         <USwitch
                           label="Use visible structure"
-                          description="Switches are compact decisions, not decorative brand moments."
+                          description="A compact decision, not a brand moment."
                           :default-value="true"
                           color="primary"
                         />
                         <UFormField
                           label="Accent strength"
-                          help="Coral marks active/focus behavior in controlled amounts."
+                          help="Coral appears in controlled active states."
                         >
                           <USlider
                             :default-value="62"
@@ -962,7 +962,7 @@ const badgeUi = {
                     </HDSectionLabel>
                     <UButton
                       to="/docs/components"
-                      label="Component details"
+                      label="Open components"
                       icon="i-lucide-arrow-right"
                       trailing
                       color="neutral"
@@ -1000,7 +1000,7 @@ const badgeUi = {
                       <UFormField
                         name="projectName"
                         label="Project name"
-                        help="Shown in internal project views."
+                        help="Internal project label."
                       >
                         <UInput
                           v-model="interfaceFormState.projectName"
@@ -1011,7 +1011,7 @@ const badgeUi = {
                       <UFormField
                         name="status"
                         label="Status"
-                        help="Use status color only when it adds meaning."
+                        help="Use color only when it adds meaning."
                       >
                         <USelect
                           v-model="interfaceFormState.status"
@@ -1022,7 +1022,7 @@ const badgeUi = {
                       <UFormField
                         name="note"
                         label="Implementation note"
-                        help="Keep the note specific enough to guide reuse."
+                        help="Specific enough to guide reuse."
                         class="sm:col-span-2"
                       >
                         <UTextarea
@@ -1061,8 +1061,8 @@ const badgeUi = {
         :ui="{ container: 'px-7 py-12 sm:px-12 sm:py-14' }"
       >
         <UPageCTA
-          title="Use the guide as a working system."
-          description="Move from the overview into the docs, then install the brand layer when the rules are ready to become reusable implementation."
+          title="Use the guide in real projects."
+          description="Open the docs for the rules, then install the layer when a Nuxt project should carry the happydesigns system."
           :links="ctaLinks"
           orientation="horizontal"
           variant="outline"
