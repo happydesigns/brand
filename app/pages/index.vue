@@ -312,7 +312,7 @@ const badgeUi = {
         <template #default>
           <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-elevated p-8 sm:p-12 lg:min-h-[660px]">
             <div class="w-full max-w-xl rounded-md border border-default bg-muted shadow-none">
-              <div class="flex items-center justify-between border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
+              <div class="flex items-center justify-between rounded-t-md border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
                 <div class="flex gap-2">
                   <span class="size-2.5 rounded-full bg-sand-400" />
                   <span class="size-2.5 rounded-full bg-sand-300" />
@@ -327,7 +327,7 @@ const badgeUi = {
                 />
               </div>
 
-              <div class="grid gap-px bg-accented">
+              <div class="grid gap-px rounded-b-md bg-accented">
                 <div class="flex items-center justify-between bg-default px-5 py-4">
                   <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
                     Theme layer
@@ -339,7 +339,7 @@ const badgeUi = {
 
                 <div
                   ref="heroRevealFrame"
-                  class="relative min-h-[340px] bg-default"
+                  class="relative min-h-[340px] rounded-b-md bg-default"
                 >
                   <div class="pointer-events-none absolute inset-0 p-5">
                     <UTheme :props="heroBrandTheme">
