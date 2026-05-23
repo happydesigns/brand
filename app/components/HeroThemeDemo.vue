@@ -1,4 +1,12 @@
 <script setup lang="ts">
+const projectName = defineModel<string>('projectName', {
+  default: 'Website refresh'
+})
+
+const status = defineModel<string>('status', {
+  default: 'Ready for review'
+})
+
 const statusItems = [
   'Draft',
   'Ready for review',
@@ -14,7 +22,7 @@ const statusItems = [
           Project
         </p>
         <p class="mt-0.5 text-base font-semibold text-highlighted">
-          Website refresh
+          {{ projectName }}
         </p>
       </div>
       <UBadge
@@ -26,20 +34,20 @@ const statusItems = [
 
     <div class="space-y-3">
       <UInput
-        model-value="Website refresh"
+        v-model="projectName"
         spellcheck="false"
         class="w-full"
         aria-label="Project name"
       />
       <USelect
-        model-value="Ready for review"
+        v-model="status"
         :items="statusItems"
         class="w-full"
         aria-label="Status"
       />
       <UAlert
         icon="i-lucide-circle-check"
-        title="Ready for review"
+        :title="status"
       />
       <UButton
         label="Save"

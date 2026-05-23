@@ -96,6 +96,11 @@ const projectStatusItems = [
   'Published'
 ]
 
+const heroDemoState = reactive({
+  projectName: 'Website refresh',
+  status: 'Ready for review'
+})
+
 const heroRevealFrameHeight = 340
 const heroRevealFrame = ref<HTMLElement | null>(null)
 const heroReveal = ref(56)
@@ -346,7 +351,10 @@ const badgeUi = {
                   >
                     <div class="absolute inset-0 p-5">
                       <UTheme :props="heroBrandTheme">
-                        <HeroThemeDemo />
+                        <HeroThemeDemo
+                          v-model:project-name="heroDemoState.projectName"
+                          v-model:status="heroDemoState.status"
+                        />
                       </UTheme>
                     </div>
 
@@ -359,7 +367,10 @@ const badgeUi = {
                         :ui="heroDefaultUi"
                       >
                         <div class="nuxt-ui-default-demo h-full">
-                          <HeroThemeDemo />
+                          <HeroThemeDemo
+                            v-model:project-name="heroDemoState.projectName"
+                            v-model:status="heroDemoState.status"
+                          />
                         </div>
                       </UTheme>
                     </div>
