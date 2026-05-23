@@ -344,14 +344,14 @@ const badgeUi = {
                     class="relative bg-default"
                     :style="{ minHeight: `${heroRevealFrameHeight}px` }"
                   >
-                    <div class="pointer-events-none absolute inset-0 p-5">
+                    <div class="absolute inset-0 p-5">
                       <UTheme :props="heroBrandTheme">
                         <HeroThemeDemo />
                       </UTheme>
                     </div>
 
                     <div
-                      class="pointer-events-none absolute inset-0 z-10 overflow-hidden p-5"
+                      class="absolute inset-0 z-10 overflow-hidden p-5"
                       :style="{ clipPath: `inset(0 ${100 - heroReveal}% 0 0)` }"
                     >
                       <UTheme
@@ -368,37 +368,27 @@ const badgeUi = {
                       class="pointer-events-none absolute inset-y-0 z-20 w-px bg-inverted"
                       :style="{ left: `${heroReveal}%` }"
                     />
-                    <div
-                      class="absolute inset-y-0 -left-5 -right-5 z-30 cursor-ew-resize"
-                      role="slider"
-                      tabindex="0"
-                      aria-label="Reveal the happydesigns theme"
-                      :aria-valuemin="0"
-                      :aria-valuemax="100"
-                      :aria-valuenow="Math.round(heroReveal)"
-                      @pointerdown="startHeroRevealDrag"
-                      @pointermove="moveHeroRevealDrag"
-                      @pointerup="stopHeroRevealDrag"
-                      @pointercancel="stopHeroRevealDrag"
-                      @lostpointercapture="stopHeroRevealDrag"
-                      @keydown="handleHeroRevealKeydown"
-                    >
-                      <span class="sr-only">Reveal the happydesigns theme</span>
-                    </div>
                   </div>
                 </div>
               </div>
 
               <div
-                class="absolute z-40 flex size-9 -translate-x-1/2 translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default"
+                class="absolute z-40 flex size-9 -translate-x-1/2 translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default focus-visible:outline-none focus-visible:ring-primary"
                 :style="{ left: `${heroReveal}%`, bottom: `${heroRevealFrameHeight / 2}px` }"
-                aria-hidden="true"
+                role="slider"
+                tabindex="0"
+                aria-label="Reveal the happydesigns theme"
+                :aria-valuemin="0"
+                :aria-valuemax="100"
+                :aria-valuenow="Math.round(heroReveal)"
                 @pointerdown="startHeroRevealDrag"
                 @pointermove="moveHeroRevealDrag"
                 @pointerup="stopHeroRevealDrag"
                 @pointercancel="stopHeroRevealDrag"
                 @lostpointercapture="stopHeroRevealDrag"
+                @keydown="handleHeroRevealKeydown"
               >
+                <span class="sr-only">Reveal the happydesigns theme</span>
                 <UIcon
                   name="i-lucide-grip-vertical"
                   class="size-4"
