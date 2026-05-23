@@ -500,13 +500,18 @@ const badgeUi = {
             <div class="grid gap-px bg-accented sm:grid-cols-2 lg:grid-cols-4">
               <div
                 v-for="principle in guide.principles"
-                :key="principle"
+                :key="principle.title"
                 class="flex gap-3 bg-muted p-5"
               >
                 <span class="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
-                <p class="text-sm font-medium leading-6 text-highlighted">
-                  {{ principle }}
-                </p>
+                <div>
+                  <p class="text-sm font-semibold leading-6 text-highlighted">
+                    {{ principle.title }}
+                  </p>
+                  <p class="mt-2 text-sm leading-6 text-toned">
+                    {{ principle.description }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

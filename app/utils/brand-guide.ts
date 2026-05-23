@@ -32,9 +32,14 @@ export type BrandGuideSection = {
   anchors: string[]
 }
 
+export type BrandGuidePrinciple = {
+  title: string
+  description: string
+}
+
 export type BrandGuide = {
   brand: typeof happydesignsBrand
-  principles: string[]
+  principles: BrandGuidePrinciple[]
   sections: BrandGuideSection[]
   colors: BrandGuideColor[]
   fonts: BrandGuideFont[]
@@ -54,10 +59,22 @@ export type BrandGuide = {
 export const brandGuide = {
   brand: happydesignsBrand,
   principles: [
-    'Structure before decoration.',
-    'Warm, precise, restrained.',
-    'Decisions become tokens.',
-    'Durable defaults over one-offs.'
+    {
+      title: 'Structure before decoration.',
+      description: 'Layout, spacing, borders, and hierarchy carry the base experience.'
+    },
+    {
+      title: 'Useful before branded.',
+      description: 'Every interface element needs a clear job, even when it carries brand character.'
+    },
+    {
+      title: 'Meaningful expression.',
+      description: 'Use expressive moments to guide attention or make the system memorable.'
+    },
+    {
+      title: 'Durable defaults over one-offs.',
+      description: 'Choose patterns that can repeat across pages, products, and projects.'
+    }
   ],
   sections: [
     {
