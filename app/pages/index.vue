@@ -421,22 +421,22 @@ const badgeUi = {
           :ui="sectionCardUi"
         >
           <div class="grid lg:grid-cols-[.9fr_1.1fr]">
-            <div class="border-b border-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
+            <div class="border-b border-default p-6 sm:p-8 lg:border-b-0">
               <HDSectionLabel>
-                how to read the guide
+                brand guidance
               </HDSectionLabel>
               <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-                Build from structure toward expression.
+                Build from structure<br>toward expression.
               </h2>
               <p class="mt-6 max-w-xl text-base leading-8 text-body">
-                Use color, typography, spacing, and clear hierarchy to create a calm base, then add the happydesigns logo and voice to make the system recognizable.
+                Use color, typography, spacing, and clear hierarchy to create a calm base, then add the happydesigns identity to make the system recognizable.
               </p>
             </div>
 
             <div class="p-6 sm:p-8">
               <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-                  Guide route
+                  Reading path
                 </p>
                 <p class="font-mono text-xs text-dimmed">
                   Foundations -> Identity -> Application
