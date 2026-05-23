@@ -96,10 +96,7 @@ const projectStatusItems = [
   'Published'
 ]
 
-const heroDemoState = reactive({
-  projectName: 'Website refresh',
-  status: 'Ready for review'
-})
+const heroReveal = ref(56)
 
 const heroDefaultTheme = {
   badge: {
@@ -283,96 +280,54 @@ const badgeUi = {
                   </p>
                 </div>
 
-                <div class="grid gap-px bg-accented md:grid-cols-2">
-                  <div class="bg-default p-5">
+                <div class="relative min-h-[340px] overflow-hidden bg-default">
+                  <div class="pointer-events-none absolute inset-0 p-5">
+                    <UTheme :props="heroBrandTheme">
+                      <HeroThemeDemo />
+                    </UTheme>
+                  </div>
+
+                  <div
+                    class="pointer-events-none absolute inset-0 z-10 overflow-hidden p-5"
+                    :style="{ clipPath: `inset(0 ${100 - heroReveal}% 0 0)` }"
+                  >
                     <UTheme
                       :props="heroDefaultTheme"
                       :ui="heroDefaultUi"
                     >
-                      <div class="nuxt-ui-default-demo rounded-lg border border-default bg-muted p-4">
-                        <div class="mb-4 flex items-center justify-between gap-3">
-                          <div>
-                            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
-                              Default
-                            </p>
-                            <p class="mt-0.5 text-base font-semibold text-highlighted">
-                              Nuxt UI
-                            </p>
-                          </div>
-                          <UBadge label="Base" />
-                        </div>
-
-                        <div class="space-y-3">
-                          <UInput
-                            v-model="heroDemoState.projectName"
-                            spellcheck="false"
-                            class="w-full"
-                            aria-label="Default project name"
-                          />
-                          <USelect
-                            v-model="heroDemoState.status"
-                            :items="projectStatusItems"
-                            class="w-full"
-                            aria-label="Default status"
-                          />
-                          <UAlert
-                            icon="i-lucide-circle-check"
-                            title="Ready for review"
-                          />
-                          <UButton
-                            label="Save"
-                            block
-                          />
-                        </div>
+                      <div class="nuxt-ui-default-demo h-full">
+                        <HeroThemeDemo />
                       </div>
                     </UTheme>
                   </div>
 
-                  <div class="bg-default p-5">
-                    <UTheme :props="heroBrandTheme">
-                      <div class="rounded-sm border border-default bg-muted p-4">
-                        <div class="mb-4 flex items-center justify-between gap-3">
-                          <div>
-                            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
-                              Brand
-                            </p>
-                            <HDLogo
-                              variant="wordmark"
-                              size="sm"
-                              class="mt-0.5"
-                            />
-                          </div>
-                          <UBadge
-                            label="Theme"
-                            color="neutral"
-                            variant="outline"
-                            :ui="badgeUi"
-                          />
-                        </div>
-                        <div class="space-y-3">
-                          <UInput
-                            v-model="heroDemoState.projectName"
-                            spellcheck="false"
-                            class="w-full"
-                            aria-label="Project name"
-                          />
-                          <USelect
-                            v-model="heroDemoState.status"
-                            :items="projectStatusItems"
-                            class="w-full"
-                            aria-label="Status"
-                          />
-                          <UAlert
-                            icon="i-lucide-circle-check"
-                            title="Ready for review"
-                          />
-                          <UButton
-                            label="Save"
-                            block
-                          />
-                        </div>
-                      </div>
-                    </UTheme>
+                  <div
+                    class="pointer-events-none absolute inset-y-0 z-20 w-px bg-primary"
+                    :style="{ left: `${heroReveal}%` }"
+                  />
+                  <label
+                    class="absolute inset-0 z-30 cursor-ew-resize"
+                    aria-label="Reveal the happydesigns theme"
+                  >
+                    <span class="sr-only">Reveal the happydesigns theme</span>
+                    <input
+                      v-model.number="heroReveal"
+                      type="range"
+                      min="0"
+                      max="100"
+                      aria-label="Reveal the happydesigns theme"
+                      class="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+                    />
+                  </label>
+
+                  <div
+                    class="pointer-events-none absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-default bg-muted text-primary shadow-sm ring-2 ring-default"
+                    :style="{ left: `clamp(18px, ${heroReveal}%, calc(100% - 18px))` }"
+                  >
+                    <UIcon
+                      name="i-lucide-grip-vertical"
+                      class="size-4"
+                    />
                   </div>
                 </div>
               </div>
