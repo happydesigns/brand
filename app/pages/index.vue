@@ -96,7 +96,64 @@ const projectStatusItems = [
   'Published'
 ]
 
+const heroRevealFrame = ref<HTMLElement | null>(null)
 const heroReveal = ref(56)
+const isHeroRevealDragging = ref(false)
+
+const clampHeroReveal = (value: number) => Math.min(100, Math.max(0, value))
+
+const updateHeroRevealFromPointer = (event: PointerEvent) => {
+  const rect = heroRevealFrame.value?.getBoundingClientRect()
+
+  if (!rect?.width) {
+    return
+  }
+
+  heroReveal.value = clampHeroReveal(((event.clientX - rect.left) / rect.width) * 100)
+}
+
+const startHeroRevealDrag = (event: PointerEvent) => {
+  isHeroRevealDragging.value = true
+  updateHeroRevealFromPointer(event)
+  const target = event.currentTarget as HTMLElement
+  target.setPointerCapture(event.pointerId)
+}
+
+const moveHeroRevealDrag = (event: PointerEvent) => {
+  if (!isHeroRevealDragging.value) {
+    return
+  }
+
+  updateHeroRevealFromPointer(event)
+}
+
+const stopHeroRevealDrag = () => {
+  isHeroRevealDragging.value = false
+}
+
+const handleHeroRevealKeydown = (event: KeyboardEvent) => {
+  const step = event.shiftKey ? 10 : 5
+
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault()
+    heroReveal.value = clampHeroReveal(heroReveal.value - step)
+  }
+
+  if (event.key === 'ArrowRight') {
+    event.preventDefault()
+    heroReveal.value = clampHeroReveal(heroReveal.value + step)
+  }
+
+  if (event.key === 'Home') {
+    event.preventDefault()
+    heroReveal.value = 0
+  }
+
+  if (event.key === 'End') {
+    event.preventDefault()
+    heroReveal.value = 100
+  }
+}
 
 const heroDefaultTheme = {
   badge: {
@@ -254,7 +311,7 @@ const badgeUi = {
       >
         <template #default>
           <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-elevated p-8 sm:p-12 lg:min-h-[660px]">
-            <div class="w-full max-w-xl overflow-hidden rounded-md border border-default bg-muted shadow-none">
+            <div class="w-full max-w-xl rounded-md border border-default bg-muted shadow-none">
               <div class="flex items-center justify-between border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
                 <div class="flex gap-2">
                   <span class="size-2.5 rounded-full bg-sand-400" />
@@ -280,7 +337,10 @@ const badgeUi = {
                   </p>
                 </div>
 
-                <div class="relative min-h-[340px] overflow-hidden bg-default">
+                <div
+                  ref="heroRevealFrame"
+                  class="relative min-h-[340px] bg-default"
+                >
                   <div class="pointer-events-none absolute inset-0 p-5">
                     <UTheme :props="heroBrandTheme">
                       <HeroThemeDemo />
@@ -303,26 +363,29 @@ const badgeUi = {
 
                   <div
                     class="pointer-events-none absolute inset-y-0 z-20 w-px bg-inverted"
-                    :style="{ left: `clamp(18px, ${heroReveal}%, calc(100% - 18px))` }"
+                    :style="{ left: `${heroReveal}%` }"
                   />
-                  <label
+                  <div
                     class="absolute inset-0 z-30 cursor-ew-resize"
+                    role="slider"
+                    tabindex="0"
                     aria-label="Reveal the happydesigns theme"
+                    :aria-valuemin="0"
+                    :aria-valuemax="100"
+                    :aria-valuenow="Math.round(heroReveal)"
+                    @pointerdown="startHeroRevealDrag"
+                    @pointermove="moveHeroRevealDrag"
+                    @pointerup="stopHeroRevealDrag"
+                    @pointercancel="stopHeroRevealDrag"
+                    @lostpointercapture="stopHeroRevealDrag"
+                    @keydown="handleHeroRevealKeydown"
                   >
                     <span class="sr-only">Reveal the happydesigns theme</span>
-                    <input
-                      v-model.number="heroReveal"
-                      type="range"
-                      min="0"
-                      max="100"
-                      aria-label="Reveal the happydesigns theme"
-                      class="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
-                    />
-                  </label>
+                  </div>
 
                   <div
                     class="pointer-events-none absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default"
-                    :style="{ left: `clamp(18px, ${heroReveal}%, calc(100% - 18px))` }"
+                    :style="{ left: `${heroReveal}%` }"
                   >
                     <UIcon
                       name="i-lucide-grip-vertical"
