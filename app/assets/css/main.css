@@ -176,6 +176,40 @@
   color-scheme: dark;
 }
 
+.nuxt-ui-default-demo {
+  --ui-primary: oklch(62.3% 0.214 259.815);
+  --ui-bg: white;
+  --ui-bg-muted: oklch(98.5% 0.002 247.839);
+  --ui-bg-elevated: oklch(96.7% 0.003 264.542);
+  --ui-bg-accented: oklch(92.8% 0.006 264.531);
+  --ui-bg-inverted: oklch(20.8% 0.042 265.755);
+  --ui-text: oklch(37.3% 0.034 259.733);
+  --ui-text-highlighted: oklch(21% 0.034 264.665);
+  --ui-text-muted: oklch(55.1% 0.027 264.364);
+  --ui-text-dimmed: oklch(70.7% 0.022 261.325);
+  --ui-text-inverted: white;
+  --ui-border: oklch(87.2% 0.01 258.338);
+  --ui-border-muted: oklch(92.8% 0.006 264.531);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark .nuxt-ui-default-demo {
+  --ui-primary: oklch(70.7% 0.165 254.624);
+  --ui-bg: oklch(20.8% 0.042 265.755);
+  --ui-bg-muted: oklch(27.9% 0.041 260.031);
+  --ui-bg-elevated: oklch(27.9% 0.041 260.031);
+  --ui-bg-accented: oklch(37.2% 0.044 257.287);
+  --ui-bg-inverted: white;
+  --ui-text: oklch(92.9% 0.013 255.508);
+  --ui-text-highlighted: oklch(98.4% 0.003 247.858);
+  --ui-text-muted: oklch(70.4% 0.04 256.788);
+  --ui-text-dimmed: oklch(55.4% 0.046 257.417);
+  --ui-text-inverted: oklch(12.9% 0.042 264.695);
+  --ui-border: oklch(37.2% 0.044 257.287);
+  --ui-border-muted: oklch(27.9% 0.041 260.031);
+  color-scheme: dark;
+}
+
 @utility bg-surface {
   background-color: var(--hd-bg-surface);
 }

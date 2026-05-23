@@ -101,6 +101,51 @@ const heroDemoState = reactive({
   status: 'Ready for review'
 })
 
+const heroDefaultTheme = {
+  badge: {
+    color: 'neutral' as const,
+    variant: 'outline' as const,
+    size: 'sm' as const
+  },
+  button: {
+    color: 'neutral' as const,
+    variant: 'solid' as const,
+    size: 'sm' as const
+  },
+  input: {
+    color: 'neutral' as const,
+    variant: 'outline' as const,
+    size: 'sm' as const
+  },
+  select: {
+    color: 'neutral' as const,
+    variant: 'outline' as const,
+    size: 'sm' as const
+  },
+  alert: {
+    color: 'neutral' as const,
+    variant: 'subtle' as const
+  }
+}
+
+const heroBrandTheme = {
+  button: {
+    color: 'primary' as const,
+    variant: 'solid' as const,
+    size: 'sm' as const
+  },
+  input: {
+    size: 'sm' as const
+  },
+  select: {
+    size: 'sm' as const
+  },
+  alert: {
+    color: 'primary' as const,
+    variant: 'subtle' as const
+  }
+}
+
 const interfaceFormState = reactive({
   projectName: 'Website refresh',
   status: 'Ready for review',
@@ -165,6 +210,26 @@ const staticCardUi = {
   body: 'p-5 sm:p-5'
 }
 
+const heroDefaultUi = {
+  badge: {
+    base: 'rounded-md bg-default text-highlighted ring-default'
+  },
+  button: {
+    base: 'rounded-md bg-inverted text-inverted hover:bg-inverted/90 focus-visible:ring-2 focus-visible:ring-primary'
+  },
+  input: {
+    base: 'rounded-md bg-default text-highlighted ring-default focus-visible:ring-primary'
+  },
+  select: {
+    base: 'rounded-md bg-default text-highlighted ring-default focus-visible:ring-primary'
+  },
+  alert: {
+    root: 'rounded-lg border border-default bg-muted text-highlighted shadow-none',
+    icon: 'text-muted',
+    title: 'text-sm font-medium text-highlighted'
+  }
+}
+
 const badgeUi = {
   base: 'rounded-sm bg-elevated text-highlighted ring-default'
 }
@@ -209,72 +274,105 @@ const badgeUi = {
               </div>
 
               <div class="grid gap-px bg-accented">
-                <div class="bg-default p-5">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                        Nuxt UI layer
-                      </p>
-                      <h2 class="mt-2 text-2xl font-semibold leading-tight">
-                        Project brief
-                      </h2>
-                    </div>
-                  </div>
-                  <p class="mt-4 max-w-md text-sm leading-6 text-muted">
-                    A compact interface using happydesigns tokens: visible structure, calm hierarchy, coral focus, and precise metadata.
+                <div class="flex items-center justify-between bg-default px-5 py-4">
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                    Theme layer
                   </p>
-
-                  <div class="mt-5 grid gap-4 sm:grid-cols-2">
-                    <UFormField
-                      label="Project name"
-                      help="Plain fields, readable borders."
-                    >
-                      <UInput
-                        v-model="heroDemoState.projectName"
-                        spellcheck="false"
-                        class="w-full"
-                      />
-                    </UFormField>
-                    <UFormField
-                      label="Status"
-                      help="Meaning first, color second."
-                    >
-                      <USelect
-                        v-model="heroDemoState.status"
-                        :items="projectStatusItems"
-                        class="w-full"
-                      />
-                    </UFormField>
-                  </div>
+                  <p class="font-mono text-xs text-dimmed">
+                    Nuxt UI -> happydesigns
+                  </p>
                 </div>
 
-                <div class="grid gap-px bg-accented md:grid-cols-[1fr_.8fr]">
+                <div class="grid gap-px bg-accented md:grid-cols-2">
                   <div class="bg-default p-5">
-                    <UAlert
-                      color="primary"
-                      variant="subtle"
-                      icon="i-lucide-sparkles"
-                      title="Structure before decoration"
-                      description="Coral marks emphasis and signature details. Graphite carries strong action. Mono stays reserved for exact content."
-                      :ui="{ root: 'rounded-sm border border-default bg-muted', icon: 'text-primary', title: 'text-highlighted', description: 'text-muted' }"
-                    />
+                    <UTheme
+                      :props="heroDefaultTheme"
+                      :ui="heroDefaultUi"
+                    >
+                      <div class="nuxt-ui-default-demo rounded-lg border border-default bg-muted p-4">
+                        <div class="mb-4 flex items-center justify-between gap-3">
+                          <div>
+                            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
+                              Default
+                            </p>
+                            <p class="mt-0.5 text-base font-semibold text-highlighted">
+                              Nuxt UI
+                            </p>
+                          </div>
+                          <UBadge label="Base" />
+                        </div>
+
+                        <div class="space-y-3">
+                          <UInput
+                            v-model="heroDemoState.projectName"
+                            spellcheck="false"
+                            class="w-full"
+                            aria-label="Default project name"
+                          />
+                          <USelect
+                            v-model="heroDemoState.status"
+                            :items="projectStatusItems"
+                            class="w-full"
+                            aria-label="Default status"
+                          />
+                          <UAlert
+                            icon="i-lucide-circle-check"
+                            title="Ready for review"
+                          />
+                          <UButton
+                            label="Save"
+                            block
+                          />
+                        </div>
+                      </div>
+                    </UTheme>
                   </div>
 
-                  <div class="flex flex-col justify-between bg-default p-5">
-                    <div class="space-y-4">
-                      <HDLogo
-                        variant="symbol"
-                        size="sm"
-                      />
-                      <div>
-                        <p class="font-mono text-xs uppercase tracking-[0.14em] text-dimmed">
-                          Brand system
-                        </p>
-                        <p class="mt-2 text-sm leading-6 text-muted">
-                          Components stay useful first, then carry the identity through restrained details.
-                        </p>
+                  <div class="bg-default p-5">
+                    <UTheme :props="heroBrandTheme">
+                      <div class="rounded-sm border border-default bg-muted p-4">
+                        <div class="mb-4 flex items-center justify-between gap-3">
+                          <div>
+                            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
+                              Brand
+                            </p>
+                            <HDLogo
+                              variant="wordmark"
+                              size="sm"
+                              class="mt-0.5"
+                            />
+                          </div>
+                          <UBadge
+                            label="Theme"
+                            color="neutral"
+                            variant="outline"
+                            :ui="badgeUi"
+                          />
+                        </div>
+                        <div class="space-y-3">
+                          <UInput
+                            v-model="heroDemoState.projectName"
+                            spellcheck="false"
+                            class="w-full"
+                            aria-label="Project name"
+                          />
+                          <USelect
+                            v-model="heroDemoState.status"
+                            :items="projectStatusItems"
+                            class="w-full"
+                            aria-label="Status"
+                          />
+                          <UAlert
+                            icon="i-lucide-circle-check"
+                            title="Ready for review"
+                          />
+                          <UButton
+                            label="Save"
+                            block
+                          />
+                        </div>
                       </div>
-                    </div>
+                    </UTheme>
                   </div>
                 </div>
               </div>
