@@ -429,7 +429,7 @@ const badgeUi = {
                 Start with structure, then add expression.
               </h2>
               <p class="mt-6 max-w-xl text-base leading-8 text-body">
-                Read it as a sequence: foundations first, identity next, application last.
+                Each layer narrows the next: foundations set the constraints, identity makes choices recognizable, and application turns them into reusable UI.
               </p>
             </div>
 
