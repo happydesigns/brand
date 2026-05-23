@@ -426,10 +426,10 @@ const badgeUi = {
                 how to read the guide
               </HDSectionLabel>
               <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-                Start with structure, then add expression.
+                Build from structure toward expression.
               </h2>
               <p class="mt-6 max-w-xl text-base leading-8 text-body">
-                Each layer narrows the next: foundations set the constraints, identity makes choices recognizable, and application turns them into reusable UI.
+                Use color, typography, spacing, and clear hierarchy to create a calm base, then add the happydesigns logo and voice to make the system recognizable.
               </p>
             </div>
 
