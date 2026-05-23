@@ -35,6 +35,7 @@ export type BrandGuideSection = {
 export type BrandGuidePrinciple = {
   title: string
   description: string
+  icon: string
 }
 
 export type BrandGuide = {
@@ -61,19 +62,23 @@ export const brandGuide = {
   principles: [
     {
       title: 'Structure before decoration.',
-      description: 'Layout, spacing, borders, and hierarchy carry the base experience.'
+      description: 'Layout, spacing, borders, and hierarchy carry the base experience.',
+      icon: 'i-lucide-layout-grid'
     },
     {
       title: 'Useful before branded.',
-      description: 'Every interface element needs a clear job, even when it carries brand character.'
+      description: 'Every interface element needs a clear job, even when it carries brand character.',
+      icon: 'i-lucide-circle-check'
     },
     {
       title: 'Meaningful expression.',
-      description: 'Use expressive moments to guide attention or make the system memorable.'
+      description: 'Use expressive moments to guide attention or make the system memorable.',
+      icon: 'i-lucide-sparkles'
     },
     {
       title: 'Durable defaults over one-offs.',
-      description: 'Choose patterns that can repeat across pages, products, and projects.'
+      description: 'Choose patterns that can repeat across pages, products, and projects.',
+      icon: 'i-lucide-repeat-2'
     }
   ],
   sections: [

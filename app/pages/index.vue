@@ -503,7 +503,10 @@ const badgeUi = {
                 :key="principle.title"
                 class="flex gap-3 bg-muted p-5"
               >
-                <span class="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                <UIcon
+                  :name="principle.icon"
+                  class="mt-1 size-4 shrink-0 text-primary"
+                />
                 <div>
                   <p class="text-sm font-semibold leading-6 text-highlighted">
                     {{ principle.title }}
