@@ -96,6 +96,7 @@ const projectStatusItems = [
   'Published'
 ]
 
+const heroRevealFrameHeight = 340
 const heroRevealFrame = ref<HTMLElement | null>(null)
 const heroReveal = ref(56)
 const isHeroRevealDragging = ref(false)
@@ -311,88 +312,97 @@ const badgeUi = {
       >
         <template #default>
           <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-elevated p-8 sm:p-12 lg:min-h-[660px]">
-            <div class="w-full max-w-xl rounded-md border border-default bg-muted shadow-none">
-              <div class="flex items-center justify-between rounded-t-md border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
-                <div class="flex gap-2">
-                  <span class="size-2.5 rounded-full bg-sand-400" />
-                  <span class="size-2.5 rounded-full bg-sand-300" />
-                  <span class="size-2.5 rounded-full bg-sand-300" />
+            <div class="relative w-full max-w-xl rounded-md border border-default bg-muted shadow-none">
+              <div class="overflow-hidden rounded-md">
+                <div class="flex items-center justify-between border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
+                  <div class="flex gap-2">
+                    <span class="size-2.5 rounded-full bg-sand-400" />
+                    <span class="size-2.5 rounded-full bg-sand-300" />
+                    <span class="size-2.5 rounded-full bg-sand-300" />
+                  </div>
+                  <span>{{ guide.brand.packageName }}</span>
+                  <UBadge
+                    label="v0.1"
+                    color="neutral"
+                    variant="outline"
+                    :ui="{ base: 'rounded-sm bg-muted text-highlighted ring-default font-mono' }"
+                  />
                 </div>
-                <span>{{ guide.brand.packageName }}</span>
-                <UBadge
-                  label="v0.1"
-                  color="neutral"
-                  variant="outline"
-                  :ui="{ base: 'rounded-sm bg-muted text-highlighted ring-default font-mono' }"
-                />
+
+                <div class="grid gap-px bg-accented">
+                  <div class="flex items-center justify-between bg-default px-5 py-4">
+                    <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                      Theme layer
+                    </p>
+                    <p class="font-mono text-xs text-dimmed">
+                      Nuxt UI -> happydesigns
+                    </p>
+                  </div>
+
+                  <div
+                    ref="heroRevealFrame"
+                    class="relative bg-default"
+                    :style="{ minHeight: `${heroRevealFrameHeight}px` }"
+                  >
+                    <div class="pointer-events-none absolute inset-0 p-5">
+                      <UTheme :props="heroBrandTheme">
+                        <HeroThemeDemo />
+                      </UTheme>
+                    </div>
+
+                    <div
+                      class="pointer-events-none absolute inset-0 z-10 overflow-hidden p-5"
+                      :style="{ clipPath: `inset(0 ${100 - heroReveal}% 0 0)` }"
+                    >
+                      <UTheme
+                        :props="heroDefaultTheme"
+                        :ui="heroDefaultUi"
+                      >
+                        <div class="nuxt-ui-default-demo h-full">
+                          <HeroThemeDemo />
+                        </div>
+                      </UTheme>
+                    </div>
+
+                    <div
+                      class="pointer-events-none absolute inset-y-0 z-20 w-px bg-inverted"
+                      :style="{ left: `${heroReveal}%` }"
+                    />
+                    <div
+                      class="absolute inset-y-0 -left-5 -right-5 z-30 cursor-ew-resize"
+                      role="slider"
+                      tabindex="0"
+                      aria-label="Reveal the happydesigns theme"
+                      :aria-valuemin="0"
+                      :aria-valuemax="100"
+                      :aria-valuenow="Math.round(heroReveal)"
+                      @pointerdown="startHeroRevealDrag"
+                      @pointermove="moveHeroRevealDrag"
+                      @pointerup="stopHeroRevealDrag"
+                      @pointercancel="stopHeroRevealDrag"
+                      @lostpointercapture="stopHeroRevealDrag"
+                      @keydown="handleHeroRevealKeydown"
+                    >
+                      <span class="sr-only">Reveal the happydesigns theme</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div class="grid gap-px bg-accented">
-                <div class="flex items-center justify-between bg-default px-5 py-4">
-                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                    Theme layer
-                  </p>
-                  <p class="font-mono text-xs text-dimmed">
-                    Nuxt UI -> happydesigns
-                  </p>
-                </div>
-
-                <div
-                  ref="heroRevealFrame"
-                  class="relative min-h-[340px] bg-default"
-                >
-                  <div class="pointer-events-none absolute inset-0 p-5">
-                    <UTheme :props="heroBrandTheme">
-                      <HeroThemeDemo />
-                    </UTheme>
-                  </div>
-
-                  <div
-                    class="pointer-events-none absolute inset-0 z-10 overflow-hidden p-5"
-                    :style="{ clipPath: `inset(0 ${100 - heroReveal}% 0 0)` }"
-                  >
-                    <UTheme
-                      :props="heroDefaultTheme"
-                      :ui="heroDefaultUi"
-                    >
-                      <div class="nuxt-ui-default-demo h-full">
-                        <HeroThemeDemo />
-                      </div>
-                    </UTheme>
-                  </div>
-
-                  <div
-                    class="pointer-events-none absolute inset-y-0 z-20 w-px bg-inverted"
-                    :style="{ left: `${heroReveal}%` }"
-                  />
-                  <div
-                    class="absolute inset-0 z-30 cursor-ew-resize"
-                    role="slider"
-                    tabindex="0"
-                    aria-label="Reveal the happydesigns theme"
-                    :aria-valuemin="0"
-                    :aria-valuemax="100"
-                    :aria-valuenow="Math.round(heroReveal)"
-                    @pointerdown="startHeroRevealDrag"
-                    @pointermove="moveHeroRevealDrag"
-                    @pointerup="stopHeroRevealDrag"
-                    @pointercancel="stopHeroRevealDrag"
-                    @lostpointercapture="stopHeroRevealDrag"
-                    @keydown="handleHeroRevealKeydown"
-                  >
-                    <span class="sr-only">Reveal the happydesigns theme</span>
-                  </div>
-
-                  <div
-                    class="pointer-events-none absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default"
-                    :style="{ left: `${heroReveal}%` }"
-                  >
-                    <UIcon
-                      name="i-lucide-grip-vertical"
-                      class="size-4"
-                    />
-                  </div>
-                </div>
+              <div
+                class="absolute z-40 flex size-9 -translate-x-1/2 translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default"
+                :style="{ left: `${heroReveal}%`, bottom: `${heroRevealFrameHeight / 2}px` }"
+                aria-hidden="true"
+                @pointerdown="startHeroRevealDrag"
+                @pointermove="moveHeroRevealDrag"
+                @pointerup="stopHeroRevealDrag"
+                @pointercancel="stopHeroRevealDrag"
+                @lostpointercapture="stopHeroRevealDrag"
+              >
+                <UIcon
+                  name="i-lucide-grip-vertical"
+                  class="size-4"
+                />
               </div>
             </div>
           </div>
