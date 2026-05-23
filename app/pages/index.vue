@@ -302,8 +302,8 @@ const badgeUi = {
                   </div>
 
                   <div
-                    class="pointer-events-none absolute inset-y-0 z-20 w-px bg-primary"
-                    :style="{ left: `${heroReveal}%` }"
+                    class="pointer-events-none absolute inset-y-0 z-20 w-px bg-inverted"
+                    :style="{ left: `clamp(18px, ${heroReveal}%, calc(100% - 18px))` }"
                   />
                   <label
                     class="absolute inset-0 z-30 cursor-ew-resize"
@@ -321,7 +321,7 @@ const badgeUi = {
                   </label>
 
                   <div
-                    class="pointer-events-none absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-default bg-muted text-primary shadow-sm ring-2 ring-default"
+                    class="pointer-events-none absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default"
                     :style="{ left: `clamp(18px, ${heroReveal}%, calc(100% - 18px))` }"
                   >
                     <UIcon
