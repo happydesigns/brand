@@ -327,7 +327,7 @@ const badgeUi = {
                 />
               </div>
 
-              <div class="grid gap-px rounded-b-md bg-accented">
+              <div class="grid gap-px bg-accented">
                 <div class="flex items-center justify-between bg-default px-5 py-4">
                   <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
                     Theme layer
@@ -339,7 +339,7 @@ const badgeUi = {
 
                 <div
                   ref="heroRevealFrame"
-                  class="relative min-h-[340px] rounded-b-md bg-default"
+                  class="relative min-h-[340px] bg-default"
                 >
                   <div class="pointer-events-none absolute inset-0 p-5">
                     <UTheme :props="heroBrandTheme">
