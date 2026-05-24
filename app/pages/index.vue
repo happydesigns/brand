@@ -421,7 +421,7 @@ const badgeUi = {
           :ui="sectionCardUi"
         >
           <div class="grid lg:grid-cols-[.9fr_1.1fr]">
-            <div class="border-b border-default p-6 sm:p-8 lg:border-b-0">
+            <div class="border-b border-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
               <HDSectionLabel>
                 brand guidance
               </HDSectionLabel>
