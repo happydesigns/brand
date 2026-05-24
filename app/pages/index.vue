@@ -101,9 +101,8 @@ const heroDemoState = reactive({
   status: 'Ready for review'
 })
 
-const heroRevealFrameHeight = 340
 const heroRevealFrame = ref<HTMLElement | null>(null)
-const heroReveal = ref(42)
+const heroReveal = ref(50)
 const isHeroRevealDragging = ref(false)
 
 const clampHeroReveal = (value: number) => Math.min(100, Math.max(0, value))
@@ -306,13 +305,13 @@ const badgeUi = {
         orientation="horizontal"
         class="border-b border-default"
         :ui="{
-          container: 'grid max-w-none gap-0 !px-0 !py-0 sm:!px-0 sm:!py-0 lg:!px-0 lg:grid-cols-[1fr_.95fr] lg:items-stretch',
+          container: 'grid max-w-none !gap-0 !px-0 !py-0 sm:!gap-0 sm:!px-0 sm:!py-0 lg:!px-0 lg:grid-cols-[1fr_.95fr] lg:items-stretch',
           wrapper: 'flex min-h-[580px] flex-col justify-center border-b border-default bg-default px-7 py-16 sm:px-12 sm:py-20 lg:min-h-[660px] lg:border-b-0 lg:border-r',
           headline: 'font-mono text-xs uppercase tracking-[0.14em] text-label before:mr-2 before:inline-block before:size-2 before:rounded-full before:bg-primary',
           title: 'max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-highlighted sm:text-7xl',
           description: 'max-w-2xl text-lg leading-8 text-body',
           links: 'mt-9 flex flex-wrap gap-3',
-          body: 'm-0 flex h-full min-h-[580px] bg-elevated p-0 lg:min-h-[660px]'
+          body: '!mt-0 flex h-full min-h-[580px] bg-elevated p-0 lg:min-h-[660px]'
         }"
       >
         <template #default>
@@ -347,9 +346,8 @@ const badgeUi = {
                   <div
                     ref="heroRevealFrame"
                     class="relative bg-default"
-                    :style="{ minHeight: `${heroRevealFrameHeight}px` }"
                   >
-                    <div class="absolute inset-0 p-5">
+                    <div class="p-5">
                       <UTheme :props="heroBrandTheme">
                         <HeroThemeDemo
                           v-model:project-name="heroDemoState.projectName"
@@ -379,31 +377,31 @@ const badgeUi = {
                       class="pointer-events-none absolute inset-y-0 z-20 w-0 border-l border-dashed border-inverted/60"
                       :style="{ left: `${heroReveal}%` }"
                     />
+
+                    <div
+                      class="absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default focus-visible:outline-none focus-visible:ring-primary"
+                      :style="{ left: `${heroReveal}%` }"
+                      role="slider"
+                      tabindex="0"
+                      aria-label="Reveal the happydesigns theme"
+                      :aria-valuemin="0"
+                      :aria-valuemax="100"
+                      :aria-valuenow="Math.round(heroReveal)"
+                      @pointerdown="startHeroRevealDrag"
+                      @pointermove="moveHeroRevealDrag"
+                      @pointerup="stopHeroRevealDrag"
+                      @pointercancel="stopHeroRevealDrag"
+                      @lostpointercapture="stopHeroRevealDrag"
+                      @keydown="handleHeroRevealKeydown"
+                    >
+                      <span class="sr-only">Reveal the happydesigns theme</span>
+                      <UIcon
+                        name="i-lucide-grip-vertical"
+                        class="size-4"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div
-                class="absolute z-40 flex size-9 -translate-x-1/2 translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default focus-visible:outline-none focus-visible:ring-primary"
-                :style="{ left: `${heroReveal}%`, bottom: `${heroRevealFrameHeight / 2}px` }"
-                role="slider"
-                tabindex="0"
-                aria-label="Reveal the happydesigns theme"
-                :aria-valuemin="0"
-                :aria-valuemax="100"
-                :aria-valuenow="Math.round(heroReveal)"
-                @pointerdown="startHeroRevealDrag"
-                @pointermove="moveHeroRevealDrag"
-                @pointerup="stopHeroRevealDrag"
-                @pointercancel="stopHeroRevealDrag"
-                @lostpointercapture="stopHeroRevealDrag"
-                @keydown="handleHeroRevealKeydown"
-              >
-                <span class="sr-only">Reveal the happydesigns theme</span>
-                <UIcon
-                  name="i-lucide-grip-vertical"
-                  class="size-4"
-                />
               </div>
             </div>
           </div>
