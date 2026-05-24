@@ -103,7 +103,7 @@ const heroDemoState = reactive({
 
 const heroRevealFrameHeight = 340
 const heroRevealFrame = ref<HTMLElement | null>(null)
-const heroReveal = ref(56)
+const heroReveal = ref(42)
 const isHeroRevealDragging = ref(false)
 
 const clampHeroReveal = (value: number) => Math.min(100, Math.max(0, value))
@@ -376,7 +376,7 @@ const badgeUi = {
                     </div>
 
                     <div
-                      class="pointer-events-none absolute inset-y-0 z-20 w-px bg-inverted"
+                      class="pointer-events-none absolute inset-y-0 z-20 w-0 border-l border-dashed border-inverted/60"
                       :style="{ left: `${heroReveal}%` }"
                     />
                   </div>
