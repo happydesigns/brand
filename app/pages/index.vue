@@ -7,19 +7,19 @@ const monoFont = guide.fonts[1]
 
 const guideGroups = [
   {
-    number: '01',
+    value: 'foundations',
     title: 'Foundations',
     description: 'Color and type create the calm base.',
     sections: guide.sections.filter(section => ['colors', 'typography'].includes(section.slug))
   },
   {
-    number: '02',
+    value: 'identity',
     title: 'Identity',
     description: 'Logo choices and voice shape recognition.',
     sections: guide.sections.filter(section => ['logos', 'voice'].includes(section.slug))
   },
   {
-    number: '03',
+    value: 'application',
     title: 'Application',
     description: 'Components carry the system into product UI.',
     sections: guide.sections.filter(section => section.slug === 'components')
@@ -418,7 +418,7 @@ const badgeUi = {
           variant="outline"
           :ui="sectionCardUi"
         >
-          <div class="grid lg:grid-cols-[.9fr_1.1fr]">
+          <div class="grid lg:grid-cols-[.95fr_1.05fr]">
             <div class="border-b border-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
               <HDSectionLabel>
                 brand guidance
@@ -429,53 +429,64 @@ const badgeUi = {
               <p class="mt-6 max-w-xl text-base leading-8 text-body">
                 Use color, typography, spacing, and clear hierarchy to create a calm base, then add the happydesigns identity to make the system recognizable.
               </p>
-            </div>
 
-            <div class="p-6 sm:p-8">
-              <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+              <div class="mt-9 border-t border-default pt-6">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-                  Reading path
+                  Operating principles
                 </p>
-                <p class="font-mono text-xs text-dimmed">
-                  Foundations -> Identity -> Application
-                </p>
-              </div>
-
-              <div class="grid gap-px overflow-hidden rounded-sm bg-accented ring ring-default lg:grid-cols-3">
-                <div
-                  v-for="group in guideGroups"
-                  :key="group.title"
-                  class="bg-muted p-5"
-                >
-                  <div class="flex items-start justify-between gap-3">
-                    <p class="font-mono text-xs text-primary">
-                      {{ group.number }}
-                    </p>
-                    <div class="flex -space-x-1">
-                      <span
-                        v-for="section in group.sections"
-                        :key="section.slug"
-                        class="flex size-7 items-center justify-center rounded-full border border-default bg-muted"
-                      >
-                        <UIcon
-                          :name="section.icon"
-                          class="size-3.5 text-primary"
-                        />
-                      </span>
+                <div class="mt-5 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                  <div
+                    v-for="principle in guide.principles"
+                    :key="principle.title"
+                    class="flex gap-3"
+                  >
+                    <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                      <UIcon
+                        :name="principle.icon"
+                        class="size-4 text-primary"
+                      />
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold leading-6 text-highlighted">
+                        {{ principle.title }}
+                      </p>
+                      <p class="mt-1 text-sm leading-6 text-toned">
+                        {{ principle.description }}
+                      </p>
                     </div>
                   </div>
-                  <p class="mt-8 text-lg font-semibold">
-                    {{ group.title }}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col justify-center p-6 sm:p-8">
+              <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
+                Read the guide
+              </p>
+              <p class="mt-4 max-w-2xl text-base leading-8 text-body">
+                Start with the foundations, define the identity, then apply it through components.
+              </p>
+
+              <UStepper
+                :items="guideGroups"
+                orientation="vertical"
+                disabled
+                class="mt-7"
+                :ui="{
+                  trigger: 'cursor-default border border-default bg-muted text-primary group-data-[state=active]:border-default group-data-[state=active]:bg-muted group-data-[state=active]:text-primary group-data-[state=completed]:border-default group-data-[state=completed]:bg-muted group-data-[state=completed]:text-primary',
+                  separator: 'group-data-[state=completed]:bg-default'
+                }"
+              >
+                <template #description="{ item }">
+                  <p>
+                    {{ item.description }}
                   </p>
-                  <p class="mt-2 min-h-12 text-sm leading-6 text-muted">
-                    {{ group.description }}
-                  </p>
-                  <div class="mt-5 flex flex-wrap gap-2">
+                  <div class="mt-3 flex flex-wrap gap-2">
                     <NuxtLink
-                      v-for="section in group.sections"
+                      v-for="section in item.sections"
                       :key="section.slug"
                       :to="`/docs/${section.slug}`"
-                      class="inline-flex items-center gap-1.5 rounded-sm border border-muted bg-muted px-2 py-1 text-xs font-medium transition hover:bg-elevated"
+                      class="inline-flex items-center gap-1.5 rounded-sm border border-muted bg-muted px-2.5 py-1.5 text-xs font-medium transition hover:bg-elevated"
                     >
                       {{ section.title }}
                       <UIcon
@@ -484,36 +495,8 @@ const badgeUi = {
                       />
                     </NuxtLink>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="border-t border-default bg-muted">
-            <div class="border-b border-default px-6 py-3 sm:px-8">
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-                Operating principles
-              </p>
-            </div>
-            <div class="grid gap-px bg-accented sm:grid-cols-2 lg:grid-cols-4">
-              <div
-                v-for="principle in guide.principles"
-                :key="principle.title"
-                class="flex gap-3 bg-muted p-5"
-              >
-                <UIcon
-                  :name="principle.icon"
-                  class="mt-1 size-4 shrink-0 text-primary"
-                />
-                <div>
-                  <p class="text-sm font-semibold leading-6 text-highlighted">
-                    {{ principle.title }}
-                  </p>
-                  <p class="mt-2 text-sm leading-6 text-toned">
-                    {{ principle.description }}
-                  </p>
-                </div>
-              </div>
+                </template>
+              </UStepper>
             </div>
           </div>
         </UCard>
