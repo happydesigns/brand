@@ -36,7 +36,7 @@ const principleAccentClasses = [
   'text-info'
 ]
 
-const foundationTimelineItems = [
+const foundationRules = [
   {
     title: 'Color roles',
     description: 'Warm white, graphite, sand, coral, and petrol set the base before expression appears.',
@@ -530,23 +530,33 @@ const badgeUi = {
                   Start with color roles and type hierarchy. Coral, petrol, Bricolage, and mono each have a job.
                 </p>
 
-                <UTimeline
-                  :items="foundationTimelineItems"
-                  :default-value="2"
-                  color="primary"
-                  size="sm"
-                  class="mt-10"
-                  :ui="{
-                    root: 'gap-0',
-                    item: 'gap-4',
-                    container: 'pt-1',
-                    indicator: 'bg-default text-primary ring-1 ring-default group-data-[state=completed]:bg-default group-data-[state=completed]:text-primary group-data-[state=active]:bg-inverted group-data-[state=active]:text-inverted',
-                    separator: 'bg-accented group-data-[state=completed]:bg-accented',
-                    title: 'text-sm font-semibold text-highlighted',
-                    description: 'text-sm leading-6 text-muted',
-                    wrapper: 'pb-7'
-                  }"
-                />
+                <div class="mt-10 border-t border-default pt-7">
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
+                    Foundation rules
+                  </p>
+                  <div class="mt-6 grid gap-5">
+                    <div
+                      v-for="rule in foundationRules"
+                      :key="rule.title"
+                      class="flex gap-3"
+                    >
+                      <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                        <UIcon
+                          :name="rule.icon"
+                          class="size-4 text-primary"
+                        />
+                      </span>
+                      <div>
+                        <p class="text-sm font-semibold leading-6 text-highlighted">
+                          {{ rule.title }}
+                        </p>
+                        <p class="mt-1 text-sm leading-6 text-toned">
+                          {{ rule.description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">
