@@ -74,22 +74,31 @@ export default defineAppConfig({
     },
     card: {
       slots: {
-        root: 'rounded-sm bg-warm-white shadow-none transition-colors hover:bg-white dark:bg-transparent dark:hover:bg-white/5',
+        root: 'rounded-sm bg-default shadow-none transition-colors',
         header: 'border-b border-sand-300 dark:border-white/10',
         footer: 'border-t border-sand-300 dark:border-white/10'
       }
     },
     pageCard: {
       slots: {
-        root: 'rounded-sm bg-warm-white shadow-none transition-colors hover:bg-white dark:bg-transparent dark:hover:bg-white/5'
+        root: 'rounded-sm bg-default shadow-none transition-colors'
       },
       variants: {
         variant: {
           outline: {
-            root: 'bg-warm-white ring-sand-300 hover:bg-white dark:bg-transparent dark:ring-white/10 dark:hover:bg-white/5'
+            root: 'bg-default ring-default'
           }
         }
-      }
+      },
+      compoundVariants: [
+        {
+          variant: 'outline',
+          to: true,
+          class: {
+            root: 'hover:bg-muted'
+          }
+        }
+      ]
     },
     pageHero: {
       slots: {
@@ -143,7 +152,7 @@ export default defineAppConfig({
     },
     contentSurround: {
       slots: {
-        link: 'rounded-sm border border-sand-300 bg-warm-white transition-colors hover:bg-white dark:border-white/10 dark:bg-transparent dark:hover:bg-white/5',
+        link: 'rounded-sm border border-default bg-default transition-colors hover:bg-muted',
         linkLeading: 'bg-white ring-sand-300 group-hover:bg-coral-50 group-hover:ring-coral-500/50 dark:bg-white/5 dark:ring-white/10 dark:group-hover:bg-coral-400/10'
       }
     },
