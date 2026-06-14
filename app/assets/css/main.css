@@ -351,11 +351,6 @@ body {
   text-decoration: var(--shiki-dark-text-decoration, var(--shiki-default-text-decoration));
 }
 
-.hd-install-code .language-bash .line:first-child > span:first-child,
-.hd-install-code .shiki span[style*="#FFCB6B"] {
-  color: var(--color-sand-50) !important;
-}
-
 .hd-color-chip {
   display: inline-block;
   width: 2.75rem;

@@ -246,15 +246,17 @@ const ctaLinks = [
   }
 ]
 
+const installPackageCommand = 'pnpm add @happydesigns/brand'
+const installConfigCode = `export default defineNuxtConfig({
+  extends: ['@happydesigns/brand']
+})`
 const installMarkdown = `::code-group
 \`\`\`bash [pnpm]
-pnpm add @happydesigns/brand
+${installPackageCommand}
 \`\`\`
 
 \`\`\`ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  extends: ['@happydesigns/brand']
-})
+${installConfigCode}
 \`\`\`
 ::`
 
@@ -1065,32 +1067,71 @@ const badgeUi = {
         :ui="{ container: 'px-7 py-12 sm:px-12 sm:py-14' }"
       >
         <UPageCTA
-          title="Use the guide in real projects."
-          description="Open the docs for the rules, then install the layer when a Nuxt project should carry the happydesigns system."
+          title="Use the brand system in real projects."
+          description="Read the guide for decisions, then install the Nuxt layer when a project should carry the happydesigns system."
           :links="ctaLinks"
           orientation="horizontal"
           variant="outline"
           :ui="{
-            root: 'rounded-sm bg-muted shadow-none',
-            container: 'gap-8 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[.75fr_1fr]',
+            root: 'overflow-hidden rounded-sm bg-muted shadow-none',
+            container: 'gap-0 px-0 py-0 lg:grid-cols-[.78fr_1fr] lg:items-stretch',
+            wrapper: 'p-6 sm:p-8 lg:p-10',
             title: 'text-3xl font-semibold leading-tight sm:text-4xl',
-            description: 'text-base leading-8 text-body',
-            body: 'mt-0',
+            description: 'max-w-xl text-base leading-8 text-body',
+            body: 'mt-0 h-full',
             links: 'flex flex-wrap gap-3'
           }"
         >
           <template #default>
-            <div id="install-package">
-              <p class="mb-3 font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                Install
-              </p>
+            <div
+              id="install-package"
+              class="h-full border-t border-default bg-default p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
+            >
+              <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                    Nuxt layer
+                  </p>
+                  <h3 class="mt-3 text-xl font-semibold leading-tight text-highlighted">
+                    Install the layer.
+                  </h3>
+                </div>
+                <UBadge
+                  label="@happydesigns/brand"
+                  color="neutral"
+                  variant="outline"
+                  class="font-mono"
+                />
+              </div>
               <div class="dark">
                 <MDC
                   v-if="installContent"
                   :value="installContent"
                   tag="div"
-                  class="hd-install-code not-prose [&_.shiki]:!bg-transparent [&>div]:!border-l-[4px] [&>div]:!border-l-primary [&>div]:!shadow-none [&_pre]:!border-l-0"
+                  class="not-prose [&_.shiki]:!bg-transparent [&_pre]:!border-l-0 [&_pre]:!shadow-none"
                 />
+                <div
+                  v-else
+                  class="not-prose overflow-hidden rounded-md border border-default bg-default"
+                >
+                  <div class="flex items-center gap-2 border-b border-default p-2">
+                    <span class="inline-flex items-center gap-1.5 rounded-md bg-elevated px-2 py-1.5 font-mono text-xs font-medium text-highlighted">
+                      <UIcon
+                        name="i-lucide-package"
+                        class="size-4 text-primary"
+                      />
+                      pnpm
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 font-mono text-xs font-medium text-muted">
+                      <UIcon
+                        name="i-lucide-file-code-2"
+                        class="size-4"
+                      />
+                      nuxt.config.ts
+                    </span>
+                  </div>
+                  <pre class="overflow-x-auto bg-muted px-4 py-4 font-mono text-sm/7 text-highlighted"><code><span class="text-warning">pnpm</span> add <span class="text-success">@happydesigns/brand</span></code></pre>
+                </div>
               </div>
             </div>
           </template>
