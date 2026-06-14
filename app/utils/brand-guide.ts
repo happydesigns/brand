@@ -113,10 +113,10 @@ export const brandGuide = {
       slug: 'components',
       title: 'Components',
       eyebrow: 'interface system',
-      summary: 'UI guidance for carrying the happydesigns brand into product contexts.',
-      description: 'Component guidance connects brand tokens to real interface states. Interfaces should feel useful first, then warm, structured, and technically excellent.',
+      summary: 'Nuxt UI component families, brand behavior, and coverage guidance.',
+      description: 'Component guidance connects brand tokens to real interface states. The section groups Nuxt UI components by use so the happydesigns layer can stay useful, structured, and consistent.',
       icon: 'i-lucide-component',
-      anchors: ['Component philosophy', 'Buttons', 'Forms and focus states', 'Color behavior', 'Do']
+      anchors: ['Component philosophy', 'Component families', 'Theme ownership', 'Coverage model']
     },
     {
       slug: 'voice',

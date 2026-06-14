@@ -38,7 +38,7 @@ The happydesigns guide documents the identity system behind thoughtful design fo
   :::
 
   :::u-page-card{title="Components" icon="i-lucide-component" to="/docs/components"}
-  Interface examples that show the brand in product contexts.
+  Nuxt UI component families, usage guidance, and brand-layer coverage.
   :::
 
   :::u-page-card{title="Voice" icon="i-lucide-message-square-text" to="/docs/voice"}
