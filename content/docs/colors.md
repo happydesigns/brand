@@ -7,6 +7,28 @@ navigation:
 
 Color decisions are documented as named tokens first, then mapped to interface intent. Each family ships with a full shade scale (50–950) so the guide can cover every surface, state, and contrast need without reaching for arbitrary values.
 
+## Start With Roles
+
+Use the palette by job first. The shade tables below are implementation reference; most design decisions should start with these four roles.
+
+::u-page-grid
+  :::u-page-card{title="Base contrast" icon="i-lucide-square"}
+  Warm White, Graphite, and Sand create the calm reading surface: page ground, text, borders, and muted structure.
+  :::
+
+  :::u-page-card{title="Signature emphasis" icon="i-lucide-sparkles"}
+  Coral marks focus, active states, and memorable brand details. It should stay precise so it keeps its value.
+  :::
+
+  :::u-page-card{title="Technical depth" icon="i-lucide-file-code-2"}
+  Petrol supports technical and editorial moments when a view needs more depth than coral can provide.
+  :::
+
+  :::u-page-card{title="System states" icon="i-lucide-circle-check"}
+  Seafoam, Butter, Rose, and Plum carry status, caution, errors, metadata, and quiet information.
+  :::
+::
+
 ## Core pair
 
 Warm White and Graphite form the stable contrast pair. Every other color is layered on top of this foundation.

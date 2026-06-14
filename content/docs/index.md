@@ -1,6 +1,6 @@
 ---
 title: Brand guide
-description: The source of truth for the happydesigns identity, tokens, assets, components, and voice.
+description: The source of truth for the happydesigns identity, interface patterns, and Nuxt UI implementation.
 navigation:
   title: Overview
   icon: i-lucide-book-open
@@ -13,14 +13,20 @@ links:
     to: /docs/components
 ---
 
-The happydesigns guide documents the identity system behind thoughtful design for the modern web. These pages define the foundations, assets, interface patterns, and writing rules that keep the brand warm, precise, and consistent.
+The happydesigns guide documents the system behind thoughtful design for the modern web. These pages define how color, typography, logos, components, and voice work together in real Nuxt UI projects.
+
+Use the guide as a working sequence: set the structural base, choose the identity elements that fit the context, then let components carry those decisions consistently.
 
 ## Principles
 
-- Use visible structure before decoration.
-- Keep the system warm, precise, and restrained.
-- Document decisions as durable tokens and patterns.
-- Prefer durable defaults over one-off brand moments.
+- Structure before decoration.
+- Useful before branded.
+- Meaningful expression.
+- Durable defaults over one-offs.
+
+## What the guide controls
+
+The guide is not a replacement for the Nuxt UI API documentation. It defines the happydesigns layer on top of Nuxt UI: semantic color roles, type behavior, logo usage, component hierarchy, and writing rules.
 
 ## Sections
 

@@ -17,8 +17,8 @@ const hierarchyExamples = [
   },
   {
     label: 'Metadata',
-    class: 'font-mono text-xs text-plum-600 dark:text-plum-200',
-    text: '@happydesigns/brand · v0.1'
+    class: 'font-mono text-xs text-label',
+    text: '@happydesigns/brand - v0.1'
   }
 ]
 
@@ -31,7 +31,7 @@ const monoExamples = [
 </script>
 
 <template>
-  <div class="not-prose my-10 overflow-hidden rounded-sm border border-default bg-sand-300 dark:bg-white/10">
+  <div class="not-prose my-10 overflow-hidden rounded-sm border border-default bg-accented">
     <section class="grid gap-px md:grid-cols-[1.2fr_.8fr]">
       <div class="bg-surface p-6 sm:p-8">
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
@@ -44,20 +44,20 @@ const monoExamples = [
           Warm, modern, and readable enough to carry both brand expression and product documentation.
         </p>
         <div class="mt-8 grid gap-3 font-semibold text-highlighted sm:grid-cols-3">
-          <div class="rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-4 text-4xl leading-none">
+          <div class="rounded-sm border border-default bg-muted p-4 text-4xl leading-none">
             Aa
           </div>
-          <div class="rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-4 text-4xl leading-none">
+          <div class="rounded-sm border border-default bg-muted p-4 text-4xl leading-none">
             123
           </div>
-          <div class="rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-4 text-4xl leading-none">
+          <div class="rounded-sm border border-default bg-muted p-4 text-4xl leading-none">
             web
           </div>
         </div>
       </div>
 
       <div class="bg-surface p-6 sm:p-8">
-        <p class="font-mono text-xs uppercase tracking-[0.14em] text-petrol-700 dark:text-petrol-200">
+        <p class="font-mono text-xs uppercase tracking-[0.14em] text-secondary">
           Technical mono
         </p>
         <h3 class="mt-5 font-mono text-2xl leading-tight text-highlighted">
@@ -102,7 +102,7 @@ const monoExamples = [
           :key="example.label"
           class="grid gap-4 py-6 lg:grid-cols-[10rem_1fr]"
         >
-          <p class="font-mono text-xs uppercase tracking-[0.14em] text-sand-500">
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-dimmed">
             {{ example.label }}
           </p>
           <p :class="example.class">
@@ -130,8 +130,8 @@ const monoExamples = [
           <p class="mt-1 text-sm leading-6 text-body">
             Signature accent for focus, activation, and precise brand punctuation.
           </p>
-          <p class="mt-4 font-mono text-xs text-plum-600 dark:text-plum-200">
-            #F28564 · --ui-primary
+          <p class="mt-4 font-mono text-xs text-label">
+            #F28564 - --ui-primary
           </p>
         </div>
       </div>
@@ -140,8 +140,8 @@ const monoExamples = [
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-label">
           Interface pattern
         </p>
-        <div class="mt-5 rounded-sm border border-default bg-white dark:bg-[#2F2F2E] p-5">
-          <p class="font-mono text-xs text-plum-600 dark:text-plum-200">
+        <div class="mt-5 rounded-sm border border-default bg-muted p-5">
+          <p class="font-mono text-xs text-label">
             project.status
           </p>
           <h3 class="mt-3 text-xl font-semibold leading-tight text-highlighted">

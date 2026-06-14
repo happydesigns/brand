@@ -292,41 +292,29 @@ body {
 
 .prose table {
   overflow: hidden;
-  border: 1px solid var(--color-sand-300);
+  border: 1px solid var(--ui-border);
   border-radius: 4px;
 }
 
 .prose thead {
-  background: var(--color-sand-150);
+  background: var(--ui-bg-elevated);
 }
 
 .prose th,
 .prose td {
-  border-color: var(--color-sand-300) !important;
+  border-color: var(--ui-border) !important;
 }
 
 .prose tbody tr {
-  background: var(--color-warm-white);
+  background: var(--ui-bg);
 }
 
 .prose tbody tr:nth-child(even) {
-  background: var(--color-sand-100);
+  background: var(--ui-bg-muted);
 }
 
 .prose tbody tr:hover {
-  background: #fff;
-}
-
-.dark .prose tbody tr {
-  background: var(--color-graphite);
-}
-
-.dark .prose tbody tr:nth-child(even) {
-  background: var(--color-sand-900);
-}
-
-.dark .prose tbody tr:hover {
-  background: var(--color-sand-800);
+  background: var(--hd-bg-hover);
 }
 
 .shiki {
