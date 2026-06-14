@@ -329,7 +329,7 @@ const badgeUi = {
         <template #default>
           <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-elevated p-8 sm:p-12 lg:min-h-[660px]">
             <div class="relative w-full max-w-xl rounded-md border border-default bg-muted shadow-none">
-              <div class="overflow-hidden rounded-md">
+              <div class="overflow-hidden rounded-t-md">
                 <div class="flex items-center justify-between border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
                   <div class="flex gap-2">
                     <span class="size-2.5 rounded-full bg-sand-400" />
@@ -345,20 +345,22 @@ const badgeUi = {
                   />
                 </div>
 
-                <div class="grid gap-px bg-accented">
-                  <div class="flex items-center justify-between bg-default px-5 py-4">
-                    <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                      Theme layer
-                    </p>
-                    <p class="font-mono text-xs text-dimmed">
-                      Nuxt UI -> happydesigns
-                    </p>
-                  </div>
+                <div class="flex items-center justify-between border-b border-default bg-default px-5 py-4">
+                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                    Theme layer
+                  </p>
+                  <p class="font-mono text-xs text-dimmed">
+                    Nuxt UI -> happydesigns
+                  </p>
+                </div>
+              </div>
 
-                  <div
-                    ref="heroRevealFrame"
-                    class="relative bg-default"
-                  >
+              <div
+                ref="heroRevealFrame"
+                class="relative bg-default"
+              >
+                <div class="overflow-hidden rounded-b-md">
+                  <div class="relative">
                     <div class="p-5">
                       <UTheme :props="heroBrandTheme">
                         <HeroThemeDemo
@@ -389,30 +391,30 @@ const badgeUi = {
                       class="pointer-events-none absolute inset-y-0 z-20 w-0 border-l border-dashed border-inverted/60"
                       :style="{ left: `${heroReveal}%` }"
                     />
-
-                    <div
-                      class="absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default focus-visible:outline-none focus-visible:ring-primary"
-                      :style="{ left: `${heroReveal}%` }"
-                      role="slider"
-                      tabindex="0"
-                      aria-label="Reveal the happydesigns theme"
-                      :aria-valuemin="0"
-                      :aria-valuemax="100"
-                      :aria-valuenow="Math.round(heroReveal)"
-                      @pointerdown="startHeroRevealDrag"
-                      @pointermove="moveHeroRevealDrag"
-                      @pointerup="stopHeroRevealDrag"
-                      @pointercancel="stopHeroRevealDrag"
-                      @lostpointercapture="stopHeroRevealDrag"
-                      @keydown="handleHeroRevealKeydown"
-                    >
-                      <span class="sr-only">Reveal the happydesigns theme</span>
-                      <UIcon
-                        name="i-lucide-grip-vertical"
-                        class="size-4"
-                      />
-                    </div>
                   </div>
+                </div>
+
+                <div
+                  class="absolute top-1/2 z-40 flex size-9 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border border-inverted bg-inverted text-inverted shadow-sm ring-2 ring-default focus-visible:outline-none focus-visible:ring-primary"
+                  :style="{ left: `${heroReveal}%` }"
+                  role="slider"
+                  tabindex="0"
+                  aria-label="Reveal the happydesigns theme"
+                  :aria-valuemin="0"
+                  :aria-valuemax="100"
+                  :aria-valuenow="Math.round(heroReveal)"
+                  @pointerdown="startHeroRevealDrag"
+                  @pointermove="moveHeroRevealDrag"
+                  @pointerup="stopHeroRevealDrag"
+                  @pointercancel="stopHeroRevealDrag"
+                  @lostpointercapture="stopHeroRevealDrag"
+                  @keydown="handleHeroRevealKeydown"
+                >
+                  <span class="sr-only">Reveal the happydesigns theme</span>
+                  <UIcon
+                    name="i-lucide-grip-vertical"
+                    class="size-4"
+                  />
                 </div>
               </div>
             </div>
