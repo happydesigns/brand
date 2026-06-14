@@ -26,6 +26,13 @@ const guideGroups = [
   }
 ]
 
+const principleAccentClasses = [
+  'text-secondary',
+  'text-success',
+  'text-primary',
+  'text-info'
+]
+
 const foundationTimelineItems = [
   {
     title: 'Start with roles',
@@ -429,14 +436,15 @@ const badgeUi = {
               </p>
               <div class="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
                 <div
-                  v-for="principle in guide.principles"
+                  v-for="(principle, index) in guide.principles"
                   :key="principle.title"
                   class="flex gap-3"
                 >
                   <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
                     <UIcon
                       :name="principle.icon"
-                      class="size-4 text-primary"
+                      class="size-4"
+                      :class="principleAccentClasses[index]"
                     />
                   </span>
                   <div>
