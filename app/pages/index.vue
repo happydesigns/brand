@@ -10,18 +10,21 @@ const guideGroups = [
     value: 'foundations',
     title: 'Foundations',
     description: 'Color and type set the calm base.',
+    icon: 'i-lucide-layout-grid',
     sections: guide.sections.filter(section => ['colors', 'typography'].includes(section.slug))
   },
   {
     value: 'identity',
     title: 'Identity',
     description: 'Logo and voice make the system recognizable.',
+    icon: 'i-lucide-badge-check',
     sections: guide.sections.filter(section => ['logos', 'voice'].includes(section.slug))
   },
   {
     value: 'application',
     title: 'Application',
     description: 'Components carry the system into product UI.',
+    icon: 'i-lucide-component',
     sections: guide.sections.filter(section => section.slug === 'components')
   }
 ]
@@ -35,19 +38,19 @@ const principleAccentClasses = [
 
 const foundationTimelineItems = [
   {
-    title: 'Start with roles',
+    title: 'Color roles',
     description: 'Warm white, graphite, sand, coral, and petrol set the base before expression appears.',
-    avatar: { text: '01' }
+    icon: 'i-lucide-palette'
   },
   {
-    title: 'Set hierarchy',
+    title: 'Type hierarchy',
     description: 'Use Bricolage for structure, and mono only for exact or technical content.',
-    avatar: { text: '02' }
+    icon: 'i-lucide-type'
   },
   {
-    title: 'Add restraint',
-    description: 'Coral marks focus and signature details, not every surface.',
-    avatar: { text: '03' }
+    title: 'Restraint',
+    description: 'Use coral for focus and signature details, not every surface.',
+    icon: 'i-lucide-circle-check'
   }
 ]
 
