@@ -1090,10 +1090,10 @@ const badgeUi = {
               <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                    Nuxt layer
+                    Installation
                   </p>
                   <h3 class="mt-3 text-xl font-semibold leading-tight text-highlighted">
-                    Install the layer.
+                    Build with the layer.
                   </h3>
                 </div>
                 <UBadge
