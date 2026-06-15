@@ -232,7 +232,7 @@ Semantic tokens map a named role to the appropriate palette shade for each color
 | `--ui-secondary` | `petrol-500` <span class="hd-color-chip" style="--chip: #2F6374"></span> | `petrol-300` <span class="hd-color-chip" style="--chip: #65A8B1"></span> | Petrol |
 | `--ui-success` | `seafoam-500` <span class="hd-color-chip" style="--chip: #1FA573"></span> | `seafoam-300` <span class="hd-color-chip" style="--chip: #74DBAD"></span> | Seafoam |
 | `--ui-info` | `plum-500` <span class="hd-color-chip" style="--chip: #71617F"></span> | `plum-300` <span class="hd-color-chip" style="--chip: #B1A0BC"></span> | Plum |
-| `--ui-warning` | `butter-300` <span class="hd-color-chip" style="--chip: #E8CE69"></span> | `butter-200` <span class="hd-color-chip" style="--chip: #F7E29A"></span> | Butter |
+| `--ui-warning` | `butter-500` <span class="hd-color-chip" style="--chip: #A77D22"></span> | `butter-200` <span class="hd-color-chip" style="--chip: #F7E29A"></span> | Butter |
 | `--ui-error` | `rose-500` <span class="hd-color-chip" style="--chip: #BD4D49"></span> | `rose-300` <span class="hd-color-chip" style="--chip: #EB918D"></span> | Rose |
 
 ## Tailwind utility classes
