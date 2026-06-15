@@ -7,6 +7,10 @@ type Family =
   | 'data-content'
   | 'overlays'
   | 'layout-page'
+  | 'system-helpers'
+  | 'dashboard'
+  | 'publishing'
+  | 'chat-editor'
 
 const props = defineProps<{
   family: Family
@@ -26,6 +30,22 @@ const checks = ref(['borders', 'focus'])
 const rhythm = ref('balanced')
 const pin = ref(['2', '4', '2', '4'])
 const accent = ref('#F28564')
+const locale = ref('en')
+const chatInput = ref('Review the component hierarchy.')
+const editorContent = ref({
+  type: 'doc',
+  content: [
+    {
+      type: 'heading',
+      attrs: { level: 2 },
+      content: [{ type: 'text', text: 'Component note' }],
+    },
+    {
+      type: 'paragraph',
+      content: [{ type: 'text', text: 'Use visible structure before adding brand expression.' }],
+    },
+  ],
+})
 
 const statusItems = [
   { label: 'Draft', value: 'Draft' },
@@ -159,6 +179,160 @@ const carouselItems = [
   { title: 'Logo', icon: 'i-lucide-badge-check' },
 ]
 
+const footerColumns = [{
+  label: 'Guide',
+  children: [
+    { label: 'Overview', to: '/docs/components' },
+    { label: 'Coverage', to: '/docs/components/coverage' },
+  ],
+}, {
+  label: 'Families',
+  children: [
+    { label: 'Actions', to: '/docs/components/actions' },
+    { label: 'Forms', to: '/docs/components/forms' },
+  ],
+}]
+
+const pageAnchors = [
+  { label: 'Foundation', icon: 'i-lucide-palette', to: '#foundation', active: true },
+  { label: 'Application', icon: 'i-lucide-component', to: '#application' },
+]
+
+const pageLogos = [
+  { src: '/logos/happydesigns-wordmark.svg', alt: 'happydesigns wordmark' },
+  { src: '/logos/happydesigns-symbol.svg', alt: 'happydesigns symbol' },
+]
+
+const locales = [
+  { code: 'en', name: 'English' },
+  { code: 'de', name: 'Deutsch' },
+]
+
+const authFields = [{
+  name: 'email',
+  type: 'email',
+  label: 'Email',
+  placeholder: 'hello@happydesigns.de',
+}, {
+  name: 'password',
+  type: 'password',
+  label: 'Password',
+  placeholder: 'Password',
+}]
+
+const authProviders = [{
+  label: 'GitHub',
+  icon: 'i-simple-icons-github',
+  color: 'neutral' as const,
+  variant: 'outline' as const,
+}]
+
+const scopedThemeProps = {
+  button: {
+    color: 'secondary' as const,
+    variant: 'solid' as const,
+    size: 'sm' as const,
+  },
+  badge: {
+    color: 'secondary' as const,
+    variant: 'subtle' as const,
+  },
+  alert: {
+    color: 'secondary' as const,
+    variant: 'soft' as const,
+  },
+}
+
+const dashboardItems = [
+  { label: 'Projects', icon: 'i-lucide-folder-kanban', active: true },
+  { label: 'Components', icon: 'i-lucide-component' },
+  { label: 'Settings', icon: 'i-lucide-settings' },
+]
+
+const dashboardSearchGroups = [{
+  id: 'dashboard',
+  label: 'Dashboard',
+  items: [
+    { label: 'Open projects', icon: 'i-lucide-folder-kanban' },
+    { label: 'Review components', icon: 'i-lucide-component' },
+  ],
+}]
+
+const blogPosts = [{
+  title: 'Designing durable defaults',
+  description: 'How the brand layer keeps repeated interfaces calm and recognizable.',
+  date: 'Jun 15, 2026',
+  badge: { label: 'Guide', color: 'primary' as const, variant: 'subtle' as const },
+}, {
+  title: 'Structure before decoration',
+  description: 'A practical note on borders, spacing, type, and restrained accent use.',
+  date: 'Jun 12, 2026',
+}]
+
+const changelogVersions = [{
+  title: 'Component coverage expanded',
+  description: 'Dashboard, publishing, chat, and editor families now have brand guidance.',
+  date: 'v0.2',
+  badge: { label: 'Docs', color: 'primary' as const, variant: 'subtle' as const },
+}, {
+  title: 'Logo system refined',
+  description: 'Logo forms and lockups use clearer role-based guidance.',
+  date: 'v0.1',
+}]
+
+const pricingPlans = [{
+  title: 'Guide',
+  price: 'Docs',
+  description: 'Brand decisions for readers and maintainers.',
+  features: ['Color roles', 'Logo guidance', 'Component rules'],
+  button: { label: 'Open docs', to: '/docs' },
+}, {
+  title: 'Layer',
+  price: 'Nuxt',
+  description: 'Reusable Nuxt UI theme behavior for projects.',
+  features: ['App config', 'Semantic tokens', 'Component defaults'],
+  button: { label: 'Install layer', to: '/docs/components' },
+  highlight: true,
+}]
+
+const pricingTablePlans = [{
+  title: 'Guide',
+  description: 'Documentation',
+}, {
+  title: 'Layer',
+  description: 'Implementation',
+  highlight: true,
+}]
+
+const pricingTableSections = [{
+  title: 'Coverage',
+  features: [{
+    title: 'Brand decisions',
+    tiers: { Guide: true, Layer: true },
+  }, {
+    title: 'Nuxt UI defaults',
+    tiers: { Guide: false, Layer: true },
+  }],
+}]
+
+const chatMessages = [
+  {
+    id: 'user-1',
+    role: 'user',
+    parts: [{ type: 'text', text: 'Can this interface stay useful before branded?' }],
+  },
+  {
+    id: 'assistant-1',
+    role: 'assistant',
+    parts: [{ type: 'text', text: 'Yes. Start with clear structure, then add recognition through restrained details.' }],
+  },
+]
+
+const editorMentions = [
+  { label: 'Brand owner', avatar: { text: 'BO' } },
+  { label: 'Design review', avatar: { icon: 'i-lucide-palette' } },
+]
+
 const familyLabels: Record<Family, string> = {
   actions: 'Actions',
   forms: 'Forms',
@@ -167,6 +341,10 @@ const familyLabels: Record<Family, string> = {
   'data-content': 'Data and content',
   overlays: 'Overlays',
   'layout-page': 'Layout and page',
+  'system-helpers': 'System helpers',
+  dashboard: 'Dashboard',
+  publishing: 'Publishing',
+  'chat-editor': 'Chat and editor',
 }
 </script>
 
@@ -1069,6 +1247,70 @@ const familyLabels: Record<Family, string> = {
         </UCard>
 
         <UCard variant="outline">
+          <div class="space-y-5">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Page structure
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Page headers, bodies, columns, lists, logos, and anchors create reusable content structure before custom layouts are needed.
+              </p>
+            </div>
+
+            <div class="overflow-hidden rounded-sm border border-default bg-default">
+              <UPageHeader
+                headline="Component docs"
+                title="Structured pages stay easier to scan."
+                description="Use page-level primitives for repeated docs and landing surfaces."
+                :links="[{ label: 'Open docs', to: '/docs/components', color: 'neutral', variant: 'outline', trailingIcon: 'i-lucide-arrow-right' }]"
+                :ui="{
+                  root: 'px-4 py-4',
+                  title: 'text-2xl',
+                  description: 'text-sm'
+                }"
+              />
+
+              <UPageBody class="px-4 pb-4">
+                <UPageColumns class="gap-4">
+                  <UCard variant="outline">
+                    <UPageList divide>
+                      <UPageCard
+                        title="Foundations"
+                        description="Color and type create the calm base."
+                        icon="i-lucide-palette"
+                        variant="ghost"
+                      />
+                      <UPageCard
+                        title="Application"
+                        description="Components carry the system into interfaces."
+                        icon="i-lucide-component"
+                        variant="ghost"
+                      />
+                    </UPageList>
+                  </UCard>
+
+                  <UCard variant="outline">
+                    <UPageAnchors :links="pageAnchors" />
+                  </UCard>
+                </UPageColumns>
+              </UPageBody>
+            </div>
+
+            <UPageLogos title="Logo forms in one system" :logos="pageLogos" :marquee="false" />
+
+            <div class="rounded-sm border border-default p-4">
+              <UFooterColumns :columns="footerColumns">
+                <template #left>
+                  <p class="text-sm text-muted">
+                    Footer columns keep repeated links grouped and quiet.
+                  </p>
+                </template>
+              </UFooterColumns>
+            </div>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -1119,6 +1361,453 @@ const familyLabels: Record<Family, string> = {
                 </template>
               </UFooter>
             </div>
+          </div>
+        </UCard>
+      </div>
+
+      <div
+        v-else-if="props.family === 'system-helpers'"
+        class="grid gap-4 md:grid-cols-2"
+      >
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Mode and locale controls
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                System helpers should stay compact and use the same form hierarchy as other controls.
+              </p>
+            </div>
+
+            <div class="grid gap-3 sm:grid-cols-2">
+              <UFormField label="Color mode" help="Use the Nuxt UI mode select when the choice matters.">
+                <UColorModeSelect />
+              </UFormField>
+
+              <UFormField label="Locale" help="Use locale controls only when the product supports several languages.">
+                <ULocaleSelect v-model="locale" :locales="locales" />
+              </UFormField>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <UColorModeButton />
+              <UColorModeSwitch />
+              <UColorModeAvatar
+                light="/logos/happydesigns-symbol.svg"
+                dark="/logos/happydesigns-symbol.svg"
+                alt="happydesigns symbol"
+              />
+            </div>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Mode-aware asset
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Image swaps belong to assets that need contrast changes. The full symbol keeps its original colors.
+              </p>
+            </div>
+
+            <div class="flex min-h-32 items-center justify-center rounded-sm border border-default bg-muted p-6">
+              <UColorModeImage
+                light="/logos/happydesigns-wordmark.svg"
+                dark="/logos/happydesigns-wordmark-inverse.svg"
+                alt="happydesigns wordmark"
+                class="h-8 w-auto"
+              />
+            </div>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Auth surface
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Auth forms should feel trustworthy and direct before any brand expression appears.
+              </p>
+            </div>
+
+            <ClientOnly>
+              <UAuthForm
+                title="Access project"
+                description="Use clear labels and one primary path."
+                icon="i-lucide-lock-keyhole"
+                :fields="authFields"
+                :providers="authProviders"
+                :submit="{ label: 'Continue' }"
+              />
+              <template #fallback>
+                <div class="rounded-sm border border-default bg-muted p-4 text-sm text-muted">
+                  Auth form preview
+                </div>
+              </template>
+            </ClientOnly>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Error page
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Error surfaces should explain what happened and offer a grounded recovery path.
+              </p>
+            </div>
+
+            <div class="overflow-hidden rounded-sm border border-default">
+              <UError
+                :error="{ statusCode: 404, statusMessage: 'Pattern not found', message: 'The requested component pattern is not available yet.' }"
+                :links="[{ label: 'Open components', to: '/docs/components', color: 'neutral', variant: 'outline' }]"
+                :ui="{ root: 'min-h-0 px-4 py-8', statusMessage: 'text-2xl', message: 'text-sm' }"
+              />
+            </div>
+          </div>
+        </UCard>
+
+        <UCard variant="outline" class="md:col-span-2">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Scoped theme
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Theme scopes should prove component behavior without creating a parallel design system.
+              </p>
+            </div>
+
+            <UTheme :props="scopedThemeProps">
+              <div class="grid gap-3 rounded-sm border border-default bg-muted p-4 sm:grid-cols-[1fr_auto] sm:items-center">
+                <UAlert
+                  icon="i-lucide-info"
+                  title="Theme scope"
+                  description="Use scoped theme props for controlled demos and reusable layer previews."
+                />
+                <div class="flex flex-wrap items-center gap-2">
+                  <UBadge label="Scoped" />
+                  <UButton label="Preview" icon="i-lucide-eye" />
+                </div>
+              </div>
+            </UTheme>
+          </div>
+        </UCard>
+      </div>
+
+      <div
+        v-else-if="props.family === 'dashboard'"
+        class="grid gap-4"
+      >
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Application shell
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Dashboard primitives should keep dense product work structured, resizable, and calm.
+              </p>
+            </div>
+
+            <UDashboardGroup
+              :storage="false"
+              class="!relative !inset-auto h-[30rem] overflow-hidden rounded-sm border border-default bg-default"
+            >
+              <UDashboardSidebar
+                collapsible
+                resizable
+                class="!flex min-h-full w-56 min-w-56"
+                :ui="{ header: 'h-12 px-3', body: 'p-3', footer: 'p-3' }"
+              >
+                <template #header="{ collapsed }">
+                  <UDashboardSearchButton :collapsed="collapsed" />
+                </template>
+
+                <template #default="{ collapsed }">
+                  <UNavigationMenu
+                    :collapsed="collapsed"
+                    :items="dashboardItems"
+                    orientation="vertical"
+                  />
+                </template>
+
+                <template #footer="{ collapsed }">
+                  <UButton
+                    :label="collapsed ? undefined : 'Brand layer'"
+                    :icon="collapsed ? 'i-lucide-component' : undefined"
+                    color="neutral"
+                    variant="ghost"
+                    block
+                  />
+                </template>
+              </UDashboardSidebar>
+
+              <UDashboardResizeHandle />
+
+              <UDashboardPanel :ui="{ root: 'min-h-full', body: 'p-4' }">
+                <template #header>
+                  <UDashboardNavbar title="Projects">
+                    <template #leading>
+                      <UDashboardSidebarCollapse />
+                      <UDashboardSidebarToggle />
+                    </template>
+
+                    <template #right>
+                      <UButton label="New" icon="i-lucide-plus" size="sm" />
+                    </template>
+                  </UDashboardNavbar>
+
+                  <UDashboardToolbar>
+                    <template #left>
+                      <UInput icon="i-lucide-search" placeholder="Search projects" />
+                    </template>
+                    <template #right>
+                      <USelect v-model="status" :items="statusItems" size="sm" />
+                    </template>
+                  </UDashboardToolbar>
+                </template>
+
+                <template #body>
+                  <UScrollArea class="h-full">
+                    <div class="grid gap-3 sm:grid-cols-2">
+                      <UCard variant="outline">
+                        <p class="font-semibold text-highlighted">
+                          Website refresh
+                        </p>
+                        <p class="mt-1 text-sm text-muted">
+                          Review component behavior before release.
+                        </p>
+                      </UCard>
+                      <UCard variant="outline">
+                        <p class="font-semibold text-highlighted">
+                          Brand guide
+                        </p>
+                        <p class="mt-1 text-sm text-muted">
+                          Keep docs and theme decisions aligned.
+                        </p>
+                      </UCard>
+                    </div>
+                  </UScrollArea>
+                </template>
+              </UDashboardPanel>
+
+              <UDashboardSearch :groups="dashboardSearchGroups" />
+            </UDashboardGroup>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Standalone sidebar
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Sidebar and scroll areas support product navigation outside the full dashboard shell.
+              </p>
+            </div>
+
+            <div class="relative h-72 overflow-hidden rounded-sm border border-default bg-default">
+              <USidebar
+                collapsible="none"
+                title="Components"
+                description="Brand layer"
+                class="!relative h-full"
+                :ui="{ container: '!absolute !inset-y-0 !left-0 !flex !h-full', gap: 'hidden' }"
+              >
+                <UScrollArea class="h-full">
+                  <UNavigationMenu
+                    :items="navigationItems"
+                    orientation="vertical"
+                  />
+                </UScrollArea>
+              </USidebar>
+            </div>
+          </div>
+        </UCard>
+      </div>
+
+      <div
+        v-else-if="props.family === 'publishing'"
+        class="grid gap-4"
+      >
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Editorial listings
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Blog and changelog components should keep publishing surfaces structured and understated.
+              </p>
+            </div>
+
+            <UBlogPosts orientation="horizontal">
+              <UBlogPost
+                v-for="post in blogPosts"
+                :key="post.title"
+                v-bind="post"
+                variant="outline"
+              />
+            </UBlogPosts>
+
+            <USeparator label="Changelog" />
+
+            <UChangelogVersions>
+              <UChangelogVersion
+                v-for="version in changelogVersions"
+                :key="version.title"
+                v-bind="version"
+              />
+            </UChangelogVersions>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Pricing and package choices
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Pricing components can describe packages, layers, and implementation tiers without becoming decorative.
+              </p>
+            </div>
+
+            <UPricingPlans :plans="pricingPlans" />
+
+            <UPricingTable
+              :plans="pricingTablePlans"
+              :sections="pricingTableSections"
+            />
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Quiet movement
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Marquee motion is reserved for controlled proof or partner rows, not normal navigation.
+              </p>
+            </div>
+
+            <UMarquee pause-on-hover overlay class="rounded-sm border border-default bg-muted p-4">
+              <UBadge color="neutral" variant="outline">
+                Nuxt UI layer
+              </UBadge>
+              <UBadge color="primary" variant="subtle">
+                Coral focus
+              </UBadge>
+              <UBadge color="secondary" variant="subtle">
+                Technical clarity
+              </UBadge>
+              <UBadge color="success" variant="subtle">
+                Durable defaults
+              </UBadge>
+            </UMarquee>
+          </div>
+        </UCard>
+      </div>
+
+      <div
+        v-else-if="props.family === 'chat-editor'"
+        class="grid gap-4"
+      >
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Chat surface
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Chat components should support readable streams, visible tools, and compact prompts.
+              </p>
+            </div>
+
+            <UChatPalette class="rounded-sm border border-default bg-default p-3">
+              <UChatMessages
+                :messages="chatMessages"
+                status="ready"
+                compact
+                class="max-h-72"
+              >
+                <template #content="{ message }">
+                  <p class="text-sm text-default">
+                    {{ message.parts?.[0]?.text }}
+                  </p>
+                </template>
+
+                <template #indicator>
+                  <UChatShimmer />
+                </template>
+              </UChatMessages>
+
+              <template #prompt>
+                <UChatPrompt v-model="chatInput" placeholder="Ask about component behavior">
+                  <UChatPromptSubmit status="ready" />
+                </UChatPrompt>
+              </template>
+            </UChatPalette>
+
+            <div class="grid gap-3 md:grid-cols-2">
+              <UChatReasoning
+                text="Check structure, then color usage, then interaction copy."
+                variant="card"
+              />
+              <UChatTool
+                text="contrast_check"
+                variant="card"
+              />
+            </div>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Editor surface
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Editor components should keep authoring tools useful without letting controls dominate the writing.
+              </p>
+            </div>
+
+            <ClientOnly>
+              <UEditor
+                v-slot="{ editor }"
+                v-model="editorContent"
+                class="min-h-64 rounded-sm border border-default bg-default p-4"
+              >
+                <UEditorToolbar :editor="editor" />
+                <UEditorSuggestionMenu :editor="editor" />
+                <UEditorMentionMenu :editor="editor" :items="editorMentions" />
+                <UEditorEmojiMenu :editor="editor" />
+                <UEditorDragHandle :editor="editor" />
+              </UEditor>
+
+              <template #fallback>
+                <div class="min-h-64 rounded-sm border border-default bg-muted p-4">
+                  <p class="font-semibold text-highlighted">
+                    Component note
+                  </p>
+                  <p class="mt-2 text-sm text-muted">
+                    Editor preview loads on the client.
+                  </p>
+                </div>
+              </template>
+            </ClientOnly>
           </div>
         </UCard>
       </div>
