@@ -6,6 +6,7 @@ type Family =
   | 'navigation'
   | 'data-content'
   | 'overlays'
+  | 'layout-page'
 
 const props = defineProps<{
   family: Family
@@ -15,6 +16,7 @@ const projectName = ref('Website refresh')
 const status = ref('Ready for review')
 const note = ref('Use coral for focus and active details.')
 const enabled = ref(true)
+const includeNotes = ref(true)
 const progress = ref(72)
 const budget = ref(4)
 const packageName = ref('@happydesigns/brand')
@@ -164,6 +166,7 @@ const familyLabels: Record<Family, string> = {
   navigation: 'Navigation',
   'data-content': 'Data and content',
   overlays: 'Overlays',
+  'layout-page': 'Layout and page',
 }
 </script>
 
@@ -257,6 +260,13 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <div class="flex flex-wrap items-center gap-2">
+              <UChip text="3" color="primary">
+                <UButton
+                  label="Review queue"
+                  variant="outline"
+                  color="neutral"
+                />
+              </UChip>
               <UBadge color="primary" variant="subtle">
                 Active
               </UBadge>
@@ -360,6 +370,10 @@ const familyLabels: Record<Family, string> = {
 
             <UFormField label="Checks" help="Grouped choices make validation intent visible.">
               <UCheckboxGroup v-model="checks" :items="checkItems" />
+            </UFormField>
+
+            <UFormField label="Include notes" help="Single checkboxes work for one optional choice.">
+              <UCheckbox v-model="includeNotes" label="Attach implementation notes" />
             </UFormField>
 
             <UFormField label="Rhythm" help="Radio choices work when one option must win.">
@@ -939,6 +953,172 @@ const familyLabels: Record<Family, string> = {
                 Right-click area
               </div>
             </UContextMenu>
+          </div>
+        </UCard>
+      </div>
+
+      <div
+        v-else-if="props.family === 'layout-page'"
+        class="grid gap-4"
+      >
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Page hero
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Heroes carry the main promise and one or two grounded next actions.
+              </p>
+            </div>
+
+            <div class="overflow-hidden rounded-sm border border-default">
+              <UPageHero
+                title="Thoughtful design for the modern web."
+                description="A compact page opening with visible structure and restrained action hierarchy."
+                :links="[
+                  { label: 'Open guide', to: '/docs', icon: 'i-lucide-arrow-right', trailing: true },
+                  { label: 'View components', to: '/docs/components', color: 'neutral', variant: 'outline', icon: 'i-lucide-component' }
+                ]"
+                :ui="{
+                  container: 'py-8 sm:py-8 lg:py-8 gap-5',
+                  title: 'text-3xl sm:text-4xl max-w-2xl',
+                  description: 'text-base max-w-2xl'
+                }"
+              />
+            </div>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Section grid
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Page sections, grids, features, and cards organize related decisions without making every panel decorative.
+              </p>
+            </div>
+
+            <UPageSection
+              title="Component families"
+              description="Use page structure to group related component guidance."
+              :ui="{
+                container: 'py-0 sm:py-0 lg:py-0 gap-5',
+                title: 'text-2xl',
+                description: 'text-base'
+              }"
+            >
+              <UPageGrid class="mt-4 sm:grid-cols-2">
+                <UPageCard
+                  title="Feedback"
+                  description="State messages stay close to the task."
+                  icon="i-lucide-circle-check"
+                  to="/docs/components/feedback"
+                />
+                <UPageCard
+                  title="Overlays"
+                  description="Contextual surfaces support the current flow."
+                  icon="i-lucide-panel-top-open"
+                  to="/docs/components/overlays"
+                />
+              </UPageGrid>
+
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <UPageFeature
+                  title="Actions"
+                  description="Buttons and compact metadata."
+                  icon="i-lucide-mouse-pointer-click"
+                />
+                <UPageFeature
+                  title="Forms"
+                  description="Labels, fields, and validation."
+                  icon="i-lucide-text-cursor-input"
+                />
+              </div>
+            </UPageSection>
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                CTA and related links
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                CTAs should connect the guide to implementation without adding a new visual language.
+              </p>
+            </div>
+
+            <UPageCTA
+              title="Use the brand system in real projects."
+              description="Open the docs, then install the Nuxt layer when a project should carry the happydesigns system."
+              :links="[{ label: 'Open docs', to: '/docs', icon: 'i-lucide-arrow-right', trailing: true }]"
+              :ui="{ container: 'py-6 sm:py-6 lg:py-6' }"
+            />
+
+            <UPageLinks
+              :links="[
+                { label: 'Colors', description: 'Palette roles and token behavior.', icon: 'i-lucide-palette', to: '/docs/colors' },
+                { label: 'Typography', description: 'Hierarchy and technical type.', icon: 'i-lucide-type', to: '/docs/typography' }
+              ]"
+            />
+          </div>
+        </UCard>
+
+        <UCard variant="outline">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-base font-semibold text-highlighted">
+                Shell frame
+              </h3>
+              <p class="mt-1 text-sm text-muted">
+                Header, main, container, and footer primitives should keep the application frame quiet and reusable.
+              </p>
+            </div>
+
+            <div class="overflow-hidden rounded-sm border border-default">
+              <UHeader
+                :ui="{
+                  root: 'relative border-b border-default bg-default',
+                  container: 'h-14'
+                }"
+              >
+                <template #left>
+                  <span class="font-semibold text-highlighted">happydesigns.</span>
+                </template>
+                <template #right>
+                  <UButton label="Docs" variant="ghost" color="neutral" size="sm" />
+                </template>
+              </UHeader>
+
+              <UMain class="bg-muted p-4">
+                <UContainer class="rounded-sm border border-default bg-default py-4">
+                  <p class="text-sm font-medium text-highlighted">
+                    Shared page frame
+                  </p>
+                  <p class="mt-1 text-sm text-muted">
+                    Content stays inside the same container rhythm.
+                  </p>
+                </UContainer>
+              </UMain>
+
+              <UFooter
+                :ui="{
+                  root: 'border-t border-default bg-default',
+                  container: 'py-4 lg:py-4'
+                }"
+              >
+                <template #left>
+                  <span class="text-sm text-muted">Copyright happydesigns</span>
+                </template>
+                <template #right>
+                  <span class="font-mono text-xs text-label">Nuxt UI layer</span>
+                </template>
+              </UFooter>
+            </div>
           </div>
         </UCard>
       </div>
