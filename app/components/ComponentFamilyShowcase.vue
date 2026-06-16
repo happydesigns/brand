@@ -295,10 +295,12 @@ const pricingPlans = [{
   highlight: true,
 }]
 
-const pricingTablePlans = [{
+const pricingTableTiers = [{
+  id: 'guide',
   title: 'Guide',
   description: 'Documentation',
 }, {
+  id: 'layer',
   title: 'Layer',
   description: 'Implementation',
   highlight: true,
@@ -308,10 +310,10 @@ const pricingTableSections = [{
   title: 'Coverage',
   features: [{
     title: 'Brand decisions',
-    tiers: { Guide: true, Layer: true },
+    tiers: { guide: true, layer: true },
   }, {
     title: 'Nuxt UI defaults',
-    tiers: { Guide: false, Layer: true },
+    tiers: { guide: false, layer: true },
   }],
 }]
 
@@ -1518,7 +1520,7 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UDashboardGroup
-              :storage="false"
+              storage="brand-dashboard-preview"
               class="!relative !inset-auto h-[30rem] overflow-hidden rounded-sm border border-default bg-default"
             >
               <UDashboardSidebar
@@ -1685,7 +1687,7 @@ const familyLabels: Record<Family, string> = {
             <UPricingPlans :plans="pricingPlans" />
 
             <UPricingTable
-              :plans="pricingTablePlans"
+              :tiers="pricingTableTiers"
               :sections="pricingTableSections"
             />
           </div>
