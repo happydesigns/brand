@@ -1075,7 +1075,7 @@ const badgeUi = {
           orientation="horizontal"
           variant="outline"
           :ui="{
-            root: 'overflow-hidden rounded-sm bg-muted shadow-none',
+            root: 'overflow-hidden rounded-sm bg-default shadow-none',
             container: 'gap-0 px-0 py-0 lg:grid-cols-[.78fr_1fr] lg:items-stretch',
             wrapper: 'p-6 sm:p-8 lg:p-10',
             title: 'text-3xl font-semibold leading-tight sm:text-4xl',
@@ -1087,52 +1087,55 @@ const badgeUi = {
           <template #default>
             <div
               id="install-package"
-              class="h-full border-t border-default bg-default p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
+              class="h-full border-t border-default bg-elevated p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
             >
-              <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-                <div>
-                  <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                    Installation
-                  </p>
-                  <h3 class="mt-3 text-xl font-semibold leading-tight text-highlighted">
-                    Build with the layer.
-                  </h3>
-                </div>
-                <UBadge
-                  label="@happydesigns/brand"
-                  color="neutral"
-                  variant="outline"
-                  class="font-mono"
-                />
-              </div>
-              <div class="dark">
-                <MDC
-                  v-if="installContent"
-                  :value="installContent"
-                  tag="div"
-                  class="not-prose [&_.shiki]:!bg-transparent [&_pre]:!border-l-0 [&_pre]:!shadow-none"
-                />
-                <div
-                  v-else
-                  class="not-prose overflow-hidden rounded-md border border-default bg-default"
-                >
-                  <div class="flex items-center gap-2 border-b border-default p-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-md bg-elevated px-2 py-1.5 font-mono text-xs font-medium text-highlighted">
-                      <UIcon
-                        name="i-lucide-package"
-                        class="size-4 text-primary"
-                      />
-                      pnpm
-                    </span>
-                    <span class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 font-mono text-xs font-medium text-muted">
-                      <UIcon
-                        name="i-lucide-file-code-2"
-                        class="size-4"
-                      />
-                      nuxt.config.ts
-                    </span>
+              <div class="flex h-full flex-col justify-center rounded-sm border border-default bg-default p-5 sm:p-6">
+                <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                      Installation
+                    </p>
+                    <h3 class="mt-3 text-xl font-semibold leading-tight text-highlighted">
+                      Build with the layer.
+                    </h3>
                   </div>
-                  <pre class="overflow-x-auto bg-muted px-4 py-4 font-mono text-sm/7 text-highlighted"><code><span class="text-warning">pnpm</span> add <span class="text-success">@happydesigns/brand</span></code></pre>
+                  <UBadge
+                    color="neutral"
+                    variant="subtle"
+                    class="font-mono"
+                  >
+                    <span class="text-muted">@happydesigns</span><span class="text-highlighted">/brand</span>
+                  </UBadge>
+                </div>
+                <div class="dark">
+                  <MDC
+                    v-if="installContent"
+                    :value="installContent"
+                    tag="div"
+                    class="not-prose [&_.shiki]:!bg-transparent [&_pre]:!border-l-0 [&_pre]:!shadow-none"
+                  />
+                  <div
+                    v-else
+                    class="not-prose overflow-hidden rounded-md border border-default bg-default"
+                  >
+                    <div class="flex items-center gap-2 border-b border-default p-2">
+                      <span class="inline-flex items-center gap-1.5 rounded-md bg-elevated px-2 py-1.5 font-mono text-xs font-medium text-highlighted">
+                        <UIcon
+                          name="i-lucide-package"
+                          class="size-4 text-primary"
+                        />
+                        pnpm
+                      </span>
+                      <span class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 font-mono text-xs font-medium text-muted">
+                        <UIcon
+                          name="i-lucide-file-code-2"
+                          class="size-4"
+                        />
+                        nuxt.config.ts
+                      </span>
+                    </div>
+                    <pre class="overflow-x-auto bg-muted px-4 py-4 font-mono text-sm/7 text-highlighted"><code><span class="text-warning">pnpm</span> add <span class="text-success">@happydesigns/brand</span></code></pre>
+                  </div>
                 </div>
               </div>
             </div>
