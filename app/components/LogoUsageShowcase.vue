@@ -54,17 +54,23 @@ const logoForms: LogoItem[] = [
     title: 'Symbol',
     variants: [
       {
-        label: 'Original colors',
+        label: 'Light surface',
         asset: symbol,
         assetName: 'happydesigns-symbol.svg',
-        surface: 'object',
-        previewClass: 'size-36'
+        surface: 'light',
+        previewClass: 'size-32 sm:size-36'
+      },
+      {
+        label: 'Dark surface',
+        asset: symbol,
+        assetName: 'happydesigns-symbol.svg',
+        surface: 'dark',
+        previewClass: 'size-32 sm:size-36'
       }
     ],
     role: 'Primary symbol',
     usage: 'Favicon, app icon, social/GitHub avatar, square contexts, brand moments',
-    note: 'The full symbol keeps its original colors across light and dark mode. It behaves like a branded object, not a UI surface.',
-    previewLayout: 'grid-cols-1'
+    note: 'The full symbol keeps its original colors across light and dark mode. It behaves like a branded object, not a UI surface.'
   },
   {
     title: 'Reduced symbol',
@@ -196,6 +202,10 @@ function previewSurfaceClass(surface: LogoItem['variants'][number]['surface']) {
 function previewLabelClass(surface: LogoItem['variants'][number]['surface']) {
   return surface === 'dark' ? 'text-sand-300' : 'text-sand-600'
 }
+
+function assetNames(item: LogoItem) {
+  return [...new Set(item.variants.map(variant => variant.assetName))]
+}
 </script>
 
 <template>
@@ -226,7 +236,7 @@ function previewLabelClass(surface: LogoItem['variants'][number]['surface']) {
           >
             <figure
               v-for="variant in item.variants"
-              :key="variant.assetName"
+              :key="`${variant.label}-${variant.assetName}`"
               class="grid min-h-44 place-items-center rounded-sm border p-5 sm:p-7"
               :class="previewSurfaceClass(variant.surface)"
             >
@@ -275,8 +285,8 @@ function previewLabelClass(surface: LogoItem['variants'][number]['surface']) {
                 </dt>
                 <dd class="space-y-1.5 pt-1">
                   <div
-                    v-for="variant in item.variants"
-                    :key="variant.assetName"
+                    v-for="assetName in assetNames(item)"
+                    :key="assetName"
                     class="flex items-center gap-2 rounded-sm border border-muted bg-inset px-2.5 py-1.5 text-xs text-muted"
                   >
                     <UIcon
@@ -284,7 +294,7 @@ function previewLabelClass(surface: LogoItem['variants'][number]['surface']) {
                       class="size-3.5 shrink-0 text-dimmed"
                     />
                     <span class="min-w-0 break-all font-mono leading-5">
-                      {{ variant.assetName }}
+                      {{ assetName }}
                     </span>
                   </div>
                 </dd>
