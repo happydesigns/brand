@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import symbolLogo from '~/assets/logos/happydesigns-symbol.svg'
+import wordmarkLogo from '~/assets/logos/happydesigns-wordmark.svg'
+import wordmarkLogoInverse from '~/assets/logos/happydesigns-wordmark-inverse.svg'
+
 type Family =
   | 'actions'
   | 'forms'
@@ -16,6 +20,8 @@ const props = defineProps<{
   family: Family
 }>()
 
+const toast = useToast()
+
 const projectName = ref('Website refresh')
 const status = ref('Ready for review')
 const note = ref('Use coral for focus and active details.')
@@ -31,6 +37,7 @@ const rhythm = ref('balanced')
 const pin = ref(['2', '4', '2', '4'])
 const accent = ref('#F28564')
 const locale = ref('en')
+const dashboardCollapsed = ref(false)
 const chatInput = ref('Review the component hierarchy.')
 const editorContent = ref({
   type: 'doc',
@@ -46,6 +53,16 @@ const editorContent = ref({
     },
   ],
 })
+
+function showToastPreview() {
+  toast.add({
+    id: 'component-feedback-preview',
+    title: 'Changes saved',
+    description: 'The pattern is ready for review.',
+    icon: 'i-lucide-circle-check',
+    color: 'success',
+  })
+}
 
 const statusItems = [
   { label: 'Draft', value: 'Draft' },
@@ -199,8 +216,8 @@ const pageAnchors = [
 ]
 
 const pageLogos = [
-  { src: '/logos/happydesigns-wordmark.svg', alt: 'happydesigns wordmark' },
-  { src: '/logos/happydesigns-symbol.svg', alt: 'happydesigns symbol' },
+  { src: wordmarkLogo, alt: 'happydesigns wordmark' },
+  { src: symbolLogo, alt: 'happydesigns symbol' },
 ]
 
 const locales = [
@@ -365,12 +382,12 @@ const familyLabels: Record<Family, string> = {
       </UBadge>
     </div>
 
-    <div class="p-4 sm:p-5">
+    <div class="p-4 sm:p-6">
       <div
         v-if="props.family === 'actions'"
-        class="grid gap-4 md:grid-cols-2"
+        class="grid gap-4 sm:gap-5 md:grid-cols-2"
       >
-        <UCard variant="outline">
+        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -385,7 +402,7 @@ const familyLabels: Record<Family, string> = {
           </div>
         </UCard>
 
-        <UCard variant="outline">
+        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -410,7 +427,7 @@ const familyLabels: Record<Family, string> = {
           </div>
         </UCard>
 
-        <UCard variant="outline">
+        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -428,7 +445,7 @@ const familyLabels: Record<Family, string> = {
           </div>
         </UCard>
 
-        <UCard variant="outline">
+        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -439,25 +456,36 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <div class="flex flex-wrap items-center gap-2">
-              <UChip text="3" color="primary">
-                <UButton
-                  label="Review queue"
-                  variant="outline"
-                  color="neutral"
-                />
-              </UChip>
-              <UBadge color="primary" variant="subtle">
-                Active
-              </UBadge>
-              <UBadge color="secondary" variant="outline">
-                Editorial
-              </UBadge>
-              <UBadge color="success" variant="subtle">
-                Ready
-              </UBadge>
-              <UKbd>Ctrl</UKbd>
-              <UKbd>K</UKbd>
+            <div class="space-y-3">
+              <div>
+                <UChip
+                  text="3"
+                  color="primary"
+                  size="3xl"
+                  position="top-right"
+                  :ui="{ base: 'h-5 min-w-5 px-1 text-[11px] leading-none' }"
+                >
+                  <UButton
+                    label="Review queue"
+                    variant="outline"
+                    color="neutral"
+                  />
+                </UChip>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <UBadge color="primary" variant="subtle">
+                  Active
+                </UBadge>
+                <UBadge color="secondary" variant="outline">
+                  Editorial
+                </UBadge>
+                <UBadge color="success" variant="subtle">
+                  Ready
+                </UBadge>
+                <UKbd>Ctrl</UKbd>
+                <UKbd>K</UKbd>
+              </div>
             </div>
           </div>
         </UCard>
@@ -525,9 +553,9 @@ const familyLabels: Record<Family, string> = {
             </UFormField>
 
             <UFormField label="Review date" help="Group date and time when they describe one decision.">
-              <UFieldGroup>
-                <UInputDate icon="i-lucide-calendar" />
-                <UInputTime />
+              <UFieldGroup orientation="vertical" class="w-full max-w-xs">
+                <UInputDate icon="i-lucide-calendar" size="sm" class="w-full" />
+                <UInputTime size="sm" class="w-full" />
               </UFieldGroup>
             </UFormField>
 
@@ -726,11 +754,12 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UToast
-            title="Changes saved"
-            description="The pattern is ready for review."
+          <UButton
+            label="Show toast"
             icon="i-lucide-circle-check"
-            color="success"
+            color="neutral"
+            variant="outline"
+            @click="showToastPreview"
           />
           </div>
         </UCard>
@@ -758,7 +787,7 @@ const familyLabels: Record<Family, string> = {
 
       <div
         v-else-if="props.family === 'navigation'"
-        class="grid gap-4 md:grid-cols-2"
+        class="grid gap-4"
       >
         <UCard variant="outline">
           <div class="space-y-4">
@@ -802,7 +831,7 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UStepper :items="stepperItems" disabled />
+            <UStepper :items="stepperItems" disabled orientation="vertical" />
           </div>
         </UCard>
 
@@ -941,7 +970,7 @@ const familyLabels: Record<Family, string> = {
               <UUser
                 name="Brand layer"
                 description="Nuxt UI components styled for happydesigns."
-                :avatar="{ src: '/logos/happydesigns-symbol.svg', alt: 'happydesigns symbol' }"
+                :avatar="{ src: symbolLogo, alt: 'happydesigns symbol' }"
               />
               <UAvatarGroup>
                 <UAvatar text="HD" />
@@ -1161,9 +1190,10 @@ const familyLabels: Record<Family, string> = {
                   { label: 'View components', to: '/docs/components', color: 'neutral', variant: 'outline', icon: 'i-lucide-component' }
                 ]"
                 :ui="{
-                  container: 'py-8 sm:py-8 lg:py-8 gap-5',
-                  title: 'text-3xl sm:text-4xl max-w-2xl',
-                  description: 'text-base max-w-2xl'
+                  container: 'py-6 sm:py-8 lg:py-8 gap-4',
+                  title: 'text-2xl sm:text-3xl max-w-2xl',
+                  description: 'text-sm sm:text-base max-w-2xl',
+                  footer: 'mt-6'
                 }"
               />
             </div>
@@ -1183,14 +1213,15 @@ const familyLabels: Record<Family, string> = {
 
             <UPageSection
               title="Component families"
-              description="Use page structure to group related component guidance."
+              description="Use page structure to group related component guidance without inventing one-off layouts."
               :ui="{
-                container: 'py-0 sm:py-0 lg:py-0 gap-5',
-                title: 'text-2xl',
-                description: 'text-base'
+                container: 'py-0 sm:py-0 lg:py-0 gap-4',
+                title: 'text-2xl sm:text-3xl',
+                description: 'text-sm sm:text-base',
+                body: 'mt-5'
               }"
             >
-              <UPageGrid class="mt-4 sm:grid-cols-2">
+              <UPageGrid class="sm:grid-cols-2">
                 <UPageCard
                   title="Feedback"
                   description="State messages stay close to the task."
@@ -1205,7 +1236,7 @@ const familyLabels: Record<Family, string> = {
                 />
               </UPageGrid>
 
-              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <UPageFeature
                   title="Actions"
                   description="Buttons and compact metadata."
@@ -1266,15 +1297,16 @@ const familyLabels: Record<Family, string> = {
                 description="Use page-level primitives for repeated docs and landing surfaces."
                 :links="[{ label: 'Open docs', to: '/docs/components', color: 'neutral', variant: 'outline', trailingIcon: 'i-lucide-arrow-right' }]"
                 :ui="{
-                  root: 'px-4 py-4',
-                  title: 'text-2xl',
-                  description: 'text-sm'
+                  root: '!mx-0 !px-4 py-5 sm:!px-5 sm:py-6 lg:!mx-0 lg:!px-5',
+                  wrapper: '!flex-col !items-start gap-3',
+                  title: 'text-2xl sm:text-3xl',
+                  description: 'text-sm sm:text-base max-w-xl'
                 }"
               />
 
-              <UPageBody class="px-4 pb-4">
-                <UPageColumns class="gap-4">
-                  <UCard variant="outline">
+              <UPageBody class="px-4 pb-4 sm:px-5 sm:pb-5">
+                <UPageColumns class="!columns-1 gap-4 space-y-4">
+                  <UCard variant="outline" :ui="{ body: 'p-3 sm:p-4' }">
                     <UPageList divide>
                       <UPageCard
                         title="Foundations"
@@ -1291,7 +1323,7 @@ const familyLabels: Record<Family, string> = {
                     </UPageList>
                   </UCard>
 
-                  <UCard variant="outline">
+                  <UCard variant="outline" :ui="{ body: 'p-3 sm:p-4' }">
                     <UPageAnchors :links="pageAnchors" />
                   </UCard>
                 </UPageColumns>
@@ -1396,8 +1428,8 @@ const familyLabels: Record<Family, string> = {
               <UColorModeButton />
               <UColorModeSwitch />
               <UColorModeAvatar
-                light="/logos/happydesigns-symbol.svg"
-                dark="/logos/happydesigns-symbol.svg"
+                :light="symbolLogo"
+                :dark="symbolLogo"
                 alt="happydesigns symbol"
               />
             </div>
@@ -1415,13 +1447,21 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <div class="flex min-h-32 items-center justify-center rounded-sm border border-default bg-muted p-6">
-              <UColorModeImage
-                light="/logos/happydesigns-wordmark.svg"
-                dark="/logos/happydesigns-wordmark-inverse.svg"
-                alt="happydesigns wordmark"
-                class="h-8 w-auto"
-              />
+            <div class="grid gap-3 rounded-sm border border-default bg-muted p-4 sm:grid-cols-2">
+              <div class="flex min-h-28 items-center justify-center rounded-sm border border-sand-300 bg-warm-white p-5">
+                <img
+                  :src="wordmarkLogo"
+                  alt="happydesigns wordmark"
+                  class="h-7 w-auto"
+                >
+              </div>
+              <div class="flex min-h-28 items-center justify-center rounded-sm border border-white/10 bg-graphite p-5">
+                <img
+                  :src="wordmarkLogoInverse"
+                  alt="happydesigns inverse wordmark"
+                  class="h-7 w-auto"
+                >
+              </div>
             </div>
           </div>
         </UCard>
@@ -1520,22 +1560,68 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UDashboardGroup
-              storage="brand-dashboard-preview"
+              :storage="false"
               class="!relative !inset-auto h-[30rem] overflow-hidden rounded-sm border border-default bg-default"
             >
               <UDashboardSidebar
+                v-model:collapsed="dashboardCollapsed"
                 collapsible
                 resizable
-                class="!flex min-h-full w-56 min-w-56"
-                :ui="{ header: 'h-12 px-3', body: 'p-3', footer: 'p-3' }"
+                :default-size="34"
+                :min-size="24"
+                :max-size="42"
+                :collapsed-size="10"
+                :class="[
+                  '!flex min-h-full transition-[width,min-width] duration-200',
+                  dashboardCollapsed ? '!w-16 !min-w-16' : '!w-56 !min-w-56',
+                ]"
+                :ui="{
+                  header: dashboardCollapsed ? 'flex h-12 items-center justify-center px-0' : 'h-12 px-3',
+                  body: dashboardCollapsed ? 'flex flex-col items-center justify-start p-2' : 'p-3',
+                  footer: dashboardCollapsed ? 'flex justify-center p-2' : 'p-3',
+                }"
               >
                 <template #header="{ collapsed }">
-                  <UDashboardSearchButton :collapsed="collapsed" />
+                  <UButton
+                    v-if="dashboardCollapsed || collapsed"
+                    aria-label="Search"
+                    icon="i-lucide-search"
+                    color="neutral"
+                    variant="ghost"
+                    size="xs"
+                    square
+                    class="mx-auto !size-8 justify-center !p-0"
+                  />
+                  <UDashboardSearchButton
+                    v-else
+                    :collapsed="dashboardCollapsed || collapsed"
+                  />
                 </template>
 
                 <template #default="{ collapsed }">
+                  <div
+                    v-if="dashboardCollapsed || collapsed"
+                    class="flex w-full flex-col items-center gap-1.5"
+                  >
+                    <UTooltip
+                      v-for="item in dashboardItems"
+                      :key="item.label"
+                      :text="item.label"
+                    >
+                      <UButton
+                        :aria-label="item.label"
+                        :icon="item.icon"
+                        :color="item.active ? 'primary' : 'neutral'"
+                        :variant="item.active ? 'soft' : 'ghost'"
+                        size="xs"
+                        square
+                        class="!size-8 justify-center !p-0"
+                      />
+                    </UTooltip>
+                  </div>
                   <UNavigationMenu
-                    :collapsed="collapsed"
+                    v-else
+                    :collapsed="dashboardCollapsed || collapsed"
                     :items="dashboardItems"
                     orientation="vertical"
                   />
@@ -1543,11 +1629,15 @@ const familyLabels: Record<Family, string> = {
 
                 <template #footer="{ collapsed }">
                   <UButton
-                    :label="collapsed ? undefined : 'Brand layer'"
-                    :icon="collapsed ? 'i-lucide-component' : undefined"
+                    :aria-label="dashboardCollapsed || collapsed ? 'Brand layer' : undefined"
+                    :label="dashboardCollapsed || collapsed ? undefined : 'Brand layer'"
+                    :icon="dashboardCollapsed || collapsed ? 'i-lucide-component' : undefined"
                     color="neutral"
                     variant="ghost"
-                    block
+                    :size="dashboardCollapsed || collapsed ? 'xs' : 'sm'"
+                    :square="dashboardCollapsed || collapsed"
+                    :block="!(dashboardCollapsed || collapsed)"
+                    :class="dashboardCollapsed || collapsed ? 'mx-auto !size-8 justify-center !p-0' : undefined"
                   />
                 </template>
               </UDashboardSidebar>
@@ -1558,7 +1648,15 @@ const familyLabels: Record<Family, string> = {
                 <template #header>
                   <UDashboardNavbar title="Projects">
                     <template #leading>
-                      <UDashboardSidebarCollapse />
+                      <UButton
+                        :aria-label="dashboardCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+                        :icon="dashboardCollapsed ? 'i-lucide-panel-left-open' : 'i-lucide-panel-left-close'"
+                        color="neutral"
+                        variant="ghost"
+                        size="sm"
+                        square
+                        @click="dashboardCollapsed = !dashboardCollapsed"
+                      />
                       <UDashboardSidebarToggle />
                     </template>
 
@@ -1578,26 +1676,36 @@ const familyLabels: Record<Family, string> = {
                 </template>
 
                 <template #body>
-                  <UScrollArea class="h-full">
-                    <div class="grid gap-3 sm:grid-cols-2">
-                      <UCard variant="outline">
+                  <div class="grid gap-3">
+                    <UCard
+                      variant="outline"
+                      class="overflow-hidden"
+                      :ui="{ body: 'p-4' }"
+                    >
+                      <div class="space-y-1">
                         <p class="font-semibold text-highlighted">
                           Website refresh
                         </p>
-                        <p class="mt-1 text-sm text-muted">
+                        <p class="text-sm text-muted">
                           Review component behavior before release.
                         </p>
-                      </UCard>
-                      <UCard variant="outline">
+                      </div>
+                    </UCard>
+                    <UCard
+                      variant="outline"
+                      class="overflow-hidden"
+                      :ui="{ body: 'p-4' }"
+                    >
+                      <div class="space-y-1">
                         <p class="font-semibold text-highlighted">
                           Brand guide
                         </p>
-                        <p class="mt-1 text-sm text-muted">
+                        <p class="text-sm text-muted">
                           Keep docs and theme decisions aligned.
                         </p>
-                      </UCard>
-                    </div>
-                  </UScrollArea>
+                      </div>
+                    </UCard>
+                  </div>
                 </template>
               </UDashboardPanel>
 
@@ -1661,15 +1769,45 @@ const familyLabels: Record<Family, string> = {
               />
             </UBlogPosts>
 
-            <USeparator label="Changelog" />
+            <div class="grid gap-3 border-t border-default pt-4 sm:pt-5">
+              <div class="flex items-center justify-between gap-3">
+                <p class="font-mono text-xs tracking-[0.16em] text-label uppercase">
+                  Changelog
+                </p>
+                <UBadge color="neutral" variant="outline">
+                  Versions
+                </UBadge>
+              </div>
 
-            <UChangelogVersions>
-              <UChangelogVersion
-                v-for="version in changelogVersions"
-                :key="version.title"
-                v-bind="version"
-              />
-            </UChangelogVersions>
+              <div class="grid gap-3">
+                <UCard
+                  v-for="version in changelogVersions"
+                  :key="version.title"
+                  variant="outline"
+                  :ui="{ body: 'p-4 sm:p-5' }"
+                >
+                  <div class="space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                      <UBadge color="neutral" variant="outline">
+                        {{ version.date }}
+                      </UBadge>
+                      <UBadge
+                        v-if="version.badge"
+                        v-bind="version.badge"
+                      />
+                    </div>
+                    <div>
+                      <h4 class="text-base font-semibold text-highlighted">
+                        {{ version.title }}
+                      </h4>
+                      <p class="mt-1 text-sm text-muted">
+                        {{ version.description }}
+                      </p>
+                    </div>
+                  </div>
+                </UCard>
+              </div>
+            </div>
           </div>
         </UCard>
 
@@ -1737,12 +1875,15 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UChatPalette class="rounded-sm border border-default bg-default p-3">
+            <UChatPalette
+              class="overflow-hidden rounded-sm border border-default bg-default"
+              :ui="{ content: 'p-3 sm:p-4', prompt: 'border-t border-default bg-muted p-3' }"
+            >
               <UChatMessages
                 :messages="chatMessages"
                 status="ready"
                 compact
-                class="max-h-72"
+                class="min-h-40 max-h-64 rounded-sm bg-muted px-2 py-2"
               >
                 <template #content="{ message }">
                   <p class="text-sm text-default">
@@ -1756,21 +1897,35 @@ const familyLabels: Record<Family, string> = {
               </UChatMessages>
 
               <template #prompt>
-                <UChatPrompt v-model="chatInput" placeholder="Ask about component behavior">
-                  <UChatPromptSubmit status="ready" />
+                <UChatPrompt
+                  v-model="chatInput"
+                  placeholder="Ask about component behavior"
+                  class="bg-default"
+                  :ui="{ root: 'rounded-sm', footer: 'justify-end pt-1' }"
+                >
+                  <template #footer>
+                    <UChatPromptSubmit status="ready" />
+                  </template>
                 </UChatPrompt>
               </template>
             </UChatPalette>
 
             <div class="grid gap-3 md:grid-cols-2">
-              <UChatReasoning
-                text="Check structure, then color usage, then interaction copy."
-                variant="card"
-              />
-              <UChatTool
-                text="contrast_check"
-                variant="card"
-              />
+              <div class="rounded-sm border border-default bg-muted p-3">
+                <UChatReasoning
+                  text="Check structure, then color usage, then interaction copy."
+                  variant="soft"
+                  :ui="{ root: 'bg-transparent p-0' }"
+                />
+              </div>
+              <div class="rounded-sm border border-default bg-muted p-3">
+                <UChatTool
+                  text="Checked contrast"
+                  icon="i-lucide-contrast"
+                  variant="soft"
+                  :ui="{ root: 'bg-transparent p-0' }"
+                />
+              </div>
             </div>
           </div>
         </UCard>
