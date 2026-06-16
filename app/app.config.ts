@@ -146,7 +146,7 @@ export default defineAppConfig({
     },
     pageHeader: {
       slots: {
-        root: 'relative border-b border-default py-8 lg:-mx-10 lg:px-10',
+        root: 'relative border-b border-default py-8',
         description: 'text-body'
       }
     },
