@@ -66,38 +66,25 @@ const voiceUseRules = [
   'Calm recovery'
 ]
 
-const interfaceTabs = [
+const interfacePrinciples = [
   {
-    label: 'Forms',
-    value: 'forms',
-    icon: 'i-lucide-text-cursor-input'
+    title: 'Useful before branded.',
+    description: 'Every control needs a clear job before it carries brand character.',
+    icon: 'i-lucide-circle-check',
+    accent: 'text-success'
   },
   {
-    label: 'Controls',
-    value: 'controls',
-    icon: 'i-lucide-sliders-horizontal'
+    title: 'State close to the task.',
+    description: 'Feedback appears beside the action it confirms or repairs.',
+    icon: 'i-lucide-message-square-warning',
+    accent: 'text-primary'
+  },
+  {
+    title: 'Reusable by default.',
+    description: 'Patterns should work across project views without local restyling.',
+    icon: 'i-lucide-repeat-2',
+    accent: 'text-info'
   }
-]
-
-const interfaceChecklist = [
-  {
-    label: 'Visible borders',
-    description: 'Make structure readable before color.'
-  },
-  {
-    label: 'Coral focus',
-    description: 'Use coral for focus and active details.'
-  },
-  {
-    label: 'Compact labels',
-    description: 'Keep metadata precise.'
-  }
-]
-
-const interfaceSelectItems = [
-  'Ready for review',
-  'Needs content',
-  'Published'
 ]
 
 const projectStatusItems = [
@@ -250,26 +237,6 @@ const installPackageCommand = 'pnpm add @happydesigns/brand'
 const installConfigCode = `export default defineNuxtConfig({
   extends: ['@happydesigns/brand']
 })`
-const installMarkdown = `::code-group
-\`\`\`bash [pnpm]
-${installPackageCommand}
-\`\`\`
-
-\`\`\`ts [nuxt.config.ts]
-${installConfigCode}
-\`\`\`
-::`
-
-const { data: installContent } = await useAsyncData('home-install-code', async () => {
-  const { parseMarkdown } = await import('@nuxtjs/mdc/runtime')
-  const { default: highlighter } = await import('#mdc-highlighter')
-
-  return parseMarkdown(installMarkdown, {
-    highlight: {
-      highlighter
-    }
-  })
-})
 
 const sectionCardUi = {
   root: 'overflow-hidden rounded-sm !bg-default shadow-none transition-none hover:!bg-default',
@@ -832,8 +799,8 @@ const badgeUi = {
             variant="outline"
             :ui="sectionCardUi"
           >
-            <div class="grid lg:grid-cols-[.42fr_.58fr]">
-              <div class="border-b border-default bg-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
+            <div class="grid items-stretch lg:grid-cols-[.42fr_.58fr]">
+              <div class="flex flex-col border-b border-default bg-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
                   03 / Interface application
                 </p>
@@ -845,128 +812,89 @@ const badgeUi = {
                 </p>
 
                 <div class="mt-10 grid gap-3">
-                  <UAlert
-                    title="Calm feedback"
-                    description="State changes explain what happened and what to do next."
-                    icon="i-lucide-circle-check"
-                    color="success"
-                    variant="subtle"
-                  />
-
                   <UCard
+                    v-for="item in interfacePrinciples"
+                    :key="item.title"
                     variant="outline"
                     :ui="staticCardUi"
                   >
-                    <div class="flex items-start justify-between gap-4">
+                    <div class="flex gap-4">
+                      <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-default bg-default">
+                        <UIcon
+                          :name="item.icon"
+                          class="size-4"
+                          :class="item.accent"
+                        />
+                      </span>
                       <div>
-                        <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                          Review state
+                        <p class="text-sm font-semibold">
+                          {{ item.title }}
                         </p>
-                        <p class="mt-1 text-base font-semibold">
-                          Component rules
+                        <p class="mt-1 text-sm leading-6 text-muted">
+                          {{ item.description }}
                         </p>
                       </div>
-                      <UBadge
-                        label="72%"
-                        color="neutral"
-                        variant="outline"
-                        :ui="badgeUi"
-                      />
-                    </div>
-
-                    <UProgress
-                      :model-value="72"
-                      color="primary"
-                      size="sm"
-                      class="mt-5"
-                    />
-
-                    <div class="mt-5 grid gap-3">
-                      <UCheckbox
-                        v-for="item in interfaceChecklist"
-                        :key="item.label"
-                        :label="item.label"
-                        :description="item.description"
-                        :default-value="true"
-                        color="primary"
-                      />
                     </div>
                   </UCard>
                 </div>
+
+                <UCard
+                  variant="outline"
+                  class="mt-4"
+                  :ui="staticCardUi"
+                >
+                  <div class="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                        Pattern health
+                      </p>
+                      <p class="mt-1 text-base font-semibold">
+                        Ready for repeated use
+                      </p>
+                    </div>
+                    <UBadge
+                      label="72%"
+                      color="neutral"
+                      variant="outline"
+                      :ui="badgeUi"
+                    />
+                  </div>
+
+                  <UProgress
+                    :model-value="72"
+                    color="primary"
+                    size="sm"
+                    class="mt-5"
+                  />
+
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <UBadge
+                      label="Visible borders"
+                      color="neutral"
+                      variant="outline"
+                      :ui="badgeUi"
+                    />
+                    <UBadge
+                      label="Clear states"
+                      color="neutral"
+                      variant="outline"
+                      :ui="badgeUi"
+                    />
+                    <UBadge
+                      label="Compact labels"
+                      color="neutral"
+                      variant="outline"
+                      :ui="badgeUi"
+                    />
+                  </div>
+                </UCard>
               </div>
 
               <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">
                 <div class="bg-default p-6 sm:p-8">
-                  <HDSectionLabel>
-                    component behavior
-                  </HDSectionLabel>
-                  <UTabs
-                    :items="interfaceTabs"
-                    color="primary"
-                    variant="link"
-                    default-value="forms"
-                    :unmount-on-hide="false"
-                    class="mt-7"
-                    :ui="{ content: 'mt-6' }"
-                  >
-                    <template #content="{ item }">
-                      <div
-                        v-if="item.value === 'forms'"
-                        class="grid gap-4 rounded-sm bg-muted p-4 ring ring-default sm:grid-cols-2"
-                      >
-                        <UFormField
-                          name="projectName"
-                          label="Project name"
-                          help="Plain, bordered, easy to scan."
-                        >
-                          <UInput
-                            v-model="interfaceFormState.projectName"
-                            spellcheck="false"
-                            class="w-full"
-                          />
-                        </UFormField>
-                        <UFormField
-                          name="status"
-                          label="Status"
-                          help="Semantic labels before color."
-                        >
-                          <USelect
-                            v-model="interfaceFormState.status"
-                            :items="interfaceSelectItems"
-                            class="w-full"
-                          />
-                        </UFormField>
-                      </div>
-
-                      <div
-                        v-else
-                        class="grid gap-4 rounded-sm bg-muted p-4 ring ring-default"
-                      >
-                        <USwitch
-                          label="Use visible structure"
-                          description="A compact decision, not a brand moment."
-                          :default-value="true"
-                          color="primary"
-                        />
-                        <UFormField
-                          label="Accent strength"
-                          help="Coral appears in controlled active states."
-                        >
-                          <USlider
-                            :default-value="62"
-                            color="primary"
-                            size="sm"
-                          />
-                        </UFormField>
-                      </div>
-                    </template>
-                  </UTabs>
-                </div>
-
-                <div class="bg-default p-6 sm:p-8">
                   <div class="flex flex-wrap items-center justify-between gap-3">
                     <HDSectionLabel>
-                      interface use
+                      component behavior
                     </HDSectionLabel>
                     <UButton
                       to="/docs/components"
@@ -976,6 +904,107 @@ const badgeUi = {
                       color="neutral"
                       variant="outline"
                       size="sm"
+                    />
+                  </div>
+
+                  <div class="mt-7 grid gap-4 xl:grid-cols-3">
+                    <UCard
+                      variant="outline"
+                      :ui="staticCardUi"
+                    >
+                      <UIcon
+                        name="i-lucide-sparkles"
+                        class="size-5 text-primary"
+                      />
+                      <p class="mt-5 text-base font-semibold">
+                        Action hierarchy
+                      </p>
+                      <p class="mt-2 text-sm leading-6 text-muted">
+                        One filled action carries the strongest decision.
+                      </p>
+                      <div class="mt-5 flex flex-wrap gap-2">
+                        <UButton
+                          label="Save"
+                          icon="i-lucide-save"
+                          type="button"
+                          size="sm"
+                        />
+                        <UButton
+                          label="Review"
+                          color="neutral"
+                          variant="outline"
+                          type="button"
+                          size="sm"
+                        />
+                      </div>
+                    </UCard>
+
+                    <UCard
+                      variant="outline"
+                      :ui="staticCardUi"
+                    >
+                      <UIcon
+                        name="i-lucide-circle-check"
+                        class="size-5 text-success"
+                      />
+                      <p class="mt-5 text-base font-semibold">
+                        Feedback state
+                      </p>
+                      <p class="mt-2 text-sm leading-6 text-muted">
+                        State messages stay close to the task they confirm.
+                      </p>
+                      <UAlert
+                        title="Ready for review"
+                        icon="i-lucide-circle-check"
+                        color="success"
+                        variant="subtle"
+                        class="mt-5"
+                      />
+                    </UCard>
+
+                    <UCard
+                      variant="outline"
+                      :ui="staticCardUi"
+                    >
+                      <UIcon
+                        name="i-lucide-tags"
+                        class="size-5 text-secondary"
+                      />
+                      <p class="mt-5 text-base font-semibold">
+                        Metadata
+                      </p>
+                      <p class="mt-2 text-sm leading-6 text-muted">
+                        Status, shortcuts, and exact names support scanning.
+                      </p>
+                      <div class="mt-5 flex flex-wrap items-center gap-2">
+                        <UBadge
+                          label="Ready"
+                          color="success"
+                          variant="subtle"
+                        />
+                        <UBadge
+                          label="Internal"
+                          color="neutral"
+                          variant="outline"
+                          :ui="badgeUi"
+                        />
+                        <UKbd>Ctrl</UKbd>
+                        <UKbd>K</UKbd>
+                      </div>
+                    </UCard>
+                  </div>
+                </div>
+
+                <div class="bg-default p-6 sm:p-8">
+                  <div class="flex flex-wrap items-center justify-between gap-3">
+                    <HDSectionLabel>
+                      interface use
+                    </HDSectionLabel>
+                    <UBadge
+                      label="Project view"
+                      color="neutral"
+                      variant="outline"
+                      :ui="badgeUi"
                     />
                   </div>
                   <UCard
@@ -1087,9 +1116,9 @@ const badgeUi = {
           <template #default>
             <div
               id="install-package"
-              class="h-full border-t border-default bg-elevated p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
+              class="h-full border-t border-default bg-default p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
             >
-              <div class="flex h-full flex-col justify-center rounded-sm border border-default bg-default p-5 sm:p-6">
+              <div class="flex h-full flex-col justify-center rounded-sm border border-default bg-elevated p-5 sm:p-6">
                 <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
@@ -1100,42 +1129,35 @@ const badgeUi = {
                     </h3>
                   </div>
                   <UBadge
+                    label="@happydesigns/brand"
                     color="neutral"
                     variant="subtle"
                     class="font-mono"
-                  >
-                    <span class="text-muted">@happydesigns</span><span class="text-highlighted">/brand</span>
-                  </UBadge>
+                  />
                 </div>
                 <div class="dark">
-                  <MDC
-                    v-if="installContent"
-                    :value="installContent"
-                    tag="div"
-                    class="not-prose [&_.shiki]:!bg-transparent [&_pre]:!border-l-0 [&_pre]:!shadow-none"
-                  />
-                  <div
-                    v-else
-                    class="not-prose overflow-hidden rounded-md border border-default bg-default"
-                  >
-                    <div class="flex items-center gap-2 border-b border-default p-2">
-                      <span class="inline-flex items-center gap-1.5 rounded-md bg-elevated px-2 py-1.5 font-mono text-xs font-medium text-highlighted">
-                        <UIcon
-                          name="i-lucide-package"
-                          class="size-4 text-primary"
-                        />
-                        pnpm
-                      </span>
-                      <span class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 font-mono text-xs font-medium text-muted">
-                        <UIcon
-                          name="i-lucide-file-code-2"
-                          class="size-4"
-                        />
-                        nuxt.config.ts
-                      </span>
-                    </div>
-                    <pre class="overflow-x-auto bg-muted px-4 py-4 font-mono text-sm/7 text-highlighted"><code><span class="text-warning">pnpm</span> add <span class="text-success">@happydesigns/brand</span></code></pre>
-                  </div>
+                  <ProseCodeGroup class="not-prose [&_.shiki]:!bg-transparent [&_pre]:!shadow-none">
+                    <ProsePre
+                      :code="installPackageCommand"
+                      filename="pnpm"
+                      language="bash"
+                      meta=""
+                    >
+                      <code><span class="line"><span class="text-warning">pnpm</span><span> add </span><span class="text-success">@happydesigns/brand</span></span></code>
+                    </ProsePre>
+                    <ProsePre
+                      :code="installConfigCode"
+                      filename="nuxt.config.ts"
+                      language="ts"
+                      meta=""
+                    >
+                      <code>
+                        <span class="line"><span class="text-info">export</span><span> default </span><span class="text-primary">defineNuxtConfig</span><span>({</span></span>
+                        <span class="line"><span>  extends: [</span><span class="text-success">'@happydesigns/brand'</span><span>]</span></span>
+                        <span class="line"><span>})</span></span>
+                      </code>
+                    </ProsePre>
+                  </ProseCodeGroup>
                 </div>
               </div>
             </div>
