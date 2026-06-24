@@ -1,4 +1,6 @@
+import { defineBrandGuide } from '@happydesigns/id'
 import { happydesignsBrand } from './brand'
+import { happydesignsBrandTheme, happydesignsSemanticColors } from './brand-theme'
 
 export type BrandGuideColor = {
   name: string
@@ -194,6 +196,35 @@ export const brandGuide = {
     { name: 'App icon PNG', path: happydesignsBrand.logoAssetPaths.publicAppIcon, usage: 'Touch icon and square app contexts.' }
   ]
 } satisfies BrandGuide
+
+export const happydesignsBrandGuide = defineBrandGuide({
+  name: happydesignsBrand.name,
+  packageName: happydesignsBrand.packageName,
+  title: 'happydesigns',
+  description: happydesignsBrand.claim,
+  homepage: 'https://happydesigns.de',
+  repository: 'https://github.com/happydesigns/brand',
+  assets: {
+    files: brandGuide.assets.map(asset => ({
+      name: asset.name,
+      src: asset.path,
+      role: asset.usage
+    }))
+  },
+  palette: happydesignsBrand.colors,
+  semanticColors: happydesignsSemanticColors,
+  cssVariables: happydesignsBrandTheme.cssVariables,
+  typography: happydesignsBrandTheme.typography,
+  voice: brandGuide.voice,
+  docs: {
+    sections: brandGuide.sections.map(section => ({
+      title: section.title,
+      description: section.summary,
+      to: `/docs/${section.slug === 'overview' ? '' : section.slug}`
+    }))
+  },
+  ui: happydesignsBrandTheme.ui
+})
 
 export function getBrandGuideSection(slug: string) {
   return brandGuide.sections.find(section => section.slug === slug)

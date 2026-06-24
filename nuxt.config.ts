@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['docus'],
+  extends: ['@happydesigns/id/nuxt', 'docus'],
 
   modules: [
     '@nuxt/eslint'
