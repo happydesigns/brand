@@ -205,8 +205,8 @@ export default defineAppConfig({
       },
       codeGroup: {
         slots: {
-          root: 'overflow-hidden rounded-md bg-default',
-          list: 'border-default bg-default',
+          root: 'relative group my-5 overflow-hidden rounded-md bg-default *:not-first:static! *:not-first:my-0!',
+          list: 'border-default bg-default border-b-0 rounded-t-md p-2',
           indicator: 'border border-default bg-muted shadow-none',
           trigger: 'text-muted data-[state=active]:bg-muted data-[state=active]:text-highlighted data-[state=active]:ring-1 data-[state=active]:ring-default'
         }
@@ -216,8 +216,8 @@ export default defineAppConfig({
           root: 'relative my-6 group',
           header: 'flex items-center gap-1.5 rounded-t-sm border border-default border-b-0 bg-elevated px-4 py-3',
           filename: 'font-mono text-xs text-label',
-          copy: 'absolute right-[11px] top-[11px] transition lg:opacity-0 lg:group-hover:opacity-100',
-          base: 'group overflow-x-auto whitespace-pre-wrap break-words rounded-sm border border-l-[3px] border-default border-l-secondary bg-default px-4 py-3 font-mono text-sm/7 text-highlighted focus:outline-none **:[.line.highlight]:-mx-4 **:[.line.highlight]:bg-muted **:[.line.highlight]:px-4 **:[.line]:block'
+          copy: 'absolute right-[11px] top-[11px] transition',
+          base: 'group overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-default bg-muted px-4 py-3 font-mono text-sm/7 text-highlighted focus:outline-none **:[.line.highlight]:-mx-4 **:[.line.highlight]:bg-accented/50 **:[.line.highlight]:px-4 **:[.line]:block'
         }
       }
     }
