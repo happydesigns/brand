@@ -45,4 +45,4 @@ Sections may use framed layouts, separators, and contrasting warm surfaces to cr
 
 This package may become the basis for future happydesigns projects, but the guide itself should not read like a generic template. Public copy should speak as the happydesigns brand guide.
 
-When refining the layer, keep changes token-driven and Nuxt-native where possible. Do not add unrelated dependencies, hardcode one-off brand behavior into generic product code, or create a parallel component system beside Nuxt UI.
+When refining the layer, keep changes token-driven and Nuxt-native where possible. Do not add unrelated dependencies, hardcode one-off brand behavior into shared guide structure, or create a parallel component system beside Nuxt UI.

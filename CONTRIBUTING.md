@@ -14,7 +14,7 @@ Project context should live in normal project documentation such as `README.md`,
 
 Prefer documentation that is useful to all contributors.
 
-Use `@happydesigns/business` as the root package identity unless a later naming decision changes it. Keep module package names under the `@happydesigns` scope when package names are needed.
+Use `@happydesigns/brand` as the root package identity unless a later naming decision changes it. Keep related package names under the `@happydesigns` scope when package names are needed.
 
 ## Project Knowledge Files
 
@@ -23,7 +23,7 @@ Use these files for their intended purpose:
 - `README.md` - project purpose, setup, usage, and current MVP scope
 - `ARCHITECTURE.md` - system structure, module boundaries, data flow, and major technical decisions
 - `DESIGN.md` - product UX, Nuxt UI usage, branding, and Nuxt Layer expectations
-- `SECURITY.md` - privacy rules, sensitive boundaries, secrets, uploads, financial artifacts, and AI/provider handling
+- `SECURITY.md` - privacy rules, sensitive boundaries, secrets, uploads, and external-provider handling
 - `API.md` - HTTP API, MCP, OAuth, automation, and integration contracts
 - `DEPLOYMENT.md` - local setup, deployment targets, runtime configuration, and hosting notes
 
@@ -53,37 +53,35 @@ Prefer straightforward implementation over cleverness.
 
 Favor simple, readable architecture.
 
-Keep core business logic separate from framework, infrastructure, and integration details where practical.
+Keep brand data, theme configuration, visual assets, and page-specific documentation clearly separated. Durable brand values belong in typed data, app config, CSS tokens, assets, or content files rather than being repeated as one-off component markup.
 
-Keep entry points thin. Reusable logic should live in domain services, application services, packages, or utilities rather than directly in UI components or route handlers.
+Use Nuxt for the guide experience, app composition, and layer behavior. Use plain TypeScript utilities for deterministic brand data, mapping, and reusable helpers when Nuxt is not needed.
 
-Use plain TypeScript for deterministic core logic when Nuxt is not needed. Use Nitro for server/runtime integration. Use Nuxt for the user experience, app composition, and UI. Do not make the user experience worse for abstraction, and do not split packages before the boundary is useful.
+Use abstractions when they make the brand layer easier to understand, test, or reuse. Avoid abstractions that only add indirection.
 
-Use abstractions when they make code easier to understand, test, or change. Avoid abstractions that only add indirection.
-
-Document important architectural decisions when they affect future contributors.
+Document important architectural decisions when they affect future contributors or the boundary between the brand layer and future shared guide infrastructure.
 
 ## Branding and Nuxt Layers
 
-Keep the core product brand-neutral. Use Nuxt UI for the default component system and token-driven styling.
+This repository is the happydesigns Nuxt UI brand layer and brand guide. It should prove how the happydesigns identity behaves through Nuxt UI components without creating a parallel component system.
 
-Personal, tenant-specific, or customer-specific branding should be supplied through importable Nuxt Layers. Branding layers may override app config, colors, logos, metadata, public assets, layouts, and customer-facing copy.
+Prefer `app.config.ts`, semantic Nuxt UI utilities, and shared CSS tokens for repeated theme behavior. Use local component wrappers only for happydesigns brand primitives, such as logos, section labels, color fields, and structural guide helpers.
 
-Branding layers must not own core domain logic, privacy enforcement, deterministic checks, financial artifact handling, authorization, audit behavior, storage behavior, or public API contracts.
+Public documentation should speak as the happydesigns brand guide. Do not describe the guide as a generic template, even when a pattern may later move into shared guide infrastructure.
 
-When adding UI, prefer semantic product components and Nuxt UI primitives. Avoid hardcoded brand colors, logos, slogans, gradients, or customer-specific assumptions in reusable product code.
+When a pattern is meant to become reusable beyond this brand, keep the happydesigns-specific identity, copy, assets, and tokens separate from the reusable guide structure.
 
 ## Security and Privacy
 
 Never hardcode secrets, tokens, credentials, or environment-specific endpoints.
 
-Do not commit generated local data, uploaded files, logs, private financial artifacts, or secrets.
+Do not commit generated local data, uploads, logs, private artifacts, or secrets.
 
 Use environment variables or runtime configuration for deployment-specific values.
 
 Do not send private or sensitive user data to external services unless the project explicitly allows it.
 
-Avoid logging sensitive payloads, credentials, personal data, invoice data, tax data, payment data, or internal-only information.
+Avoid logging sensitive payloads, credentials, personal data, or internal-only information.
 
 ## Dependencies
 
@@ -99,15 +97,12 @@ Add or update tests when changing logic.
 
 Prioritize tests for:
 
-- parsing
-- validation
-- authorization
-- security-sensitive behavior
-- financial calculations
-- invoice numbering
-- E-Rechnung generation and parsing
-- data transformation
-- public contracts or APIs
+- token and theme mappings
+- brand data transformations
+- reusable utilities
+- component behavior with interactive state
+- accessibility-sensitive interactions
+- public layer contracts and exports
 
 If tests are not practical for a change, note the reason in the pull request or final summary.
 
@@ -117,11 +112,11 @@ Use Conventional Commits.
 
 Examples:
 
-- `feat: add invoice draft model`
-- `fix: validate missing buyer address`
-- `test: add e-invoice parser cases`
-- `docs: update deployment notes`
-- `refactor: extract document storage adapter`
+- `feat: add logo usage showcase`
+- `fix: correct inverse wordmark treatment`
+- `test: add brand token mapping cases`
+- `docs: update logo usage guidance`
+- `refactor: extract component example data`
 
 Avoid vague commit messages such as `update`, `fix stuff`, `changes`, or `wip`.
 
