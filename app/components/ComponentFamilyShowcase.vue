@@ -237,13 +237,6 @@ const authFields = [{
   placeholder: 'Password',
 }]
 
-const authProviders = [{
-  label: 'GitHub',
-  icon: 'i-simple-icons-github',
-  color: 'neutral' as const,
-  variant: 'outline' as const,
-}]
-
 const scopedThemeProps = {
   button: {
     color: 'secondary' as const,
@@ -457,18 +450,28 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <div class="space-y-3">
-              <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <UButton variant="outline" color="neutral">
+                  <span>Review queue</span>
+                  <UBadge
+                    label="3"
+                    color="primary"
+                    variant="solid"
+                    size="sm"
+                  />
+                </UButton>
                 <UChip
                   text="3"
                   color="primary"
                   size="3xl"
                   position="top-right"
-                  :ui="{ base: 'h-5 min-w-5 px-1 text-[11px] leading-none' }"
                 >
                   <UButton
-                    label="Review queue"
+                    aria-label="Review alerts"
+                    icon="i-lucide-bell"
                     variant="outline"
                     color="neutral"
+                    square
                   />
                 </UChip>
               </div>
@@ -1483,7 +1486,6 @@ const familyLabels: Record<Family, string> = {
                 description="Use clear labels and one primary path."
                 icon="i-lucide-lock-keyhole"
                 :fields="authFields"
-                :providers="authProviders"
                 :submit="{ label: 'Continue' }"
               />
               <template #fallback>
@@ -1560,7 +1562,7 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UDashboardGroup
-              :storage="false"
+              storage="component-family-dashboard"
               class="!relative !inset-auto h-[30rem] overflow-hidden rounded-sm border border-default bg-default"
             >
               <UDashboardSidebar
@@ -1892,7 +1894,7 @@ const familyLabels: Record<Family, string> = {
                 </template>
 
                 <template #indicator>
-                  <UChatShimmer />
+                  <UChatShimmer text="Checking component behavior" />
                 </template>
               </UChatMessages>
 
