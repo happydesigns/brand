@@ -14,16 +14,7 @@ export default defineAppConfig({
     github: 'https://github.com/happydesigns'
   },
   toc: {
-    title: 'On this page',
-    bottom: {
-      title: 'Brand system',
-      links: [{
-        icon: 'i-lucide-home',
-        label: 'Overview',
-        to: '/',
-        target: '_self'
-      }]
-    }
+    title: 'On this page'
   },
   assistant: {
     floatingInput: false,
