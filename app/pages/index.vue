@@ -233,11 +233,6 @@ const ctaLinks = [
   }
 ]
 
-const installPackageCommand = 'pnpm add @happydesigns/brand'
-const installConfigCode = `export default defineNuxtConfig({
-  extends: ['@happydesigns/brand']
-})`
-
 const sectionCardUi = {
   root: 'overflow-hidden rounded-sm !bg-default shadow-none transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
@@ -1118,48 +1113,11 @@ const badgeUi = {
               id="install-package"
               class="h-full border-t border-default bg-default p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
             >
-              <div class="flex h-full flex-col justify-center rounded-sm border border-default bg-elevated p-5 sm:p-6">
-                <div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-                  <div>
-                    <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                      Installation
-                    </p>
-                    <h3 class="mt-3 text-xl font-semibold leading-tight text-highlighted">
-                      Build with the layer.
-                    </h3>
-                  </div>
-                  <UBadge
-                    label="@happydesigns/brand"
-                    color="neutral"
-                    variant="subtle"
-                    class="font-mono"
-                  />
-                </div>
-                <div class="dark">
-                  <ProseCodeGroup class="not-prose [&_.shiki]:!bg-transparent [&_pre]:!shadow-none">
-                    <ProsePre
-                      :code="installPackageCommand"
-                      filename="pnpm"
-                      language="bash"
-                      meta=""
-                    >
-                      <code><span class="line"><span class="text-warning">pnpm</span><span> add </span><span class="text-success">@happydesigns/brand</span></span></code>
-                    </ProsePre>
-                    <ProsePre
-                      :code="installConfigCode"
-                      filename="nuxt.config.ts"
-                      language="ts"
-                      meta=""
-                    >
-                      <code>
-                        <span class="line"><span class="text-info">export</span><span> default </span><span class="text-primary">defineNuxtConfig</span><span>({</span></span>
-                        <span class="line"><span>  extends: [</span><span class="text-success">'@happydesigns/brand'</span><span>]</span></span>
-                        <span class="line"><span>})</span></span>
-                      </code>
-                    </ProsePre>
-                  </ProseCodeGroup>
-                </div>
-              </div>
+              <IdLayerInstall
+                class="h-full"
+                package-name="@happydesigns/brand"
+                title="Build with the layer."
+              />
             </div>
           </template>
         </UPageCTA>
