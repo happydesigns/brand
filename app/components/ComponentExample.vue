@@ -8,9 +8,12 @@ import wordmarkLogo from '~/assets/logos/happydesigns-wordmark.svg'
 import wordmarkLogoInverse from '~/assets/logos/happydesigns-wordmark-inverse.svg'
 import { actionExampleNames, feedbackExampleNames, formExampleNames } from '~/utils/component-example-names'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   name: string
-}>()
+  frame?: 'default' | 'none'
+}>(), {
+  frame: 'default'
+})
 
 const plainExampleNames = new Set([
   'table',
@@ -72,8 +75,8 @@ const plainExampleNames = new Set([
 ])
 
 const exampleClass = computed(() => [
-  'not-prose my-5',
-  plainExampleNames.has(props.name)
+  props.frame === 'none' ? 'contents' : 'not-prose my-5',
+  props.frame === 'none' || plainExampleNames.has(props.name)
     ? 'overflow-visible'
     : 'overflow-hidden rounded-sm border border-default bg-default p-4 sm:p-6',
 ])
