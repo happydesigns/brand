@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ComponentExampleActions from './component-example/Actions.vue'
+import ComponentExampleEditorPreview from './component-example/EditorPreview.vue'
 import ComponentExampleFeedback from './component-example/Feedback.vue'
 import ComponentExampleForms from './component-example/Forms.vue'
 import symbolLogo from '~/assets/logos/happydesigns-symbol.svg'
@@ -1392,10 +1393,7 @@ const editorMentions = [
         <UEditorDragHandle :editor="editor" />
       </UEditor>
       <template #fallback>
-        <div class="min-h-64 rounded-sm border border-default bg-muted p-4">
-          <p class="font-semibold text-highlighted">Component note</p>
-          <p class="mt-2 text-sm text-muted">Editor preview loads on the client.</p>
-        </div>
+        <ComponentExampleEditorPreview />
       </template>
     </ClientOnly>
 
@@ -1410,7 +1408,7 @@ const editorMentions = [
         <UEditorDragHandle v-if="props.name === 'editor-drag-handle'" :editor="editor" />
       </UEditor>
       <template #fallback>
-        <div class="min-h-64 rounded-sm border border-default bg-muted p-4 text-sm text-muted">Editor preview loads on the client.</div>
+        <ComponentExampleEditorPreview />
       </template>
     </ClientOnly>
   </div>
