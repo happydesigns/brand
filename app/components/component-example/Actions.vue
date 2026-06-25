@@ -15,23 +15,22 @@ const props = defineProps<{
 
   <div v-else-if="props.name === 'compact-metadata-pattern'" class="space-y-4">
     <div class="flex flex-wrap items-center gap-3">
-      <div class="flex items-center gap-2">
-        <UChip text="3" color="primary" size="3xl" position="top-right">
-          <UButton
-            aria-label="Review queue"
-            icon="i-lucide-bell"
-            color="neutral"
-            variant="outline"
-            square
-          />
-        </UChip>
-        <span class="text-sm font-medium text-highlighted">Review queue</span>
-      </div>
+      <UButton label="Review queue" color="neutral" variant="outline">
+        <template #trailing>
+          <UBadge color="primary" variant="subtle" size="sm">
+            3
+          </UBadge>
+        </template>
+      </UButton>
       <UBadge color="primary" variant="subtle">Active</UBadge>
       <UBadge color="secondary" variant="outline">Editorial</UBadge>
       <UBadge color="success" variant="subtle">Ready</UBadge>
     </div>
     <div class="flex flex-wrap items-center gap-2">
+      <span class="text-sm text-muted">Assigned</span>
+      <UChip inset color="success">
+        <UAvatar text="HD" size="xs" />
+      </UChip>
       <span class="text-sm text-muted">Open search</span>
       <UKbd>Ctrl</UKbd>
       <UKbd>K</UKbd>
