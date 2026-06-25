@@ -1,4 +1,12 @@
-import { defineBrandGuide, type BrandComponentCoverage } from '@happydesigns/id'
+import {
+  createGuideDocsSections,
+  defineBrandGuide,
+  defineGuideSections,
+  findGuideSection,
+  type BrandComponentCoverage,
+  type BrandGuideSection,
+  type BrandGuideSectionInput
+} from '@happydesigns/id'
 import { happydesignsBrand } from './brand'
 import { happydesignsBrandTheme, happydesignsSemanticColors } from './brand-theme'
 
@@ -24,16 +32,6 @@ export type BrandGuideComponent = {
   guidance: string
 }
 
-export type BrandGuideSection = {
-  slug: string
-  title: string
-  eyebrow: string
-  summary: string
-  description: string
-  icon: string
-  anchors: string[]
-}
-
 export type BrandGuidePrinciple = {
   title: string
   description: string
@@ -43,7 +41,7 @@ export type BrandGuidePrinciple = {
 export type BrandGuide = {
   brand: typeof happydesignsBrand
   principles: BrandGuidePrinciple[]
-  sections: BrandGuideSection[]
+  sections: readonly BrandGuideSectionInput[]
   colors: BrandGuideColor[]
   fonts: BrandGuideFont[]
   components: BrandGuideComponent[]
@@ -83,7 +81,7 @@ export const brandGuide = {
       icon: 'i-lucide-repeat-2'
     }
   ],
-  sections: [
+  sections: defineGuideSections([
     {
       slug: 'colors',
       title: 'Colors',
@@ -129,7 +127,7 @@ export const brandGuide = {
       icon: 'i-lucide-message-square-text',
       anchors: ['Voice attributes', 'Writing principles', 'Marketing copy', 'Interface copy', 'Error and validation copy']
     }
-  ],
+  ]),
   colors: [
     { name: 'Warm White', token: 'warmWhite', hex: happydesignsBrand.colors.warmWhite, role: 'Page background', usage: 'Use for primary surfaces and calm editorial space.' },
     { name: 'Graphite', token: 'graphite', hex: happydesignsBrand.colors.graphite, role: 'Text and premium fills', usage: 'Use for primary text, high-emphasis panels, and dark mode base.' },
@@ -317,15 +315,11 @@ export const happydesignsBrandGuide = defineBrandGuide({
   voice: brandGuide.voice,
   componentCoverage: happydesignsComponentCoverage,
   docs: {
-    sections: brandGuide.sections.map(section => ({
-      title: section.title,
-      description: section.summary,
-      to: `/docs/${section.slug === 'overview' ? '' : section.slug}`
-    }))
+    sections: createGuideDocsSections(brandGuide.sections)
   },
   ui: happydesignsBrandTheme.ui
 })
 
-export function getBrandGuideSection(slug: string) {
-  return brandGuide.sections.find(section => section.slug === slug)
+export function getBrandGuideSection(slug: string): BrandGuideSection | undefined {
+  return findGuideSection(brandGuide.sections, slug)
 }
