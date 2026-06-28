@@ -1,7 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // Docus' generated CSS module can emit an absolute Windows dev URL. The brand
 // guide owns the equivalent CSS in app/assets/css/main.css, so disable it here.
-export default defineNuxtConfig(Object.assign({
+const docusCssModule = { 'docus-css': false as const }
+
+export default defineNuxtConfig({
   extends: ['@happydesigns/id/nuxt', 'docus'],
 
   modules: [
@@ -49,7 +51,7 @@ export default defineNuxtConfig(Object.assign({
         braceStyle: '1tbs' as const
       }
     }
-  }
-}, {
-  'docus-css': false as const
-}))
+  },
+
+  ...docusCssModule
+})
