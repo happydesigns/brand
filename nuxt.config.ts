@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+export default defineNuxtConfig(Object.assign({
   extends: ['@happydesigns/id/nuxt', 'docus'],
 
   modules: [
@@ -48,4 +48,6 @@ export default defineNuxtConfig({
       }
     }
   }
-})
+}, {
+  'docus-css': false
+}))
