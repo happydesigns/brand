@@ -5,59 +5,11 @@ import {
   findGuideSection,
   type BrandAsset,
   type BrandComponentCoverage,
-  type BrandGuideSection,
-  type BrandGuideSectionInput
+  type BrandGuideContent,
+  type BrandGuideSection
 } from '@happydesigns/id'
 import { happydesignsBrand } from './brand'
 import { happydesignsBrandTheme, happydesignsSemanticColors } from './brand-theme'
-
-export type HappydesignsGuideColor = {
-  name: string
-  token: string
-  hex: string
-  role: string
-  usage: string
-}
-
-export type HappydesignsGuideFont = {
-  name: string
-  role: string
-  stack: string
-  sample: string
-  notes: string
-}
-
-export type HappydesignsGuideComponent = {
-  name: string
-  purpose: string
-  guidance: string
-}
-
-export type HappydesignsGuidePrinciple = {
-  title: string
-  description: string
-  icon: string
-}
-
-export type HappydesignsGuideContent = {
-  brand: typeof happydesignsBrand
-  principles: HappydesignsGuidePrinciple[]
-  sections: readonly BrandGuideSectionInput[]
-  colors: HappydesignsGuideColor[]
-  fonts: HappydesignsGuideFont[]
-  components: HappydesignsGuideComponent[]
-  voice: {
-    attributes: string[]
-    dos: string[]
-    donts: string[]
-  }
-  assets: {
-    name: string
-    role: string
-    path: string
-    usage: string
-  }[]
-}
 
 export const brandGuide = {
   brand: happydesignsBrand,
@@ -195,7 +147,7 @@ export const brandGuide = {
     { name: 'Brand signature inverse', role: 'signatureInverse', path: happydesignsBrand.logoAssetPaths.signatureInverse, usage: 'Brand signature for dark surfaces.' },
     { name: 'App icon PNG', role: 'appIcon', path: happydesignsBrand.logoAssetPaths.publicAppIcon, usage: 'Touch icon and square app contexts.' }
   ]
-} satisfies HappydesignsGuideContent
+} satisfies BrandGuideContent<typeof happydesignsBrand>
 
 const happydesignsLogoAssets = Object.fromEntries(
   brandGuide.assets.map(asset => [

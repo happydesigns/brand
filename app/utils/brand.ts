@@ -1,4 +1,6 @@
-export const happydesignsBrand = {
+import { defineBrandIdentity } from '@happydesigns/id'
+
+export const happydesignsBrand = defineBrandIdentity({
   name: 'happydesigns',
   packageName: '@happydesigns/brand',
   claim: 'Thoughtful design for the modern web.',
@@ -44,7 +46,4 @@ export const happydesignsBrand = {
     sand: '#E9E4DC',
     rose: '#BD4D49'
   }
-} as const
-
-export type HappydesignsBrand = typeof happydesignsBrand
-export type HappydesignsBrandColor = keyof typeof happydesignsBrand.colors
+} as const)
