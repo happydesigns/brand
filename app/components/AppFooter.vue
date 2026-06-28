@@ -30,8 +30,8 @@ const columns = computed(() => [
 
 const contactLinks = [
   { label: 'hello@happydesigns.de', to: 'mailto:hello@happydesigns.de', icon: 'i-lucide-mail' },
-  { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank', icon: 'i-lucide-globe' },
-  { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', icon: 'i-simple-icons-github' }
+  { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank', rel: 'noopener noreferrer', icon: 'i-lucide-globe' },
+  { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', rel: 'noopener noreferrer', icon: 'i-simple-icons-github' }
 ]
 
 const footerMeta = computed(() => ({
@@ -63,6 +63,7 @@ const footerMeta = computed(() => ({
               :key="link.label"
               :to="link.to"
               :target="link.target"
+              :rel="link.rel"
               class="inline-flex items-center gap-2 rounded-sm border border-white/10 px-2.5 py-1.5 text-xs font-medium text-sand-300 transition hover:border-coral-500/70 hover:text-warm-white"
             >
               <UIcon

@@ -19,6 +19,7 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
       'icon': 'i-simple-icons-github',
       'to': appConfig.github.url,
       'target': '_blank',
+      'rel': 'noopener noreferrer',
       'aria-label': 'GitHub'
     }]
   : [])
