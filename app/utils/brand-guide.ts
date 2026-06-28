@@ -10,7 +10,7 @@ import {
 import { happydesignsBrand } from './brand'
 import { happydesignsBrandTheme, happydesignsSemanticColors } from './brand-theme'
 
-export type BrandGuideColor = {
+export type HappydesignsGuideColor = {
   name: string
   token: string
   hex: string
@@ -18,7 +18,7 @@ export type BrandGuideColor = {
   usage: string
 }
 
-export type BrandGuideFont = {
+export type HappydesignsGuideFont = {
   name: string
   role: string
   stack: string
@@ -26,25 +26,25 @@ export type BrandGuideFont = {
   notes: string
 }
 
-export type BrandGuideComponent = {
+export type HappydesignsGuideComponent = {
   name: string
   purpose: string
   guidance: string
 }
 
-export type BrandGuidePrinciple = {
+export type HappydesignsGuidePrinciple = {
   title: string
   description: string
   icon: string
 }
 
-export type BrandGuide = {
+export type HappydesignsGuideContent = {
   brand: typeof happydesignsBrand
-  principles: BrandGuidePrinciple[]
+  principles: HappydesignsGuidePrinciple[]
   sections: readonly BrandGuideSectionInput[]
-  colors: BrandGuideColor[]
-  fonts: BrandGuideFont[]
-  components: BrandGuideComponent[]
+  colors: HappydesignsGuideColor[]
+  fonts: HappydesignsGuideFont[]
+  components: HappydesignsGuideComponent[]
   voice: {
     attributes: string[]
     dos: string[]
@@ -193,7 +193,7 @@ export const brandGuide = {
     { name: 'Brand signature inverse', path: happydesignsBrand.logoAssetPaths.signatureInverse, usage: 'Brand signature for dark surfaces.' },
     { name: 'App icon PNG', path: happydesignsBrand.logoAssetPaths.publicAppIcon, usage: 'Touch icon and square app contexts.' }
   ]
-} satisfies BrandGuide
+} satisfies HappydesignsGuideContent
 
 export const happydesignsComponentCoverage = [
   {

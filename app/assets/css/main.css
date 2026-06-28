@@ -3,6 +3,11 @@
 
 @source "../../components";
 @source "../../pages";
+@source "../../../app.config.ts";
+@source "../../../content";
+@source "../../../node_modules/@happydesigns/id/app";
+@source "../../../node_modules/docus/app";
+@source "../../../node_modules/docus/modules/assistant";
 
 @theme static {
   --container-8xl: 90rem;

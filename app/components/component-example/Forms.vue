@@ -19,34 +19,22 @@ const pin = ref(['2', '4', '2', '4'])
 const accent = ref('#F28564')
 const selectedSection = ref('components')
 
-const statusItems = [
-  { label: 'Draft', value: 'Draft' },
-  { label: 'Ready for review', value: 'Ready for review' },
-  { label: 'Published', value: 'Published' },
-]
+const statusItems = ['Draft', 'Ready for review', 'Published']
 
-const reviewerItems = [
-  { label: 'Design review', value: 'Design review' },
-  { label: 'Engineering review', value: 'Engineering review' },
-  { label: 'Ready to ship', value: 'Ready to ship' },
-]
+const reviewerItems = ['Design review', 'Engineering review', 'Ready to ship']
 
-const packageItems = [
-  { label: '@happydesigns/brand', value: '@happydesigns/brand' },
-  { label: '@happydesigns/ui', value: '@happydesigns/ui' },
-  { label: '@happydesigns/tokens', value: '@happydesigns/tokens' },
-]
+const packageItems = ['@happydesigns/brand', '@happydesigns/ui', '@happydesigns/tokens']
 
 const checkItems = [
   { label: 'Visible borders', value: 'borders' },
   { label: 'Clear focus', value: 'focus' },
-  { label: 'Compact labels', value: 'labels' },
+  { label: 'Compact labels', value: 'labels' }
 ]
 
 const rhythmItems = [
   { label: 'Dense', value: 'dense' },
   { label: 'Balanced', value: 'balanced' },
-  { label: 'Spacious', value: 'spacious' },
+  { label: 'Spacious', value: 'spacious' }
 ]
 
 const listboxItems = [
@@ -54,7 +42,7 @@ const listboxItems = [
   { label: 'Typography', value: 'typography' },
   { label: 'Logos', value: 'logos' },
   { label: 'Components', value: 'components' },
-  { label: 'Voice', value: 'voice' },
+  { label: 'Voice', value: 'voice' }
 ]
 </script>
 
@@ -103,7 +91,7 @@ const listboxItems = [
       <UInputMenu v-model="packageName" :items="packageItems" />
     </UFormField>
     <UFormField label="Visible section" help="Keep visible choices open when scanning matters.">
-      <UListbox v-model="selectedSection" :items="listboxItems" />
+      <UListbox v-model="selectedSection" :items="listboxItems" value-key="value" />
     </UFormField>
   </div>
 
@@ -212,5 +200,5 @@ const listboxItems = [
 
   <UCalendar v-else-if="props.name === 'calendar'" />
 
-  <UListbox v-else-if="props.name === 'listbox'" v-model="selectedSection" :items="listboxItems" class="max-w-sm" />
+  <UListbox v-else-if="props.name === 'listbox'" v-model="selectedSection" :items="listboxItems" value-key="value" class="max-w-sm" />
 </template>
