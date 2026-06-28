@@ -132,20 +132,118 @@ export const brandGuide = {
     ]
   },
   assets: [
-    { name: 'Wordmark', role: 'wordmark', path: happydesignsBrand.logoAssetPaths.wordmark, usage: 'Default identity for headers, navigation, documentation, and slim horizontal layouts.' },
-    { name: 'Wordmark inverse', role: 'wordmarkInverse', path: happydesignsBrand.logoAssetPaths.wordmarkInverse, usage: 'Wordmark for dark surfaces.' },
-    { name: 'Symbol', role: 'symbol', path: happydesignsBrand.logoAssetPaths.symbol, usage: 'Favicon, app icon, social avatars, square contexts, and brand moments. Unchanged across light and dark.' },
-    { name: 'Symbol reduced', role: 'symbolReduced', path: happydesignsBrand.logoAssetPaths.symbolReduced, usage: 'Simplified h + coral dot for constrained, monochrome, or production contexts.' },
-    { name: 'Symbol reduced inverse', role: 'symbolReducedInverse', path: happydesignsBrand.logoAssetPaths.symbolReducedInverse, usage: 'Reduced symbol for dark surfaces.' },
-    { name: 'Symbol reduced tile', role: 'symbolReducedTile', path: happydesignsBrand.logoAssetPaths.symbolReducedTile, usage: 'Reduced symbol on a light tile. Use when the raw reduced symbol needs a stable bounding surface.' },
-    { name: 'Symbol reduced tile inverse', role: 'symbolReducedTileInverse', path: happydesignsBrand.logoAssetPaths.symbolReducedTileInverse, usage: 'Reduced symbol on a dark tile.' },
-    { name: 'Lockup', role: 'lockup', path: happydesignsBrand.logoAssetPaths.lockup, usage: 'Full symbol + wordmark for brand introductions, covers, and teaching moments.' },
-    { name: 'Lockup inverse', role: 'lockupInverse', path: happydesignsBrand.logoAssetPaths.lockupInverse, usage: 'Lockup for dark surfaces.' },
-    { name: 'Lockup reduced', role: 'lockupReduced', path: happydesignsBrand.logoAssetPaths.lockupReduced, usage: 'Reduced symbol + wordmark for production, print, and constrained horizontal contexts.' },
-    { name: 'Lockup reduced inverse', role: 'lockupReducedInverse', path: happydesignsBrand.logoAssetPaths.lockupReducedInverse, usage: 'Reduced lockup for dark surfaces.' },
-    { name: 'Brand signature', role: 'signature', path: happydesignsBrand.logoAssetPaths.signature, usage: 'Standardized brand composition for footers, proposals, and brand-owned sections.' },
-    { name: 'Brand signature inverse', role: 'signatureInverse', path: happydesignsBrand.logoAssetPaths.signatureInverse, usage: 'Brand signature for dark surfaces.' },
-    { name: 'App icon PNG', role: 'appIcon', path: happydesignsBrand.logoAssetPaths.publicAppIcon, usage: 'Touch icon and square app contexts.' }
+    {
+      name: 'Wordmark',
+      role: 'wordmark',
+      path: happydesignsBrand.logoAssetPaths.wordmark,
+      usage: 'Default identity for headers, navigation, documentation, and slim horizontal layouts.',
+      media: 'light',
+      alt: 'happydesigns wordmark'
+    },
+    {
+      name: 'Wordmark inverse',
+      role: 'wordmarkInverse',
+      path: happydesignsBrand.logoAssetPaths.wordmarkInverse,
+      usage: 'Wordmark for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns wordmark'
+    },
+    {
+      name: 'Symbol',
+      role: 'symbol',
+      path: happydesignsBrand.logoAssetPaths.symbol,
+      usage: 'Favicon, app icon, social avatars, square contexts, and brand moments. Unchanged across light and dark.',
+      media: 'any',
+      alt: 'happydesigns symbol'
+    },
+    {
+      name: 'Symbol reduced',
+      role: 'symbolReduced',
+      path: happydesignsBrand.logoAssetPaths.symbolReduced,
+      usage: 'Simplified h + coral dot for constrained, monochrome, or production contexts.',
+      media: 'light',
+      alt: 'happydesigns reduced symbol'
+    },
+    {
+      name: 'Symbol reduced inverse',
+      role: 'symbolReducedInverse',
+      path: happydesignsBrand.logoAssetPaths.symbolReducedInverse,
+      usage: 'Reduced symbol for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns reduced symbol'
+    },
+    {
+      name: 'Symbol reduced tile',
+      role: 'symbolReducedTile',
+      path: happydesignsBrand.logoAssetPaths.symbolReducedTile,
+      usage: 'Reduced symbol on a light tile. Use when the raw reduced symbol needs a stable bounding surface.',
+      media: 'light',
+      alt: 'happydesigns reduced symbol tile'
+    },
+    {
+      name: 'Symbol reduced tile inverse',
+      role: 'symbolReducedTileInverse',
+      path: happydesignsBrand.logoAssetPaths.symbolReducedTileInverse,
+      usage: 'Reduced symbol on a dark tile.',
+      media: 'dark',
+      alt: 'happydesigns reduced symbol tile'
+    },
+    {
+      name: 'Lockup',
+      role: 'lockup',
+      path: happydesignsBrand.logoAssetPaths.lockup,
+      usage: 'Full symbol + wordmark for brand introductions, covers, and teaching moments.',
+      media: 'light',
+      alt: 'happydesigns lockup'
+    },
+    {
+      name: 'Lockup inverse',
+      role: 'lockupInverse',
+      path: happydesignsBrand.logoAssetPaths.lockupInverse,
+      usage: 'Lockup for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns lockup'
+    },
+    {
+      name: 'Lockup reduced',
+      role: 'lockupReduced',
+      path: happydesignsBrand.logoAssetPaths.lockupReduced,
+      usage: 'Reduced symbol + wordmark for production, print, and constrained horizontal contexts.',
+      media: 'light',
+      alt: 'happydesigns reduced lockup'
+    },
+    {
+      name: 'Lockup reduced inverse',
+      role: 'lockupReducedInverse',
+      path: happydesignsBrand.logoAssetPaths.lockupReducedInverse,
+      usage: 'Reduced lockup for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns reduced lockup'
+    },
+    {
+      name: 'Brand signature',
+      role: 'signature',
+      path: happydesignsBrand.logoAssetPaths.signature,
+      usage: 'Standardized brand composition for footers, proposals, and brand-owned sections.',
+      media: 'light',
+      alt: 'happydesigns brand signature'
+    },
+    {
+      name: 'Brand signature inverse',
+      role: 'signatureInverse',
+      path: happydesignsBrand.logoAssetPaths.signatureInverse,
+      usage: 'Brand signature for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns brand signature'
+    },
+    {
+      name: 'App icon PNG',
+      role: 'appIcon',
+      path: happydesignsBrand.logoAssetPaths.publicAppIcon,
+      usage: 'Touch icon and square app contexts.',
+      media: 'any',
+      alt: 'happydesigns app icon'
+    }
   ]
 } satisfies BrandGuideContent<typeof happydesignsBrand>
 
