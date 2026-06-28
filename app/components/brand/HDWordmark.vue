@@ -20,18 +20,21 @@ const sizeClass = computed(() => ({
 <template>
   <span
     class="inline-flex items-center"
+    role="img"
     aria-label="happydesigns"
   >
     <template v-if="mode === 'auto'">
       <img
         :src="wordmarkLight"
-        alt="happydesigns"
+        alt=""
+        aria-hidden="true"
         class="block dark:hidden"
         :class="sizeClass"
       >
       <img
         :src="wordmarkDark"
-        alt="happydesigns"
+        alt=""
+        aria-hidden="true"
         class="hidden dark:block"
         :class="sizeClass"
       >
@@ -40,7 +43,8 @@ const sizeClass = computed(() => ({
     <img
       v-else
       :src="mode === 'dark' ? wordmarkDark : wordmarkLight"
-      alt="happydesigns"
+      alt=""
+      aria-hidden="true"
       class="block"
       :class="sizeClass"
     >
