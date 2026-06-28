@@ -1,9 +1,9 @@
 import {
+  createBrandGuideAssets,
   createGuideDocsSections,
   defineBrandGuide,
   defineGuideSections,
   findGuideSection,
-  type BrandAsset,
   type BrandComponentCoverage,
   type BrandGuideContent,
   type BrandGuideSection
@@ -149,17 +149,7 @@ export const brandGuide = {
   ]
 } satisfies BrandGuideContent<typeof happydesignsBrand>
 
-const happydesignsLogoAssets = Object.fromEntries(
-  brandGuide.assets.map(asset => [
-    asset.role,
-    {
-      name: asset.name,
-      src: asset.path,
-      role: asset.role,
-      alt: asset.name
-    }
-  ])
-) as Record<string, BrandAsset>
+const happydesignsGuideAssets = createBrandGuideAssets(brandGuide.assets)
 
 export const happydesignsComponentCoverage = [
   {
@@ -267,15 +257,7 @@ export const happydesignsBrandGuide = defineBrandGuide({
   description: happydesignsBrand.claim,
   homepage: 'https://happydesigns.de',
   repository: 'https://github.com/happydesigns/brand',
-  assets: {
-    logos: happydesignsLogoAssets,
-    files: brandGuide.assets.map(asset => ({
-      name: asset.name,
-      src: asset.path,
-      role: asset.role,
-      alt: asset.name
-    }))
-  },
+  assets: happydesignsGuideAssets,
   palette: happydesignsBrand.colors,
   semanticColors: happydesignsSemanticColors,
   cssVariables: happydesignsBrandTheme.cssVariables,
