@@ -40,16 +40,16 @@ export default defineNuxtConfig(Object.assign({
     prose: true
   },
 
-  compatibilityDate: 'latest',
+  compatibilityDate: 'latest' as const,
 
   eslint: {
     config: {
       stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
+        commaDangle: 'never' as const,
+        braceStyle: '1tbs' as const
       }
     }
   }
 }, {
-  'docus-css': false
+  'docus-css': false as const
 }))
