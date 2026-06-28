@@ -1097,37 +1097,35 @@ const editorMentions = [
 
     <div
       v-else-if="props.name === 'content-system'"
-      class="overflow-hidden rounded-sm border border-default bg-default"
+      class="grid divide-y divide-default overflow-hidden rounded-sm border border-default bg-default lg:grid-cols-[12rem_1fr_11rem] lg:divide-x lg:divide-y-0"
     >
-      <div class="grid divide-y divide-default lg:grid-cols-[12rem_1fr_11rem] lg:divide-x lg:divide-y-0">
-        <aside class="bg-muted/40 p-4">
-          <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-label">
-            Navigation
-          </p>
-          <UContentNavigation :navigation="contentNavigationItems" />
-        </aside>
-        <main class="space-y-4 p-4">
-          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div class="min-w-0">
-              <p class="font-semibold text-highlighted">
-                Component docs
-              </p>
-              <p class="mt-1 max-w-md text-sm text-muted">
-                Navigation and search keep the guide usable without adding another CTA layer.
-              </p>
-            </div>
-            <UContentSearchButton label="Search" />
+      <aside class="bg-muted/40 p-4">
+        <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-label">
+          Navigation
+        </p>
+        <UContentNavigation :navigation="contentNavigationItems" />
+      </aside>
+      <main class="space-y-4 p-4">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div class="min-w-0">
+            <p class="font-semibold text-highlighted">
+              Component docs
+            </p>
+            <p class="mt-1 max-w-md text-sm text-muted">
+              Navigation and search keep the guide usable without adding another CTA layer.
+            </p>
           </div>
-          <USeparator />
-          <UContentSurround :surround="contentSurroundItems" />
-        </main>
-        <aside class="bg-muted/30 p-4">
-          <UContentToc
-            title="On this page"
-            :links="contentTocLinks"
-          />
-        </aside>
-      </div>
+          <UContentSearchButton label="Search" />
+        </div>
+        <USeparator />
+        <UContentSurround :surround="contentSurroundItems" />
+      </main>
+      <aside class="bg-muted/30 p-4">
+        <UContentToc
+          title="On this page"
+          :links="contentTocLinks"
+        />
+      </aside>
     </div>
 
     <div
