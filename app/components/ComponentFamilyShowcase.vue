@@ -5,18 +5,18 @@ import symbolLogo from '~/assets/logos/happydesigns-symbol.svg'
 import wordmarkLogo from '~/assets/logos/happydesigns-wordmark.svg'
 import wordmarkLogoInverse from '~/assets/logos/happydesigns-wordmark-inverse.svg'
 
-type Family =
-  | 'actions'
-  | 'forms'
-  | 'feedback'
-  | 'navigation'
-  | 'data-content'
-  | 'overlays'
-  | 'layout-page'
-  | 'system-helpers'
-  | 'dashboard'
-  | 'publishing'
-  | 'chat-editor'
+type Family
+  = | 'actions'
+    | 'forms'
+    | 'feedback'
+    | 'navigation'
+    | 'data-content'
+    | 'overlays'
+    | 'layout-page'
+    | 'system-helpers'
+    | 'dashboard'
+    | 'publishing'
+    | 'chat-editor'
 
 const props = defineProps<{
   family: Family
@@ -47,13 +47,13 @@ const editorContent = ref({
     {
       type: 'heading',
       attrs: { level: 2 },
-      content: [{ type: 'text', text: 'Component note' }],
+      content: [{ type: 'text', text: 'Component note' }]
     },
     {
       type: 'paragraph',
-      content: [{ type: 'text', text: 'Use visible structure before adding brand expression.' }],
-    },
-  ],
+      content: [{ type: 'text', text: 'Use visible structure before adding brand expression.' }]
+    }
+  ]
 })
 
 function showToastPreview() {
@@ -62,89 +62,89 @@ function showToastPreview() {
     title: 'Changes saved',
     description: 'The pattern is ready for review.',
     icon: 'i-lucide-circle-check',
-    color: 'success',
+    color: 'success'
   })
 }
 
 const statusItems = [
   { label: 'Draft', value: 'Draft' },
   { label: 'Ready for review', value: 'Ready for review' },
-  { label: 'Published', value: 'Published' },
+  { label: 'Published', value: 'Published' }
 ]
 const reviewerItems = [
   { label: 'Design review', value: 'Design review' },
   { label: 'Engineering review', value: 'Engineering review' },
-  { label: 'Ready to ship', value: 'Ready to ship' },
+  { label: 'Ready to ship', value: 'Ready to ship' }
 ]
 const packageItems = [
   { label: '@happydesigns/brand', value: '@happydesigns/brand' },
   { label: '@happydesigns/ui', value: '@happydesigns/ui' },
-  { label: '@happydesigns/tokens', value: '@happydesigns/tokens' },
+  { label: '@happydesigns/tokens', value: '@happydesigns/tokens' }
 ]
 const checkItems = [
   { label: 'Visible borders', value: 'borders' },
   { label: 'Clear focus', value: 'focus' },
-  { label: 'Compact labels', value: 'labels' },
+  { label: 'Compact labels', value: 'labels' }
 ]
 const rhythmItems = [
   { label: 'Dense', value: 'dense' },
   { label: 'Balanced', value: 'balanced' },
-  { label: 'Spacious', value: 'spacious' },
+  { label: 'Spacious', value: 'spacious' }
 ]
 const listboxItems = [
   { label: 'Colors', value: 'colors' },
   { label: 'Typography', value: 'typography' },
   { label: 'Logos', value: 'logos' },
   { label: 'Components', value: 'components' },
-  { label: 'Voice', value: 'voice' },
+  { label: 'Voice', value: 'voice' }
 ]
 const selectedSection = ref('components')
 
 const tabs = [
   { label: 'Overview', icon: 'i-lucide-layout-grid' },
   { label: 'Usage', icon: 'i-lucide-list-checks' },
-  { label: 'Tokens', icon: 'i-lucide-code-2' },
+  { label: 'Tokens', icon: 'i-lucide-code-2' }
 ]
 
 const breadcrumbItems = [
   { label: 'Docs', to: '/docs' },
   { label: 'Components', to: '/docs/components' },
-  { label: 'Navigation' },
+  { label: 'Navigation' }
 ]
 
 const navigationItems = [
   { label: 'Colors', icon: 'i-lucide-palette', to: '/docs/colors' },
   { label: 'Typography', icon: 'i-lucide-type', to: '/docs/typography' },
-  { label: 'Components', icon: 'i-lucide-component', to: '/docs/components', active: true },
+  { label: 'Components', icon: 'i-lucide-component', to: '/docs/components', active: true }
 ]
 
 const stepperItems = [
   { title: 'Base', description: 'Set spacing, type, and color roles.' },
   { title: 'Identity', description: 'Choose the right mark and voice.' },
-  { title: 'Interface', description: 'Apply the system through components.' },
+  { title: 'Interface', description: 'Apply the system through components.' }
 ]
 
 const accordionItems = [
   {
     label: 'When should coral appear?',
     icon: 'i-lucide-sparkles',
-    content: 'Use coral for focus, active states, and signature emphasis. Avoid using it as a large default fill.',
+    content: 'Use coral for focus, active states, and signature emphasis. Avoid using it as a large default fill.'
   },
   {
     label: 'What should stay neutral?',
     icon: 'i-lucide-square',
-    content: 'Most panels, forms, tables, and navigation surfaces should use semantic neutral surfaces and visible borders.',
-  },
+    content: 'Most panels, forms, tables, and navigation surfaces should use semantic neutral surfaces and visible borders.'
+  }
 ]
 
 const dropdownItems = [
   [
     { label: 'Copy token', icon: 'i-lucide-copy' },
-    { label: 'Open docs', icon: 'i-lucide-arrow-up-right' },
+    { label: 'Open docs', icon: 'i-lucide-arrow-up-right' }
   ],
   [
-    { label: 'Archive pattern', icon: 'i-lucide-archive' },
-  ],
+    { label: 'Archive pattern', icon: 'i-lucide-archive' }
+  ]
 ]
 
 const commandGroups = [
@@ -154,9 +154,9 @@ const commandGroups = [
     items: [
       { label: 'Open colors', icon: 'i-lucide-palette' },
       { label: 'Open logos', icon: 'i-lucide-badge-check' },
-      { label: 'Open components', icon: 'i-lucide-component' },
-    ],
-  },
+      { label: 'Open components', icon: 'i-lucide-component' }
+    ]
+  }
 ]
 
 const treeItems = [
@@ -168,58 +168,58 @@ const treeItems = [
       { label: 'app.config.ts', icon: 'i-lucide-file-code' },
       { label: 'components/', icon: 'i-lucide-folder', defaultExpanded: true, children: [
         { label: 'Button.vue', icon: 'i-lucide-file-code' },
-        { label: 'Card.vue', icon: 'i-lucide-file-code' },
-      ] },
-    ],
-  },
+        { label: 'Card.vue', icon: 'i-lucide-file-code' }
+      ] }
+    ]
+  }
 ]
 
 const tableData = [
   { name: 'Button', role: 'Action', status: 'Styled' },
   { name: 'Input', role: 'Data entry', status: 'Styled' },
-  { name: 'Alert', role: 'Feedback', status: 'Styled' },
+  { name: 'Alert', role: 'Feedback', status: 'Styled' }
 ]
 
 const tableColumns = [
   { accessorKey: 'name', header: 'Component' },
   { accessorKey: 'role', header: 'Role' },
-  { accessorKey: 'status', header: 'Status' },
+  { accessorKey: 'status', header: 'Status' }
 ]
 
 const timelineItems = [
   { title: 'Tokens', description: 'Set semantic roles.', icon: 'i-lucide-swatch-book' },
   { title: 'Components', description: 'Apply shared behavior.', icon: 'i-lucide-component' },
-  { title: 'Review', description: 'Check contrast and copy.', icon: 'i-lucide-circle-check' },
+  { title: 'Review', description: 'Check contrast and copy.', icon: 'i-lucide-circle-check' }
 ]
 
 const carouselItems = [
   { title: 'Color', icon: 'i-lucide-palette' },
   { title: 'Type', icon: 'i-lucide-type' },
-  { title: 'Logo', icon: 'i-lucide-badge-check' },
+  { title: 'Logo', icon: 'i-lucide-badge-check' }
 ]
 
 const footerColumns = [{
   label: 'Guide',
   children: [
     { label: 'Overview', to: '/docs/components' },
-    { label: 'Coverage', to: '/docs/components/coverage' },
-  ],
+    { label: 'Coverage', to: '/docs/components/coverage' }
+  ]
 }, {
   label: 'Families',
   children: [
     { label: 'Actions', to: '/docs/components/actions' },
-    { label: 'Forms', to: '/docs/components/forms' },
-  ],
+    { label: 'Forms', to: '/docs/components/forms' }
+  ]
 }]
 
 const pageAnchors = [
   { label: 'Foundation', icon: 'i-lucide-palette', to: '#foundation', active: true },
-  { label: 'Application', icon: 'i-lucide-component', to: '#application' },
+  { label: 'Application', icon: 'i-lucide-component', to: '#application' }
 ]
 
 const pageLogos = [
   { src: wordmarkLogo, alt: 'happydesigns wordmark' },
-  { src: symbolLogo, alt: 'happydesigns symbol' },
+  { src: symbolLogo, alt: 'happydesigns symbol' }
 ]
 
 const locales = [en, de]
@@ -228,34 +228,34 @@ const authFields = [{
   name: 'email',
   type: 'email',
   label: 'Email',
-  placeholder: 'hello@happydesigns.de',
+  placeholder: 'hello@happydesigns.de'
 }, {
   name: 'password',
   type: 'password',
   label: 'Password',
-  placeholder: 'Password',
+  placeholder: 'Password'
 }]
 
 const scopedThemeProps = {
   button: {
     color: 'secondary' as const,
     variant: 'solid' as const,
-    size: 'sm' as const,
+    size: 'sm' as const
   },
   badge: {
     color: 'secondary' as const,
-    variant: 'subtle' as const,
+    variant: 'subtle' as const
   },
   alert: {
     color: 'secondary' as const,
-    variant: 'soft' as const,
-  },
+    variant: 'soft' as const
+  }
 }
 
 const dashboardItems = [
   { label: 'Projects', icon: 'i-lucide-folder-kanban', active: true },
   { label: 'Components', icon: 'i-lucide-component' },
-  { label: 'Settings', icon: 'i-lucide-settings' },
+  { label: 'Settings', icon: 'i-lucide-settings' }
 ]
 
 const dashboardSearchGroups = [{
@@ -263,30 +263,30 @@ const dashboardSearchGroups = [{
   label: 'Dashboard',
   items: [
     { label: 'Open projects', icon: 'i-lucide-folder-kanban' },
-    { label: 'Review components', icon: 'i-lucide-component' },
-  ],
+    { label: 'Review components', icon: 'i-lucide-component' }
+  ]
 }]
 
 const blogPosts = [{
   title: 'Designing durable defaults',
   description: 'How the brand layer keeps repeated interfaces calm and recognizable.',
   date: 'Jun 15, 2026',
-  badge: { label: 'Guide', color: 'primary' as const, variant: 'subtle' as const },
+  badge: { label: 'Guide', color: 'primary' as const, variant: 'subtle' as const }
 }, {
   title: 'Structure before decoration',
   description: 'A practical note on borders, spacing, type, and restrained accent use.',
-  date: 'Jun 12, 2026',
+  date: 'Jun 12, 2026'
 }]
 
 const changelogVersions = [{
   title: 'Component coverage expanded',
   description: 'Dashboard, publishing, chat, and editor families now have brand guidance.',
   date: 'v0.2',
-  badge: { label: 'Docs', color: 'primary' as const, variant: 'subtle' as const },
+  badge: { label: 'Docs', color: 'primary' as const, variant: 'subtle' as const }
 }, {
   title: 'Logo system refined',
   description: 'Logo forms and lockups use clearer role-based guidance.',
-  date: 'v0.1',
+  date: 'v0.1'
 }]
 
 const pricingPlans = [{
@@ -294,68 +294,68 @@ const pricingPlans = [{
   price: 'Docs',
   description: 'Brand decisions for readers and maintainers.',
   features: ['Color roles', 'Logo guidance', 'Component rules'],
-  button: { label: 'Open docs', to: '/docs' },
+  button: { label: 'Open docs', to: '/docs' }
 }, {
   title: 'Layer',
   price: 'Nuxt',
   description: 'Reusable Nuxt UI theme behavior for projects.',
   features: ['App config', 'Semantic tokens', 'Component defaults'],
   button: { label: 'Install layer', to: '/docs/components' },
-  highlight: true,
+  highlight: true
 }]
 
 const pricingTableTiers = [{
   id: 'guide',
   title: 'Guide',
-  description: 'Documentation',
+  description: 'Documentation'
 }, {
   id: 'layer',
   title: 'Layer',
   description: 'Implementation',
-  highlight: true,
+  highlight: true
 }]
 
 const pricingTableSections = [{
   title: 'Coverage',
   features: [{
     title: 'Brand decisions',
-    tiers: { guide: true, layer: true },
+    tiers: { guide: true, layer: true }
   }, {
     title: 'Nuxt UI defaults',
-    tiers: { guide: false, layer: true },
-  }],
+    tiers: { guide: false, layer: true }
+  }]
 }]
 
 const chatMessages = [
   {
     id: 'user-1',
     role: 'user' as const,
-    parts: [{ type: 'text' as const, text: 'Can this interface stay useful before branded?' }],
+    parts: [{ type: 'text' as const, text: 'Can this interface stay useful before branded?' }]
   },
   {
     id: 'assistant-1',
     role: 'assistant' as const,
-    parts: [{ type: 'text' as const, text: 'Yes. Start with clear structure, then add recognition through restrained details.' }],
-  },
+    parts: [{ type: 'text' as const, text: 'Yes. Start with clear structure, then add recognition through restrained details.' }]
+  }
 ]
 
 const editorMentions = [
   { label: 'Brand owner', avatar: { text: 'BO' } },
-  { label: 'Design review', avatar: { icon: 'i-lucide-palette' } },
+  { label: 'Design review', avatar: { icon: 'i-lucide-palette' } }
 ]
 
 const familyLabels: Record<Family, string> = {
-  actions: 'Actions',
-  forms: 'Forms',
-  feedback: 'Feedback',
-  navigation: 'Navigation',
+  'actions': 'Actions',
+  'forms': 'Forms',
+  'feedback': 'Feedback',
+  'navigation': 'Navigation',
   'data-content': 'Data and content',
-  overlays: 'Overlays',
+  'overlays': 'Overlays',
   'layout-page': 'Layout and page',
   'system-helpers': 'System helpers',
-  dashboard: 'Dashboard',
-  publishing: 'Publishing',
-  'chat-editor': 'Chat and editor',
+  'dashboard': 'Dashboard',
+  'publishing': 'Publishing',
+  'chat-editor': 'Chat and editor'
 }
 </script>
 
@@ -369,7 +369,10 @@ const familyLabels: Record<Family, string> = {
       <p class="font-mono text-xs tracking-[0.16em] text-primary uppercase">
         {{ familyLabels[props.family] }}
       </p>
-      <UBadge variant="outline" color="neutral">
+      <UBadge
+        variant="outline"
+        color="neutral"
+      >
         Nuxt UI
       </UBadge>
     </div>
@@ -379,7 +382,11 @@ const familyLabels: Record<Family, string> = {
         v-if="props.family === 'actions'"
         class="grid gap-4 sm:gap-5 md:grid-cols-2"
       >
-        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
+        <UCard
+          variant="outline"
+          class="min-h-44"
+          :ui="{ body: 'p-5 sm:p-6' }"
+        >
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -390,11 +397,18 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UButton label="Save changes" icon="i-lucide-save" />
+            <UButton
+              label="Save changes"
+              icon="i-lucide-save"
+            />
           </div>
         </UCard>
 
-        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
+        <UCard
+          variant="outline"
+          class="min-h-44"
+          :ui="{ body: 'p-5 sm:p-6' }"
+        >
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -406,7 +420,11 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <div class="flex flex-wrap gap-3">
-              <UButton label="Review pattern" variant="outline" color="neutral" />
+              <UButton
+                label="Review pattern"
+                variant="outline"
+                color="neutral"
+              />
               <UTooltip text="Open docs">
                 <UButton
                   aria-label="Open docs"
@@ -419,7 +437,11 @@ const familyLabels: Record<Family, string> = {
           </div>
         </UCard>
 
-        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
+        <UCard
+          variant="outline"
+          class="min-h-44"
+          :ui="{ body: 'p-5 sm:p-6' }"
+        >
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -431,13 +453,25 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UFieldGroup>
-              <UInput model-value="@happydesigns/brand" readonly />
-              <UButton color="neutral" variant="outline" icon="i-lucide-copy" aria-label="Copy package" />
+              <UInput
+                model-value="@happydesigns/brand"
+                readonly
+              />
+              <UButton
+                color="neutral"
+                variant="outline"
+                icon="i-lucide-copy"
+                aria-label="Copy package"
+              />
             </UFieldGroup>
           </div>
         </UCard>
 
-        <UCard variant="outline" class="min-h-44" :ui="{ body: 'p-5 sm:p-6' }">
+        <UCard
+          variant="outline"
+          class="min-h-44"
+          :ui="{ body: 'p-5 sm:p-6' }"
+        >
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -450,7 +484,10 @@ const familyLabels: Record<Family, string> = {
 
             <div class="space-y-3">
               <div class="flex flex-wrap items-center gap-3">
-                <UButton variant="outline" color="neutral">
+                <UButton
+                  variant="outline"
+                  color="neutral"
+                >
                   <span>Review queue</span>
                   <UBadge
                     label="3"
@@ -476,13 +513,22 @@ const familyLabels: Record<Family, string> = {
               </div>
 
               <div class="flex flex-wrap items-center gap-2">
-                <UBadge color="primary" variant="subtle">
+                <UBadge
+                  color="primary"
+                  variant="subtle"
+                >
                   Active
                 </UBadge>
-                <UBadge color="secondary" variant="outline">
+                <UBadge
+                  color="secondary"
+                  variant="outline"
+                >
                   Editorial
                 </UBadge>
-                <UBadge color="success" variant="subtle">
+                <UBadge
+                  color="success"
+                  variant="subtle"
+                >
                   Ready
                 </UBadge>
                 <UKbd>Ctrl</UKbd>
@@ -498,7 +544,10 @@ const familyLabels: Record<Family, string> = {
         class="grid gap-4 md:grid-cols-2"
       >
         <UCard variant="outline">
-          <UForm :state="{ projectName, status }" class="space-y-4">
+          <UForm
+            :state="{ projectName, status }"
+            class="space-y-4"
+          >
             <div>
               <h3 class="text-base font-semibold text-highlighted">
                 Basic fields
@@ -508,18 +557,30 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UFormField label="Project name" help="Short text inputs should stay calm and direct.">
+            <UFormField
+              label="Project name"
+              help="Short text inputs should stay calm and direct."
+            >
               <UInput v-model="projectName" />
             </UFormField>
 
-            <UFormField label="Status" help="Use semantic labels before color.">
-              <USelect v-model="status" :items="statusItems" />
+            <UFormField
+              label="Status"
+              help="Use semantic labels before color."
+            >
+              <USelect
+                v-model="status"
+                :items="statusItems"
+              />
             </UFormField>
           </UForm>
         </UCard>
 
         <UCard variant="outline">
-          <UForm :state="{ reviewer, packageName }" class="space-y-4">
+          <UForm
+            :state="{ reviewer, packageName }"
+            class="space-y-4"
+          >
             <div>
               <h3 class="text-base font-semibold text-highlighted">
                 Choice fields
@@ -529,12 +590,26 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UFormField label="Reviewer" help="Searchable choices stay predictable.">
-              <USelectMenu v-model="reviewer" :items="reviewerItems" value-key="value" />
+            <UFormField
+              label="Reviewer"
+              help="Searchable choices stay predictable."
+            >
+              <USelectMenu
+                v-model="reviewer"
+                :items="reviewerItems"
+                value-key="value"
+              />
             </UFormField>
 
-            <UFormField label="Package" help="Technical values may use exact names.">
-              <UInputMenu v-model="packageName" :items="packageItems" value-key="value" />
+            <UFormField
+              label="Package"
+              help="Technical values may use exact names."
+            >
+              <UInputMenu
+                v-model="packageName"
+                :items="packageItems"
+                value-key="value"
+              />
             </UFormField>
           </UForm>
         </UCard>
@@ -550,18 +625,41 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UFormField label="Pattern count" help="Use steppers for bounded numeric choices.">
-              <UInputNumber v-model="budget" :min="1" :max="12" />
+            <UFormField
+              label="Pattern count"
+              help="Use steppers for bounded numeric choices."
+            >
+              <UInputNumber
+                v-model="budget"
+                :min="1"
+                :max="12"
+              />
             </UFormField>
 
-            <UFormField label="Review date" help="Group date and time when they describe one decision.">
-              <UFieldGroup orientation="vertical" class="w-full max-w-xs">
-                <UInputDate icon="i-lucide-calendar" size="sm" class="w-full" />
-                <UInputTime size="sm" class="w-full" />
+            <UFormField
+              label="Review date"
+              help="Group date and time when they describe one decision."
+            >
+              <UFieldGroup
+                orientation="vertical"
+                class="w-full max-w-xs"
+              >
+                <UInputDate
+                  icon="i-lucide-calendar"
+                  size="sm"
+                  class="w-full"
+                />
+                <UInputTime
+                  size="sm"
+                  class="w-full"
+                />
               </UFieldGroup>
             </UFormField>
 
-            <UFormField label="Access code" help="Pin inputs are for short fixed-length codes.">
+            <UFormField
+              label="Access code"
+              help="Pin inputs are for short fixed-length codes."
+            >
               <UPinInput v-model="pin" />
             </UFormField>
           </div>
@@ -578,23 +676,50 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UFormField label="Checks" help="Grouped choices make validation intent visible.">
-              <UCheckboxGroup v-model="checks" :items="checkItems" />
+            <UFormField
+              label="Checks"
+              help="Grouped choices make validation intent visible."
+            >
+              <UCheckboxGroup
+                v-model="checks"
+                :items="checkItems"
+              />
             </UFormField>
 
-            <UFormField label="Include notes" help="Single checkboxes work for one optional choice.">
-              <UCheckbox v-model="includeNotes" label="Attach implementation notes" />
+            <UFormField
+              label="Include notes"
+              help="Single checkboxes work for one optional choice."
+            >
+              <UCheckbox
+                v-model="includeNotes"
+                label="Attach implementation notes"
+              />
             </UFormField>
 
-            <UFormField label="Rhythm" help="Radio choices work when one option must win.">
-              <URadioGroup v-model="rhythm" :items="rhythmItems" />
+            <UFormField
+              label="Rhythm"
+              help="Radio choices work when one option must win."
+            >
+              <URadioGroup
+                v-model="rhythm"
+                :items="rhythmItems"
+              />
             </UFormField>
 
-            <UFormField label="Enabled" help="Switches are for immediate binary settings.">
-              <USwitch v-model="enabled" label="Apply brand layer" />
+            <UFormField
+              label="Enabled"
+              help="Switches are for immediate binary settings."
+            >
+              <USwitch
+                v-model="enabled"
+                label="Apply brand layer"
+              />
             </UFormField>
 
-            <UFormField label="Intensity" help="Sliders are useful only for approximate values.">
+            <UFormField
+              label="Intensity"
+              help="Sliders are useful only for approximate values."
+            >
               <USlider v-model="progress" />
             </UFormField>
           </div>
@@ -611,12 +736,22 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UFormField label="Labels" help="Tags should help scanning, not decorate the form.">
+            <UFormField
+              label="Labels"
+              help="Tags should help scanning, not decorate the form."
+            >
               <UInputTags v-model="tags" />
             </UFormField>
 
-            <UFormField label="Section" help="Listboxes support compact internal choices.">
-              <UListbox v-model="selectedSection" :items="listboxItems" value-key="value" />
+            <UFormField
+              label="Section"
+              help="Listboxes support compact internal choices."
+            >
+              <UListbox
+                v-model="selectedSection"
+                :items="listboxItems"
+                value-key="value"
+              />
             </UFormField>
           </div>
         </UCard>
@@ -632,11 +767,17 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UFormField label="Accent" help="Color pickers are reserved for design tooling.">
+            <UFormField
+              label="Accent"
+              help="Color pickers are reserved for design tooling."
+            >
               <UColorPicker v-model="accent" />
             </UFormField>
 
-            <UFormField label="Asset" help="Uploads need clear format expectations.">
+            <UFormField
+              label="Asset"
+              help="Uploads need clear format expectations."
+            >
               <UFileUpload
                 label="Drop a brand asset"
                 description="SVG, PNG, or PDF"
@@ -644,15 +785,28 @@ const familyLabels: Record<Family, string> = {
               />
             </UFormField>
 
-            <UFormField label="Calendar" help="Full calendars need enough room to scan.">
+            <UFormField
+              label="Calendar"
+              help="Full calendars need enough room to scan."
+            >
               <UCalendar />
             </UFormField>
           </div>
         </UCard>
 
-        <UCard variant="outline" class="md:col-span-2">
-          <UFormField label="Implementation note" help="Long text fields should carry prose, not layout instructions.">
-            <UTextarea v-model="note" :rows="3" spellcheck="false" />
+        <UCard
+          variant="outline"
+          class="md:col-span-2"
+        >
+          <UFormField
+            label="Implementation note"
+            help="Long text fields should carry prose, not layout instructions."
+          >
+            <UTextarea
+              v-model="note"
+              :rows="3"
+              spellcheck="false"
+            />
           </UFormField>
         </UCard>
       </div>
@@ -672,11 +826,11 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UBanner
-            color="secondary"
-            icon="i-lucide-info"
-            title="Brand layer updated"
-          />
+            <UBanner
+              color="secondary"
+              icon="i-lucide-info"
+              title="Brand layer updated"
+            />
           </div>
         </UCard>
 
@@ -691,29 +845,29 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UAlert
-            color="success"
-            variant="subtle"
-            icon="i-lucide-circle-check"
-            title="Ready for review"
-            description="Feedback states should explain what happened and what to do next."
-          />
+            <UAlert
+              color="success"
+              variant="subtle"
+              icon="i-lucide-circle-check"
+              title="Ready for review"
+              description="Feedback states should explain what happened and what to do next."
+            />
 
-          <UAlert
-            color="warning"
-            variant="subtle"
-            icon="i-lucide-triangle-alert"
-            title="Check contrast"
-            description="Warning states stay soft until the user needs to act."
-          />
+            <UAlert
+              color="warning"
+              variant="subtle"
+              icon="i-lucide-triangle-alert"
+              title="Check contrast"
+              description="Warning states stay soft until the user needs to act."
+            />
 
-          <UAlert
-            color="error"
-            variant="subtle"
-            icon="i-lucide-circle-x"
-            title="Upload failed"
-            description="Use calm, specific recovery copy for errors."
-          />
+            <UAlert
+              color="error"
+              variant="subtle"
+              icon="i-lucide-circle-x"
+              title="Upload failed"
+              description="Use calm, specific recovery copy for errors."
+            />
           </div>
         </UCard>
 
@@ -732,11 +886,17 @@ const familyLabels: Record<Family, string> = {
               <p class="font-semibold text-highlighted">
                 Accessibility pass
               </p>
-              <UBadge variant="outline" color="neutral">
+              <UBadge
+                variant="outline"
+                color="neutral"
+              >
                 {{ progress }}%
               </UBadge>
             </div>
-            <UProgress v-model="progress" class="mt-4" />
+            <UProgress
+              v-model="progress"
+              class="mt-4"
+            />
             <div class="mt-5 space-y-3">
               <USkeleton class="h-3 w-2/3" />
               <USkeleton class="h-3 w-5/6" />
@@ -756,13 +916,13 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UButton
-            label="Show toast"
-            icon="i-lucide-circle-check"
-            color="neutral"
-            variant="outline"
-            @click="showToastPreview"
-          />
+            <UButton
+              label="Show toast"
+              icon="i-lucide-circle-check"
+              color="neutral"
+              variant="outline"
+              @click="showToastPreview"
+            />
           </div>
         </UCard>
 
@@ -777,12 +937,12 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UEmpty
-            icon="i-lucide-folder-open"
-            title="No patterns yet"
-            description="Start with a project brief before adding variants."
-            :actions="[{ label: 'Create pattern', icon: 'i-lucide-plus' }]"
-          />
+            <UEmpty
+              icon="i-lucide-folder-open"
+              title="No patterns yet"
+              description="Start with a project brief before adding variants."
+              :actions="[{ label: 'Create pattern', icon: 'i-lucide-plus' }]"
+            />
           </div>
         </UCard>
       </div>
@@ -802,7 +962,10 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UNavigationMenu :items="navigationItems" class="w-full" />
+            <UNavigationMenu
+              :items="navigationItems"
+              class="w-full"
+            />
           </div>
         </UCard>
 
@@ -833,7 +996,11 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UStepper :items="stepperItems" disabled orientation="vertical" />
+            <UStepper
+              :items="stepperItems"
+              disabled
+              orientation="vertical"
+            />
           </div>
         </UCard>
 
@@ -868,8 +1035,16 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UTree :items="treeItems" />
-            <UPagination :default-page="2" :total="24" :items-per-page="8" class="mt-4" />
-            <ULink to="/docs/components" class="mt-3 inline-flex text-sm font-medium text-primary">
+            <UPagination
+              :default-page="2"
+              :total="24"
+              :items-per-page="8"
+              class="mt-4"
+            />
+            <ULink
+              to="/docs/components"
+              class="mt-3 inline-flex text-sm font-medium text-primary"
+            >
               Open component system
             </ULink>
           </div>
@@ -906,7 +1081,10 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UTable :data="tableData" :columns="tableColumns" />
+            <UTable
+              :data="tableData"
+              :columns="tableColumns"
+            />
           </div>
         </UCard>
 
@@ -921,12 +1099,12 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UPageCard
-            title="Reusable pattern"
-            description="Use page cards for repeated navigation or documentation entries."
-            icon="i-lucide-layout-grid"
-            to="/docs/components"
-          />
+            <UPageCard
+              title="Reusable pattern"
+              description="Use page cards for repeated navigation or documentation entries."
+              icon="i-lucide-layout-grid"
+              to="/docs/components"
+            />
           </div>
         </UCard>
 
@@ -941,19 +1119,19 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UCollapsible>
-            <UButton
-              label="Show token detail"
-              variant="outline"
-              color="neutral"
-              trailing-icon="i-lucide-chevron-down"
-            />
-            <template #content>
-              <div class="mt-3 rounded-sm border border-default bg-muted p-4 font-mono text-sm">
-                --ui-bg-muted: semantic surface
-              </div>
-            </template>
-          </UCollapsible>
+            <UCollapsible>
+              <UButton
+                label="Show token detail"
+                variant="outline"
+                color="neutral"
+                trailing-icon="i-lucide-chevron-down"
+              />
+              <template #content>
+                <div class="mt-3 rounded-sm border border-default bg-muted p-4 font-mono text-sm">
+                  --ui-bg-muted: semantic surface
+                </div>
+              </template>
+            </UCollapsible>
           </div>
         </UCard>
 
@@ -994,11 +1172,11 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <USeparator label="Token" />
+            <USeparator label="Token" />
 
-          <div class="rounded-md border border-default bg-muted p-4 font-mono text-sm">
-            --ui-primary: coral
-          </div>
+            <div class="rounded-md border border-default bg-muted p-4 font-mono text-sm">
+              --ui-primary: coral
+            </div>
           </div>
         </UCard>
 
@@ -1013,19 +1191,25 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-          <UCarousel
-            v-slot="{ item }"
-            :items="carouselItems"
-            class="rounded-sm border border-default bg-default p-4"
-            :ui="{ item: 'basis-full' }"
-          >
-            <div class="flex h-24 items-center justify-center gap-3 rounded-sm border border-default bg-muted">
-              <UIcon :name="item.icon" class="size-5 text-primary" />
-              <span class="font-semibold text-highlighted">{{ item.title }}</span>
-            </div>
-          </UCarousel>
+            <UCarousel
+              v-slot="{ item }"
+              :items="carouselItems"
+              class="rounded-sm border border-default bg-default p-4"
+              :ui="{ item: 'basis-full' }"
+            >
+              <div class="flex h-24 items-center justify-center gap-3 rounded-sm border border-default bg-muted">
+                <UIcon
+                  :name="item.icon"
+                  class="size-5 text-primary"
+                />
+                <span class="font-semibold text-highlighted">{{ item.title }}</span>
+              </div>
+            </UCarousel>
 
-          <UTimeline :items="timelineItems" size="sm" />
+            <UTimeline
+              :items="timelineItems"
+              size="sm"
+            />
           </div>
         </UCard>
       </div>
@@ -1045,8 +1229,15 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UModal title="Review pattern" description="Use modals for focused decisions.">
-              <UButton label="Open modal" variant="outline" color="neutral" />
+            <UModal
+              title="Review pattern"
+              description="Use modals for focused decisions."
+            >
+              <UButton
+                label="Open modal"
+                variant="outline"
+                color="neutral"
+              />
               <template #body>
                 <p class="text-sm text-muted">
                   Modal content should stay direct and easy to close.
@@ -1054,7 +1245,11 @@ const familyLabels: Record<Family, string> = {
               </template>
               <template #footer>
                 <UButton label="Save" />
-                <UButton label="Cancel" variant="outline" color="neutral" />
+                <UButton
+                  label="Cancel"
+                  variant="outline"
+                  color="neutral"
+                />
               </template>
             </UModal>
           </div>
@@ -1071,8 +1266,15 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <USlideover title="Pattern notes" description="Use slideovers for contextual supporting work.">
-              <UButton label="Open slideover" variant="outline" color="neutral" />
+            <USlideover
+              title="Pattern notes"
+              description="Use slideovers for contextual supporting work."
+            >
+              <UButton
+                label="Open slideover"
+                variant="outline"
+                color="neutral"
+              />
               <template #body>
                 <p class="text-sm text-muted">
                   Slideovers should support the page instead of replacing it.
@@ -1093,8 +1295,15 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UDrawer title="Mobile settings" description="Use drawers when the interaction starts near a screen edge.">
-              <UButton label="Open drawer" variant="outline" color="neutral" />
+            <UDrawer
+              title="Mobile settings"
+              description="Use drawers when the interaction starts near a screen edge."
+            >
+              <UButton
+                label="Open drawer"
+                variant="outline"
+                color="neutral"
+              />
               <template #body>
                 <p class="text-sm text-muted">
                   Drawer content should stay short and easy to dismiss.
@@ -1116,7 +1325,11 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UPopover>
-              <UButton label="Open popover" variant="outline" color="neutral" />
+              <UButton
+                label="Open popover"
+                variant="outline"
+                color="neutral"
+              />
               <template #content>
                 <div class="w-56 p-4">
                   <p class="font-semibold text-highlighted">
@@ -1143,7 +1356,12 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UDropdownMenu :items="dropdownItems">
-              <UButton label="Open menu" variant="outline" color="neutral" trailing-icon="i-lucide-chevron-down" />
+              <UButton
+                label="Open menu"
+                variant="outline"
+                color="neutral"
+                trailing-icon="i-lucide-chevron-down"
+              />
             </UDropdownMenu>
           </div>
         </UCard>
@@ -1308,7 +1526,10 @@ const familyLabels: Record<Family, string> = {
 
               <UPageBody class="px-4 pb-4 sm:px-5 sm:pb-5">
                 <UPageColumns class="!columns-1 gap-4 space-y-4">
-                  <UCard variant="outline" :ui="{ body: 'p-3 sm:p-4' }">
+                  <UCard
+                    variant="outline"
+                    :ui="{ body: 'p-3 sm:p-4' }"
+                  >
                     <UPageList divide>
                       <UPageCard
                         title="Foundations"
@@ -1325,14 +1546,21 @@ const familyLabels: Record<Family, string> = {
                     </UPageList>
                   </UCard>
 
-                  <UCard variant="outline" :ui="{ body: 'p-3 sm:p-4' }">
+                  <UCard
+                    variant="outline"
+                    :ui="{ body: 'p-3 sm:p-4' }"
+                  >
                     <UPageAnchors :links="pageAnchors" />
                   </UCard>
                 </UPageColumns>
               </UPageBody>
             </div>
 
-            <UPageLogos title="Logo forms in one system" :logos="pageLogos" :marquee="false" />
+            <UPageLogos
+              title="Logo forms in one system"
+              :logos="pageLogos"
+              :marquee="false"
+            />
 
             <div class="rounded-sm border border-default p-4">
               <UFooterColumns :columns="footerColumns">
@@ -1368,7 +1596,12 @@ const familyLabels: Record<Family, string> = {
                   <span class="font-semibold text-highlighted">happydesigns.</span>
                 </template>
                 <template #right>
-                  <UButton label="Docs" variant="ghost" color="neutral" size="sm" />
+                  <UButton
+                    label="Docs"
+                    variant="ghost"
+                    color="neutral"
+                    size="sm"
+                  />
                 </template>
               </UHeader>
 
@@ -1417,12 +1650,21 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <div class="grid gap-3 sm:grid-cols-2">
-              <UFormField label="Color mode" help="Use the Nuxt UI mode select when the choice matters.">
+              <UFormField
+                label="Color mode"
+                help="Use the Nuxt UI mode select when the choice matters."
+              >
                 <UColorModeSelect />
               </UFormField>
 
-              <UFormField label="Locale" help="Use locale controls only when the product supports several languages.">
-                <ULocaleSelect v-model="locale" :locales="locales" />
+              <UFormField
+                label="Locale"
+                help="Use locale controls only when the product supports several languages."
+              >
+                <ULocaleSelect
+                  v-model="locale"
+                  :locales="locales"
+                />
               </UFormField>
             </div>
 
@@ -1517,7 +1759,10 @@ const familyLabels: Record<Family, string> = {
           </div>
         </UCard>
 
-        <UCard variant="outline" class="md:col-span-2">
+        <UCard
+          variant="outline"
+          class="md:col-span-2"
+        >
           <div class="space-y-4">
             <div>
               <h3 class="text-base font-semibold text-highlighted">
@@ -1537,7 +1782,10 @@ const familyLabels: Record<Family, string> = {
                 />
                 <div class="flex flex-wrap items-center gap-2">
                   <UBadge label="Scoped" />
-                  <UButton label="Preview" icon="i-lucide-eye" />
+                  <UButton
+                    label="Preview"
+                    icon="i-lucide-eye"
+                  />
                 </div>
               </div>
             </UTheme>
@@ -1575,12 +1823,12 @@ const familyLabels: Record<Family, string> = {
                 :collapsed-size="10"
                 :class="[
                   '!flex min-h-full transition-[width,min-width] duration-200',
-                  dashboardCollapsed ? '!w-16 !min-w-16' : '!w-56 !min-w-56',
+                  dashboardCollapsed ? '!w-16 !min-w-16' : '!w-56 !min-w-56'
                 ]"
                 :ui="{
                   header: dashboardCollapsed ? 'flex h-12 items-center justify-center px-0' : 'h-12 px-3',
                   body: dashboardCollapsed ? 'flex flex-col items-center justify-start p-2' : 'p-3',
-                  footer: dashboardCollapsed ? 'flex justify-center p-2' : 'p-3',
+                  footer: dashboardCollapsed ? 'flex justify-center p-2' : 'p-3'
                 }"
               >
                 <template #header="{ collapsed }">
@@ -1663,16 +1911,27 @@ const familyLabels: Record<Family, string> = {
                     </template>
 
                     <template #right>
-                      <UButton label="New" icon="i-lucide-plus" size="sm" />
+                      <UButton
+                        label="New"
+                        icon="i-lucide-plus"
+                        size="sm"
+                      />
                     </template>
                   </UDashboardNavbar>
 
                   <UDashboardToolbar>
                     <template #left>
-                      <UInput icon="i-lucide-search" placeholder="Search projects" />
+                      <UInput
+                        icon="i-lucide-search"
+                        placeholder="Search projects"
+                      />
                     </template>
                     <template #right>
-                      <USelect v-model="status" :items="statusItems" size="sm" />
+                      <USelect
+                        v-model="status"
+                        :items="statusItems"
+                        size="sm"
+                      />
                     </template>
                   </UDashboardToolbar>
                 </template>
@@ -1776,7 +2035,10 @@ const familyLabels: Record<Family, string> = {
                 <p class="font-mono text-xs tracking-[0.16em] text-label uppercase">
                   Changelog
                 </p>
-                <UBadge color="neutral" variant="outline">
+                <UBadge
+                  color="neutral"
+                  variant="outline"
+                >
                   Versions
                 </UBadge>
               </div>
@@ -1790,7 +2052,10 @@ const familyLabels: Record<Family, string> = {
                 >
                   <div class="space-y-3">
                     <div class="flex flex-wrap items-center justify-between gap-2">
-                      <UBadge color="neutral" variant="outline">
+                      <UBadge
+                        color="neutral"
+                        variant="outline"
+                      >
                         {{ version.date }}
                       </UBadge>
                       <UBadge
@@ -1844,17 +2109,33 @@ const familyLabels: Record<Family, string> = {
               </p>
             </div>
 
-            <UMarquee pause-on-hover overlay class="rounded-sm border border-default bg-muted p-4">
-              <UBadge color="neutral" variant="outline">
+            <UMarquee
+              pause-on-hover
+              overlay
+              class="rounded-sm border border-default bg-muted p-4"
+            >
+              <UBadge
+                color="neutral"
+                variant="outline"
+              >
                 Nuxt UI layer
               </UBadge>
-              <UBadge color="primary" variant="subtle">
+              <UBadge
+                color="primary"
+                variant="subtle"
+              >
                 Coral focus
               </UBadge>
-              <UBadge color="secondary" variant="subtle">
+              <UBadge
+                color="secondary"
+                variant="subtle"
+              >
                 Technical clarity
               </UBadge>
-              <UBadge color="success" variant="subtle">
+              <UBadge
+                color="success"
+                variant="subtle"
+              >
                 Durable defaults
               </UBadge>
             </UMarquee>
@@ -1949,7 +2230,10 @@ const familyLabels: Record<Family, string> = {
               >
                 <UEditorToolbar :editor="editor" />
                 <UEditorSuggestionMenu :editor="editor" />
-                <UEditorMentionMenu :editor="editor" :items="editorMentions" />
+                <UEditorMentionMenu
+                  :editor="editor"
+                  :items="editorMentions"
+                />
                 <UEditorEmojiMenu :editor="editor" />
                 <UEditorDragHandle :editor="editor" />
               </UEditor>

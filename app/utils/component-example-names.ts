@@ -6,7 +6,7 @@ export const actionExampleNames = new Set([
   'chip',
   'field-group',
   'kbd',
-  'tooltip',
+  'tooltip'
 ])
 
 export const formExampleNames = new Set([
@@ -36,7 +36,7 @@ export const formExampleNames = new Set([
   'file-upload',
   'color-picker',
   'calendar',
-  'listbox',
+  'listbox'
 ])
 
 export const feedbackExampleNames = new Set([
@@ -47,5 +47,5 @@ export const feedbackExampleNames = new Set([
   'toast',
   'empty',
   'icon',
-  'feedback-system-pattern',
+  'feedback-system-pattern'
 ])
