@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const guide = useBrandGuide()
+const guide = useHappydesignsGuide()
 
 const featuredColors = guide.colors.slice(0, 4)
 const [primaryFont, monoFont] = guide.fonts

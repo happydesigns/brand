@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const guide = useBrandGuide()
+const guide = useHappydesignsGuide()
 
 const year = new Date().getFullYear()
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const guide = useBrandGuide()
+const guide = useHappydesignsGuide()
 const { forced: forcedColorMode } = useDocusColorMode()
 const { isEnabled: isAssistantEnabled } = useAssistant()
 const { isEnabled, locales } = useDocusI18n()
