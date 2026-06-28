@@ -1120,7 +1120,11 @@ const badgeUi = {
                 class="h-full"
                 package-name="@happydesigns/brand"
                 title="Build with the layer."
-              />
+              >
+                <template #default="{ snippets }">
+                  <LayerInstallCodeGroup :snippets="snippets" />
+                </template>
+              </IdLayerInstall>
             </div>
           </template>
         </UPageCTA>
