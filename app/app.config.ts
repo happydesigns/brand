@@ -1,5 +1,5 @@
 import { createNuxtUiAppConfig } from '@happydesigns/id'
-import { happydesignsBrandGuide } from './utils/brand-guide'
+import { happydesignsBrandGuide, happydesignsComponentCoverage } from './utils/brand-guide'
 import { happydesignsBrandTheme } from './utils/brand-theme'
 
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
@@ -8,6 +8,12 @@ type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
 }
 
 const happydesignsUiConfig = (happydesignsUiAppConfig.ui ?? {}) as UiConfigWithIcons
+const happydesignsAppConfigGuide = {
+  ...happydesignsBrandGuide,
+  // Nuxt app.config merges arrays from extended layers. defuFn calls function
+  // values with the merged default, so this replaces the generic id coverage.
+  componentCoverage: () => happydesignsComponentCoverage
+}
 
 export default defineAppConfig({
   ...happydesignsUiAppConfig,
@@ -32,7 +38,7 @@ export default defineAppConfig({
     theme: happydesignsBrandTheme,
     defaultTheme: happydesignsBrandTheme.name,
     themes: [happydesignsBrandTheme],
-    guide: happydesignsBrandGuide
+    guide: happydesignsAppConfigGuide
   },
   docus: {
     locale: 'en',
