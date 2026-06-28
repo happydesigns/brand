@@ -16,13 +16,13 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.102",
-    "@iconify-json/simple-icons": "^1.2.78",
-    "@happydesigns/id": "file:../id",
-    "@nuxt/ui": "^4.8.0",
-    "docus": "^5.10.0",
-    "nuxt": "^4.4.2",
-    "tailwindcss": "^4.2.2"
+    "@happydesigns/id": "file:..\\id",
+    "@iconify-json/lucide": "^1.2.114",
+    "@iconify-json/simple-icons": "^1.2.87",
+    "@nuxt/ui": "^4.9.0",
+    "docus": "^5.12.3",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
