@@ -3,7 +3,11 @@ import { happydesignsBrandGuide } from './utils/brand-guide'
 import { happydesignsBrandTheme } from './utils/brand-theme'
 
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
-const happydesignsUiConfig = happydesignsUiAppConfig.ui ?? {}
+type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
+  icons?: Record<string, string>
+}
+
+const happydesignsUiConfig = (happydesignsUiAppConfig.ui ?? {}) as UiConfigWithIcons
 
 export default defineAppConfig({
   ...happydesignsUiAppConfig,

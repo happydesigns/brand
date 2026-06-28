@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { de, en } from '@nuxt/ui/locale'
+import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 import ComponentExampleActions from './component-example/Actions.vue'
 import ComponentExampleEditorPreview from './component-example/EditorPreview.vue'
 import ComponentExampleFeedback from './component-example/Feedback.vue'
@@ -282,10 +284,7 @@ const pageLogos = [
   { src: symbolLogo, alt: 'happydesigns symbol' },
 ]
 
-const locales = [
-  { code: 'en', name: 'English' },
-  { code: 'de', name: 'Deutsch' },
-]
+const locales = [en, de]
 
 const authFields = [{
   name: 'email',
@@ -392,15 +391,16 @@ const pricingTableSections = [{
 const chatMessages = [
   {
     id: 'user-1',
-    role: 'user',
-    parts: [{ type: 'text', text: 'Can this interface stay useful before it feels branded?' }],
+    role: 'user' as const,
+    parts: [{ type: 'text' as const, text: 'Can this interface stay useful before it feels branded?' }],
   },
   {
     id: 'assistant-1',
-    role: 'assistant',
-    parts: [{ type: 'text', text: 'Yes. Start with clear structure, then add recognition through restrained details.' }],
+    role: 'assistant' as const,
+    parts: [{ type: 'text' as const, text: 'Yes. Start with clear structure, then add recognition through restrained details.' }],
   },
 ]
+const assistantChatMessage = chatMessages[1]
 
 const editorMentions = [
   { label: 'Brand owner', avatar: { text: 'BO' } },
@@ -1065,7 +1065,8 @@ const editorMentions = [
 
     <UDashboardGroup
       v-else-if="props.name === 'dashboard-shell' || props.name === 'dashboard-group'"
-      storage="component-example-dashboard"
+      storage="local"
+      storage-key="component-example-dashboard"
       class="!relative !inset-auto h-[30rem] overflow-hidden rounded-sm border border-default bg-default"
     >
       <UDashboardSidebar
@@ -1324,7 +1325,7 @@ const editorMentions = [
     >
       <UChatMessages :messages="chatMessages" status="ready" compact class="min-h-40 max-h-64 rounded-sm bg-muted px-2 py-2">
         <template #content="{ message }">
-          <p class="text-sm text-default">{{ message.parts?.[0]?.text }}</p>
+          <p class="text-sm text-default">{{ getTextFromMessage(message) }}</p>
         </template>
         <template #indicator><UChatShimmer text="Checking component behavior" /></template>
       </UChatMessages>
@@ -1337,11 +1338,11 @@ const editorMentions = [
 
     <UChatMessages v-else-if="props.name === 'chat-messages'" :messages="chatMessages" status="ready" compact class="min-h-40 rounded-sm bg-muted px-2 py-2">
       <template #content="{ message }">
-        <p class="text-sm text-default">{{ message.parts?.[0]?.text }}</p>
+        <p class="text-sm text-default">{{ getTextFromMessage(message) }}</p>
       </template>
     </UChatMessages>
 
-    <UChatMessage v-else-if="props.name === 'chat-message'" :message="chatMessages[1]" />
+    <UChatMessage v-else-if="props.name === 'chat-message' && assistantChatMessage" v-bind="assistantChatMessage" />
 
     <UChatPrompt v-else-if="props.name === 'chat-prompt'" v-model="chatInput" placeholder="Ask about component behavior" />
 
@@ -1350,7 +1351,6 @@ const editorMentions = [
     <UChatReasoning
       v-else-if="props.name === 'chat-reasoning'"
       text="Check structure, then color usage, then interaction copy."
-      variant="soft"
     />
 
     <UChatShimmer v-else-if="props.name === 'chat-shimmer'" text="Checking component behavior" />
@@ -1359,7 +1359,6 @@ const editorMentions = [
       v-else-if="props.name === 'chat-tool'"
       text="Checked contrast"
       icon="i-lucide-contrast"
-      variant="soft"
     />
 
     <div v-else-if="props.name === 'chat-activity-pattern'" class="grid gap-5 lg:grid-cols-[1fr_0.95fr]">
@@ -1367,7 +1366,6 @@ const editorMentions = [
         <p class="font-semibold text-highlighted">Reasoning stays secondary</p>
         <UChatReasoning
           text="Check hierarchy first, then color behavior, then recovery copy."
-          variant="soft"
         />
       </div>
       <div class="space-y-3 rounded-sm border border-default bg-muted p-4">
@@ -1375,7 +1373,6 @@ const editorMentions = [
         <UChatTool
           text="Checked contrast"
           icon="i-lucide-contrast"
-          variant="soft"
         />
         <div class="rounded-sm bg-default p-3">
           <UChatShimmer text="Checking component behavior" />

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { de, en } from '@nuxt/ui/locale'
+import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 import symbolLogo from '~/assets/logos/happydesigns-symbol.svg'
 import wordmarkLogo from '~/assets/logos/happydesigns-wordmark.svg'
 import wordmarkLogoInverse from '~/assets/logos/happydesigns-wordmark-inverse.svg'
@@ -220,10 +222,7 @@ const pageLogos = [
   { src: symbolLogo, alt: 'happydesigns symbol' },
 ]
 
-const locales = [
-  { code: 'en', name: 'English' },
-  { code: 'de', name: 'Deutsch' },
-]
+const locales = [en, de]
 
 const authFields = [{
   name: 'email',
@@ -330,13 +329,13 @@ const pricingTableSections = [{
 const chatMessages = [
   {
     id: 'user-1',
-    role: 'user',
-    parts: [{ type: 'text', text: 'Can this interface stay useful before branded?' }],
+    role: 'user' as const,
+    parts: [{ type: 'text' as const, text: 'Can this interface stay useful before branded?' }],
   },
   {
     id: 'assistant-1',
-    role: 'assistant',
-    parts: [{ type: 'text', text: 'Yes. Start with clear structure, then add recognition through restrained details.' }],
+    role: 'assistant' as const,
+    parts: [{ type: 'text' as const, text: 'Yes. Start with clear structure, then add recognition through restrained details.' }],
   },
 ]
 
@@ -531,11 +530,11 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UFormField label="Reviewer" help="Searchable choices stay predictable.">
-              <USelectMenu v-model="reviewer" :items="reviewerItems" />
+              <USelectMenu v-model="reviewer" :items="reviewerItems" value-key="value" />
             </UFormField>
 
             <UFormField label="Package" help="Technical values may use exact names.">
-              <UInputMenu v-model="packageName" :items="packageItems" />
+              <UInputMenu v-model="packageName" :items="packageItems" value-key="value" />
             </UFormField>
           </UForm>
         </UCard>
@@ -617,7 +616,7 @@ const familyLabels: Record<Family, string> = {
             </UFormField>
 
             <UFormField label="Section" help="Listboxes support compact internal choices.">
-              <UListbox v-model="selectedSection" :items="listboxItems" />
+              <UListbox v-model="selectedSection" :items="listboxItems" value-key="value" />
             </UFormField>
           </div>
         </UCard>
@@ -1562,7 +1561,8 @@ const familyLabels: Record<Family, string> = {
             </div>
 
             <UDashboardGroup
-              storage="component-family-dashboard"
+              storage="local"
+              storage-key="component-family-dashboard"
               class="!relative !inset-auto h-[30rem] overflow-hidden rounded-sm border border-default bg-default"
             >
               <UDashboardSidebar
@@ -1889,7 +1889,7 @@ const familyLabels: Record<Family, string> = {
               >
                 <template #content="{ message }">
                   <p class="text-sm text-default">
-                    {{ message.parts?.[0]?.text }}
+                    {{ getTextFromMessage(message) }}
                   </p>
                 </template>
 
@@ -1916,7 +1916,6 @@ const familyLabels: Record<Family, string> = {
               <div class="rounded-sm border border-default bg-muted p-3">
                 <UChatReasoning
                   text="Check structure, then color usage, then interaction copy."
-                  variant="soft"
                   :ui="{ root: 'bg-transparent p-0' }"
                 />
               </div>
@@ -1924,7 +1923,6 @@ const familyLabels: Record<Family, string> = {
                 <UChatTool
                   text="Checked contrast"
                   icon="i-lucide-contrast"
-                  variant="soft"
                   :ui="{ root: 'bg-transparent p-0' }"
                 />
               </div>
