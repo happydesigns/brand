@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// Docus' generated CSS module can emit an absolute Windows dev URL. The brand
+// guide owns the equivalent CSS in app/assets/css/main.css, so disable it here.
 export default defineNuxtConfig(Object.assign({
   extends: ['@happydesigns/id/nuxt', 'docus'],
 
