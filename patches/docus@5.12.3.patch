@@ -1,0 +1,16 @@
+diff --git a/app/components/docs/DocsAsideRight.vue b/app/components/docs/DocsAsideRight.vue
+index 0000000..0000000 100644
+--- a/app/components/docs/DocsAsideRight.vue
++++ b/app/components/docs/DocsAsideRight.vue
+@@ -1,9 +1,9 @@
+ <script setup lang="ts">
+ import { useSubNavigation } from '../../composables/useSubNavigation'
+-import type { DocsCollectionItem } from '@nuxt/content'
++import type { PageCollectionItemBase } from '@nuxt/content'
+ 
+ const props = defineProps<{
+-  page?: DocsCollectionItem | null
++  page?: PageCollectionItemBase | null
+ }>()
+ 
+ const links = computed(() => props.page?.body?.toc?.links || [])

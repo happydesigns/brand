@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const guide = useBrandGuide()
+const guide = useHappydesignsGuide()
 const { forced: forcedColorMode } = useDocusColorMode()
 const { isEnabled: isAssistantEnabled } = useAssistant()
 const { isEnabled, locales } = useDocusI18n()
@@ -19,6 +19,7 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
       'icon': 'i-simple-icons-github',
       'to': appConfig.github.url,
       'target': '_blank',
+      'rel': 'noopener noreferrer',
       'aria-label': 'GitHub'
     }]
   : [])

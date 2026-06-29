@@ -1,9 +1,12 @@
 <script setup lang="ts">
-const guide = useBrandGuide()
+const guide = useHappydesignsGuide()
 
 const featuredColors = guide.colors.slice(0, 4)
-const primaryFont = guide.fonts[0]
-const monoFont = guide.fonts[1]
+const [primaryFont, monoFont] = guide.fonts
+
+if (!primaryFont || !monoFont) {
+  throw new Error('The homepage requires primary and mono brand fonts.')
+}
 
 const guideGroups = [
   {
@@ -1117,7 +1120,11 @@ const badgeUi = {
                 class="h-full"
                 package-name="@happydesigns/brand"
                 title="Build with the layer."
-              />
+              >
+                <template #default="{ snippets }">
+                  <LayerInstallCodeGroup :snippets="snippets" />
+                </template>
+              </IdLayerInstall>
             </div>
           </template>
         </UPageCTA>

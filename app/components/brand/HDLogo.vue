@@ -68,18 +68,21 @@ const darkSrc = computed(() => ({
   <component
     :is="as"
     class="inline-flex items-center"
+    role="img"
     aria-label="happydesigns"
   >
     <template v-if="mode === 'auto'">
       <img
         :src="lightSrc"
-        alt="happydesigns"
+        alt=""
+        aria-hidden="true"
         class="block dark:hidden"
         :class="sizeClass"
       >
       <img
         :src="darkSrc"
-        alt="happydesigns"
+        alt=""
+        aria-hidden="true"
         class="hidden dark:block"
         :class="sizeClass"
       >
@@ -88,7 +91,8 @@ const darkSrc = computed(() => ({
     <img
       v-else
       :src="mode === 'dark' ? darkSrc : lightSrc"
-      alt="happydesigns"
+      alt=""
+      aria-hidden="true"
       class="block"
       :class="sizeClass"
     >

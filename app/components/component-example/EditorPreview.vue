@@ -15,8 +15,16 @@
         variant="ghost"
         size="xs"
       />
-      <USeparator orientation="vertical" class="mx-1 h-5" />
-      <UBadge color="primary" variant="subtle">H2</UBadge>
+      <USeparator
+        orientation="vertical"
+        class="mx-1 h-5"
+      />
+      <UBadge
+        color="primary"
+        variant="subtle"
+      >
+        H2
+      </UBadge>
       <UButton
         aria-label="Bulleted list"
         icon="i-lucide-list"
@@ -31,7 +39,10 @@
         variant="ghost"
         size="xs"
       />
-      <USeparator orientation="vertical" class="mx-1 h-5" />
+      <USeparator
+        orientation="vertical"
+        class="mx-1 h-5"
+      />
       <UButton
         aria-label="Bold"
         icon="i-lucide-bold"
@@ -66,7 +77,9 @@
           square
           class="absolute left-2 top-3"
         />
-        <p class="text-lg font-semibold text-highlighted">Component note</p>
+        <p class="text-lg font-semibold text-highlighted">
+          Component note
+        </p>
         <p class="mt-2 max-w-prose text-sm text-muted">
           Use visible structure before adding brand expression.
         </p>

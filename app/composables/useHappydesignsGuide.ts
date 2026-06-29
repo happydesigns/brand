@@ -1,9 +1,9 @@
 import { brandGuide, getBrandGuideSection } from '../utils/brand-guide'
 
-export function useBrandGuide() {
+export function useHappydesignsGuide() {
   return brandGuide
 }
 
-export function useBrandGuideSection(slug: string) {
+export function useHappydesignsGuideSection(slug: string) {
   return getBrandGuideSection(slug)
 }
