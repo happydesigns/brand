@@ -4,13 +4,17 @@ packages:
 allowBuilds:
   '@parcel/watcher': false
   '@tailwindcss/oxide': false
+  better-sqlite3: false
   esbuild: false
+  sharp: false
   unrs-resolver: false
   vue-demi: false
 ignoredBuiltDependencies:
   - '@parcel/watcher'
   - '@tailwindcss/oxide'
+  - better-sqlite3
   - esbuild
+  - sharp
   - unrs-resolver
   - vue-demi
 

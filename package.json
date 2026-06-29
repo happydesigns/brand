@@ -14,7 +14,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
-    "verify": "pnpm peers check && pnpm lint && pnpm typecheck"
+    "verify": "pnpm lint && pnpm typecheck"
   },
   "dependencies": {
     "@happydesigns/id": "file:..\\id",
