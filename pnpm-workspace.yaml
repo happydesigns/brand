@@ -19,6 +19,7 @@ ignoredBuiltDependencies:
   - vue-demi
 
 patchedDependencies:
+  '@nuxt/content@3.14.0': patches/@nuxt__content@3.14.0.patch
   docus@5.12.3: patches/docus@5.12.3.patch
 
 overrides:
