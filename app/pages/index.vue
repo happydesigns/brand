@@ -322,7 +322,7 @@ const badgeUi = {
 
               <div
                 ref="heroRevealFrame"
-                class="relative bg-default"
+                class="relative rounded-b-md bg-default"
               >
                 <div class="overflow-hidden rounded-b-md">
                   <div class="relative">
