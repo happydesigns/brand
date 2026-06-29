@@ -28,7 +28,9 @@ overrides:
   '@tiptap/extensions': 3.23.6
 
 patchedDependencies:
-  docus@5.12.3: 0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1
+  docus@5.12.3:
+    hash: 0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1
+    path: patches/docus@5.12.3.patch
 
 importers:
 
