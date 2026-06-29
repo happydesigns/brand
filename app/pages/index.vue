@@ -216,7 +216,7 @@ const heroLinks = [
     label: 'Explore guide',
     icon: 'i-lucide-arrow-right',
     trailing: true,
-    to: '/docs'
+    to: '/docs/guide/overview'
   },
   {
     label: 'View components',
@@ -232,7 +232,7 @@ const ctaLinks = [
     label: 'Open docs',
     icon: 'i-lucide-arrow-right',
     trailing: true,
-    to: '/docs'
+    to: '/docs/guide/overview'
   }
 ]
 
@@ -462,7 +462,7 @@ const badgeUi = {
                   <UButton
                     v-for="section in item.sections"
                     :key="section.slug"
-                    :to="`/docs/${section.slug}`"
+                    :to="section.to"
                     :label="section.title"
                     color="neutral"
                     variant="outline"
@@ -535,7 +535,7 @@ const badgeUi = {
                       palette preview
                     </HDSectionLabel>
                     <UButton
-                      to="/docs/colors"
+                      to="/docs/guide/colors"
                       label="Open colors"
                       icon="i-lucide-arrow-right"
                       trailing
@@ -575,7 +575,7 @@ const badgeUi = {
                       typography
                     </HDSectionLabel>
                     <UButton
-                      to="/docs/typography"
+                      to="/docs/guide/typography"
                       label="Open typography"
                       icon="i-lucide-arrow-right"
                       trailing
@@ -707,7 +707,7 @@ const badgeUi = {
                   </UCard>
                 </div>
                 <UButton
-                  to="/docs/logos"
+                  to="/docs/guide/logos"
                   label="Open logos"
                   icon="i-lucide-arrow-right"
                   trailing
@@ -776,7 +776,7 @@ const badgeUi = {
                 </div>
 
                 <UButton
-                  to="/docs/voice"
+                  to="/docs/guide/voice"
                   label="Open voice"
                   icon="i-lucide-arrow-right"
                   trailing

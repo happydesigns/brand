@@ -41,6 +41,16 @@ export default defineNuxtConfig({
   ui: {
     prose: true
   },
+  routeRules: {
+    '/docs': { redirect: '/docs/guide/overview' },
+    '/docs/guide': { redirect: '/docs/guide/overview' },
+    '/docs/guide/': { redirect: '/docs/guide/overview' },
+    '/docs/overview': { redirect: '/docs/guide/overview' },
+    '/docs/colors': { redirect: '/docs/guide/colors' },
+    '/docs/typography': { redirect: '/docs/guide/typography' },
+    '/docs/logos': { redirect: '/docs/guide/logos' },
+    '/docs/voice': { redirect: '/docs/guide/voice' }
+  },
 
   compatibilityDate: 'latest' as const,
 

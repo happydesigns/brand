@@ -44,12 +44,19 @@ export default defineAppConfig({
     locale: 'en',
     colorMode: ''
   },
+  navigation: {
+    sub: 'aside'
+  },
   seo: {
     title: 'happydesigns brand guide',
     description: 'Thoughtful design guidance for the happydesigns brand system.'
   },
   header: {
-    title: 'happydesigns'
+    title: 'happydesigns',
+    links: [
+      { label: 'Guide', to: '/docs/guide/overview', activePrefix: '/docs/guide' },
+      { label: 'Components', to: '/docs/components', activePrefix: '/docs/components' }
+    ]
   },
   socials: {
     github: 'https://github.com/happydesigns'

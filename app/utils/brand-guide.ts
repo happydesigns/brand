@@ -39,6 +39,7 @@ export const brandGuide = {
     {
       slug: 'colors',
       title: 'Colors',
+      to: '/docs/guide/colors',
       eyebrow: 'tokens and roles',
       summary: 'Core palette, semantic roles, and practical usage guidance.',
       description: 'Color decisions are documented as named tokens first, then mapped to interface intent. This keeps happydesigns calm, structured, and expressive in the right moments.',
@@ -48,6 +49,7 @@ export const brandGuide = {
     {
       slug: 'typography',
       title: 'Typography',
+      to: '/docs/guide/typography',
       eyebrow: 'fonts and hierarchy',
       summary: 'Type roles, hierarchy, rhythm, and practical writing samples.',
       description: 'Typography defines the reading voice of the brand. The guide captures font roles, hierarchy behavior, mono usage, and practical examples for clear happydesigns communication.',
@@ -57,6 +59,7 @@ export const brandGuide = {
     {
       slug: 'logos',
       title: 'Logos',
+      to: '/docs/guide/logos',
       eyebrow: 'identity assets',
       summary: 'Logo forms, lockups, brand roles, and practical usage guidance.',
       description: 'The logo system separates core identity marks from controlled combinations. Wordmark, symbol, and reduced symbol are logo forms. Horizontal, reduced horizontal, and vertical signature compositions are lockups.',
@@ -64,22 +67,24 @@ export const brandGuide = {
       anchors: ['Logo forms', 'Lockups', 'Choosing the right form', 'Header usage', 'Footer usage']
     },
     {
-      slug: 'components',
-      title: 'Components',
-      eyebrow: 'interface system',
-      summary: 'Nuxt UI component families, brand behavior, and coverage guidance.',
-      description: 'Component guidance connects brand tokens to real interface states. The section groups Nuxt UI components by use so the happydesigns layer can stay useful, structured, and consistent.',
-      icon: 'i-lucide-component',
-      anchors: ['Component philosophy', 'Component families', 'Theme ownership', 'Coverage model']
-    },
-    {
       slug: 'voice',
       title: 'Voice',
+      to: '/docs/guide/voice',
       eyebrow: 'messaging',
       summary: 'Writing traits, examples, and interface copy guidance.',
       description: 'Voice guidance defines how happydesigns sounds across marketing, documentation, interface labels, CTAs, and error states.',
       icon: 'i-lucide-message-square-text',
       anchors: ['Voice attributes', 'Writing principles', 'Marketing copy', 'Interface copy', 'Error and validation copy']
+    },
+    {
+      slug: 'components',
+      title: 'Components',
+      to: '/docs/components',
+      eyebrow: 'interface system',
+      summary: 'Nuxt UI component families, brand behavior, and coverage guidance.',
+      description: 'Component guidance connects brand tokens to real interface states. The section groups Nuxt UI components by use so the happydesigns layer can stay useful, structured, and consistent.',
+      icon: 'i-lucide-component',
+      anchors: ['Component philosophy', 'Component families', 'Theme ownership', 'Coverage model']
     }
   ]),
   colors: [

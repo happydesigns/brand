@@ -20,10 +20,10 @@ const componentExampleContext = {
     wordmarkInverse: wordmarkLogoInverse
   },
   paths: {
-    docs: '/docs',
+    docs: '/docs/guide/overview',
     components: '/docs/components',
-    colors: '/docs/colors',
-    typography: '/docs/typography'
+    colors: '/docs/guide/colors',
+    typography: '/docs/guide/typography'
   },
   copy: {
     brandLabel: 'happydesigns.',

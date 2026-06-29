@@ -8,22 +8,22 @@ const columns = computed(() => [
     title: 'Guide',
     links: [
       { label: 'Overview', to: '/' },
-      { label: 'Documentation', to: '/docs' }
+      { label: 'Documentation', to: '/docs/guide/overview' }
     ]
   },
   {
     title: 'Foundations',
     links: [
-      { label: 'Colors', to: '/docs/colors' },
-      { label: 'Typography', to: '/docs/typography' },
-      { label: 'Logos', to: '/docs/logos' }
+      { label: 'Colors', to: '/docs/guide/colors' },
+      { label: 'Typography', to: '/docs/guide/typography' },
+      { label: 'Logos', to: '/docs/guide/logos' }
     ]
   },
   {
     title: 'Application',
     links: [
-      { label: 'Components', to: '/docs/components' },
-      { label: 'Voice', to: '/docs/voice' }
+      { label: 'Voice', to: '/docs/guide/voice' },
+      { label: 'Components', to: '/docs/components' }
     ]
   }
 ])
