@@ -97,7 +97,7 @@ export const happydesignsUiConfig = {
   },
   page: {
     slots: {
-      root: 'lg:gap-0',
+      root: 'isolate lg:gap-0',
       left: 'lg:border-r lg:border-default',
       center: 'lg:px-10',
       right: 'lg:border-l lg:border-default lg:pl-8'
