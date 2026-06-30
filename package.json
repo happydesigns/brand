@@ -13,21 +13,21 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "verify": "pnpm lint && pnpm typecheck"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.102",
-    "@iconify-json/simple-icons": "^1.2.78",
-    "@nuxt/ui": "^4.8.0",
-    "docus": "^5.10.0",
-    "nuxt": "^4.4.2",
-    "tailwindcss": "^4.2.2"
+    "@happydesigns/id": "file:..\\id",
+    "@iconify-json/lucide": "^1.2.114",
+    "@iconify-json/simple-icons": "^1.2.87",
+    "@nuxt/ui": "^4.9.0",
+    "docus": "^5.12.3",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
-    "@vue/compiler-sfc": "^3.5.31",
     "eslint": "^10.2.0",
-    "postcss": "^8.5.10",
     "typescript": "^6.0.2",
     "vue-tsc": "^3.2.6"
   },

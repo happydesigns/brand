@@ -1,61 +1,15 @@
+import {
+  createBrandGuideAssets,
+  createGuideDocsSections,
+  defineBrandGuide,
+  defineGuideSections,
+  findGuideSection,
+  type BrandComponentCoverage,
+  type BrandGuideContent,
+  type BrandGuideSection
+} from '@happydesigns/id'
 import { happydesignsBrand } from './brand'
-
-export type BrandGuideColor = {
-  name: string
-  token: string
-  hex: string
-  role: string
-  usage: string
-}
-
-export type BrandGuideFont = {
-  name: string
-  role: string
-  stack: string
-  sample: string
-  notes: string
-}
-
-export type BrandGuideComponent = {
-  name: string
-  purpose: string
-  guidance: string
-}
-
-export type BrandGuideSection = {
-  slug: string
-  title: string
-  eyebrow: string
-  summary: string
-  description: string
-  icon: string
-  anchors: string[]
-}
-
-export type BrandGuidePrinciple = {
-  title: string
-  description: string
-  icon: string
-}
-
-export type BrandGuide = {
-  brand: typeof happydesignsBrand
-  principles: BrandGuidePrinciple[]
-  sections: BrandGuideSection[]
-  colors: BrandGuideColor[]
-  fonts: BrandGuideFont[]
-  components: BrandGuideComponent[]
-  voice: {
-    attributes: string[]
-    dos: string[]
-    donts: string[]
-  }
-  assets: {
-    name: string
-    path: string
-    usage: string
-  }[]
-}
+import { happydesignsBrandTheme, happydesignsSemanticColors } from './brand-theme'
 
 export const brandGuide = {
   brand: happydesignsBrand,
@@ -81,10 +35,11 @@ export const brandGuide = {
       icon: 'i-lucide-repeat-2'
     }
   ],
-  sections: [
+  sections: defineGuideSections([
     {
       slug: 'colors',
       title: 'Colors',
+      to: '/docs/guide/colors',
       eyebrow: 'tokens and roles',
       summary: 'Core palette, semantic roles, and practical usage guidance.',
       description: 'Color decisions are documented as named tokens first, then mapped to interface intent. This keeps happydesigns calm, structured, and expressive in the right moments.',
@@ -94,6 +49,7 @@ export const brandGuide = {
     {
       slug: 'typography',
       title: 'Typography',
+      to: '/docs/guide/typography',
       eyebrow: 'fonts and hierarchy',
       summary: 'Type roles, hierarchy, rhythm, and practical writing samples.',
       description: 'Typography defines the reading voice of the brand. The guide captures font roles, hierarchy behavior, mono usage, and practical examples for clear happydesigns communication.',
@@ -103,6 +59,7 @@ export const brandGuide = {
     {
       slug: 'logos',
       title: 'Logos',
+      to: '/docs/guide/logos',
       eyebrow: 'identity assets',
       summary: 'Logo forms, lockups, brand roles, and practical usage guidance.',
       description: 'The logo system separates core identity marks from controlled combinations. Wordmark, symbol, and reduced symbol are logo forms. Horizontal, reduced horizontal, and vertical signature compositions are lockups.',
@@ -110,24 +67,26 @@ export const brandGuide = {
       anchors: ['Logo forms', 'Lockups', 'Choosing the right form', 'Header usage', 'Footer usage']
     },
     {
-      slug: 'components',
-      title: 'Components',
-      eyebrow: 'interface system',
-      summary: 'Nuxt UI component families, brand behavior, and coverage guidance.',
-      description: 'Component guidance connects brand tokens to real interface states. The section groups Nuxt UI components by use so the happydesigns layer can stay useful, structured, and consistent.',
-      icon: 'i-lucide-component',
-      anchors: ['Component philosophy', 'Component families', 'Theme ownership', 'Coverage model']
-    },
-    {
       slug: 'voice',
       title: 'Voice',
+      to: '/docs/guide/voice',
       eyebrow: 'messaging',
       summary: 'Writing traits, examples, and interface copy guidance.',
       description: 'Voice guidance defines how happydesigns sounds across marketing, documentation, interface labels, CTAs, and error states.',
       icon: 'i-lucide-message-square-text',
       anchors: ['Voice attributes', 'Writing principles', 'Marketing copy', 'Interface copy', 'Error and validation copy']
+    },
+    {
+      slug: 'components',
+      title: 'Components',
+      to: '/docs/components',
+      eyebrow: 'interface system',
+      summary: 'Nuxt UI component families, brand behavior, and coverage guidance.',
+      description: 'Component guidance connects brand tokens to real interface states. The section groups Nuxt UI components by use so the happydesigns layer can stay useful, structured, and consistent.',
+      icon: 'i-lucide-component',
+      anchors: ['Component philosophy', 'Component families', 'Theme ownership', 'Coverage model']
     }
-  ],
+  ]),
   colors: [
     { name: 'Warm White', token: 'warmWhite', hex: happydesignsBrand.colors.warmWhite, role: 'Page background', usage: 'Use for primary surfaces and calm editorial space.' },
     { name: 'Graphite', token: 'graphite', hex: happydesignsBrand.colors.graphite, role: 'Text and premium fills', usage: 'Use for primary text, high-emphasis panels, and dark mode base.' },
@@ -178,23 +137,242 @@ export const brandGuide = {
     ]
   },
   assets: [
-    { name: 'Wordmark', path: happydesignsBrand.logoAssetPaths.wordmark, usage: 'Default identity for headers, navigation, documentation, and slim horizontal layouts.' },
-    { name: 'Wordmark inverse', path: happydesignsBrand.logoAssetPaths.wordmarkInverse, usage: 'Wordmark for dark surfaces.' },
-    { name: 'Symbol', path: happydesignsBrand.logoAssetPaths.symbol, usage: 'Favicon, app icon, social avatars, square contexts, and brand moments. Unchanged across light and dark.' },
-    { name: 'Symbol reduced', path: happydesignsBrand.logoAssetPaths.symbolReduced, usage: 'Simplified h + coral dot for constrained, monochrome, or production contexts.' },
-    { name: 'Symbol reduced inverse', path: happydesignsBrand.logoAssetPaths.symbolReducedInverse, usage: 'Reduced symbol for dark surfaces.' },
-    { name: 'Symbol reduced tile', path: happydesignsBrand.logoAssetPaths.symbolReducedTile, usage: 'Reduced symbol on a light tile. Use when the raw reduced symbol needs a stable bounding surface.' },
-    { name: 'Symbol reduced tile inverse', path: happydesignsBrand.logoAssetPaths.symbolReducedTileInverse, usage: 'Reduced symbol on a dark tile.' },
-    { name: 'Lockup', path: happydesignsBrand.logoAssetPaths.lockup, usage: 'Full symbol + wordmark for brand introductions, covers, and teaching moments.' },
-    { name: 'Lockup inverse', path: happydesignsBrand.logoAssetPaths.lockupInverse, usage: 'Lockup for dark surfaces.' },
-    { name: 'Lockup reduced', path: happydesignsBrand.logoAssetPaths.lockupReduced, usage: 'Reduced symbol + wordmark for production, print, and constrained horizontal contexts.' },
-    { name: 'Lockup reduced inverse', path: happydesignsBrand.logoAssetPaths.lockupReducedInverse, usage: 'Reduced lockup for dark surfaces.' },
-    { name: 'Brand signature', path: happydesignsBrand.logoAssetPaths.signature, usage: 'Standardized brand composition for footers, proposals, and brand-owned sections.' },
-    { name: 'Brand signature inverse', path: happydesignsBrand.logoAssetPaths.signatureInverse, usage: 'Brand signature for dark surfaces.' },
-    { name: 'App icon PNG', path: happydesignsBrand.logoAssetPaths.publicAppIcon, usage: 'Touch icon and square app contexts.' }
+    {
+      name: 'Wordmark',
+      role: 'wordmark',
+      path: happydesignsBrand.logoAssetPaths.wordmark,
+      usage: 'Default identity for headers, navigation, documentation, and slim horizontal layouts.',
+      media: 'light',
+      alt: 'happydesigns wordmark'
+    },
+    {
+      name: 'Wordmark inverse',
+      role: 'wordmarkInverse',
+      path: happydesignsBrand.logoAssetPaths.wordmarkInverse,
+      usage: 'Wordmark for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns wordmark'
+    },
+    {
+      name: 'Symbol',
+      role: 'symbol',
+      path: happydesignsBrand.logoAssetPaths.symbol,
+      usage: 'Favicon, app icon, social avatars, square contexts, and brand moments. Unchanged across light and dark.',
+      media: 'any',
+      alt: 'happydesigns symbol'
+    },
+    {
+      name: 'Symbol reduced',
+      role: 'symbolReduced',
+      path: happydesignsBrand.logoAssetPaths.symbolReduced,
+      usage: 'Simplified h + coral dot for constrained, monochrome, or production contexts.',
+      media: 'light',
+      alt: 'happydesigns reduced symbol'
+    },
+    {
+      name: 'Symbol reduced inverse',
+      role: 'symbolReducedInverse',
+      path: happydesignsBrand.logoAssetPaths.symbolReducedInverse,
+      usage: 'Reduced symbol for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns reduced symbol'
+    },
+    {
+      name: 'Symbol reduced tile',
+      role: 'symbolReducedTile',
+      path: happydesignsBrand.logoAssetPaths.symbolReducedTile,
+      usage: 'Reduced symbol on a light tile. Use when the raw reduced symbol needs a stable bounding surface.',
+      media: 'light',
+      alt: 'happydesigns reduced symbol tile'
+    },
+    {
+      name: 'Symbol reduced tile inverse',
+      role: 'symbolReducedTileInverse',
+      path: happydesignsBrand.logoAssetPaths.symbolReducedTileInverse,
+      usage: 'Reduced symbol on a dark tile.',
+      media: 'dark',
+      alt: 'happydesigns reduced symbol tile'
+    },
+    {
+      name: 'Lockup',
+      role: 'lockup',
+      path: happydesignsBrand.logoAssetPaths.lockup,
+      usage: 'Full symbol + wordmark for brand introductions, covers, and teaching moments.',
+      media: 'light',
+      alt: 'happydesigns lockup'
+    },
+    {
+      name: 'Lockup inverse',
+      role: 'lockupInverse',
+      path: happydesignsBrand.logoAssetPaths.lockupInverse,
+      usage: 'Lockup for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns lockup'
+    },
+    {
+      name: 'Lockup reduced',
+      role: 'lockupReduced',
+      path: happydesignsBrand.logoAssetPaths.lockupReduced,
+      usage: 'Reduced symbol + wordmark for production, print, and constrained horizontal contexts.',
+      media: 'light',
+      alt: 'happydesigns reduced lockup'
+    },
+    {
+      name: 'Lockup reduced inverse',
+      role: 'lockupReducedInverse',
+      path: happydesignsBrand.logoAssetPaths.lockupReducedInverse,
+      usage: 'Reduced lockup for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns reduced lockup'
+    },
+    {
+      name: 'Brand signature',
+      role: 'signature',
+      path: happydesignsBrand.logoAssetPaths.signature,
+      usage: 'Standardized brand composition for footers, proposals, and brand-owned sections.',
+      media: 'light',
+      alt: 'happydesigns brand signature'
+    },
+    {
+      name: 'Brand signature inverse',
+      role: 'signatureInverse',
+      path: happydesignsBrand.logoAssetPaths.signatureInverse,
+      usage: 'Brand signature for dark surfaces.',
+      media: 'dark',
+      alt: 'happydesigns brand signature'
+    },
+    {
+      name: 'App icon PNG',
+      role: 'appIcon',
+      path: happydesignsBrand.logoAssetPaths.publicAppIcon,
+      usage: 'Touch icon and square app contexts.',
+      media: 'any',
+      alt: 'happydesigns app icon'
+    }
   ]
-} satisfies BrandGuide
+} satisfies BrandGuideContent<typeof happydesignsBrand>
 
-export function getBrandGuideSection(slug: string) {
-  return brandGuide.sections.find(section => section.slug === slug)
+const happydesignsGuideAssets = createBrandGuideAssets(brandGuide.assets)
+
+export const happydesignsComponentCoverage = [
+  {
+    family: 'Actions',
+    components: ['UButton', 'UBadge', 'UChip', 'UFieldGroup', 'UKbd', 'UTooltip'],
+    status: 'documented',
+    notes: 'Focused examples'
+  },
+  {
+    family: 'Forms',
+    components: ['UForm', 'UFormField', 'UFieldGroup', 'UInput', 'UTextarea', 'USelect', 'USelectMenu', 'UInputMenu', 'UInputNumber', 'UInputTags', 'UInputDate', 'UInputTime', 'UCheckbox', 'UCheckboxGroup', 'URadioGroup', 'USwitch', 'USlider', 'UPinInput', 'UFileUpload', 'UColorPicker', 'UCalendar', 'UListbox'],
+    status: 'documented',
+    notes: 'Focused examples'
+  },
+  {
+    family: 'Feedback',
+    components: ['UAlert', 'UBanner', 'UProgress', 'USkeleton', 'UToast', 'UEmpty', 'UIcon'],
+    status: 'documented',
+    notes: 'Focused state examples'
+  },
+  {
+    family: 'Feedback infrastructure',
+    components: ['UToaster'],
+    status: 'documented',
+    notes: 'Covered through toast behavior'
+  },
+  {
+    family: 'Navigation',
+    components: ['UNavigationMenu', 'UBreadcrumb', 'UTabs', 'UStepper', 'UAccordion', 'UPagination', 'ULink', 'UCommandPalette', 'UTree', 'USidebar'],
+    status: 'documented',
+    notes: 'Focused examples'
+  },
+  {
+    family: 'Data and content',
+    components: ['UTable', 'UCard', 'UPageCard', 'UAvatar', 'UAvatarGroup', 'UUser', 'USeparator', 'UCollapsible', 'UCarousel', 'UTimeline', 'UScrollArea'],
+    status: 'documented',
+    notes: 'Focused examples'
+  },
+  {
+    family: 'Overlays',
+    components: ['UModal', 'USlideover', 'UDrawer', 'UPopover', 'UTooltip', 'UDropdownMenu', 'UContextMenu'],
+    status: 'documented',
+    notes: 'Focused flow examples'
+  },
+  {
+    family: 'Overlay infrastructure',
+    components: ['UDropdownMenuContent', 'UContextMenuContent', 'UOverlayProvider'],
+    status: 'documented',
+    notes: 'Covered through parent patterns'
+  },
+  {
+    family: 'Layout and page',
+    components: ['UHeader', 'UFooter', 'UFooterColumns', 'UMain', 'UContainer', 'UPageHero', 'UPageSection', 'UPageCTA', 'UPageGrid', 'UPageCard', 'UPageFeature', 'UPageLinks', 'UPageHeader', 'UPageBody', 'UPageColumns', 'UPageList', 'UPageLogos', 'UPageAnchors'],
+    status: 'documented',
+    notes: 'Pattern examples'
+  },
+  {
+    family: 'Page structure',
+    components: ['UApp', 'UPage', 'UPageAside'],
+    status: 'documented',
+    notes: 'Used by the docs shell'
+  },
+  {
+    family: 'Docs and prose',
+    components: ['Markdown prose', 'Callout', 'Card', 'CardGroup', 'Steps', 'Tabs', 'TabsItem', 'CodeGroup', 'Code', 'Pre', 'Kbd', 'Icon', 'Badge', 'Field', 'FieldGroup', 'Collapsible', 'Accordion', 'CodeCollapse', 'CodePreview', 'CodeTree'],
+    status: 'documented',
+    notes: 'Focused prose examples'
+  },
+  {
+    family: 'Content infrastructure',
+    components: ['UContentNavigation', 'UContentToc', 'UContentSurround', 'UContentSearch', 'UContentSearchButton'],
+    status: 'documented',
+    notes: 'Integrated docs-navigation example'
+  },
+  {
+    family: 'System helpers',
+    components: ['UColorModeAvatar', 'UColorModeButton', 'UColorModeImage', 'UColorModeSelect', 'UColorModeSwitch', 'ULocaleSelect', 'UAuthForm', 'UError', 'UTheme'],
+    status: 'documented',
+    notes: 'Focused examples'
+  },
+  {
+    family: 'Dashboard',
+    components: ['UDashboardGroup', 'UDashboardNavbar', 'UDashboardPanel', 'UDashboardResizeHandle', 'UDashboardSearch', 'UDashboardSearchButton', 'UDashboardSidebar', 'UDashboardSidebarCollapse', 'UDashboardSidebarToggle', 'UDashboardToolbar'],
+    status: 'documented',
+    notes: 'Integrated application-shell example'
+  },
+  {
+    family: 'Publishing and marketing',
+    components: ['UBlogPost', 'UBlogPosts', 'UChangelogVersion', 'UChangelogVersions', 'UPricingPlan', 'UPricingPlans', 'UPricingTable', 'UMarquee'],
+    status: 'documented',
+    notes: 'Integrated publishing examples'
+  },
+  {
+    family: 'Chat and editor',
+    components: ['UChatMessage', 'UChatMessages', 'UChatPalette', 'UChatPrompt', 'UChatPromptSubmit', 'UChatReasoning', 'UChatShimmer', 'UChatTool', 'UEditor', 'UEditorToolbar', 'UEditorDragHandle', 'UEditorEmojiMenu', 'UEditorMentionMenu', 'UEditorSuggestionMenu'],
+    status: 'documented',
+    notes: 'Integrated chat/editor examples'
+  }
+] satisfies BrandComponentCoverage[]
+
+export const happydesignsBrandGuide = defineBrandGuide({
+  name: happydesignsBrand.name,
+  packageName: happydesignsBrand.packageName,
+  title: 'happydesigns',
+  description: happydesignsBrand.claim,
+  homepage: 'https://happydesigns.de',
+  repository: 'https://github.com/happydesigns/brand',
+  assets: happydesignsGuideAssets,
+  palette: happydesignsBrand.colors,
+  semanticColors: happydesignsSemanticColors,
+  cssVariables: happydesignsBrandTheme.cssVariables,
+  typography: happydesignsBrandTheme.typography,
+  voice: brandGuide.voice,
+  componentCoverage: happydesignsComponentCoverage,
+  docs: {
+    sections: createGuideDocsSections(brandGuide.sections)
+  },
+  ui: happydesignsBrandTheme.ui
+})
+
+export function getBrandGuideSection(slug: string): BrandGuideSection | undefined {
+  return findGuideSection(brandGuide.sections, slug)
 }

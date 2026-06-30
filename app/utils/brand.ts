@@ -1,32 +1,34 @@
-export const happydesignsBrand = {
+import { defineBrandIdentity } from '@happydesigns/id'
+
+export const happydesignsBrand = defineBrandIdentity({
   name: 'happydesigns',
   packageName: '@happydesigns/brand',
   claim: 'Thoughtful design for the modern web.',
   logoAssetPaths: {
     // Primary everyday identity
-    wordmark: 'app/assets/logos/happydesigns-wordmark.svg',
-    wordmarkInverse: 'app/assets/logos/happydesigns-wordmark-inverse.svg',
+    wordmark: '/logos/happydesigns-wordmark.svg',
+    wordmarkInverse: '/logos/happydesigns-wordmark-inverse.svg',
 
     // Primary symbol
-    symbol: 'app/assets/logos/happydesigns-symbol.svg',
+    symbol: '/logos/happydesigns-symbol.svg',
 
     // Utility / production symbols
-    symbolReduced: 'app/assets/logos/happydesigns-symbol-reduced.svg',
-    symbolReducedInverse: 'app/assets/logos/happydesigns-symbol-reduced-inverse.svg',
-    symbolReducedTile: 'app/assets/logos/happydesigns-symbol-reduced-tile.svg',
-    symbolReducedTileInverse: 'app/assets/logos/happydesigns-symbol-reduced-tile-inverse.svg',
+    symbolReduced: '/logos/happydesigns-symbol-reduced.svg',
+    symbolReducedInverse: '/logos/happydesigns-symbol-reduced-inverse.svg',
+    symbolReducedTile: '/logos/happydesigns-symbol-reduced-tile.svg',
+    symbolReducedTileInverse: '/logos/happydesigns-symbol-reduced-tile-inverse.svg',
 
     // Teaching / introduction lockups
-    lockup: 'app/assets/logos/happydesigns-lockup.svg',
-    lockupInverse: 'app/assets/logos/happydesigns-lockup-inverse.svg',
+    lockup: '/logos/happydesigns-lockup.svg',
+    lockupInverse: '/logos/happydesigns-lockup-inverse.svg',
 
     // Constrained / production lockups
-    lockupReduced: 'app/assets/logos/happydesigns-lockup-reduced.svg',
-    lockupReducedInverse: 'app/assets/logos/happydesigns-lockup-reduced-inverse.svg',
+    lockupReduced: '/logos/happydesigns-lockup-reduced.svg',
+    lockupReducedInverse: '/logos/happydesigns-lockup-reduced-inverse.svg',
 
     // Brand-owned compositions
-    signature: 'app/assets/logos/happydesigns-signature.svg',
-    signatureInverse: 'app/assets/logos/happydesigns-signature-inverse.svg',
+    signature: '/logos/happydesigns-signature.svg',
+    signatureInverse: '/logos/happydesigns-signature-inverse.svg',
 
     // Public / build output
     publicFavicon: '/favicon.svg',
@@ -44,7 +46,4 @@ export const happydesignsBrand = {
     sand: '#E9E4DC',
     rose: '#BD4D49'
   }
-} as const
-
-export type HappydesignsBrand = typeof happydesignsBrand
-export type HappydesignsBrandColor = keyof typeof happydesignsBrand.colors
+} as const)

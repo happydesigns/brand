@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const guide = useBrandGuide()
+const guide = useHappydesignsGuide()
 
 const year = new Date().getFullYear()
 
@@ -8,30 +8,30 @@ const columns = computed(() => [
     title: 'Guide',
     links: [
       { label: 'Overview', to: '/' },
-      { label: 'Documentation', to: '/docs' }
+      { label: 'Documentation', to: '/docs/guide/overview' }
     ]
   },
   {
     title: 'Foundations',
     links: [
-      { label: 'Colors', to: '/docs/colors' },
-      { label: 'Typography', to: '/docs/typography' },
-      { label: 'Logos', to: '/docs/logos' }
+      { label: 'Colors', to: '/docs/guide/colors' },
+      { label: 'Typography', to: '/docs/guide/typography' },
+      { label: 'Logos', to: '/docs/guide/logos' }
     ]
   },
   {
     title: 'Application',
     links: [
-      { label: 'Components', to: '/docs/components' },
-      { label: 'Voice', to: '/docs/voice' }
+      { label: 'Voice', to: '/docs/guide/voice' },
+      { label: 'Components', to: '/docs/components' }
     ]
   }
 ])
 
 const contactLinks = [
   { label: 'hello@happydesigns.de', to: 'mailto:hello@happydesigns.de', icon: 'i-lucide-mail' },
-  { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank', icon: 'i-lucide-globe' },
-  { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', icon: 'i-simple-icons-github' }
+  { label: 'happydesigns.de', to: 'https://www.happydesigns.de', target: '_blank', rel: 'noopener noreferrer', icon: 'i-lucide-globe' },
+  { label: 'GitHub', to: 'https://github.com/happydesigns', target: '_blank', rel: 'noopener noreferrer', icon: 'i-simple-icons-github' }
 ]
 
 const footerMeta = computed(() => ({
@@ -63,6 +63,7 @@ const footerMeta = computed(() => ({
               :key="link.label"
               :to="link.to"
               :target="link.target"
+              :rel="link.rel"
               class="inline-flex items-center gap-2 rounded-sm border border-white/10 px-2.5 py-1.5 text-xs font-medium text-sand-300 transition hover:border-coral-500/70 hover:text-warm-white"
             >
               <UIcon

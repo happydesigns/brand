@@ -81,6 +81,5 @@ Structure comes first. Use visible frames, fine borders, quiet grids, and warm n
 ```bash
 pnpm install
 pnpm dev
-pnpm typecheck
-pnpm lint
+pnpm verify
 ```

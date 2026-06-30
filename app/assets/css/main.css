@@ -3,6 +3,11 @@
 
 @source "../../components";
 @source "../../pages";
+@source "../../../app.config.ts";
+@source "../../../content";
+@source "../../../node_modules/@happydesigns/id/app";
+@source "../../../node_modules/docus/app";
+@source "../../../node_modules/docus/modules/assistant";
 
 @theme static {
   --container-8xl: 90rem;
@@ -125,6 +130,7 @@
   --ui-text-inverted: var(--color-warm-white);
   --ui-border: var(--color-sand-300);
   --ui-border-muted: var(--color-sand-200);
+  --ui-border-accented: var(--color-sand-400);
   --ui-primary: var(--color-coral-500);
   --ui-secondary: var(--color-petrol-500);
   --ui-success: var(--color-seafoam-500);
@@ -157,6 +163,7 @@
   --ui-text-inverted: var(--color-graphite);
   --ui-border: rgba(250, 247, 242, 0.12);
   --ui-border-muted: rgba(250, 247, 242, 0.08);
+  --ui-border-accented: rgba(250, 247, 242, 0.18);
   --ui-primary: var(--color-coral-400);
   --ui-secondary: var(--color-petrol-300);
   --ui-success: var(--color-seafoam-300);
@@ -342,9 +349,18 @@ body {
 .hd-color-chip {
   display: inline-block;
   width: 2.75rem;
+  min-width: 2.75rem;
   height: 1.25rem;
   vertical-align: middle;
-  border: 1px solid var(--color-sand-300);
+  border: 1px solid color-mix(in srgb, var(--chip) 68%, var(--ui-text) 32%);
   border-radius: 3px;
   background: var(--chip);
+}
+
+.hd-color-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 8rem;
+  white-space: nowrap;
 }

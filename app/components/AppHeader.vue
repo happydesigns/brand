@@ -1,24 +1,47 @@
 <script setup lang="ts">
+type HeaderLink = {
+  label: string
+  to: string
+  activePrefix?: string
+  target?: string
+  rel?: string
+}
+
+type HeaderConfig = {
+  links?: HeaderLink[]
+}
+
 const appConfig = useAppConfig()
-const guide = useBrandGuide()
+const route = useRoute()
 const { forced: forcedColorMode } = useDocusColorMode()
 const { isEnabled: isAssistantEnabled } = useAssistant()
 const { isEnabled, locales } = useDocusI18n()
 const { subNavigationMode } = useSubNavigation()
 
-const links = computed(() => [
-  { label: 'Overview', to: '/docs' },
-  ...guide.sections.map(section => ({
-    label: section.title,
-    to: `/docs/${section.slug}`
-  }))
-])
+const headerConfig = appConfig.header as HeaderConfig | undefined
+const headerLinks = computed(() => headerConfig?.links ?? [])
+
+const normalizePath = (path: string) => path.replace(/\/$/, '') || '/'
+
+const isHeaderLinkActive = (link: HeaderLink) => {
+  const activePath = link.activePrefix ?? link.to
+
+  if (!activePath.startsWith('/')) {
+    return false
+  }
+
+  const path = normalizePath(route.path)
+  const target = normalizePath(activePath)
+
+  return path === target || (target !== '/' && path.startsWith(`${target}/`))
+}
 
 const githubLinks = computed(() => appConfig.github && appConfig.github.url
   ? [{
       'icon': 'i-simple-icons-github',
       'to': appConfig.github.url,
       'target': '_blank',
+      'rel': 'noopener noreferrer',
       'aria-label': 'GitHub'
     }]
   : [])
@@ -29,25 +52,31 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
     :ui="{
       root: 'border-b border-default bg-default/95 backdrop-blur',
       container: 'max-w-(--ui-container) border-x border-default',
-      center: 'flex-1',
       right: 'gap-1.5'
     }"
     :class="{ 'flex flex-col': subNavigationMode === 'header' }"
   >
-    <nav class="hidden items-center justify-center gap-7 text-sm font-medium lg:flex">
+    <template #left>
+      <AppHeaderLeft />
+    </template>
+
+    <nav
+      v-if="headerLinks.length"
+      aria-label="Main"
+      class="hidden items-center justify-center gap-7 text-sm font-medium lg:flex"
+    >
       <NuxtLink
-        v-for="link in links"
+        v-for="link in headerLinks"
         :key="link.to"
         :to="link.to"
-        class="text-body transition hover:text-highlighted aria-[current=page]:text-highlighted"
+        :target="link.target"
+        :rel="link.rel"
+        class="text-body transition hover:text-highlighted"
+        :class="{ 'text-highlighted': isHeaderLinkActive(link) }"
       >
         {{ link.label }}
       </NuxtLink>
     </nav>
-
-    <template #left>
-      <AppHeaderLeft />
-    </template>
 
     <template #right>
       <AppHeaderCTA />

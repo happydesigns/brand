@@ -45,4 +45,21 @@ Sections may use framed layouts, separators, and contrasting warm surfaces to cr
 
 This package may become the basis for future happydesigns projects, but the guide itself should not read like a generic template. Public copy should speak as the happydesigns brand guide.
 
-When refining the layer, keep changes token-driven and Nuxt-native where possible. Do not add unrelated dependencies, hardcode one-off brand behavior into generic product code, or create a parallel component system beside Nuxt UI.
+When refining the layer, keep changes token-driven and Nuxt-native where possible. Do not add unrelated dependencies, hardcode one-off brand behavior into shared guide structure, or create a parallel component system beside Nuxt UI.
+
+## ID Extraction Boundary
+
+The migrated guide may extend `@happydesigns/id/nuxt`, but `brand` remains the canonical happydesigns guide. Use `id` for reusable Nuxt UI brand-guide infrastructure; keep happydesigns identity decisions in this repository.
+
+Keep in `brand`:
+
+- happydesigns assets, logo doctrine, palette meaning, voice, final copy, and examples.
+- docs pages that teach the happydesigns system, even when they use reusable mechanics.
+- visual personality that belongs to this guide rather than to a generic brand-guide layer.
+
+Use or upstream to `id` only when the pattern is proven generic:
+
+- typed theme and guide contracts, package exports, app-config helpers, and Nuxt layer wiring.
+- reusable guide shell primitives, component example framing, docs-link patterns, coverage helpers, and install/code surfaces when their API is brand-neutral.
+
+Move mechanics into `id` after the brand migration proves the abstraction under real content. Do not move taste, doctrine, or copy just because another brand may also need colors, logos, typography, or components.

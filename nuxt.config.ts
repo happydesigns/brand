@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// Docus' generated CSS module can emit an absolute Windows dev URL. The brand
+// guide owns the equivalent CSS in app/assets/css/main.css, so disable it here.
+const docusCssModule = { 'docus-css': false as const }
+
 export default defineNuxtConfig({
-  extends: ['docus'],
+  extends: ['@happydesigns/id/nuxt', 'docus'],
 
   modules: [
     '@nuxt/eslint'
@@ -37,15 +41,27 @@ export default defineNuxtConfig({
   ui: {
     prose: true
   },
+  routeRules: {
+    '/docs': { redirect: '/docs/guide/overview' },
+    '/docs/guide': { redirect: '/docs/guide/overview' },
+    '/docs/guide/': { redirect: '/docs/guide/overview' },
+    '/docs/overview': { redirect: '/docs/guide/overview' },
+    '/docs/colors': { redirect: '/docs/guide/colors' },
+    '/docs/typography': { redirect: '/docs/guide/typography' },
+    '/docs/logos': { redirect: '/docs/guide/logos' },
+    '/docs/voice': { redirect: '/docs/guide/voice' }
+  },
 
-  compatibilityDate: 'latest',
+  compatibilityDate: 'latest' as const,
 
   eslint: {
     config: {
       stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
+        commaDangle: 'never' as const,
+        braceStyle: '1tbs' as const
       }
     }
-  }
+  },
+
+  ...docusCssModule
 })

@@ -1,11 +1,20 @@
 {
   "version": 1,
   "skills": {
+    "create-docs": {
+      "source": "docus.dev",
+      "sourceType": "well-known",
+      "computedHash": "3c6d7d6f6084ff5ebbd59fe8b348f99bced0d303da45cd61069a0f6dac8199f6"
+    },
     "nuxt-ui": {
-      "source": "nuxt/ui",
-      "sourceType": "github",
-      "skillPath": "skills/nuxt-ui/SKILL.md",
-      "computedHash": "26228b7bba74ab869f52526f2ba5fbfa0c2353ea0d4bc1176c5e57ee4ee95040"
+      "source": "ui.nuxt.com",
+      "sourceType": "well-known",
+      "computedHash": "de41e63eeda35c2bfdd3ed783d3e04361dc85bff28ad71f9c4dbdc01bb8f4e57"
+    },
+    "review-docs": {
+      "source": "docus.dev",
+      "sourceType": "well-known",
+      "computedHash": "016eca30a60e4d1ec38cf162753d47e52dbb543a931f77f8050d4bc4f6bc5e6b"
     }
   }
 }

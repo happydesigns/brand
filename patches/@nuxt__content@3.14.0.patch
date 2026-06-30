@@ -1,0 +1,45 @@
+diff --git a/dist/runtime/internal/database.server.js b/dist/runtime/internal/database.server.js
+index ca2f326b2434d102e9c52118d6b2452d192baa9d..bb873dabb969c5450cb4808313279c85d20644aa 100644
+--- a/dist/runtime/internal/database.server.js
++++ b/dist/runtime/internal/database.server.js
+@@ -63,12 +63,14 @@ async function _checkAndImportDatabaseIntegrity(event, collection, integrityVers
+       await waitUntilDatabaseIsReady(db2, collection);
+       return true;
+     }
++  }
++  const dump = await loadDatabaseDump(event, collection).then(decompressSQLDump);
++  if (before?.version) {
+     await db2.exec(`DELETE FROM ${tables.info} WHERE id = ?`, [`checksum_${collection}`]);
+     if (!unchangedStructure) {
+       await db2.exec(`DROP TABLE IF EXISTS ${tables[collection]}`);
+     }
+   }
+-  const dump = await loadDatabaseDump(event, collection).then(decompressSQLDump);
+   const dumpLinesHash = dump.map((row) => row.split(" -- ").pop());
+   let hashesInDb = /* @__PURE__ */ new Set();
+   if (unchangedStructure) {
+@@ -125,10 +127,20 @@ async function waitUntilDatabaseIsReady(db2, collection) {
+   });
+ }
+ async function loadDatabaseDump(event, collection) {
+-  return await fetchDatabase(event, collection).catch((e) => {
+-    console.error("Failed to fetch compressed dump", e);
+-    return "";
+-  });
++  const attempts = 10;
++  for (let attempt = 0; attempt < attempts; attempt++) {
++    const dump = await fetchDatabase(event, collection).catch((e) => {
++      console.error("Failed to fetch compressed dump", e);
++      return "";
++    });
++    if (typeof dump === "string" && dump.length) {
++      return dump;
++    }
++    if (attempt < attempts - 1) {
++      await new Promise(resolve => setTimeout(resolve, 100));
++    }
++  }
++  throw new Error(`Unable to load compressed content dump for collection "${collection}"`);
+ }
+ function refineDatabaseConfig(config) {
+   if (config.type === "d1") {

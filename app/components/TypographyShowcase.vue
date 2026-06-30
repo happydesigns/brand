@@ -2,7 +2,7 @@
 const hierarchyExamples = [
   {
     label: 'Page title',
-    class: 'text-5xl font-semibold leading-[0.98] sm:text-6xl',
+    class: 'text-4xl font-semibold leading-[0.98] @min-[36rem]/typography:text-5xl @min-[48rem]/typography:text-6xl',
     text: 'Thoughtful design for the modern web.'
   },
   {
@@ -31,13 +31,13 @@ const monoExamples = [
 </script>
 
 <template>
-  <div class="not-prose my-10 overflow-hidden rounded-sm border border-default bg-accented">
-    <section class="grid gap-px md:grid-cols-[1.2fr_.8fr]">
-      <div class="bg-surface p-6 sm:p-8">
+  <div class="not-prose @container/typography my-10 overflow-hidden rounded-sm border border-default bg-accented">
+    <section class="grid gap-px @min-[44rem]/typography:grid-cols-[minmax(0,1.35fr)_minmax(15rem,.8fr)]">
+      <div class="min-w-0 bg-surface p-6 sm:p-8">
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-coral-500">
           Primary sans
         </p>
-        <h2 class="mt-5 text-5xl font-semibold leading-none tracking-normal text-highlighted sm:text-7xl">
+        <h2 class="mt-5 text-5xl font-semibold leading-none tracking-normal text-highlighted @min-[38rem]/typography:text-6xl @min-[54rem]/typography:text-7xl">
           Bricolage Grotesque
         </h2>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-body">
@@ -56,7 +56,7 @@ const monoExamples = [
         </div>
       </div>
 
-      <div class="bg-surface p-6 sm:p-8">
+      <div class="min-w-0 bg-surface p-6 sm:p-8">
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-secondary">
           Technical mono
         </p>
@@ -70,7 +70,7 @@ const monoExamples = [
           <code
             v-for="example in monoExamples"
             :key="example"
-            class="block rounded-sm border border-default bg-inset px-3 py-2 font-mono text-xs text-highlighted"
+            class="block min-w-0 rounded-sm border border-default bg-inset px-3 py-2 font-mono text-xs text-highlighted break-all"
           >
             {{ example }}
           </code>
@@ -100,7 +100,7 @@ const monoExamples = [
         <div
           v-for="example in hierarchyExamples"
           :key="example.label"
-          class="grid gap-4 py-6 lg:grid-cols-[10rem_1fr]"
+          class="grid gap-4 py-6 @min-[42rem]/typography:grid-cols-[10rem_minmax(0,1fr)]"
         >
           <p class="font-mono text-xs uppercase tracking-[0.14em] text-dimmed">
             {{ example.label }}
@@ -112,8 +112,8 @@ const monoExamples = [
       </div>
     </section>
 
-    <section class="grid gap-px border-t border-default md:grid-cols-2">
-      <div class="bg-surface p-6 sm:p-8">
+    <section class="grid gap-px border-t border-default @min-[44rem]/typography:grid-cols-2">
+      <div class="min-w-0 bg-surface p-6 sm:p-8">
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-label">
           Documentation pattern
         </p>
@@ -136,7 +136,7 @@ const monoExamples = [
         </div>
       </div>
 
-      <div class="bg-surface p-6 sm:p-8">
+      <div class="min-w-0 bg-surface p-6 sm:p-8">
         <p class="font-mono text-xs uppercase tracking-[0.14em] text-label">
           Interface pattern
         </p>
