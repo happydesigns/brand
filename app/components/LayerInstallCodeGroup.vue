@@ -57,10 +57,12 @@ const { data: parsedContent } = await useAsyncData(
 </script>
 
 <template>
-  <MDCRenderer
-    v-if="parsedContent?.body"
-    :body="parsedContent.body"
-    :data="parsedContent.data"
-    :tag="false"
-  />
+  <div class="[&>.group]:my-0 [&_pre]:py-2.5">
+    <MDCRenderer
+      v-if="parsedContent?.body"
+      :body="parsedContent.body"
+      :data="parsedContent.data"
+      :tag="false"
+    />
+  </div>
 </template>
