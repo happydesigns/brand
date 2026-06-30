@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<{
 const componentExampleContext = {
   brandName: 'happydesigns',
   packageName: '@happydesigns/brand',
+  accentColor: happydesignsBrand.colors.coral,
   logoAlt: 'happydesigns symbol',
   assets: {
     symbol: symbolLogo,
