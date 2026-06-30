@@ -2,6 +2,7 @@
 import symbolLogo from '~/assets/logos/happydesigns-symbol.svg'
 import wordmarkLogo from '~/assets/logos/happydesigns-wordmark.svg'
 import wordmarkLogoInverse from '~/assets/logos/happydesigns-wordmark-inverse.svg'
+import { happydesignsBrand } from '~/utils/brand'
 
 const props = withDefaults(defineProps<{
   name: string
@@ -18,6 +19,18 @@ const componentExampleContext = {
     symbol: symbolLogo,
     wordmark: wordmarkLogo,
     wordmarkInverse: wordmarkLogoInverse
+  },
+  assetPreviewSurfaces: {
+    light: {
+      background: happydesignsBrand.colors.warmWhite,
+      color: happydesignsBrand.colors.graphite,
+      border: 'var(--color-sand-300)'
+    },
+    dark: {
+      background: happydesignsBrand.colors.graphite,
+      color: happydesignsBrand.colors.warmWhite,
+      border: 'rgba(250, 247, 242, 0.16)'
+    }
   },
   paths: {
     docs: '/docs/guide/overview',
