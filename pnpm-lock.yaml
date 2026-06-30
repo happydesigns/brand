@@ -28,8 +28,12 @@ overrides:
   '@tiptap/extensions': 3.23.6
 
 patchedDependencies:
-  '@nuxt/content@3.14.0': cc6a60f3fb8dda3763ef5395ed2206cc4c7fa30df629608abc609f89a7d91a89
-  docus@5.12.3: 0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1
+  '@nuxt/content@3.14.0':
+    hash: cc6a60f3fb8dda3763ef5395ed2206cc4c7fa30df629608abc609f89a7d91a89
+    path: patches/@nuxt__content@3.14.0.patch
+  docus@5.12.3:
+    hash: 0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1
+    path: patches/docus@5.12.3.patch
 
 importers:
 
