@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: happydesigns/id
+          token: ${{ secrets.HAPPYDESIGNS_ID_TOKEN || github.token }}
           path: id
 
       - name: Place id package for local dependency
