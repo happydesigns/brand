@@ -15,6 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Checkout id package
+        uses: actions/checkout@v6
+        with:
+          repository: happydesigns/id
+          path: id
+
+      - name: Place id package for local dependency
+        run: mv id ../id
+
       - name: Install pnpm
         uses: pnpm/action-setup@v6
 
