@@ -1,15 +1,15 @@
-import { cpSync, mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createThemeCssVars } from '@happydesigns/id'
 import { cssVariablesAdapter } from '@happydesigns/id/adapters/css-variables'
-import { happydesignsRuntimeAssets } from '../app/utils/brand-guide'
-import { happydesignsBrandTheme } from '../app/utils/brand-theme'
-import { happydesignsBrand } from '../app/utils/brand'
+import { happydesignsRuntimeAssets } from '../src/brand/brand-guide'
+import { happydesignsBrandTheme } from '../src/brand/brand-theme'
+import { happydesignsBrand } from '../src/brand/brand'
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
-export function createRuntimeLayerFiles() {
+export function createBrandLayerFiles() {
   const palette = cssVariablesAdapter.transform(happydesignsBrand, {
     prefix: '',
     selector: '@theme static',
@@ -17,7 +17,7 @@ export function createRuntimeLayerFiles() {
   })
 
   return {
-    'app/brand-runtime.json': `${JSON.stringify({
+    'app/brand.generated.json': `${JSON.stringify({
       theme: happydesignsBrandTheme,
       assets: happydesignsRuntimeAssets
     }, null, 2)}\n`,
@@ -26,18 +26,10 @@ export function createRuntimeLayerFiles() {
   } as const
 }
 
-export function writeRuntimeLayer() {
-  const runtimeDir = resolve(rootDir, 'runtime')
-
-  for (const [relativePath, contents] of Object.entries(createRuntimeLayerFiles())) {
-    const output = resolve(runtimeDir, relativePath)
+export function writeBrandLayer() {
+  for (const [relativePath, contents] of Object.entries(createBrandLayerFiles())) {
+    const output = resolve(rootDir, relativePath)
     mkdirSync(dirname(output), { recursive: true })
     writeFileSync(output, contents, 'utf8')
   }
-
-  cpSync(resolve(rootDir, 'public/logos'), resolve(runtimeDir, 'public/logos'), {
-    recursive: true
-  })
-  cpSync(resolve(rootDir, 'public/app-icon.png'), resolve(runtimeDir, 'public/app-icon.png'))
-  cpSync(resolve(rootDir, 'public/favicon.svg'), resolve(runtimeDir, 'public/favicon.svg'))
 }

@@ -1,6 +1,6 @@
 import { createNuxtUiAppConfig } from '@happydesigns/id'
-import { happydesignsBrandGuide, happydesignsComponentCoverage, happydesignsRuntimeAssets } from './utils/brand-guide'
-import { happydesignsBrandTheme } from './utils/brand-theme'
+import { happydesignsBrandGuide, happydesignsComponentCoverage, happydesignsRuntimeAssets } from '../../src/brand/brand-guide'
+import { happydesignsBrandTheme } from '../../src/brand/brand-theme'
 
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
 type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
