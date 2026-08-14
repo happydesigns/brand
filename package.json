@@ -9,6 +9,7 @@
   },
   "scripts": {
     "generate:brand-css": "node scripts/generate-brand-css.mjs",
+    "generate:runtime-layer": "vitest run --config scripts/vitest.generate.config.ts",
     "prebuild": "node scripts/generate-brand-css.mjs",
     "build": "nuxt build",
     "predev": "node scripts/generate-brand-css.mjs",

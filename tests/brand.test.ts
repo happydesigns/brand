@@ -11,6 +11,7 @@ import {
   happydesignsUiConfig
 } from '../app/utils/brand-theme'
 import { happydesignsBrand } from '../app/utils/brand'
+import { createRuntimeLayerFiles } from '../scripts/runtime-layer'
 
 describe('neutral brand definition', () => {
   it('preserves the happydesigns palette, roles, typography, and runtime assets', () => {
@@ -70,5 +71,20 @@ describe('runtime and guide separation', () => {
     expect(appConfig.id.assets).toEqual(happydesignsRuntimeAssets)
     expect(appConfig.id.theme).toEqual(happydesignsBrandTheme)
     expect(appConfig.id.guide).toBeDefined()
+  })
+
+  it('keeps the consumer layer generated from runtime contracts without guide content', () => {
+    for (const [relativePath, expected] of Object.entries(createRuntimeLayerFiles())) {
+      const generated = readFileSync(resolve(process.cwd(), 'runtime', relativePath), 'utf8')
+
+      expect(generated).toBe(expected)
+    }
+
+    expect(readFileSync(resolve(process.cwd(), 'runtime/app/brand-runtime.json'), 'utf8')).not.toContain('componentCoverage')
+    expect(readFileSync(resolve(process.cwd(), 'runtime/nuxt.config.ts'), 'utf8')).not.toContain('docus')
+
+    for (const asset of Object.values(happydesignsRuntimeAssets.logos)) {
+      expect(readFileSync(resolve(process.cwd(), 'runtime/public', asset.src.replace(/^\//, '')))).toBeTruthy()
+    }
   })
 })

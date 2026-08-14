@@ -1,0 +1,63 @@
+/* Generated from the Nuxt UI adapter output. Do not edit by hand. */
+:root {
+  --ui-container: var(--container-8xl);
+  --ui-bg: var(--color-warm-white);
+  --ui-bg-muted: white;
+  --ui-bg-elevated: var(--color-sand-150);
+  --ui-bg-accented: var(--color-sand-300);
+  --ui-bg-inverted: var(--color-graphite);
+  --ui-text: var(--color-graphite);
+  --ui-text-highlighted: var(--color-graphite);
+  --ui-text-muted: var(--color-sand-600);
+  --ui-text-dimmed: var(--color-sand-500);
+  --ui-text-inverted: var(--color-warm-white);
+  --ui-border: var(--color-sand-300);
+  --ui-border-muted: var(--color-sand-200);
+  --ui-border-accented: var(--color-sand-400);
+  --ui-primary: var(--color-coral-500);
+  --ui-secondary: var(--color-petrol-500);
+  --ui-success: var(--color-seafoam-500);
+  --ui-info: var(--color-plum-500);
+  --ui-warning: var(--color-butter-500);
+  --ui-error: var(--color-rose-500);
+  --hd-text-body: var(--color-sand-700);
+  --hd-text-label: var(--color-plum-600);
+  --hd-bg-surface: var(--ui-bg);
+  --hd-bg-card: var(--ui-bg-muted);
+  --hd-bg-inset: var(--color-sand-50);
+  --hd-bg-separator: var(--ui-bg-accented);
+  --hd-bg-tinted: color-mix(in srgb, var(--color-sand-200) 55%, transparent);
+  --hd-bg-hover: var(--color-peach-50);
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", ui-monospace, monospace;
+}
+
+.dark {
+  --ui-bg: var(--color-graphite);
+  --ui-bg-muted: #2F2F2E;
+  --ui-bg-elevated: #282827;
+  --ui-bg-accented: rgba(250, 247, 242, 0.12);
+  --ui-bg-inverted: var(--color-sand-100);
+  --ui-text: var(--color-sand-100);
+  --ui-text-highlighted: var(--color-sand-50);
+  --ui-text-muted: var(--color-sand-300);
+  --ui-text-dimmed: var(--color-sand-400);
+  --ui-text-inverted: var(--color-graphite);
+  --ui-border: rgba(250, 247, 242, 0.12);
+  --ui-border-muted: rgba(250, 247, 242, 0.08);
+  --ui-border-accented: rgba(250, 247, 242, 0.18);
+  --ui-primary: var(--color-coral-400);
+  --ui-secondary: var(--color-petrol-400);
+  --ui-success: var(--color-seafoam-400);
+  --ui-info: var(--color-plum-400);
+  --ui-warning: var(--color-butter-400);
+  --ui-error: var(--color-rose-400);
+  --hd-text-body: var(--color-sand-300);
+  --hd-text-label: var(--color-sand-300);
+  --hd-bg-surface: var(--ui-bg);
+  --hd-bg-card: var(--ui-bg-muted);
+  --hd-bg-inset: var(--color-graphite);
+  --hd-bg-separator: var(--ui-bg-accented);
+  --hd-bg-tinted: color-mix(in srgb, var(--color-sand-800) 25%, transparent);
+  --hd-bg-hover: rgba(250, 247, 242, 0.08);
+}
