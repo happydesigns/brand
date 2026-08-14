@@ -1,5 +1,4 @@
 import {
-  createBrandGuideAssets,
   createGuideDocsSections,
   defineBrandGuide,
   defineGuideSections,
@@ -90,14 +89,14 @@ export const brandGuide = {
   colors: [
     { name: 'Warm White', token: 'warmWhite', hex: happydesignsBrand.colors.warmWhite, role: 'Page background', usage: 'Use for primary surfaces and calm editorial space.' },
     { name: 'Graphite', token: 'graphite', hex: happydesignsBrand.colors.graphite, role: 'Text and premium fills', usage: 'Use for primary text, high-emphasis panels, and dark mode base.' },
-    { name: 'Coral', token: 'coral', hex: happydesignsBrand.colors.coral, role: 'Signature accent', usage: 'Use sparingly for action emphasis, focus, and brand punctuation.' },
-    { name: 'Peach', token: 'peach', hex: happydesignsBrand.colors.peach, role: 'Logo field and atmosphere', usage: 'Use for warm fields, gentle section contrast, and identity moments.' },
-    { name: 'Petrol', token: 'petrol', hex: happydesignsBrand.colors.petrol, role: 'Technical counterweight', usage: 'Use for secondary actions, diagrams, and analytical context.' },
-    { name: 'Butter', token: 'butter', hex: happydesignsBrand.colors.butter, role: 'Soft warning', usage: 'Use for caution states that should not feel alarming.' },
-    { name: 'Plum', token: 'plum', hex: happydesignsBrand.colors.plum, role: 'Quiet information', usage: 'Use for labels, metadata, and non-primary informational moments.' },
-    { name: 'Seafoam', token: 'seafoam', hex: happydesignsBrand.colors.seafoam, role: 'Constructive success', usage: 'Use for confirmations, progress, and positive validation.' },
-    { name: 'Sand', token: 'sand', hex: happydesignsBrand.colors.sand, role: 'Lines and muted surfaces', usage: 'Use for borders, dividers, subdued panels, and secondary backgrounds.' },
-    { name: 'Rose', token: 'rose', hex: happydesignsBrand.colors.rose, role: 'Restrained errors', usage: 'Use for destructive actions, errors, and critical validation.' }
+    { name: 'Coral', token: 'coral', hex: happydesignsBrand.colors.coral[500], role: 'Signature accent', usage: 'Use sparingly for action emphasis, focus, and brand punctuation.' },
+    { name: 'Peach', token: 'peach', hex: happydesignsBrand.colors.peach[200], role: 'Logo field and atmosphere', usage: 'Use for warm fields, gentle section contrast, and identity moments.' },
+    { name: 'Petrol', token: 'petrol', hex: happydesignsBrand.colors.petrol[500], role: 'Technical counterweight', usage: 'Use for secondary actions, diagrams, and analytical context.' },
+    { name: 'Butter', token: 'butter', hex: happydesignsBrand.colors.butter[500], role: 'Soft warning', usage: 'Use for caution states that should not feel alarming.' },
+    { name: 'Plum', token: 'plum', hex: happydesignsBrand.colors.plum[500], role: 'Quiet information', usage: 'Use for labels, metadata, and non-primary informational moments.' },
+    { name: 'Seafoam', token: 'seafoam', hex: happydesignsBrand.colors.seafoam[500], role: 'Constructive success', usage: 'Use for confirmations, progress, and positive validation.' },
+    { name: 'Sand', token: 'sand', hex: happydesignsBrand.colors.sand[200], role: 'Lines and muted surfaces', usage: 'Use for borders, dividers, subdued panels, and secondary backgrounds.' },
+    { name: 'Rose', token: 'rose', hex: happydesignsBrand.colors.rose[500], role: 'Restrained errors', usage: 'Use for destructive actions, errors, and critical validation.' }
   ],
   fonts: [
     {
@@ -140,7 +139,7 @@ export const brandGuide = {
     {
       name: 'Wordmark',
       role: 'wordmark',
-      path: happydesignsBrand.logoAssetPaths.wordmark,
+      path: happydesignsBrand.assets.logos.wordmark.src,
       usage: 'Default identity for headers, navigation, documentation, and slim horizontal layouts.',
       media: 'light',
       alt: 'happydesigns wordmark'
@@ -148,7 +147,7 @@ export const brandGuide = {
     {
       name: 'Wordmark inverse',
       role: 'wordmarkInverse',
-      path: happydesignsBrand.logoAssetPaths.wordmarkInverse,
+      path: happydesignsBrand.assets.logos.wordmarkInverse.src,
       usage: 'Wordmark for dark surfaces.',
       media: 'dark',
       alt: 'happydesigns wordmark'
@@ -156,7 +155,7 @@ export const brandGuide = {
     {
       name: 'Symbol',
       role: 'symbol',
-      path: happydesignsBrand.logoAssetPaths.symbol,
+      path: happydesignsBrand.assets.logos.symbol.src,
       usage: 'Favicon, app icon, social avatars, square contexts, and brand moments. Unchanged across light and dark.',
       media: 'any',
       alt: 'happydesigns symbol'
@@ -164,7 +163,7 @@ export const brandGuide = {
     {
       name: 'Symbol reduced',
       role: 'symbolReduced',
-      path: happydesignsBrand.logoAssetPaths.symbolReduced,
+      path: happydesignsBrand.assets.logos.symbolReduced.src,
       usage: 'Simplified h + coral dot for constrained, monochrome, or production contexts.',
       media: 'light',
       alt: 'happydesigns reduced symbol'
@@ -172,7 +171,7 @@ export const brandGuide = {
     {
       name: 'Symbol reduced inverse',
       role: 'symbolReducedInverse',
-      path: happydesignsBrand.logoAssetPaths.symbolReducedInverse,
+      path: happydesignsBrand.assets.logos.symbolReducedInverse.src,
       usage: 'Reduced symbol for dark surfaces.',
       media: 'dark',
       alt: 'happydesigns reduced symbol'
@@ -180,7 +179,7 @@ export const brandGuide = {
     {
       name: 'Symbol reduced tile',
       role: 'symbolReducedTile',
-      path: happydesignsBrand.logoAssetPaths.symbolReducedTile,
+      path: happydesignsBrand.assets.logos.symbolReducedTile.src,
       usage: 'Reduced symbol on a light tile. Use when the raw reduced symbol needs a stable bounding surface.',
       media: 'light',
       alt: 'happydesigns reduced symbol tile'
@@ -188,7 +187,7 @@ export const brandGuide = {
     {
       name: 'Symbol reduced tile inverse',
       role: 'symbolReducedTileInverse',
-      path: happydesignsBrand.logoAssetPaths.symbolReducedTileInverse,
+      path: happydesignsBrand.assets.logos.symbolReducedTileInverse.src,
       usage: 'Reduced symbol on a dark tile.',
       media: 'dark',
       alt: 'happydesigns reduced symbol tile'
@@ -196,7 +195,7 @@ export const brandGuide = {
     {
       name: 'Lockup',
       role: 'lockup',
-      path: happydesignsBrand.logoAssetPaths.lockup,
+      path: happydesignsBrand.assets.logos.lockup.src,
       usage: 'Full symbol + wordmark for brand introductions, covers, and teaching moments.',
       media: 'light',
       alt: 'happydesigns lockup'
@@ -204,7 +203,7 @@ export const brandGuide = {
     {
       name: 'Lockup inverse',
       role: 'lockupInverse',
-      path: happydesignsBrand.logoAssetPaths.lockupInverse,
+      path: happydesignsBrand.assets.logos.lockupInverse.src,
       usage: 'Lockup for dark surfaces.',
       media: 'dark',
       alt: 'happydesigns lockup'
@@ -212,7 +211,7 @@ export const brandGuide = {
     {
       name: 'Lockup reduced',
       role: 'lockupReduced',
-      path: happydesignsBrand.logoAssetPaths.lockupReduced,
+      path: happydesignsBrand.assets.logos.lockupReduced.src,
       usage: 'Reduced symbol + wordmark for production, print, and constrained horizontal contexts.',
       media: 'light',
       alt: 'happydesigns reduced lockup'
@@ -220,7 +219,7 @@ export const brandGuide = {
     {
       name: 'Lockup reduced inverse',
       role: 'lockupReducedInverse',
-      path: happydesignsBrand.logoAssetPaths.lockupReducedInverse,
+      path: happydesignsBrand.assets.logos.lockupReducedInverse.src,
       usage: 'Reduced lockup for dark surfaces.',
       media: 'dark',
       alt: 'happydesigns reduced lockup'
@@ -228,7 +227,7 @@ export const brandGuide = {
     {
       name: 'Brand signature',
       role: 'signature',
-      path: happydesignsBrand.logoAssetPaths.signature,
+      path: happydesignsBrand.assets.logos.signature.src,
       usage: 'Standardized brand composition for footers, proposals, and brand-owned sections.',
       media: 'light',
       alt: 'happydesigns brand signature'
@@ -236,7 +235,7 @@ export const brandGuide = {
     {
       name: 'Brand signature inverse',
       role: 'signatureInverse',
-      path: happydesignsBrand.logoAssetPaths.signatureInverse,
+      path: happydesignsBrand.assets.logos.signatureInverse.src,
       usage: 'Brand signature for dark surfaces.',
       media: 'dark',
       alt: 'happydesigns brand signature'
@@ -244,7 +243,7 @@ export const brandGuide = {
     {
       name: 'App icon PNG',
       role: 'appIcon',
-      path: happydesignsBrand.logoAssetPaths.publicAppIcon,
+      path: happydesignsBrand.assets.logos.appIcon.src,
       usage: 'Touch icon and square app contexts.',
       media: 'any',
       alt: 'happydesigns app icon'
@@ -252,7 +251,7 @@ export const brandGuide = {
   ]
 } satisfies BrandGuideContent<typeof happydesignsBrand>
 
-const happydesignsGuideAssets = createBrandGuideAssets(brandGuide.assets)
+export const happydesignsRuntimeAssets = happydesignsBrand.assets
 
 export const happydesignsComponentCoverage = [
   {
@@ -360,7 +359,7 @@ export const happydesignsBrandGuide = defineBrandGuide({
   description: happydesignsBrand.claim,
   homepage: 'https://happydesigns.de',
   repository: 'https://github.com/happydesigns/brand',
-  assets: happydesignsGuideAssets,
+  assets: happydesignsRuntimeAssets,
   palette: happydesignsBrand.colors,
   semanticColors: happydesignsSemanticColors,
   cssVariables: happydesignsBrandTheme.cssVariables,
@@ -369,8 +368,7 @@ export const happydesignsBrandGuide = defineBrandGuide({
   componentCoverage: happydesignsComponentCoverage,
   docs: {
     sections: createGuideDocsSections(brandGuide.sections)
-  },
-  ui: happydesignsBrandTheme.ui
+  }
 })
 
 export function getBrandGuideSection(slug: string): BrandGuideSection | undefined {

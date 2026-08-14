@@ -1,5 +1,5 @@
 import { createNuxtUiAppConfig } from '@happydesigns/id'
-import { happydesignsBrandGuide, happydesignsComponentCoverage } from './utils/brand-guide'
+import { happydesignsBrandGuide, happydesignsComponentCoverage, happydesignsRuntimeAssets } from './utils/brand-guide'
 import { happydesignsBrandTheme } from './utils/brand-theme'
 
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
@@ -38,6 +38,7 @@ export default defineAppConfig({
     theme: happydesignsBrandTheme,
     defaultTheme: happydesignsBrandTheme.name,
     themes: [happydesignsBrandTheme],
+    assets: happydesignsRuntimeAssets,
     guide: happydesignsAppConfigGuide
   },
   docus: {

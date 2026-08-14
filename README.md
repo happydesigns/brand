@@ -4,6 +4,14 @@ Nuxt UI brand layer for happydesigns: thoughtful design for the modern web.
 
 This package provides Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logo and brand primitives, frame/grid primitives, and a small visual QA playground.
 
+## Brand sources and adapters
+
+Tool-independent color scales and typography live in `app/utils/brand-data.json`. `app/utils/brand.ts` adds identity metadata, structured runtime assets, and optional happydesigns role aliases through `defineBrand()`. The guide reuses those assets and adds explanatory usage text without becoming a runtime dependency.
+
+The explicit Nuxt UI integration stays in `app/utils/brand-theme.ts`. It maps those named colors to Nuxt UI roles with `nuxtUiAdapter`; Nuxt UI keeps its normal color-mode behavior, while the brand supplies targeted CSS-variable overrides for the surfaces it owns.
+
+`app/assets/css/brand.generated.css` is generated from the neutral data through the generic CSS-variable adapter. Run `pnpm generate:brand-css` after editing brand data. Build, dev, install, and typecheck commands regenerate it automatically, and `pnpm test` rejects drift.
+
 ## Usage
 
 Extend the layer from a Nuxt project:
@@ -80,6 +88,7 @@ Structure comes first. Use visible frames, fine borders, quiet grids, and warm n
 
 ```bash
 pnpm install
+pnpm test
 pnpm dev
 pnpm verify
 ```

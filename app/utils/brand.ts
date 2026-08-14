@@ -1,49 +1,121 @@
-import { defineBrandIdentity } from '@happydesigns/id'
+import { defineBrand } from '@happydesigns/id'
+import brandData from './brand-data.json' with { type: 'json' }
 
-export const happydesignsBrand = defineBrandIdentity({
+export const happydesignsBrand = defineBrand({
   name: 'happydesigns',
   packageName: '@happydesigns/brand',
   claim: 'Thoughtful design for the modern web.',
-  logoAssetPaths: {
-    // Primary everyday identity
-    wordmark: '/logos/happydesigns-wordmark.svg',
-    wordmarkInverse: '/logos/happydesigns-wordmark-inverse.svg',
-
-    // Primary symbol
-    symbol: '/logos/happydesigns-symbol.svg',
-
-    // Utility / production symbols
-    symbolReduced: '/logos/happydesigns-symbol-reduced.svg',
-    symbolReducedInverse: '/logos/happydesigns-symbol-reduced-inverse.svg',
-    symbolReducedTile: '/logos/happydesigns-symbol-reduced-tile.svg',
-    symbolReducedTileInverse: '/logos/happydesigns-symbol-reduced-tile-inverse.svg',
-
-    // Teaching / introduction lockups
-    lockup: '/logos/happydesigns-lockup.svg',
-    lockupInverse: '/logos/happydesigns-lockup-inverse.svg',
-
-    // Constrained / production lockups
-    lockupReduced: '/logos/happydesigns-lockup-reduced.svg',
-    lockupReducedInverse: '/logos/happydesigns-lockup-reduced-inverse.svg',
-
-    // Brand-owned compositions
-    signature: '/logos/happydesigns-signature.svg',
-    signatureInverse: '/logos/happydesigns-signature-inverse.svg',
-
-    // Public / build output
-    publicFavicon: '/favicon.svg',
-    publicAppIcon: '/app-icon.png'
+  colors: brandData.colors,
+  roles: {
+    signature: 'coral',
+    technical: 'petrol',
+    positive: 'seafoam',
+    informational: 'plum',
+    caution: 'butter',
+    destructive: 'rose',
+    structure: 'sand'
   },
-  colors: {
-    warmWhite: '#FAF7F2',
-    graphite: '#242423',
-    coral: '#F28564',
-    peach: '#FFE4D4',
-    petrol: '#2F6374',
-    butter: '#E8CE69',
-    plum: '#71617F',
-    seafoam: '#1FA573',
-    sand: '#E9E4DC',
-    rose: '#BD4D49'
+  typography: brandData.typography,
+  assets: {
+    logos: {
+      wordmark: {
+        name: 'Wordmark',
+        src: '/logos/happydesigns-wordmark.svg',
+        role: 'wordmark',
+        media: 'light',
+        alt: 'happydesigns wordmark'
+      },
+      wordmarkInverse: {
+        name: 'Wordmark inverse',
+        src: '/logos/happydesigns-wordmark-inverse.svg',
+        role: 'wordmarkInverse',
+        media: 'dark',
+        alt: 'happydesigns wordmark'
+      },
+      symbol: {
+        name: 'Symbol',
+        src: '/logos/happydesigns-symbol.svg',
+        role: 'symbol',
+        media: 'any',
+        alt: 'happydesigns symbol'
+      },
+      symbolReduced: {
+        name: 'Symbol reduced',
+        src: '/logos/happydesigns-symbol-reduced.svg',
+        role: 'symbolReduced',
+        media: 'light',
+        alt: 'happydesigns reduced symbol'
+      },
+      symbolReducedInverse: {
+        name: 'Symbol reduced inverse',
+        src: '/logos/happydesigns-symbol-reduced-inverse.svg',
+        role: 'symbolReducedInverse',
+        media: 'dark',
+        alt: 'happydesigns reduced symbol'
+      },
+      symbolReducedTile: {
+        name: 'Symbol reduced tile',
+        src: '/logos/happydesigns-symbol-reduced-tile.svg',
+        role: 'symbolReducedTile',
+        media: 'light',
+        alt: 'happydesigns reduced symbol tile'
+      },
+      symbolReducedTileInverse: {
+        name: 'Symbol reduced tile inverse',
+        src: '/logos/happydesigns-symbol-reduced-tile-inverse.svg',
+        role: 'symbolReducedTileInverse',
+        media: 'dark',
+        alt: 'happydesigns reduced symbol tile'
+      },
+      lockup: {
+        name: 'Lockup',
+        src: '/logos/happydesigns-lockup.svg',
+        role: 'lockup',
+        media: 'light',
+        alt: 'happydesigns lockup'
+      },
+      lockupInverse: {
+        name: 'Lockup inverse',
+        src: '/logos/happydesigns-lockup-inverse.svg',
+        role: 'lockupInverse',
+        media: 'dark',
+        alt: 'happydesigns lockup'
+      },
+      lockupReduced: {
+        name: 'Lockup reduced',
+        src: '/logos/happydesigns-lockup-reduced.svg',
+        role: 'lockupReduced',
+        media: 'light',
+        alt: 'happydesigns reduced lockup'
+      },
+      lockupReducedInverse: {
+        name: 'Lockup reduced inverse',
+        src: '/logos/happydesigns-lockup-reduced-inverse.svg',
+        role: 'lockupReducedInverse',
+        media: 'dark',
+        alt: 'happydesigns reduced lockup'
+      },
+      signature: {
+        name: 'Brand signature',
+        src: '/logos/happydesigns-signature.svg',
+        role: 'signature',
+        media: 'light',
+        alt: 'happydesigns brand signature'
+      },
+      signatureInverse: {
+        name: 'Brand signature inverse',
+        src: '/logos/happydesigns-signature-inverse.svg',
+        role: 'signatureInverse',
+        media: 'dark',
+        alt: 'happydesigns brand signature'
+      },
+      appIcon: {
+        name: 'App icon PNG',
+        src: '/app-icon.png',
+        role: 'appIcon',
+        media: 'any',
+        alt: 'happydesigns app icon'
+      }
+    }
   }
 } as const)
