@@ -90,14 +90,14 @@ export const brandGuide = {
   colors: [
     { name: 'Warm White', token: 'warmWhite', hex: happydesignsBrand.colors.warmWhite, role: 'Page background', usage: 'Use for primary surfaces and calm editorial space.' },
     { name: 'Graphite', token: 'graphite', hex: happydesignsBrand.colors.graphite, role: 'Text and premium fills', usage: 'Use for primary text, high-emphasis panels, and dark mode base.' },
-    { name: 'Coral', token: 'coral', hex: happydesignsBrand.colors.coral, role: 'Signature accent', usage: 'Use sparingly for action emphasis, focus, and brand punctuation.' },
-    { name: 'Peach', token: 'peach', hex: happydesignsBrand.colors.peach, role: 'Logo field and atmosphere', usage: 'Use for warm fields, gentle section contrast, and identity moments.' },
-    { name: 'Petrol', token: 'petrol', hex: happydesignsBrand.colors.petrol, role: 'Technical counterweight', usage: 'Use for secondary actions, diagrams, and analytical context.' },
-    { name: 'Butter', token: 'butter', hex: happydesignsBrand.colors.butter, role: 'Soft warning', usage: 'Use for caution states that should not feel alarming.' },
-    { name: 'Plum', token: 'plum', hex: happydesignsBrand.colors.plum, role: 'Quiet information', usage: 'Use for labels, metadata, and non-primary informational moments.' },
-    { name: 'Seafoam', token: 'seafoam', hex: happydesignsBrand.colors.seafoam, role: 'Constructive success', usage: 'Use for confirmations, progress, and positive validation.' },
-    { name: 'Sand', token: 'sand', hex: happydesignsBrand.colors.sand, role: 'Lines and muted surfaces', usage: 'Use for borders, dividers, subdued panels, and secondary backgrounds.' },
-    { name: 'Rose', token: 'rose', hex: happydesignsBrand.colors.rose, role: 'Restrained errors', usage: 'Use for destructive actions, errors, and critical validation.' }
+    { name: 'Coral', token: 'coral', hex: happydesignsBrand.colors.coral[500], role: 'Signature accent', usage: 'Use sparingly for action emphasis, focus, and brand punctuation.' },
+    { name: 'Peach', token: 'peach', hex: happydesignsBrand.colors.peach[200], role: 'Logo field and atmosphere', usage: 'Use for warm fields, gentle section contrast, and identity moments.' },
+    { name: 'Petrol', token: 'petrol', hex: happydesignsBrand.colors.petrol[500], role: 'Technical counterweight', usage: 'Use for secondary actions, diagrams, and analytical context.' },
+    { name: 'Butter', token: 'butter', hex: happydesignsBrand.colors.butter[500], role: 'Soft warning', usage: 'Use for caution states that should not feel alarming.' },
+    { name: 'Plum', token: 'plum', hex: happydesignsBrand.colors.plum[500], role: 'Quiet information', usage: 'Use for labels, metadata, and non-primary informational moments.' },
+    { name: 'Seafoam', token: 'seafoam', hex: happydesignsBrand.colors.seafoam[500], role: 'Constructive success', usage: 'Use for confirmations, progress, and positive validation.' },
+    { name: 'Sand', token: 'sand', hex: happydesignsBrand.colors.sand[200], role: 'Lines and muted surfaces', usage: 'Use for borders, dividers, subdued panels, and secondary backgrounds.' },
+    { name: 'Rose', token: 'rose', hex: happydesignsBrand.colors.rose[500], role: 'Restrained errors', usage: 'Use for destructive actions, errors, and critical validation.' }
   ],
   fonts: [
     {
@@ -252,7 +252,7 @@ export const brandGuide = {
   ]
 } satisfies BrandGuideContent<typeof happydesignsBrand>
 
-const happydesignsGuideAssets = createBrandGuideAssets(brandGuide.assets)
+export const happydesignsRuntimeAssets = createBrandGuideAssets(brandGuide.assets)
 
 export const happydesignsComponentCoverage = [
   {
@@ -360,7 +360,7 @@ export const happydesignsBrandGuide = defineBrandGuide({
   description: happydesignsBrand.claim,
   homepage: 'https://happydesigns.de',
   repository: 'https://github.com/happydesigns/brand',
-  assets: happydesignsGuideAssets,
+  assets: happydesignsRuntimeAssets,
   palette: happydesignsBrand.colors,
   semanticColors: happydesignsSemanticColors,
   cssVariables: happydesignsBrandTheme.cssVariables,
@@ -369,8 +369,7 @@ export const happydesignsBrandGuide = defineBrandGuide({
   componentCoverage: happydesignsComponentCoverage,
   docs: {
     sections: createGuideDocsSections(brandGuide.sections)
-  },
-  ui: happydesignsBrandTheme.ui
+  }
 })
 
 export function getBrandGuideSection(slug: string): BrandGuideSection | undefined {

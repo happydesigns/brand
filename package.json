@@ -8,13 +8,18 @@
     ".": "./nuxt.config.ts"
   },
   "scripts": {
+    "generate:brand-css": "node scripts/generate-brand-css.mjs",
+    "prebuild": "node scripts/generate-brand-css.mjs",
     "build": "nuxt build",
+    "predev": "node scripts/generate-brand-css.mjs",
     "dev": "nuxt dev",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "node scripts/generate-brand-css.mjs && nuxt prepare",
     "lint": "eslint .",
+    "test": "node scripts/validate-brand.mjs",
+    "pretypecheck": "node scripts/generate-brand-css.mjs",
     "typecheck": "nuxt typecheck",
-    "verify": "pnpm lint && pnpm typecheck"
+    "verify": "pnpm lint && pnpm test && pnpm typecheck"
   },
   "dependencies": {
     "@happydesigns/id": "file:..\\id",

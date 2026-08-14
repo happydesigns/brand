@@ -1,6 +1,7 @@
-import { defineBrandIdentity } from '@happydesigns/id'
+import { defineBrand } from '@happydesigns/id'
+import brandData from './brand-data.json' with { type: 'json' }
 
-export const happydesignsBrand = defineBrandIdentity({
+export const happydesignsBrand = defineBrand({
   name: 'happydesigns',
   packageName: '@happydesigns/brand',
   claim: 'Thoughtful design for the modern web.',
@@ -34,16 +35,15 @@ export const happydesignsBrand = defineBrandIdentity({
     publicFavicon: '/favicon.svg',
     publicAppIcon: '/app-icon.png'
   },
-  colors: {
-    warmWhite: '#FAF7F2',
-    graphite: '#242423',
-    coral: '#F28564',
-    peach: '#FFE4D4',
-    petrol: '#2F6374',
-    butter: '#E8CE69',
-    plum: '#71617F',
-    seafoam: '#1FA573',
-    sand: '#E9E4DC',
-    rose: '#BD4D49'
-  }
+  colors: brandData.colors,
+  roles: {
+    signature: 'coral',
+    technical: 'petrol',
+    positive: 'seafoam',
+    informational: 'plum',
+    caution: 'butter',
+    destructive: 'rose',
+    structure: 'sand'
+  },
+  typography: brandData.typography
 } as const)
