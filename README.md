@@ -6,7 +6,7 @@ This package provides Tailwind v4 theme tokens, Nuxt UI semantic color mappings,
 
 ## Brand sources and adapters
 
-Tool-independent color scales and typography live in `app/utils/brand-data.json`. `app/utils/brand.ts` adds identity metadata, asset paths, and optional happydesigns role aliases through `defineBrand()`.
+Tool-independent color scales and typography live in `app/utils/brand-data.json`. `app/utils/brand.ts` adds identity metadata, structured runtime assets, and optional happydesigns role aliases through `defineBrand()`. The guide reuses those assets and adds explanatory usage text without becoming a runtime dependency.
 
 The explicit Nuxt UI integration stays in `app/utils/brand-theme.ts`. It maps those named colors to Nuxt UI roles with `nuxtUiAdapter`; Nuxt UI keeps its normal color-mode behavior, while the brand supplies targeted CSS-variable overrides for the surfaces it owns.
 
