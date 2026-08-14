@@ -14,15 +14,17 @@ The explicit Nuxt UI integration stays in `app/utils/brand-theme.ts`. It maps th
 
 ## Usage
 
-Extend the layer from a Nuxt project:
+The repository root is the complete Docus brand-guide application. Consumers use the guide-free runtime layer instead.
+
+Until the package is published, pin the remote layer to a reviewed commit:
 
 ```ts
 export default defineNuxtConfig({
-  extends: ['@happydesigns/brand']
+  extends: ['github:happydesigns/brand/runtime#<commit>']
 })
 ```
 
-For local workspace usage, point `extends` at this package directory or install it under the package name `@happydesigns/brand`.
+For local workspace usage, point `extends` at `../brand/runtime`. The consuming project installs Nuxt UI directly. Run `pnpm generate:runtime-layer` after changing runtime brand data or adapter mappings.
 
 ## Color Roles
 
