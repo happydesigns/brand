@@ -14,7 +14,7 @@ The explicit Nuxt UI integration stays in `src/brand/brand-theme.ts`. It maps th
 
 ## Usage
 
-The repository and package root is the guide-free Nuxt layer. The Docus application in `guide/` extends that same root layer and acts as its reference consumer.
+The repository and package root is the guide-free Nuxt layer. The Docus application in `docs/` extends that same root layer and acts as its reference consumer.
 
 Until the package is published, pin the remote layer to a reviewed commit:
 
