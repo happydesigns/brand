@@ -1,4 +1,4 @@
-import { brandGuide, getBrandGuideSection } from '../utils/brand-guide'
+import { brandGuide, getBrandGuideSection } from '../../../src/brand/brand-guide'
 
 export function useHappydesignsGuide() {
   return brandGuide

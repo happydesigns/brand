@@ -2,6 +2,12 @@
 
 happydesigns/brand is a Nuxt UI brand layer for happydesigns. The guide is the public source of truth for the happydesigns identity, and the implementation should prove how that identity behaves through Nuxt UI components.
 
+## Package Architecture
+
+The repository root is the public, guide-free Nuxt layer. Consumers extend `@happydesigns/brand`, a pinned `github:happydesigns/brand#<commit>`, or the local repository root. The `guide/` application extends that same layer together with Docus and contains all explanatory pages, coverage examples, and guide-only UI.
+
+Keep consumer-safe runtime configuration, CSS, public assets, and reusable brand primitives in the root layer. Keep neutral source definitions in `src/brand`, and keep guide pages, content, and presentation-only components in `guide/`. A consumer must never need to select an internal `runtime/` subdirectory or inherit Docus to use the brand.
+
 ## Nuxt UI First
 
 Build on Nuxt UI primitives before introducing custom markup.

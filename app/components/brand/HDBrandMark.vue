@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import symbol from '~/assets/logos/happydesigns-symbol.svg'
+import symbol from '../../assets/logos/happydesigns-symbol.svg'
 
 const props = withDefaults(defineProps<{
   tile?: boolean

@@ -42,31 +42,31 @@ importers:
       '@happydesigns/id':
         specifier: file:..\id
         version: file:../id(20d09e2ce735680f74ff4e2506cdf858)
+      '@nuxt/ui':
+        specifier: ^4.9.0
+        version: 4.9.0(28ed11a376ff234d10bf04c0e56f7ba5)
+      tailwindcss:
+        specifier: ^4.3.1
+        version: 4.3.1
+    devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.114
         version: 1.2.114
       '@iconify-json/simple-icons':
         specifier: ^1.2.87
         version: 1.2.87
-      '@nuxt/ui':
-        specifier: ^4.9.0
-        version: 4.9.0(28ed11a376ff234d10bf04c0e56f7ba5)
-      docus:
-        specifier: ^5.12.3
-        version: 5.12.3(patch_hash=0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1)(aab25532b314bb0b2190d71d4258c121)
-      nuxt:
-        specifier: ^4.4.8
-        version: 4.4.8(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@babel/plugin-syntax-typescript@7.28.6(@babel/core@7.29.0))(@parcel/watcher@2.5.6)(@types/node@25.6.0)(@vue/compiler-sfc@3.5.39)(better-sqlite3@12.9.0)(cac@6.7.14)(db0@0.3.4(better-sqlite3@12.9.0))(esbuild@0.27.4)(eslint@10.2.0(jiti@2.7.0))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.62.2))(rollup@4.62.2)(terser@5.46.1)(typescript@6.0.2)(vite@7.3.6(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.9.0))(vue-tsc@3.2.6(typescript@6.0.2))(yaml@2.9.0)
-      tailwindcss:
-        specifier: ^4.3.1
-        version: 4.3.1
-    devDependencies:
       '@nuxt/eslint':
         specifier: ^1.15.2
         version: 1.15.2(@typescript-eslint/utils@8.58.0(eslint@10.2.0(jiti@2.7.0))(typescript@6.0.2))(@vue/compiler-sfc@3.5.39)(eslint@10.2.0(jiti@2.7.0))(magicast@0.5.3)(typescript@6.0.2)(vite@7.3.6(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.9.0))
+      docus:
+        specifier: ^5.12.3
+        version: 5.12.3(patch_hash=0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1)(aab25532b314bb0b2190d71d4258c121)
       eslint:
         specifier: ^10.2.0
         version: 10.2.0(jiti@2.7.0)
+      nuxt:
+        specifier: ^4.4.8
+        version: 4.4.8(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@babel/plugin-syntax-typescript@7.28.6(@babel/core@7.29.0))(@parcel/watcher@2.5.6)(@types/node@25.6.0)(@vue/compiler-sfc@3.5.39)(better-sqlite3@12.9.0)(cac@6.7.14)(db0@0.3.4(better-sqlite3@12.9.0))(esbuild@0.27.4)(eslint@10.2.0(jiti@2.7.0))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.62.2))(rollup@4.62.2)(terser@5.46.1)(typescript@6.0.2)(vite@7.3.6(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.9.0))(vue-tsc@3.2.6(typescript@6.0.2))(yaml@2.9.0)
       typescript:
         specifier: ^6.0.2
         version: 6.0.2

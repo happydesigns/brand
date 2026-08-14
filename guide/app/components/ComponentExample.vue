@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import symbolLogo from '~/assets/logos/happydesigns-symbol.svg'
-import wordmarkLogo from '~/assets/logos/happydesigns-wordmark.svg'
-import wordmarkLogoInverse from '~/assets/logos/happydesigns-wordmark-inverse.svg'
-import { happydesignsBrand } from '~/utils/brand'
+import symbolLogo from '../../../app/assets/logos/happydesigns-symbol.svg'
+import wordmarkLogo from '../../../app/assets/logos/happydesigns-wordmark.svg'
+import wordmarkLogoInverse from '../../../app/assets/logos/happydesigns-wordmark-inverse.svg'
+import { happydesignsBrand } from '../../../src/brand/brand'
 
 const props = withDefaults(defineProps<{
   name: string
