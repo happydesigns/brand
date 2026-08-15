@@ -1,5 +1,5 @@
 diff --git a/app/components/docs/DocsAsideRight.vue b/app/components/docs/DocsAsideRight.vue
-index 0000000..0000000 100644
+index 635a043ce333f8d546ed309c73cd9cfdc3b7c503..0ac0d805d6de2c3820f21f3e26cef7c87f783fad 100644
 --- a/app/components/docs/DocsAsideRight.vue
 +++ b/app/components/docs/DocsAsideRight.vue
 @@ -1,9 +1,9 @@
@@ -14,3 +14,54 @@ index 0000000..0000000 100644
  }>()
  
  const links = computed(() => props.page?.body?.toc?.links || [])
+diff --git a/app/composables/useSeo.ts b/app/composables/useSeo.ts
+index c2b099e92f98b80cd16618267ea727390816a765..a31bc677d09a912f046ae586ae06390cf4c11a7c 100644
+--- a/app/composables/useSeo.ts
++++ b/app/composables/useSeo.ts
+@@ -76,7 +76,10 @@ export function useSeo(options: UseSeoOptions) {
+   // Set canonical link
+   useHead({
+     link: computed(() => {
+-      const links: Array<{ rel: string, href?: string, hreflang?: string }> = []
++      const links: Array<
++        { rel: 'canonical', href: string }
++        | { rel: 'alternate', href: string, hreflang: string }
++      > = []
+ 
+       // Canonical URL
+       if (canonicalUrl.value) {
+@@ -125,7 +128,7 @@ export function useSeo(options: UseSeoOptions) {
+   // JSON-LD structured data
+   useHead({
+     script: computed(() => {
+-      const scripts: Array<{ type: string, innerHTML: string }> = []
++      const scripts: Array<{ type: 'application/ld+json', innerHTML: string }> = []
+ 
+       if (!baseUrl.value || !title.value) return scripts
+ 
+diff --git a/app/plugins/i18n.ts b/app/plugins/i18n.ts
+index 1d568b72d73f1b393d619b913e727e0b00d269e7..265d13b564885f1ed240e9bd51770a7ce958f989 100644
+--- a/app/plugins/i18n.ts
++++ b/app/plugins/i18n.ts
+@@ -9,7 +9,7 @@ const localeFiles = import.meta.glob<{ default: Record<string, unknown> }>('../.
+ export default defineNuxtPlugin(async () => {
+   const nuxtApp = useNuxtApp()
+ 
+-  const i18nConfig = nuxtApp.$config.public.i18n
++  const i18nConfig = nuxtApp.$config.public.i18n as { defaultLocale?: string } | undefined
+ 
+   // If i18n is not enabled, fetch and provide the configured locale in app config
+   if (!i18nConfig) {
+diff --git a/modules/assistant/runtime/composables/useAssistant.ts b/modules/assistant/runtime/composables/useAssistant.ts
+index 7c40d8d54145c3ddcaf29384669740f4f9f97211..8b61d66a2fdfd6dd682243241fc53b4fbf6c3ec1 100644
+--- a/modules/assistant/runtime/composables/useAssistant.ts
++++ b/modules/assistant/runtime/composables/useAssistant.ts
+@@ -56,7 +56,7 @@ export const useAssistant = createSharedComposable(() => {
+     if (!Array.isArray(faqConfig)) {
+       const localizedConfig = faqConfig as LocalizedFaqQuestions
+       const currentLocale = docusRuntimeConfig?.locale || 'en'
+-      const defaultLocale = config.public.i18n?.defaultLocale || 'en'
++      const defaultLocale = (config.public.i18n as { defaultLocale?: string } | undefined)?.defaultLocale || 'en'
+ 
+       const questions = localizedConfig[currentLocale]
+         || localizedConfig[defaultLocale]
