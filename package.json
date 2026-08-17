@@ -4,43 +4,53 @@
   "type": "module",
   "version": "0.1.0",
   "description": "Reusable Nuxt UI brand layer for happydesigns.",
+  "main": "./nuxt.config.ts",
+  "files": [
+    "app",
+    "public",
+    "nuxt.config.ts",
+    "README.md"
+  ],
   "exports": {
     ".": "./nuxt.config.ts"
   },
   "scripts": {
-    "generate:brand-css": "node scripts/generate-brand-css.mjs",
-    "prebuild": "node scripts/generate-brand-css.mjs",
-    "build": "node --max-old-space-size=8192 ./node_modules/nuxt/bin/nuxt.mjs build",
-    "predev": "node scripts/generate-brand-css.mjs",
-    "dev": "nuxt dev",
-    "preview": "nuxt preview",
-    "postinstall": "node scripts/generate-brand-css.mjs && nuxt prepare",
+    "generate:layer": "vitest run --config scripts/vitest.generate.config.ts",
+    "prebuild": "pnpm generate:layer",
+    "build": "nuxt build docs",
+    "build:layer": "nuxt build",
+    "predev": "pnpm generate:layer",
+    "dev": "nuxt dev docs",
+    "preview": "node .output/server/index.mjs",
+    "prepare:docs": "nuxt prepare docs",
+    "prelint": "pnpm prepare:docs",
     "lint": "eslint .",
+    "pretest": "pnpm prepare:docs",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots",
-    "pretypecheck": "node scripts/generate-brand-css.mjs",
-    "typecheck": "nuxt typecheck",
+    "pretypecheck": "pnpm generate:layer",
+    "typecheck": "nuxt typecheck docs",
     "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build"
   },
   "dependencies": {
     "@happydesigns/id": "file:..\\id",
-    "@iconify-json/lucide": "^1.2.114",
-    "@iconify-json/simple-icons": "^1.2.87",
     "@nuxt/ui": "^4.9.0",
-    "@takumi-rs/core": "1.8.7",
-    "docus": "^5.12.3",
-    "nuxt": "^4.4.8",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@iconify-json/lucide": "^1.2.114",
+    "@iconify-json/simple-icons": "^1.2.87",
     "@nuxt/eslint": "^1.15.2",
     "@playwright/test": "^1.62.1",
+    "docus": "^5.12.3",
     "eslint": "^10.2.0",
+    "nuxt": "^4.5.2",
     "typescript": "^6.0.2",
     "vitest": "^4.1.9",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.2.6",
+    "zod": "^4.4.3"
   },
   "packageManager": "pnpm@10.33.0"
 }

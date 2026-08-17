@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import lockupLight from '~/assets/logos/happydesigns-lockup.svg'
-import lockupDark from '~/assets/logos/happydesigns-lockup-inverse.svg'
-import wordmarkLight from '~/assets/logos/happydesigns-wordmark.svg'
-import wordmarkDark from '~/assets/logos/happydesigns-wordmark-inverse.svg'
-import symbol from '~/assets/logos/happydesigns-symbol.svg'
-import signatureLight from '~/assets/logos/happydesigns-signature.svg'
-import signatureDark from '~/assets/logos/happydesigns-signature-inverse.svg'
+import lockupLight from '../../assets/logos/happydesigns-lockup.svg'
+import lockupDark from '../../assets/logos/happydesigns-lockup-inverse.svg'
+import wordmarkLight from '../../assets/logos/happydesigns-wordmark.svg'
+import wordmarkDark from '../../assets/logos/happydesigns-wordmark-inverse.svg'
+import symbol from '../../assets/logos/happydesigns-symbol.svg'
+import signatureLight from '../../assets/logos/happydesigns-signature.svg'
+import signatureDark from '../../assets/logos/happydesigns-signature-inverse.svg'
 
 const props = withDefaults(defineProps<{
   /**

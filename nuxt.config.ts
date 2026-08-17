@@ -1,14 +1,12 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-// Docus' generated CSS module can emit an absolute Windows dev URL. The brand
-// guide owns the equivalent CSS in app/assets/css/main.css, so disable it here.
-const docusCssModule = { 'docus-css': false as const }
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const layerDir = dirname(fileURLToPath(import.meta.url))
+const brandCss = join(layerDir, 'app/assets/css/main.css')
+const brandComponents = join(layerDir, 'app/components/brand')
 
 export default defineNuxtConfig({
-  extends: ['@happydesigns/id/nuxt', 'docus'],
-
-  modules: [
-    '@nuxt/eslint'
-  ],
+  modules: ['@nuxt/ui'],
 
   $meta: {
     name: 'happydesigns-brand'
@@ -16,15 +14,10 @@ export default defineNuxtConfig({
 
   components: [
     {
-      path: '~/components/brand',
+      path: brandComponents,
       pathPrefix: false
-    },
-    '~/components'
+    }
   ],
-
-  devtools: {
-    enabled: process.env.NUXT_DEVTOOLS !== 'false'
-  },
 
   app: {
     head: {
@@ -36,47 +29,5 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['~/assets/css/main.css'],
-  // Docus registers color mode before Nuxt UI can apply its module default.
-  // Keep component hover transitions, but switch the global theme atomically.
-  colorMode: {
-    disableTransition: true
-  },
-
-  ui: {
-    prose: true
-  },
-
-  routeRules: {
-    '/docs': { redirect: '/docs/guide/overview' },
-    '/docs/guide': { redirect: '/docs/guide/overview' },
-    '/docs/guide/': { redirect: '/docs/guide/overview' },
-    '/docs/overview': { redirect: '/docs/guide/overview' },
-    '/docs/colors': { redirect: '/docs/guide/colors' },
-    '/docs/typography': { redirect: '/docs/guide/typography' },
-    '/docs/logos': { redirect: '/docs/guide/logos' },
-    '/docs/voice': { redirect: '/docs/guide/voice' }
-  },
-
-  compatibilityDate: '2026-08-17',
-
-  nitro: {
-    prerender: {
-      // Docus discovers every guide route from the entry pages. Keep rendering
-      // serial so the content database and page payloads stay within CI memory.
-      concurrency: 1,
-      failOnError: true
-    }
-  },
-
-  eslint: {
-    config: {
-      stylistic: {
-        commaDangle: 'never' as const,
-        braceStyle: '1tbs' as const
-      }
-    }
-  },
-
-  ...docusCssModule
+  css: [brandCss]
 })

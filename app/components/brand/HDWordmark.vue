@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import wordmarkDark from '~/assets/logos/happydesigns-wordmark-inverse.svg'
-import wordmarkLight from '~/assets/logos/happydesigns-wordmark.svg'
+import wordmarkDark from '../../assets/logos/happydesigns-wordmark-inverse.svg'
+import wordmarkLight from '../../assets/logos/happydesigns-wordmark.svg'
 
 const props = withDefaults(defineProps<{
   size?: 'sm' | 'md' | 'lg'

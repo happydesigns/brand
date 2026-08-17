@@ -3,14 +3,15 @@ import { resolve } from 'node:path'
 import { createBrandGuideAssets, createThemeCssVars } from '@happydesigns/id'
 import { cssVariablesAdapter } from '@happydesigns/id/adapters/css-variables'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { happydesignsBrandGuide, brandGuide, happydesignsRuntimeAssets } from '../app/utils/brand-guide'
+import { happydesignsBrandGuide, brandGuide, happydesignsRuntimeAssets } from '../src/brand/brand-guide'
 import {
   cssVariables,
   happydesignsBrandTheme,
   happydesignsSemanticColors,
   happydesignsUiConfig
-} from '../app/utils/brand-theme'
-import { happydesignsBrand } from '../app/utils/brand'
+} from '../src/brand/brand-theme'
+import { happydesignsBrand } from '../src/brand/brand'
+import { createBrandLayerFiles } from '../scripts/brand-layer'
 
 describe('neutral brand definition', () => {
   it('preserves the happydesigns palette, roles, typography, and runtime assets', () => {
@@ -32,16 +33,15 @@ describe('adapter outputs', () => {
     }
   })
 
-  it('keeps the committed CSS equal to the CSS adapter output', () => {
+  it('keeps generated layer files equal to the adapter outputs', () => {
     const output = cssVariablesAdapter.transform(happydesignsBrand, {
       prefix: '',
       selector: '@theme static',
       includeRoles: false
     })
-    const expectedCss = `/* Generated from app/utils/brand-data.json. Do not edit by hand. */\n${output.css}\n`
-    const generatedCss = readFileSync(resolve(process.cwd(), 'app/assets/css/brand.generated.css'), 'utf8')
+    const generated = createBrandLayerFiles()
 
-    expect(generatedCss).toBe(expectedCss)
+    expect(generated['app/assets/css/tokens.generated.css']).toContain(output.css)
     expect(output.variables['--color-sand-150']).toBe('#F1ECE6')
   })
 
@@ -89,7 +89,7 @@ describe('accessible text pairs', () => {
   })
 })
 
-describe('runtime and guide separation', () => {
+describe('public layer and guide separation', () => {
   afterEach(() => {
     vi.unstubAllGlobals()
     vi.resetModules()
@@ -105,13 +105,42 @@ describe('runtime and guide separation', () => {
     expect(createBrandGuideAssets(brandGuide.assets).logos).toEqual(happydesignsRuntimeAssets.logos)
   })
 
-  it('wires the runtime theme and assets into Nuxt app config', async () => {
-    vi.stubGlobal('defineAppConfig', <T>(config: T) => config)
+  it('applies the public layer app config without guide content', async () => {
+    const updateAppConfig = vi.fn()
+    vi.stubGlobal('defineNuxtPlugin', <T>(plugin: T) => plugin)
+    vi.stubGlobal('updateAppConfig', updateAppConfig)
 
-    const { default: appConfig } = await import('../app/app.config')
+    const { default: plugin, happydesignsBrandAppConfig: appConfig } = await import('../app/plugins/brand')
+    plugin()
 
     expect(appConfig.id.assets).toEqual(happydesignsRuntimeAssets)
     expect(appConfig.id.theme).toEqual(happydesignsBrandTheme)
+    expect(appConfig.id).not.toHaveProperty('guide')
+    expect(updateAppConfig).toHaveBeenCalledWith(appConfig)
+  })
+
+  it('adds guide content only in the guide app', async () => {
+    vi.stubGlobal('defineAppConfig', <T>(config: T) => config)
+
+    const { default: appConfig } = await import('../docs/app/app.config')
+
+    expect(appConfig.id.assets).toEqual(happydesignsRuntimeAssets)
     expect(appConfig.id.guide).toBeDefined()
+  })
+
+  it('generates the public package root without guide dependencies', () => {
+    for (const [relativePath, expected] of Object.entries(createBrandLayerFiles())) {
+      const generated = readFileSync(resolve(process.cwd(), relativePath), 'utf8')
+
+      expect(generated.replaceAll('\r\n', '\n')).toBe(expected.replaceAll('\r\n', '\n'))
+    }
+
+    expect(readFileSync(resolve(process.cwd(), 'app/brand.generated.json'), 'utf8')).not.toContain('componentCoverage')
+    expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).not.toContain('docus')
+    expect(readFileSync(resolve(process.cwd(), 'docs/nuxt.config.ts'), 'utf8')).toContain('extends: [\'..\', \'@happydesigns/id/nuxt\', \'docus\']')
+
+    for (const asset of Object.values(happydesignsRuntimeAssets.logos)) {
+      expect(readFileSync(resolve(process.cwd(), 'public', asset.src.replace(/^\//, '')))).toBeTruthy()
+    }
   })
 })
