@@ -21,7 +21,7 @@ export const happydesignsUiConfig = {
       {
         color: 'primary',
         variant: 'solid',
-        class: 'bg-inverted text-inverted hover:bg-inverted/90 active:bg-inverted focus-visible:ring-2 focus-visible:ring-primary dark:bg-raised dark:text-highlighted dark:ring-1 dark:ring-primary/40 dark:hover:bg-muted dark:active:bg-muted'
+        class: 'bg-inverted text-inverted hover:bg-inverted/90 active:bg-inverted focus-visible:ring-2 focus-visible:ring-primary'
       },
       {
         color: 'neutral',
