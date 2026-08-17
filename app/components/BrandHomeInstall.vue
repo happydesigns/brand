@@ -36,7 +36,7 @@ const links = [
           class="h-full border-t border-default bg-default p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
         >
           <IdLayerInstall
-            class="h-full"
+            class="h-full !border-0 !bg-transparent !p-0"
             package-name="@happydesigns/brand"
             title="Build with the layer."
           >
