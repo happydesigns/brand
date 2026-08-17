@@ -30,11 +30,11 @@ const componentExampleContext = {
     dark: {
       background: happydesignsBrand.colors.graphite,
       color: happydesignsBrand.colors.warmWhite,
-      border: 'rgba(250, 247, 242, 0.16)'
+      border: 'color-mix(in srgb, var(--color-warm-white) 16%, transparent)'
     }
   },
   paths: {
-    docs: '/docs/guide/overview',
+    docs: '/docs/guide',
     components: '/docs/components',
     colors: '/docs/guide/colors',
     typography: '/docs/guide/typography'

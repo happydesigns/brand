@@ -232,16 +232,16 @@ export const cssVariables = {
     '--ui-bg': 'var(--color-graphite)',
     '--ui-bg-muted': '#292827',
     '--ui-bg-elevated': '#302E2C',
-    '--ui-bg-accented': 'rgba(250, 247, 242, 0.12)',
+    '--ui-bg-accented': 'color-mix(in srgb, var(--color-warm-white) 12%, transparent)',
     '--ui-bg-inverted': 'var(--color-sand-100)',
     '--ui-text': 'var(--color-sand-100)',
     '--ui-text-highlighted': 'var(--color-sand-50)',
     '--ui-text-muted': 'var(--color-sand-300)',
     '--ui-text-dimmed': 'var(--color-sand-400)',
     '--ui-text-inverted': 'var(--color-graphite)',
-    '--ui-border': 'rgba(250, 247, 242, 0.12)',
-    '--ui-border-muted': 'rgba(250, 247, 242, 0.08)',
-    '--ui-border-accented': 'rgba(250, 247, 242, 0.18)',
+    '--ui-border': 'color-mix(in srgb, var(--color-warm-white) 12%, transparent)',
+    '--ui-border-muted': 'color-mix(in srgb, var(--color-warm-white) 8%, transparent)',
+    '--ui-border-accented': 'color-mix(in srgb, var(--color-warm-white) 18%, transparent)',
     '--ui-primary': 'var(--color-coral-400)',
     '--ui-secondary': 'var(--color-petrol-400)',
     '--ui-success': 'var(--color-seafoam-400)',
@@ -256,7 +256,7 @@ export const cssVariables = {
     '--hd-bg-inset': '#1C1B1A',
     '--hd-bg-separator': 'var(--ui-bg-accented)',
     '--hd-bg-tinted': 'color-mix(in srgb, var(--color-sand-800) 25%, transparent)',
-    '--hd-bg-hover': 'rgba(250, 247, 242, 0.08)'
+    '--hd-bg-hover': 'color-mix(in srgb, var(--color-warm-white) 8%, transparent)'
   }
 } as const
 

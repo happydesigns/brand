@@ -51,6 +51,9 @@ importers:
       '@nuxt/ui':
         specifier: ^4.9.0
         version: 4.9.0(28ed11a376ff234d10bf04c0e56f7ba5)
+      '@takumi-rs/core':
+        specifier: 1.8.7
+        version: 1.8.7
       docus:
         specifier: ^5.12.3
         version: 5.12.3(patch_hash=0648f18ead63d0508215736849c11024fc1afd81641a89535bf1c4ce215db5b1)(aab25532b314bb0b2190d71d4258c121)

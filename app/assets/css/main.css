@@ -16,71 +16,10 @@
 }
 
 :root {
-  --ui-container: var(--container-8xl);
-  --ui-bg: var(--color-warm-white);
-  --ui-bg-muted: var(--color-sand-150);
-  --ui-bg-elevated: #FDFBF8;
-  --ui-bg-accented: var(--color-sand-300);
-  --ui-bg-inverted: var(--color-graphite);
-  --ui-text: var(--color-graphite);
-  --ui-text-highlighted: var(--color-graphite);
-  --ui-text-muted: var(--color-sand-600);
-  --ui-text-dimmed: var(--color-sand-500);
-  --ui-text-inverted: var(--color-warm-white);
-  --ui-border: var(--color-sand-300);
-  --ui-border-muted: var(--color-sand-200);
-  --ui-border-accented: var(--color-sand-400);
-  --ui-primary: var(--color-coral-500);
-  --ui-secondary: var(--color-petrol-500);
-  --ui-success: var(--color-seafoam-500);
-  --ui-info: var(--color-plum-500);
-  --ui-warning: var(--color-butter-500);
-  --ui-error: var(--color-rose-500);
-
-  --hd-text-body: var(--color-sand-700);
-  --hd-text-label: var(--color-plum-600);
-  --hd-bg-surface: var(--ui-bg);
-  --hd-bg-card: var(--ui-bg-elevated);
-  --hd-bg-raised: #FFFDFB;
-  --hd-bg-inset: var(--color-sand-200);
-  --hd-bg-separator: var(--ui-bg-accented);
-  --hd-bg-tinted: color-mix(in srgb, var(--color-sand-200) 55%, transparent);
-  --hd-bg-hover: var(--color-peach-50);
-
   color-scheme: light;
 }
 
 .dark {
-  --ui-bg: var(--color-graphite);
-  --ui-bg-muted: #292827;
-  --ui-bg-elevated: #302E2C;
-  --ui-bg-accented: rgba(250, 247, 242, 0.12);
-  --ui-bg-inverted: var(--color-sand-100);
-  --ui-text: var(--color-sand-100);
-  --ui-text-highlighted: var(--color-sand-50);
-  --ui-text-muted: var(--color-sand-300);
-  --ui-text-dimmed: var(--color-sand-400);
-  --ui-text-inverted: var(--color-graphite);
-  --ui-border: rgba(250, 247, 242, 0.12);
-  --ui-border-muted: rgba(250, 247, 242, 0.08);
-  --ui-border-accented: rgba(250, 247, 242, 0.18);
-  --ui-primary: var(--color-coral-400);
-  --ui-secondary: var(--color-petrol-400);
-  --ui-success: var(--color-seafoam-400);
-  --ui-info: var(--color-plum-400);
-  --ui-warning: var(--color-butter-400);
-  --ui-error: var(--color-rose-400);
-
-  --hd-text-body: var(--color-sand-300);
-  --hd-text-label: var(--color-plum-300);
-  --hd-bg-surface: var(--ui-bg);
-  --hd-bg-card: var(--ui-bg-elevated);
-  --hd-bg-raised: #383532;
-  --hd-bg-inset: #1C1B1A;
-  --hd-bg-separator: var(--ui-bg-accented);
-  --hd-bg-tinted: color-mix(in srgb, var(--color-sand-800) 25%, transparent);
-  --hd-bg-hover: rgba(250, 247, 242, 0.08);
-
   color-scheme: dark;
 }
 
@@ -179,13 +118,13 @@ body {
 
 .hd-texture {
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(36, 36, 35, 0.06) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--color-graphite) 6%, transparent) 1px, transparent 0);
   background-size: 14px 14px;
 }
 
 .dark .hd-texture {
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(250, 247, 242, 0.08) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--color-warm-white) 8%, transparent) 1px, transparent 0);
 }
 
 .hd-line-panel {

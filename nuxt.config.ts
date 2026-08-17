@@ -52,7 +52,16 @@ export default defineNuxtConfig({
     '/docs/voice': { redirect: '/docs/guide/voice' }
   },
 
-  compatibilityDate: 'latest' as const,
+  compatibilityDate: '2026-08-17',
+
+  nitro: {
+    prerender: {
+      // Docus discovers every guide route from the entry pages. Keep rendering
+      // serial so the content database and page payloads stay within CI memory.
+      concurrency: 1,
+      failOnError: true
+    }
+  },
 
   eslint: {
     config: {
