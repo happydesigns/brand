@@ -41,6 +41,8 @@ Homepage and guide pages should guide the reader through a clear sequence:
 
 Sections may use framed layouts, separators, and contrasting warm surfaces to create rhythm, but they should remain calm and ordered. Avoid stacking visually similar blocks without a clear heading, route, or reason for the next section.
 
+The homepage keeps this sequence visible in its component structure. `app/pages/index.vue` only composes the page; `BrandHomeHero`, `BrandHomeGuidance`, `BrandHomeFoundations`, `BrandHomeIdentity`, `BrandHomeApplication`, and `BrandHomeInstall` own their respective content and local interaction state. Keep those boundaries brand-specific and readable. Extract a mechanism to `id` only after another consumer proves the same API.
+
 ## Reusable Layer Expectations
 
 This package may become the basis for future happydesigns projects, but the guide itself should not read like a generic template. Public copy should speak as the happydesigns brand guide.

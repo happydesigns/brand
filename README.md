@@ -10,6 +10,15 @@ Tool-independent color scales and typography live in `app/utils/brand-data.json`
 
 The explicit Nuxt UI integration stays in `app/utils/brand-theme.ts`. It maps those named colors to Nuxt UI roles with `nuxtUiAdapter`; Nuxt UI keeps its normal color-mode behavior, while the brand supplies targeted CSS-variable overrides for the surfaces it owns.
 
+The runtime data flow is deliberately one-way:
+
+```text
+brand-data.json → defineBrand() → nuxtUiAdapter() → createNuxtUiAppConfig()
+        └──────→ cssVariablesAdapter() → brand.generated.css
+```
+
+`app/assets/css/main.css` consumes the generated palette and semantic variables. It owns global composition and brand utilities, but it is not a second source for theme values. See `ARCHITECTURE.md` for the full ownership boundary between this package and `@happydesigns/id`.
+
 `app/assets/css/brand.generated.css` is generated from the neutral data through the generic CSS-variable adapter. Run `pnpm generate:brand-css` after editing brand data. Build, dev, install, and typecheck commands regenerate it automatically, and `pnpm test` rejects drift.
 
 ## Usage
@@ -89,6 +98,9 @@ Structure comes first. Use visible frames, fine borders, quiet grids, and warm n
 ```bash
 pnpm install
 pnpm test
+pnpm test:e2e
 pnpm dev
 pnpm verify
 ```
+
+The browser suite covers representative brand integration rather than retesting Nuxt UI itself. It guards the homepage composition, mobile first fold, the custom theme-reveal interaction, and unexpected accessibility-rule regressions on central guide pages.
