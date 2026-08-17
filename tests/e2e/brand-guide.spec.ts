@@ -40,6 +40,24 @@ test('theme reveal supports the complete keyboard interaction', async ({ page })
   await expect(reveal).toHaveAttribute('aria-valuenow', '100')
 })
 
+test('color mode changes without animating theme colors', async ({ page }) => {
+  await page.goto('/docs/components/system-helpers')
+
+  const transitionTarget = page.locator('nav[aria-label="Main"] a').first()
+  const colorModeButton = page.getByRole('button', { name: /Switch to (light|dark) mode/ }).first()
+
+  await transitionTarget.evaluate((element) => {
+    element.addEventListener('transitionrun', () => {
+      element.setAttribute('data-theme-transition-started', 'true')
+    })
+  })
+
+  await colorModeButton.click()
+  await page.waitForTimeout(250)
+
+  await expect(transitionTarget).not.toHaveAttribute('data-theme-transition-started', 'true')
+})
+
 test('homepage keeps its desktop composition', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveScreenshot('homepage.png', { fullPage: true })

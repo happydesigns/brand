@@ -37,10 +37,16 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+  // Docus registers color mode before Nuxt UI can apply its module default.
+  // Keep component hover transitions, but switch the global theme atomically.
+  colorMode: {
+    disableTransition: true
+  },
 
   ui: {
     prose: true
   },
+
   routeRules: {
     '/docs': { redirect: '/docs/guide/overview' },
     '/docs/guide': { redirect: '/docs/guide/overview' },
