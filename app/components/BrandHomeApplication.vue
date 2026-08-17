@@ -73,74 +73,32 @@ const badgeUi = {
             Interfaces should feel useful before branded. Borders, spacing, focus states, and compact labels carry the system in repeated work.
           </p>
 
-          <div class="mt-10 border-y border-default">
-            <div
-              v-for="item in interfacePrinciples"
-              :key="item.title"
-              class="flex gap-4 border-b border-default py-5 last:border-b-0"
-            >
-              <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                <UIcon
-                  :name="item.icon"
-                  class="size-4"
-                  :class="item.accent"
-                />
-              </span>
-              <div>
-                <p class="text-sm font-semibold">
-                  {{ item.title }}
-                </p>
-                <p class="mt-1 text-sm leading-6 text-muted">
-                  {{ item.description }}
-                </p>
+          <div class="mt-10 border-t border-default pt-7">
+            <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
+              Interface rules
+            </p>
+            <div class="mt-6 grid gap-5">
+              <div
+                v-for="item in interfacePrinciples"
+                :key="item.title"
+                class="flex gap-3"
+              >
+                <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                  <UIcon
+                    :name="item.icon"
+                    class="size-4"
+                    :class="item.accent"
+                  />
+                </span>
+                <div>
+                  <p class="text-sm font-semibold leading-6 text-highlighted">
+                    {{ item.title }}
+                  </p>
+                  <p class="mt-1 text-sm leading-6 text-toned">
+                    {{ item.description }}
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div class="mt-8 border-b border-default pb-8">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-                  Pattern health
-                </p>
-                <p class="mt-1 text-base font-semibold">
-                  Ready for repeated use
-                </p>
-              </div>
-              <UBadge
-                label="72%"
-                color="neutral"
-                variant="outline"
-                :ui="badgeUi"
-              />
-            </div>
-
-            <UProgress
-              :model-value="72"
-              color="primary"
-              size="sm"
-              class="mt-5"
-            />
-
-            <div class="mt-5 flex flex-wrap gap-2">
-              <UBadge
-                label="Visible borders"
-                color="neutral"
-                variant="outline"
-                :ui="badgeUi"
-              />
-              <UBadge
-                label="Clear states"
-                color="neutral"
-                variant="outline"
-                :ui="badgeUi"
-              />
-              <UBadge
-                label="Compact labels"
-                color="neutral"
-                variant="outline"
-                :ui="badgeUi"
-              />
             </div>
           </div>
         </div>
