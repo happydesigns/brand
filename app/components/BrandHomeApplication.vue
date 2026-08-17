@@ -42,6 +42,11 @@ const staticCardUi = {
   body: 'p-5 sm:p-5'
 }
 
+const specimenCardUi = {
+  root: 'overflow-hidden rounded-sm !bg-accented shadow-none ring-default transition-none hover:!bg-accented',
+  body: 'p-0 sm:p-0'
+}
+
 const badgeUi = {
   base: 'rounded-sm bg-elevated text-highlighted ring-default'
 }
@@ -68,38 +73,31 @@ const badgeUi = {
             Interfaces should feel useful before branded. Borders, spacing, focus states, and compact labels carry the system in repeated work.
           </p>
 
-          <div class="mt-10 grid gap-3">
-            <UCard
+          <div class="mt-10 border-y border-default">
+            <div
               v-for="item in interfacePrinciples"
               :key="item.title"
-              variant="outline"
-              :ui="staticCardUi"
+              class="flex gap-4 border-b border-default py-5 last:border-b-0"
             >
-              <div class="flex gap-4">
-                <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-default bg-default">
-                  <UIcon
-                    :name="item.icon"
-                    class="size-4"
-                    :class="item.accent"
-                  />
-                </span>
-                <div>
-                  <p class="text-sm font-semibold">
-                    {{ item.title }}
-                  </p>
-                  <p class="mt-1 text-sm leading-6 text-muted">
-                    {{ item.description }}
-                  </p>
-                </div>
+              <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                <UIcon
+                  :name="item.icon"
+                  class="size-4"
+                  :class="item.accent"
+                />
+              </span>
+              <div>
+                <p class="text-sm font-semibold">
+                  {{ item.title }}
+                </p>
+                <p class="mt-1 text-sm leading-6 text-muted">
+                  {{ item.description }}
+                </p>
               </div>
-            </UCard>
+            </div>
           </div>
 
-          <UCard
-            variant="outline"
-            class="mt-4"
-            :ui="staticCardUi"
-          >
+          <div class="mt-8 border-b border-default pb-8">
             <div class="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
@@ -144,7 +142,7 @@ const badgeUi = {
                 :ui="badgeUi"
               />
             </div>
-          </UCard>
+          </div>
         </div>
 
         <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">
@@ -162,92 +160,89 @@ const badgeUi = {
               />
             </div>
 
-            <div class="mt-7 grid gap-4 xl:grid-cols-3">
-              <UCard
-                variant="outline"
-                :ui="staticCardUi"
-              >
-                <UIcon
-                  name="i-lucide-sparkles"
-                  class="size-5 text-primary"
-                />
-                <p class="mt-5 text-base font-semibold">
-                  Action hierarchy
-                </p>
-                <p class="mt-2 text-sm leading-6 text-muted">
-                  One filled action carries the strongest decision.
-                </p>
-                <div class="mt-5 flex flex-wrap gap-2">
-                  <UButton
-                    label="Save"
-                    icon="i-lucide-save"
-                    type="button"
-                    size="sm"
+            <UCard
+              variant="outline"
+              class="mt-7"
+              :ui="specimenCardUi"
+            >
+              <div class="grid gap-px bg-accented xl:grid-cols-3">
+                <div class="bg-elevated p-5">
+                  <UIcon
+                    name="i-lucide-sparkles"
+                    class="size-5 text-primary"
                   />
-                  <UButton
-                    label="Review"
-                    color="neutral"
-                    variant="outline"
-                    type="button"
-                    size="sm"
-                  />
+                  <p class="mt-5 text-base font-semibold">
+                    Action hierarchy
+                  </p>
+                  <p class="mt-2 text-sm leading-6 text-muted">
+                    One filled action carries the strongest decision.
+                  </p>
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <UButton
+                      label="Save"
+                      icon="i-lucide-save"
+                      type="button"
+                      size="sm"
+                    />
+                    <UButton
+                      label="Review"
+                      color="neutral"
+                      variant="outline"
+                      type="button"
+                      size="sm"
+                    />
+                  </div>
                 </div>
-              </UCard>
 
-              <UCard
-                variant="outline"
-                :ui="staticCardUi"
-              >
-                <UIcon
-                  name="i-lucide-circle-check"
-                  class="size-5 text-success"
-                />
-                <p class="mt-5 text-base font-semibold">
-                  Feedback state
-                </p>
-                <p class="mt-2 text-sm leading-6 text-muted">
-                  State messages stay close to the task they confirm.
-                </p>
-                <UAlert
-                  title="Ready for review"
-                  icon="i-lucide-circle-check"
-                  color="success"
-                  variant="subtle"
-                  class="mt-5"
-                />
-              </UCard>
-
-              <UCard
-                variant="outline"
-                :ui="staticCardUi"
-              >
-                <UIcon
-                  name="i-lucide-tags"
-                  class="size-5 text-secondary"
-                />
-                <p class="mt-5 text-base font-semibold">
-                  Metadata
-                </p>
-                <p class="mt-2 text-sm leading-6 text-muted">
-                  Status, shortcuts, and exact names support scanning.
-                </p>
-                <div class="mt-5 flex flex-wrap items-center gap-2">
-                  <UBadge
-                    label="Ready"
+                <div class="bg-elevated p-5">
+                  <UIcon
+                    name="i-lucide-circle-check"
+                    class="size-5 text-success"
+                  />
+                  <p class="mt-5 text-base font-semibold">
+                    Feedback state
+                  </p>
+                  <p class="mt-2 text-sm leading-6 text-muted">
+                    State messages stay close to the task they confirm.
+                  </p>
+                  <UAlert
+                    title="Ready for review"
+                    icon="i-lucide-circle-check"
                     color="success"
                     variant="subtle"
+                    class="mt-5"
                   />
-                  <UBadge
-                    label="Internal"
-                    color="neutral"
-                    variant="outline"
-                    :ui="badgeUi"
-                  />
-                  <UKbd>Ctrl</UKbd>
-                  <UKbd>K</UKbd>
                 </div>
-              </UCard>
-            </div>
+
+                <div class="bg-elevated p-5">
+                  <UIcon
+                    name="i-lucide-tags"
+                    class="size-5 text-secondary"
+                  />
+                  <p class="mt-5 text-base font-semibold">
+                    Metadata
+                  </p>
+                  <p class="mt-2 text-sm leading-6 text-muted">
+                    Status, shortcuts, and exact names support scanning.
+                  </p>
+                  <div class="mt-5 flex flex-wrap items-center gap-2">
+                    <UBadge
+                      label="Ready"
+                      color="success"
+                      variant="subtle"
+                    />
+                    <UBadge
+                      label="Internal"
+                      color="neutral"
+                      variant="outline"
+                      :ui="badgeUi"
+                    />
+                    <UKbd>Ctrl</UKbd>
+                    <UKbd>K</UKbd>
+                  </div>
+                </div>
+              </div>
+            </UCard>
           </div>
 
           <div class="bg-default p-6 sm:p-8">
