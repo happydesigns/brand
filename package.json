@@ -17,9 +17,11 @@
     "postinstall": "node scripts/generate-brand-css.mjs && nuxt prepare",
     "lint": "eslint .",
     "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:update": "playwright test --update-snapshots",
     "pretypecheck": "node scripts/generate-brand-css.mjs",
     "typecheck": "nuxt typecheck",
-    "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm build"
+    "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build"
   },
   "dependencies": {
     "@happydesigns/id": "file:..\\id",
@@ -32,7 +34,9 @@
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@nuxt/eslint": "^1.15.2",
+    "@playwright/test": "^1.62.1",
     "eslint": "^10.2.0",
     "typescript": "^6.0.2",
     "vitest": "^4.1.9",

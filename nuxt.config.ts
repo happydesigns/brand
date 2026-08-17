@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    enabled: true
+    enabled: process.env.NUXT_DEVTOOLS !== 'false'
   },
 
   app: {
