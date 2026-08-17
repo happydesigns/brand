@@ -22,8 +22,8 @@ Use visible structure before decoration. Fine borders, controlled spacing, clear
 Use Nuxt UI primitives and semantic Tailwind utilities for repeated guide surfaces. The light/dark pairing belongs in the token definitions, not in every page component.
 
 - Page and panel surfaces use `bg-default`.
-- Section bands use `bg-elevated` to create rhythm around major framed content.
-- Static content cards and examples use `bg-muted` so they remain the clearest resting surface.
+- Section bands use `bg-muted` to create a quieter ground around major framed content.
+- Static content cards and examples use the lighter `bg-elevated` surface. `bg-raised` is reserved for rare focus surfaces and remains a warm off-white rather than pure white.
 - Grid gaps and structural dividers use `bg-accented` with normal `border-default` or `border-muted` rules.
 - Coral, petrol, metadata, and inverted states use semantic utilities such as `text-primary`, `text-secondary`, `text-dimmed`, `bg-inverted`, and `text-inverted`.
 

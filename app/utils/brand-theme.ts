@@ -21,7 +21,7 @@ export const happydesignsUiConfig = {
       {
         color: 'primary',
         variant: 'solid',
-        class: 'bg-inverted text-inverted hover:bg-inverted/90 active:bg-inverted focus-visible:ring-2 focus-visible:ring-primary'
+        class: 'bg-inverted text-inverted hover:bg-inverted/90 active:bg-inverted focus-visible:ring-2 focus-visible:ring-primary dark:bg-raised dark:text-highlighted dark:ring-1 dark:ring-primary/40 dark:hover:bg-muted dark:active:bg-muted'
       },
       {
         color: 'neutral',
@@ -190,7 +190,7 @@ export const happydesignsUiConfig = {
         header: 'flex items-center gap-1.5 rounded-t-sm border border-default border-b-0 bg-elevated px-4 py-3',
         filename: 'font-mono text-xs text-label',
         copy: 'absolute right-[11px] top-[11px] transition',
-        base: 'group overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-default bg-muted px-4 py-3 font-mono text-sm/7 text-highlighted focus:outline-none **:[.line.highlight]:-mx-4 **:[.line.highlight]:bg-accented/50 **:[.line.highlight]:px-4 **:[.line]:block'
+        base: 'group overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-default bg-elevated px-4 py-3 font-mono text-sm/7 text-highlighted focus:outline-none **:[.line.highlight]:-mx-4 **:[.line.highlight]:bg-accented/50 **:[.line.highlight]:px-4 **:[.line]:block'
       }
     }
   }
@@ -200,8 +200,8 @@ export const cssVariables = {
   light: {
     '--ui-container': 'var(--container-8xl)',
     '--ui-bg': 'var(--color-warm-white)',
-    '--ui-bg-muted': 'white',
-    '--ui-bg-elevated': 'var(--color-sand-150)',
+    '--ui-bg-muted': 'var(--color-sand-150)',
+    '--ui-bg-elevated': '#FDFBF8',
     '--ui-bg-accented': 'var(--color-sand-300)',
     '--ui-bg-inverted': 'var(--color-graphite)',
     '--ui-text': 'var(--color-graphite)',
@@ -221,16 +221,17 @@ export const cssVariables = {
     '--hd-text-body': 'var(--color-sand-700)',
     '--hd-text-label': 'var(--color-plum-600)',
     '--hd-bg-surface': 'var(--ui-bg)',
-    '--hd-bg-card': 'var(--ui-bg-muted)',
-    '--hd-bg-inset': 'var(--color-sand-50)',
+    '--hd-bg-card': 'var(--ui-bg-elevated)',
+    '--hd-bg-raised': '#FFFDFB',
+    '--hd-bg-inset': 'var(--color-sand-200)',
     '--hd-bg-separator': 'var(--ui-bg-accented)',
     '--hd-bg-tinted': 'color-mix(in srgb, var(--color-sand-200) 55%, transparent)',
     '--hd-bg-hover': 'var(--color-peach-50)'
   },
   dark: {
     '--ui-bg': 'var(--color-graphite)',
-    '--ui-bg-muted': '#2F2F2E',
-    '--ui-bg-elevated': '#282827',
+    '--ui-bg-muted': '#292827',
+    '--ui-bg-elevated': '#302E2C',
     '--ui-bg-accented': 'rgba(250, 247, 242, 0.12)',
     '--ui-bg-inverted': 'var(--color-sand-100)',
     '--ui-text': 'var(--color-sand-100)',
@@ -248,10 +249,11 @@ export const cssVariables = {
     '--ui-warning': 'var(--color-butter-400)',
     '--ui-error': 'var(--color-rose-400)',
     '--hd-text-body': 'var(--color-sand-300)',
-    '--hd-text-label': 'var(--color-sand-300)',
+    '--hd-text-label': 'var(--color-plum-300)',
     '--hd-bg-surface': 'var(--ui-bg)',
-    '--hd-bg-card': 'var(--ui-bg-muted)',
-    '--hd-bg-inset': 'var(--color-graphite)',
+    '--hd-bg-card': 'var(--ui-bg-elevated)',
+    '--hd-bg-raised': '#383532',
+    '--hd-bg-inset': '#1C1B1A',
     '--hd-bg-separator': 'var(--ui-bg-accented)',
     '--hd-bg-tinted': 'color-mix(in srgb, var(--color-sand-800) 25%, transparent)',
     '--hd-bg-hover': 'rgba(250, 247, 242, 0.08)'

@@ -237,12 +237,12 @@ const ctaLinks = [
 ]
 
 const sectionCardUi = {
-  root: 'overflow-hidden rounded-sm !bg-default shadow-none transition-none hover:!bg-default',
+  root: 'overflow-hidden rounded-sm !bg-default shadow-none ring-default transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
 }
 
 const staticCardUi = {
-  root: 'rounded-sm !bg-muted shadow-none transition-none hover:!bg-muted',
+  root: 'rounded-sm !bg-elevated shadow-none ring-muted transition-none hover:!bg-elevated',
   body: 'p-5 sm:p-5'
 }
 
@@ -288,14 +288,14 @@ const badgeUi = {
           title: 'max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-highlighted sm:text-7xl',
           description: 'max-w-2xl text-lg leading-8 text-body',
           links: 'mt-9 flex flex-wrap gap-3',
-          body: '!mt-0 flex h-full min-h-[580px] bg-elevated p-0 lg:min-h-[660px]'
+          body: '!mt-0 flex h-full min-h-[580px] bg-muted p-0 lg:min-h-[660px]'
         }"
       >
         <template #default>
-          <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-elevated p-8 sm:p-12 lg:min-h-[660px]">
-            <div class="relative w-full max-w-xl rounded-md border border-default bg-muted shadow-none">
+          <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-muted p-8 sm:p-12 lg:min-h-[660px]">
+            <div class="relative w-full max-w-xl rounded-md border border-default bg-elevated shadow-none">
               <div class="overflow-hidden rounded-t-md">
-                <div class="flex items-center justify-between border-b border-default bg-muted px-4 py-3 font-mono text-xs text-label">
+                <div class="flex items-center justify-between border-b border-default bg-elevated px-4 py-3 font-mono text-xs text-label">
                   <div class="flex gap-2">
                     <span class="size-2.5 rounded-full bg-sand-400" />
                     <span class="size-2.5 rounded-full bg-sand-300" />
@@ -478,7 +478,7 @@ const badgeUi = {
 
       <LandingSpacer />
 
-      <div class="border-b border-default bg-elevated">
+      <div class="border-b border-default bg-muted">
         <UPageSection
           class="bg-transparent"
           :ui="{ container: 'px-7 pt-10 pb-0 sm:px-12 sm:pt-12 lg:pt-12 lg:pb-0' }"
@@ -548,7 +548,7 @@ const badgeUi = {
                     <div
                       v-for="color in featuredColors"
                       :key="color.token"
-                      class="bg-muted p-4"
+                      class="bg-elevated p-4"
                     >
                       <div
                         class="h-16 rounded-sm border border-black/5"
