@@ -29,8 +29,8 @@ const sectionCardUi = {
       variant="outline"
       :ui="sectionCardUi"
     >
-      <div class="grid lg:grid-cols-[.42fr_.58fr]">
-        <div class="border-b border-default bg-default p-6 sm:p-8 lg:border-b-0 lg:border-r">
+      <div class="grid lg:grid-cols-[.38fr_.62fr]">
+        <div class="border-b border-default bg-elevated p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
             02 / Identity behavior
           </p>
