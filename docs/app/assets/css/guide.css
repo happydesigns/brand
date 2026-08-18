@@ -102,8 +102,12 @@
 
 .prose .hd-color-scales .brand-table-scroll table {
   display: block;
+  width: 100%;
   min-width: 0;
   overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .hd-color-scales .brand-table-scroll::after {
