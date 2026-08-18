@@ -17,16 +17,11 @@ const statusItems = [
 <template>
   <div class="h-full rounded-sm border border-default bg-muted p-4">
     <div class="mb-4 flex min-h-8 items-center justify-between gap-3">
-      <div>
-        <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
-          Project
-        </p>
-        <p class="mt-0.5 text-base font-semibold text-highlighted">
-          {{ projectName }}
-        </p>
-      </div>
+      <p class="text-base font-semibold text-highlighted">
+        Project settings
+      </p>
       <UBadge
-        label="Ready"
+        label="Internal"
         color="neutral"
         variant="outline"
       />
@@ -46,11 +41,11 @@ const statusItems = [
         aria-label="Status"
       />
       <UAlert
-        icon="i-lucide-circle-check"
-        :title="status"
+        icon="i-lucide-bell"
+        title="Reviewers will be notified."
       />
       <UButton
-        label="Save"
+        label="Save settings"
         block
       />
     </div>
