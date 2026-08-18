@@ -38,7 +38,7 @@ const sectionCardUi = {
 }
 
 const staticCardUi = {
-  root: 'rounded-sm !bg-elevated shadow-none ring-muted transition-none hover:!bg-elevated',
+  root: 'rounded-sm !bg-elevated shadow-none ring-default transition-none hover:!bg-elevated',
   body: 'p-5 sm:p-5'
 }
 
