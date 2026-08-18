@@ -32,6 +32,7 @@ describe('adapter outputs', () => {
       expect(happydesignsBrandTheme.ui?.[component]).toEqual(config)
     }
 
+    expect(happydesignsUiConfig.textarea.slots.base).toContain('min-h-24')
     expect(happydesignsUiConfig.prose.pre.slots.filename).toContain('text-xs/6')
   })
 

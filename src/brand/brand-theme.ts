@@ -136,7 +136,7 @@ export const happydesignsUiConfig = {
   },
   textarea: {
     slots: {
-      base: 'bg-default text-highlighted ring-default focus-visible:ring-primary'
+      base: 'min-h-24 resize-y bg-default text-highlighted ring-default focus-visible:ring-primary'
     }
   },
   select: {
