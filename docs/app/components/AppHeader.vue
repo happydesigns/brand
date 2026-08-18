@@ -103,7 +103,11 @@ const githubLinks = computed(() => appConfig.github && appConfig.github.url
       <UContentSearchButton />
 
       <ClientOnly v-if="!forcedColorMode">
-        <UColorModeButton />
+        <UColorModeButton
+          color="neutral"
+          variant="ghost"
+          :ui="{ base: 'bg-transparent text-muted hover:bg-elevated hover:text-highlighted active:bg-elevated' }"
+        />
 
         <template #fallback>
           <div class="h-8 w-8 animate-pulse rounded-md bg-muted" />

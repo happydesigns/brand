@@ -105,16 +105,16 @@ const links = [
     class="border-b border-default"
     :ui="{
       container: 'grid max-w-none !gap-0 !px-0 !py-0 sm:!gap-0 sm:!px-0 sm:!py-0 lg:!px-0 lg:grid-cols-[1fr_.95fr] lg:items-stretch',
-      wrapper: 'flex min-h-[580px] flex-col justify-center border-b border-default bg-default px-7 py-16 sm:px-12 sm:py-20 lg:min-h-[660px] lg:border-b-0 lg:border-r',
+      wrapper: 'flex min-h-0 flex-col justify-center border-b border-default bg-default px-7 py-14 sm:min-h-[520px] sm:px-12 sm:py-20 lg:min-h-[660px] lg:border-b-0 lg:border-r',
       headline: 'font-mono text-xs uppercase tracking-[0.14em] text-label before:mr-2 before:inline-block before:size-2 before:rounded-full before:bg-primary',
       title: 'max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-highlighted sm:text-7xl',
       description: 'max-w-2xl text-lg leading-8 text-body',
       links: 'mt-9 flex flex-wrap gap-3',
-      body: '!mt-0 flex h-full min-h-[580px] bg-muted p-0 lg:min-h-[660px]'
+      body: '!mt-0 flex h-full min-h-0 bg-muted p-0 sm:min-h-[520px] lg:min-h-[660px]'
     }"
   >
     <template #default>
-      <div class="flex h-full min-h-[580px] w-full items-center justify-center bg-muted p-8 sm:p-12 lg:min-h-[660px]">
+      <div class="flex h-full min-h-0 w-full items-center justify-center bg-muted p-6 sm:min-h-[520px] sm:p-12 lg:min-h-[660px]">
         <div class="relative w-full max-w-xl rounded-md border border-default bg-elevated shadow-none">
           <div class="overflow-hidden rounded-t-md">
             <div class="flex items-center justify-between border-b border-default bg-elevated px-4 py-3 font-mono text-xs text-label">

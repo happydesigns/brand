@@ -92,3 +92,62 @@
   min-width: 8rem;
   white-space: nowrap;
 }
+
+.hd-color-scales table {
+  overflow: visible;
+}
+
+.hd-color-scales thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hd-color-scales tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1px;
+  background: var(--ui-border);
+}
+
+.hd-color-scales tbody tr,
+.hd-color-scales tbody tr:nth-child(even),
+.hd-color-scales tbody tr:hover {
+  display: grid;
+  grid-template:
+    'chip chip' 2.25rem
+    'shade value' auto / minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.65rem;
+  background: var(--ui-bg);
+}
+
+.hd-color-scales td {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.hd-color-scales td:first-child {
+  grid-area: shade;
+}
+
+.hd-color-scales td:nth-child(2) {
+  grid-area: value;
+  color: var(--ui-text-muted);
+}
+
+.hd-color-scales td:last-child {
+  grid-area: chip;
+}
+
+.hd-color-scales .hd-color-chip {
+  width: 100%;
+  height: 2.25rem;
+}

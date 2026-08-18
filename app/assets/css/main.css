@@ -74,8 +74,18 @@ body {
   text-underline-offset: 0.18em;
 }
 
-.prose table {
-  overflow: hidden;
+.brand-table-scroll {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+  border-radius: 4px;
+}
+
+.prose .brand-table-scroll table {
+  width: 100%;
+  margin: 0;
   border: 1px solid var(--ui-border);
   border-radius: 4px;
 }
@@ -99,4 +109,33 @@ body {
 
 .prose tbody tr:hover {
   background: var(--hd-bg-hover);
+}
+
+@media (max-width: 767px) {
+  .brand-table-scroll table {
+    min-width: 42rem;
+  }
+
+  .brand-table-scroll::after {
+    position: sticky;
+    right: 0;
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-top: -1px;
+    margin-left: auto;
+    content: '';
+    box-shadow: 1rem 0 1.5rem 1.25rem var(--ui-bg);
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .docs-layout > [data-slot='root'] > [data-slot='center'] > [data-slot='root'] > [data-slot='right'] {
+    display: none;
+  }
+
+  .docs-layout > [data-slot='root'] > [data-slot='center'] > [data-slot='root'] > [data-slot='center'] {
+    grid-column: span 10 / span 10;
+  }
 }
