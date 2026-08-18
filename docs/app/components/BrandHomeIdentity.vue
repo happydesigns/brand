@@ -32,7 +32,7 @@ const sectionCardUi = {
       <div class="grid lg:grid-cols-[.38fr_.62fr]">
         <div class="border-b border-default bg-elevated p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-            02 / Identity behavior
+            02 / Identity
           </p>
           <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
             Choose the mark and voice for the context.
@@ -48,14 +48,9 @@ const sectionCardUi = {
           <div class="bg-muted p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>logo use</HDSectionLabel>
-              <UButton
+              <BrandHomeSectionLink
                 to="/docs/guide/logos"
                 label="Open logos"
-                icon="i-lucide-arrow-right"
-                trailing
-                color="neutral"
-                variant="outline"
-                size="sm"
               />
             </div>
             <p class="mt-6 max-w-2xl text-base leading-8 text-body">
@@ -90,14 +85,9 @@ const sectionCardUi = {
           <div class="bg-muted p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>voice</HDSectionLabel>
-              <UButton
+              <BrandHomeSectionLink
                 to="/docs/guide/voice"
                 label="Open voice"
-                icon="i-lucide-arrow-right"
-                trailing
-                color="neutral"
-                variant="outline"
-                size="sm"
               />
             </div>
             <p class="mt-6 max-w-2xl text-base leading-8 text-body">

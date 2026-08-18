@@ -56,7 +56,7 @@ const badgeUi = {
       <div class="grid items-stretch lg:grid-cols-[.38fr_.62fr]">
         <div class="flex flex-col border-b border-default bg-elevated p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <p class="font-mono text-xs uppercase tracking-[0.14em] text-primary">
-            03 / Interface application
+            03 / Application
           </p>
           <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
             Turn the rules into repeatable behavior.
@@ -72,14 +72,9 @@ const badgeUi = {
           <div class="bg-muted p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>component behavior</HDSectionLabel>
-              <UButton
+              <BrandHomeSectionLink
                 to="/docs/components"
                 label="Open components"
-                icon="i-lucide-arrow-right"
-                trailing
-                color="neutral"
-                variant="outline"
-                size="sm"
               />
             </div>
 
@@ -170,7 +165,7 @@ const badgeUi = {
 
           <div class="bg-muted p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
-              <HDSectionLabel>interface use</HDSectionLabel>
+              <HDSectionLabel>applied example</HDSectionLabel>
               <UBadge
                 label="Project view"
                 color="neutral"

@@ -63,14 +63,9 @@ const badgeUi = {
           <div class="bg-muted p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>palette preview</HDSectionLabel>
-              <UButton
+              <BrandHomeSectionLink
                 to="/docs/guide/colors"
                 label="Open colors"
-                icon="i-lucide-arrow-right"
-                trailing
-                color="neutral"
-                variant="outline"
-                size="sm"
               />
             </div>
             <div class="mt-7 grid gap-px overflow-hidden rounded-sm bg-accented ring ring-default sm:grid-cols-2">
@@ -101,14 +96,9 @@ const badgeUi = {
           <div class="bg-muted p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>typography</HDSectionLabel>
-              <UButton
+              <BrandHomeSectionLink
                 to="/docs/guide/typography"
                 label="Open typography"
-                icon="i-lucide-arrow-right"
-                trailing
-                color="neutral"
-                variant="outline"
-                size="sm"
               />
             </div>
             <div class="mt-7 grid gap-4 lg:grid-cols-[1.1fr_.9fr]">
