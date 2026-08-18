@@ -69,7 +69,7 @@ const badgeUi = {
         </div>
 
         <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">
-          <div class="bg-muted p-6 sm:p-8">
+          <div class="bg-default p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>component behavior</HDSectionLabel>
               <BrandHomeSectionLink
@@ -163,7 +163,7 @@ const badgeUi = {
             </UCard>
           </div>
 
-          <div class="bg-muted p-6 sm:p-8">
+          <div class="bg-default p-6 sm:p-8">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>applied example</HDSectionLabel>
               <UBadge
