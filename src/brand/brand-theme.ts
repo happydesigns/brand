@@ -43,7 +43,14 @@ export const happydesignsUiConfig = {
     },
     slots: {
       base: 'rounded-full font-medium ring-1 ring-inset'
-    }
+    },
+    compoundVariants: [
+      {
+        color: 'primary',
+        variant: 'subtle',
+        class: 'text-coral-700 dark:text-coral-300'
+      }
+    ]
   },
   card: {
     slots: {
@@ -212,7 +219,7 @@ export const cssVariables = {
     '--ui-border': 'var(--color-sand-300)',
     '--ui-border-muted': 'var(--color-sand-200)',
     '--ui-border-accented': 'var(--color-sand-400)',
-    '--ui-primary': 'var(--color-coral-700)',
+    '--ui-primary': 'var(--color-coral-500)',
     '--ui-secondary': 'var(--color-petrol-500)',
     '--ui-success': 'var(--color-seafoam-500)',
     '--ui-info': 'var(--color-plum-500)',
