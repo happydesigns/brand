@@ -44,7 +44,7 @@ const guideRoute = [
             class="mt-1 size-4 shrink-0 text-primary"
           />
           <p class="text-sm leading-6 text-toned">
-            Skip ahead only when the upstream decisions already exist. Components should express the system, not invent it locally.
+            For a new project, follow the three steps in order. If its foundations and identity are already defined, continue with components.
           </p>
         </div>
       </div>
