@@ -104,7 +104,7 @@ const links = [
     orientation="horizontal"
     class="border-b border-default"
     :ui="{
-      container: 'grid max-w-none !gap-0 !px-0 !py-0 sm:!gap-0 sm:!px-0 sm:!py-0 lg:!px-0 lg:grid-cols-[1fr_.95fr] lg:items-stretch',
+      container: 'grid max-w-none !gap-0 !px-0 !py-0 sm:!gap-0 sm:!px-0 sm:!py-0 lg:!px-0 lg:grid-cols-2 lg:items-stretch',
       wrapper: 'flex min-h-0 flex-col justify-center border-b border-default bg-default px-7 py-14 sm:min-h-[520px] sm:px-12 sm:py-20 lg:min-h-[660px] lg:border-b-0 lg:border-r',
       headline: 'font-mono text-xs uppercase tracking-[0.14em] text-label before:mr-2 before:inline-block before:size-2 before:rounded-full before:bg-primary',
       title: 'max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-highlighted sm:text-7xl',

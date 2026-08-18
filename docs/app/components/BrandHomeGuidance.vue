@@ -26,7 +26,7 @@ const guideRoute = [
 
 <template>
   <section class="border-b border-default bg-default">
-    <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(28rem,.9fr)]">
+    <div class="grid lg:grid-cols-2">
       <div class="flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-14 lg:py-16">
         <HDSectionLabel>
           Start here
