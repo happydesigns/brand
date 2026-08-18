@@ -10,13 +10,11 @@ if (!primaryFont || !monoFont) {
 const foundationDecisions = [
   {
     title: 'Role before shade.',
-    description: 'Decide what a color communicates before selecting its exact token.',
-    icon: 'i-lucide-palette'
+    description: 'Decide what a color communicates before selecting its exact token.'
   },
   {
     title: 'Hierarchy before expression.',
-    description: 'Establish reading order with type before adding decorative contrast.',
-    icon: 'i-lucide-type'
+    description: 'Establish reading order with type before adding decorative contrast.'
   }
 ]
 

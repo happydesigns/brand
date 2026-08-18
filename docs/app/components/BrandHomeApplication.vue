@@ -2,13 +2,11 @@
 const applicationDecisions = [
   {
     title: 'Task and state before brand character.',
-    description: 'Make the action clear and keep feedback close to the work it confirms.',
-    icon: 'i-lucide-circle-check'
+    description: 'Make the action clear and keep feedback close to the work it confirms.'
   },
   {
     title: 'Reuse before restyling.',
-    description: 'Prefer a shared pattern before introducing local component treatment.',
-    icon: 'i-lucide-repeat-2'
+    description: 'Prefer a shared pattern before introducing local component treatment.'
   }
 ]
 
