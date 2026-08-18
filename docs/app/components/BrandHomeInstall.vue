@@ -11,7 +11,7 @@ const links = [
 
 <template>
   <UPageSection
-    class="border-b border-default bg-elevated"
+    class="border-b border-default bg-muted"
     :ui="{ container: 'px-7 py-12 sm:px-12 sm:py-14' }"
   >
     <UPageCTA
@@ -21,7 +21,7 @@ const links = [
       orientation="horizontal"
       variant="outline"
       :ui="{
-        root: 'overflow-hidden rounded-sm bg-default shadow-none',
+        root: 'overflow-hidden rounded-sm bg-elevated shadow-none',
         container: 'gap-0 px-0 py-0 lg:grid-cols-[.78fr_1fr] lg:items-stretch',
         wrapper: 'p-6 sm:p-8 lg:p-10',
         title: 'text-3xl font-semibold leading-tight sm:text-4xl',
