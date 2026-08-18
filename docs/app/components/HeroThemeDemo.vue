@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const projectName = defineModel<string>('projectName', {
-  default: 'Website refresh'
+const workspaceName = defineModel<string>('workspaceName', {
+  default: 'happydesigns'
 })
 
 const status = defineModel<string>('status', {
@@ -16,28 +16,21 @@ const statusItems = [
 
 <template>
   <div class="h-full rounded-sm border border-default bg-muted p-4">
-    <div class="mb-4 flex min-h-8 items-center justify-between gap-3">
-      <div>
-        <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
-          Project
-        </p>
-        <p class="mt-0.5 text-base font-semibold text-highlighted">
-          Project settings
-        </p>
-      </div>
-      <UBadge
-        label="Internal"
-        color="neutral"
-        variant="outline"
-      />
+    <div class="mb-4 min-h-8">
+      <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-dimmed">
+        Project
+      </p>
+      <p class="mt-0.5 text-base font-semibold text-highlighted">
+        Website refresh
+      </p>
     </div>
 
     <div class="space-y-3">
       <UInput
-        v-model="projectName"
+        v-model="workspaceName"
         spellcheck="false"
         class="w-full"
-        aria-label="Project name"
+        aria-label="Workspace"
       />
       <USelect
         v-model="status"
@@ -47,10 +40,10 @@ const statusItems = [
       />
       <UAlert
         icon="i-lucide-circle-check"
-        title="Reviewers will be notified."
+        title="All checks passed."
       />
       <UButton
-        label="Save settings"
+        label="Submit"
         block
       />
     </div>

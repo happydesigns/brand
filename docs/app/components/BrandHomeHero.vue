@@ -2,7 +2,7 @@
 const guide = useHappydesignsGuide()
 
 const demoState = reactive({
-  projectName: 'Website refresh',
+  workspaceName: 'happydesigns',
   status: 'Ready for review'
 })
 
@@ -151,7 +151,7 @@ const links = [
                 <div class="p-5">
                   <UTheme :props="brandTheme">
                     <HeroThemeDemo
-                      v-model:project-name="demoState.projectName"
+                      v-model:workspace-name="demoState.workspaceName"
                       v-model:status="demoState.status"
                     />
                   </UTheme>
@@ -167,7 +167,7 @@ const links = [
                   >
                     <div class="nuxt-ui-default-demo h-full">
                       <HeroThemeDemo
-                        v-model:project-name="demoState.projectName"
+                        v-model:workspace-name="demoState.workspaceName"
                         v-model:status="demoState.status"
                       />
                     </div>
