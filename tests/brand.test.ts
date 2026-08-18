@@ -31,6 +31,8 @@ describe('adapter outputs', () => {
     for (const [component, config] of Object.entries(happydesignsUiConfig)) {
       expect(happydesignsBrandTheme.ui?.[component]).toEqual(config)
     }
+
+    expect(happydesignsUiConfig.prose.pre.slots.filename).toContain('text-xs/6')
   })
 
   it('keeps generated layer files equal to the adapter outputs', () => {

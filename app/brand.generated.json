@@ -247,7 +247,7 @@
           "slots": {
             "root": "relative my-6 group",
             "header": "flex items-center gap-1.5 rounded-t-sm border border-default border-b-0 bg-elevated px-4 py-3",
-            "filename": "font-mono text-xs text-label",
+            "filename": "font-mono text-xs/6 text-label",
             "copy": "absolute right-[11px] top-[11px] transition",
             "base": "group overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-default bg-elevated px-4 py-3 font-mono text-sm/7 text-highlighted focus:outline-none **:[.line.highlight]:-mx-4 **:[.line.highlight]:bg-accented/50 **:[.line.highlight]:px-4 **:[.line]:block"
           }
