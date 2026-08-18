@@ -1,4 +1,17 @@
 <script setup lang="ts">
+const applicationDecisions = [
+  {
+    title: 'Task and state before brand character.',
+    description: 'Make the action clear and keep feedback close to the work it confirms.',
+    icon: 'i-lucide-circle-check'
+  },
+  {
+    title: 'Reuse before restyling.',
+    description: 'Prefer a shared pattern before introducing local component treatment.',
+    icon: 'i-lucide-repeat-2'
+  }
+]
+
 const projectStatusItems = [
   'Draft',
   'Ready for review',
@@ -52,27 +65,7 @@ const badgeUi = {
             Components are where foundations and identity become useful. Hierarchy, feedback, and metadata should behave consistently across products.
           </p>
 
-          <div class="mt-10 border-t border-default pt-7">
-            <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-              Core decision
-            </p>
-            <div class="mt-5 flex gap-3">
-              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                <UIcon
-                  name="i-lucide-circle-check"
-                  class="size-4 text-success"
-                />
-              </span>
-              <div>
-                <p class="text-sm font-semibold leading-6 text-highlighted">
-                  Task and state before brand character.
-                </p>
-                <p class="mt-1 text-sm leading-6 text-toned">
-                  Make the action clear, keep feedback close, and reuse the pattern before adding local styling.
-                </p>
-              </div>
-            </div>
-          </div>
+          <BrandHomeDecisionList :items="applicationDecisions" />
         </div>
 
         <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">

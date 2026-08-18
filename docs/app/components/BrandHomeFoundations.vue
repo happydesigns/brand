@@ -7,6 +7,19 @@ if (!primaryFont || !monoFont) {
   throw new Error('The homepage requires primary and mono brand fonts.')
 }
 
+const foundationDecisions = [
+  {
+    title: 'Role before shade.',
+    description: 'Decide what a color communicates before selecting its exact token.',
+    icon: 'i-lucide-palette'
+  },
+  {
+    title: 'Hierarchy before expression.',
+    description: 'Establish reading order with type before adding decorative contrast.',
+    icon: 'i-lucide-type'
+  }
+]
+
 const sectionCardUi = {
   root: 'overflow-hidden rounded-sm !bg-default shadow-none ring-default transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
@@ -43,27 +56,7 @@ const badgeUi = {
             Define the foundation before styling individual screens. Color establishes purpose; type establishes reading order.
           </p>
 
-          <div class="mt-10 border-t border-default pt-7">
-            <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-              Core decision
-            </p>
-            <div class="mt-5 flex gap-3">
-              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                <UIcon
-                  name="i-lucide-palette"
-                  class="size-4 text-primary"
-                />
-              </span>
-              <div>
-                <p class="text-sm font-semibold leading-6 text-highlighted">
-                  Role before shade.
-                </p>
-                <p class="mt-1 text-sm leading-6 text-toned">
-                  Decide what a color or type style communicates before selecting its exact token.
-                </p>
-              </div>
-            </div>
-          </div>
+          <BrandHomeDecisionList :items="foundationDecisions" />
         </div>
 
         <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">

@@ -1,6 +1,19 @@
 <script setup lang="ts">
 const guide = useHappydesignsGuide()
 
+const identityDecisions = [
+  {
+    title: 'Wordmark by default.',
+    description: 'Use the symbol only when a compact or square format benefits from it.',
+    icon: 'i-lucide-signature'
+  },
+  {
+    title: 'Clear before clever.',
+    description: 'Remove words that do not improve meaning, warmth, or understanding.',
+    icon: 'i-lucide-message-square-text'
+  }
+]
+
 const sectionCardUi = {
   root: 'overflow-hidden rounded-sm !bg-default shadow-none ring-default transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
@@ -28,27 +41,7 @@ const sectionCardUi = {
             Identity is a controlled choice, not an extra layer of decoration. Match the format, audience, and amount of attention available.
           </p>
 
-          <div class="mt-10 border-t border-default pt-7">
-            <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-              Core decision
-            </p>
-            <div class="mt-5 flex gap-3">
-              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                <UIcon
-                  name="i-lucide-signature"
-                  class="size-4 text-primary"
-                />
-              </span>
-              <div>
-                <p class="text-sm font-semibold leading-6 text-highlighted">
-                  Wordmark first. Clear before clever.
-                </p>
-                <p class="mt-1 text-sm leading-6 text-toned">
-                  Use the symbol only when the format benefits from it, and remove words that do not improve understanding.
-                </p>
-              </div>
-            </div>
-          </div>
+          <BrandHomeDecisionList :items="identityDecisions" />
         </div>
 
         <div class="grid gap-px bg-accented lg:grid-rows-[auto_1fr]">
