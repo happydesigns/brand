@@ -60,5 +60,25 @@ export default defineNuxtConfig({
         braceStyle: '1tbs' as const
       }
     }
+  },
+
+  icon: {
+    serverBundle: {
+      collections: ['lucide', 'simple-icons', 'vscode-icons']
+    },
+    clientBundle: {
+      scan: true,
+      icons: [
+        'lucide:terminal',
+        'vscode-icons:file-type-bun',
+        'vscode-icons:file-type-css',
+        'vscode-icons:file-type-json',
+        'vscode-icons:file-type-npm',
+        'vscode-icons:file-type-nuxt',
+        'vscode-icons:file-type-pnpm',
+        'vscode-icons:file-type-typescript',
+        'vscode-icons:file-type-yarn'
+      ]
+    }
   }
 })
