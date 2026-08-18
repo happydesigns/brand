@@ -35,15 +35,17 @@ const links = [
           id="install-package"
           class="h-full border-t border-default bg-transparent p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
         >
-          <IdLayerInstall
-            class="h-full !border-0 !bg-transparent !p-0"
-            package-name="@happydesigns/brand"
-            title="Build with the layer."
-          >
-            <template #default="{ snippets }">
-              <LayerInstallCodeGroup :snippets="snippets" />
-            </template>
-          </IdLayerInstall>
+          <div class="h-full rounded-sm bg-muted p-5 sm:p-6">
+            <IdLayerInstall
+              class="h-full !border-0 !bg-transparent !p-0"
+              package-name="@happydesigns/brand"
+              title="Build with the layer."
+            >
+              <template #default="{ snippets }">
+                <LayerInstallCodeGroup :snippets="snippets" />
+              </template>
+            </IdLayerInstall>
+          </div>
         </div>
       </template>
     </UPageCTA>
