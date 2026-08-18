@@ -131,7 +131,7 @@ const monoExamples = [
             Signature accent for focus, activation, and precise brand punctuation.
           </p>
           <p class="mt-4 font-mono text-xs text-label">
-            #F28564 - --ui-primary
+            #F28564 · coral-500
           </p>
         </div>
       </div>
