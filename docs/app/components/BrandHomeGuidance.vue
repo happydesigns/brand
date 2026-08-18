@@ -40,11 +40,11 @@ const guideRoute = [
 
         <div class="mt-8 flex max-w-xl items-start gap-3 border-t border-default pt-6">
           <UIcon
-            name="i-lucide-info"
+            name="i-lucide-circle-check"
             class="mt-1 size-4 shrink-0 text-primary"
           />
           <p class="text-sm leading-6 text-toned">
-            For a new project, follow the three steps in order. If its foundations and identity are already defined, continue with components.
+            A project is aligned when every visual choice can be traced to a shared token, identity rule, or component.
           </p>
         </div>
       </div>
