@@ -195,7 +195,7 @@ function previewSurfaceClass(surface: LogoItem['variants'][number]['surface']) {
   return {
     light: 'border-sand-300 bg-warm-white',
     dark: 'border-white/10 bg-graphite',
-    object: 'border-sand-300 bg-sand-100 dark:border-white/10 dark:bg-sand-900'
+    object: 'border-sand-300 bg-sand-100 dark:border-white/10 dark:bg-sand-950'
   }[surface]
 }
 

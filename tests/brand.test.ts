@@ -15,7 +15,8 @@ import { createBrandLayerFiles } from '../scripts/brand-layer'
 
 describe('neutral brand definition', () => {
   it('preserves the happydesigns palette, roles, typography, and runtime assets', () => {
-    expect(happydesignsBrand.colors.sand[150]).toBe('#F1ECE6')
+    expect(Object.keys(happydesignsBrand.colors.sand)).toEqual(Object.keys(happydesignsBrand.colors.peach))
+    expect(happydesignsBrand.colors.sand[100]).toBe('#F5F0EA')
     expect(happydesignsBrand.roles.signature).toBe('coral')
     expect(happydesignsBrand.typography.sans).toBeTruthy()
     expect(happydesignsBrand.assets.logos.signature.src).toBe('/logos/happydesigns-signature.svg')
@@ -45,7 +46,8 @@ describe('adapter outputs', () => {
     const generated = createBrandLayerFiles()
 
     expect(generated['app/assets/css/tokens.generated.css']).toContain(output.css)
-    expect(output.variables['--color-sand-150']).toBe('#F1ECE6')
+    expect(output.variables['--color-sand-100']).toBe('#F5F0EA')
+    expect(output.variables['--color-sand-150']).toBeUndefined()
   })
 
   it('renders the semantic theme variables for SSR without duplicating them in main CSS', () => {
