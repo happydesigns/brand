@@ -33,7 +33,7 @@ const links = [
       <template #default>
         <div
           id="install-package"
-          class="h-full border-t border-default bg-default p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
+          class="h-full border-t border-default bg-transparent p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
         >
           <IdLayerInstall
             class="h-full !border-0 !bg-transparent !p-0"
