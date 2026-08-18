@@ -9,7 +9,7 @@ const identityDecisions = [
   },
   {
     title: 'Clear before clever.',
-    description: 'Remove words that do not improve meaning, warmth, or understanding.',
+    description: 'Remove words that do not add meaning, warmth, or clarity.',
     icon: 'i-lucide-message-square-text'
   }
 ]
