@@ -4,11 +4,13 @@ const guide = useHappydesignsGuide()
 const identityDecisions = [
   {
     title: 'Wordmark by default.',
-    description: 'Use the symbol only when a compact or square format benefits from it.'
+    description: 'Use the symbol only when a compact or square format benefits from it.',
+    icon: 'i-lucide-signature'
   },
   {
     title: 'Clear before clever.',
-    description: 'Remove words that do not improve meaning, warmth, or understanding.'
+    description: 'Remove words that do not improve meaning, warmth, or understanding.',
+    icon: 'i-lucide-message-square-text'
   }
 ]
 
