@@ -93,8 +93,21 @@
   white-space: nowrap;
 }
 
-.hd-color-scales table {
+.hd-color-scales .brand-table-scroll {
   overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.prose .hd-color-scales .brand-table-scroll table {
+  display: block;
+  min-width: 0;
+  overflow: visible;
+}
+
+.hd-color-scales .brand-table-scroll::after {
+  display: none;
 }
 
 .hd-color-scales thead {
@@ -111,6 +124,7 @@
 
 .hd-color-scales tbody {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   gap: 1px;
   background: var(--ui-border);
