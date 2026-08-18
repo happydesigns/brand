@@ -57,7 +57,7 @@ const guideRoute = [
           v-for="item in guideRoute"
           :key="item.number"
           :to="item.to"
-          class="group grid grid-cols-[auto_1fr_auto] items-start gap-4 border-b border-default px-7 py-7 last:border-b-0 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:px-10 sm:py-8"
+          class="group grid grid-cols-[auto_1fr_auto] items-start gap-4 rounded-none border-b border-default px-7 py-7 last:border-b-0 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:px-10 sm:py-8"
         >
           <span class="flex size-9 items-center justify-center rounded-full border border-default bg-muted font-mono text-xs text-primary group-hover:bg-default">
             {{ item.number }}
