@@ -25,7 +25,7 @@ const formState = reactive({
 })
 
 const sectionCardUi = {
-  root: 'overflow-hidden rounded-sm !bg-default shadow-none ring-default transition-none hover:!bg-default',
+  root: 'overflow-hidden rounded-sm border border-default !bg-default shadow-none !ring-0 transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
 }
 
