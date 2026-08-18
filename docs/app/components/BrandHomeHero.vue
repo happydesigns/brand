@@ -80,13 +80,13 @@ const defaultUi = {
 
 const links = [
   {
-    label: 'Explore guide',
+    label: 'Start the guide',
     icon: 'i-lucide-arrow-right',
     trailing: true,
     to: '/docs/guide/overview'
   },
   {
-    label: 'View components',
+    label: 'Browse components',
     icon: 'i-lucide-component',
     color: 'neutral' as const,
     variant: 'outline' as const,
@@ -98,7 +98,7 @@ const links = [
 <template>
   <UPageHero
     :title="guide.brand.claim"
-    description="The happydesigns source of truth for identity, interface patterns, and Nuxt UI implementation."
+    description="Start with the foundations, define how the identity behaves, and apply the result through reusable Nuxt UI components."
     :links="links"
     headline="happydesigns brand guide"
     orientation="horizontal"

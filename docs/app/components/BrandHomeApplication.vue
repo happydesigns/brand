@@ -1,25 +1,4 @@
 <script setup lang="ts">
-const interfacePrinciples = [
-  {
-    title: 'Useful before branded.',
-    description: 'Every control needs a clear job before it carries brand character.',
-    icon: 'i-lucide-circle-check',
-    accent: 'text-success'
-  },
-  {
-    title: 'State close to the task.',
-    description: 'Feedback appears beside the action it confirms or repairs.',
-    icon: 'i-lucide-message-square-warning',
-    accent: 'text-primary'
-  },
-  {
-    title: 'Reusable by default.',
-    description: 'Patterns should work across project views without local restyling.',
-    icon: 'i-lucide-repeat-2',
-    accent: 'text-info'
-  }
-]
-
 const projectStatusItems = [
   'Draft',
   'Ready for review',
@@ -67,37 +46,30 @@ const badgeUi = {
             03 / Interface application
           </p>
           <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-            Components turn the system into product behavior.
+            Turn the rules into repeatable behavior.
           </h2>
           <p class="mt-6 max-w-xl text-base leading-8 text-body">
-            Interfaces should feel useful before branded. Borders, spacing, focus states, and compact labels carry the system in repeated work.
+            Components are where foundations and identity become useful. Hierarchy, feedback, and metadata should behave consistently across products.
           </p>
 
           <div class="mt-10 border-t border-default pt-7">
             <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-              Interface rules
+              Core decision
             </p>
-            <div class="mt-6 grid gap-5">
-              <div
-                v-for="item in interfacePrinciples"
-                :key="item.title"
-                class="flex gap-3"
-              >
-                <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                  <UIcon
-                    :name="item.icon"
-                    class="size-4"
-                    :class="item.accent"
-                  />
-                </span>
-                <div>
-                  <p class="text-sm font-semibold leading-6 text-highlighted">
-                    {{ item.title }}
-                  </p>
-                  <p class="mt-1 text-sm leading-6 text-toned">
-                    {{ item.description }}
-                  </p>
-                </div>
+            <div class="mt-5 flex gap-3">
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                <UIcon
+                  name="i-lucide-circle-check"
+                  class="size-4 text-success"
+                />
+              </span>
+              <div>
+                <p class="text-sm font-semibold leading-6 text-highlighted">
+                  Task and state before brand character.
+                </p>
+                <p class="mt-1 text-sm leading-6 text-toned">
+                  Make the action clear, keep feedback close, and reuse the pattern before adding local styling.
+                </p>
               </div>
             </div>
           </div>

@@ -1,19 +1,6 @@
 <script setup lang="ts">
 const guide = useHappydesignsGuide()
 
-const identityRules = [
-  {
-    title: 'Wordmark first.',
-    description: 'Use the symbol for square contexts and controlled brand moments.',
-    icon: 'i-lucide-signature'
-  },
-  {
-    title: 'Clear before clever.',
-    description: 'Keep the voice warm, precise, practical, and easy to understand.',
-    icon: 'i-lucide-message-square-text'
-  }
-]
-
 const sectionCardUi = {
   root: 'overflow-hidden rounded-sm !bg-default shadow-none ring-default transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
@@ -35,36 +22,30 @@ const sectionCardUi = {
             02 / Identity behavior
           </p>
           <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-            Recognition comes from choosing the right mark and saying less, better.
+            Choose the mark and voice for the context.
           </h2>
           <p class="mt-6 max-w-xl text-base leading-8 text-body">
-            Use the wordmark by default, reserve the symbol for compact contexts, and keep every message clear before clever.
+            Identity is a controlled choice, not an extra layer of decoration. Match the format, audience, and amount of attention available.
           </p>
 
           <div class="mt-10 border-t border-default pt-7">
             <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-              Identity rules
+              Core decision
             </p>
-            <div class="mt-6 grid gap-5">
-              <div
-                v-for="rule in identityRules"
-                :key="rule.title"
-                class="flex gap-3"
-              >
-                <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                  <UIcon
-                    :name="rule.icon"
-                    class="size-4 text-primary"
-                  />
-                </span>
-                <div>
-                  <p class="text-sm font-semibold leading-6 text-highlighted">
-                    {{ rule.title }}
-                  </p>
-                  <p class="mt-1 text-sm leading-6 text-toned">
-                    {{ rule.description }}
-                  </p>
-                </div>
+            <div class="mt-5 flex gap-3">
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                <UIcon
+                  name="i-lucide-signature"
+                  class="size-4 text-primary"
+                />
+              </span>
+              <div>
+                <p class="text-sm font-semibold leading-6 text-highlighted">
+                  Wordmark first. Clear before clever.
+                </p>
+                <p class="mt-1 text-sm leading-6 text-toned">
+                  Use the symbol only when the format benefits from it, and remove words that do not improve understanding.
+                </p>
               </div>
             </div>
           </div>

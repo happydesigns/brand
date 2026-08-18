@@ -7,24 +7,6 @@ if (!primaryFont || !monoFont) {
   throw new Error('The homepage requires primary and mono brand fonts.')
 }
 
-const foundationRules = [
-  {
-    title: 'Color roles',
-    description: 'Warm white, graphite, sand, coral, and petrol set the base before expression appears.',
-    icon: 'i-lucide-palette'
-  },
-  {
-    title: 'Type hierarchy',
-    description: 'Use Bricolage for structure, and mono only for exact or technical content.',
-    icon: 'i-lucide-type'
-  },
-  {
-    title: 'Restraint',
-    description: 'Use coral for focus and signature details, not every surface.',
-    icon: 'i-lucide-circle-check'
-  }
-]
-
 const sectionCardUi = {
   root: 'overflow-hidden rounded-sm !bg-default shadow-none ring-default transition-none hover:!bg-default',
   body: 'p-0 sm:p-0'
@@ -55,36 +37,30 @@ const badgeUi = {
             01 / Foundations
           </p>
           <h2 class="mt-8 max-w-xl text-3xl font-semibold leading-tight sm:text-4xl">
-            Color and type set the pace before anything becomes decorative.
+            Give every visual choice a role.
           </h2>
           <p class="mt-6 max-w-xl text-base leading-8 text-body">
-            Start with color roles and type hierarchy. Coral, petrol, Bricolage, and mono each have a job.
+            Define the foundation before styling individual screens. Color establishes purpose; type establishes reading order.
           </p>
 
           <div class="mt-10 border-t border-default pt-7">
             <p class="font-mono text-xs uppercase tracking-[0.14em] text-highlighted">
-              Foundation rules
+              Core decision
             </p>
-            <div class="mt-6 grid gap-5">
-              <div
-                v-for="rule in foundationRules"
-                :key="rule.title"
-                class="flex gap-3"
-              >
-                <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
-                  <UIcon
-                    :name="rule.icon"
-                    class="size-4 text-primary"
-                  />
-                </span>
-                <div>
-                  <p class="text-sm font-semibold leading-6 text-highlighted">
-                    {{ rule.title }}
-                  </p>
-                  <p class="mt-1 text-sm leading-6 text-toned">
-                    {{ rule.description }}
-                  </p>
-                </div>
+            <div class="mt-5 flex gap-3">
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-default bg-muted">
+                <UIcon
+                  name="i-lucide-palette"
+                  class="size-4 text-primary"
+                />
+              </span>
+              <div>
+                <p class="text-sm font-semibold leading-6 text-highlighted">
+                  Role before shade.
+                </p>
+                <p class="mt-1 text-sm leading-6 text-toned">
+                  Decide what a color or type style communicates before selecting its exact token.
+                </p>
               </div>
             </div>
           </div>
