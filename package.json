@@ -22,7 +22,7 @@
     "predev": "pnpm generate:layer",
     "dev": "nuxt dev docs",
     "preview": "node .output/server/index.mjs",
-    "prepare:docs": "nuxt prepare docs",
+    "prepare:docs": "node scripts/run-docs-check.mjs prepare docs",
     "prelint": "pnpm prepare:docs",
     "lint": "eslint .",
     "pretest": "pnpm prepare:docs",
@@ -30,7 +30,7 @@
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots",
     "pretypecheck": "pnpm generate:layer",
-    "typecheck": "nuxt typecheck docs",
+    "typecheck": "node scripts/run-docs-check.mjs typecheck docs",
     "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build"
   },
   "dependencies": {

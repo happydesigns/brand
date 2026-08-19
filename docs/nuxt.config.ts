@@ -2,6 +2,9 @@ import { fileURLToPath } from 'node:url'
 
 const guideCss = fileURLToPath(new URL('./app/assets/css/guide.css', import.meta.url))
 const outputDir = fileURLToPath(new URL('../.output', import.meta.url))
+const checkBuildDir = process.env.HD_DOCS_BUILD_DIR
+  ? fileURLToPath(new URL(`${process.env.HD_DOCS_BUILD_DIR}/`, import.meta.url))
+  : undefined
 
 export default defineNuxtConfig({
   extends: ['..', '@happydesigns/id/nuxt', 'docus'],
@@ -17,6 +20,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: process.env.NUXT_DEVTOOLS !== 'false'
   },
+
   css: [guideCss],
 
   // Docus registers color mode before Nuxt UI can apply its module default.
@@ -28,6 +32,10 @@ export default defineNuxtConfig({
   ui: {
     prose: true
   },
+
+  // Validation runs must not overwrite the content database of an active dev
+  // server. Nuxt Content emits empty browser dumps during prepare.
+  buildDir: checkBuildDir,
   routeRules: {
     '/docs': { redirect: '/docs/guide/overview' },
     '/docs/guide': { redirect: '/docs/guide/overview' },
