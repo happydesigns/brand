@@ -57,7 +57,14 @@ const componentExampleContext = {
 </script>
 
 <template>
+  <BrandChatWorkspaceExample
+    v-if="props.name === 'chat-palette'"
+  />
+  <BrandEditorWorkspaceExample
+    v-else-if="props.name === 'editor'"
+  />
   <IdComponentExample
+    v-else
     :name="props.name"
     :frame="props.frame"
     :context="componentExampleContext"
