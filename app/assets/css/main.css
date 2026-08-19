@@ -74,26 +74,6 @@ body {
   text-underline-offset: 0.18em;
 }
 
-.brand-table-scroll {
-  position: relative;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-inline: contain;
-}
-
-.prose .brand-table-scroll table {
-  display: table;
-  width: auto;
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--ui-border);
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 4px;
-  background: var(--ui-bg);
-}
-
 .prose thead {
   background: var(--ui-bg-elevated);
 }
@@ -113,25 +93,6 @@ body {
 
 .prose tbody tr:hover {
   background: var(--hd-bg-hover);
-}
-
-@media (max-width: 767px) {
-  .brand-table-scroll table {
-    min-width: 42rem;
-  }
-
-  .brand-table-scroll::after {
-    position: sticky;
-    right: 0;
-    display: block;
-    width: 2.5rem;
-    height: 1px;
-    margin-top: -1px;
-    margin-left: auto;
-    content: '';
-    box-shadow: 1rem 0 1.5rem 1.25rem var(--ui-bg);
-    pointer-events: none;
-  }
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
