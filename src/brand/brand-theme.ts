@@ -174,7 +174,11 @@ export const happydesignsUiConfig = {
       base: 'py-3 px-4 text-sm align-top border-e border-b first:border-s border-default text-body [&_code]:text-xs/5 [&_p]:my-0 [&_p]:leading-6 [&_ul]:my-0 [&_ol]:my-0 [&_ul]:ps-4.5 [&_ol]:ps-4.5 [&_li]:leading-6 [&_li]:my-0.5'
     },
     code: {
-      base: 'inline-block rounded-[3px] border border-default bg-elevated px-1.5 py-0.5 font-mono text-[0.85em] font-medium text-secondary'
+      variants: {
+        color: {
+          neutral: 'border border-default bg-elevated text-highlighted'
+        }
+      }
     },
     codeGroup: {
       slots: {
