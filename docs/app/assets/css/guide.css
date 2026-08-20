@@ -129,9 +129,9 @@
 .hd-color-scales tbody {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1px;
-  background: var(--ui-border);
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  gap: 1rem 0.75rem;
+  background: transparent;
 }
 
 .hd-color-scales tbody tr,
@@ -139,12 +139,14 @@
 .hd-color-scales tbody tr:hover {
   display: grid;
   grid-template:
-    'chip chip' 2.25rem
+    'chip chip' 3rem
     'shade value' auto / minmax(0, 1fr) auto;
-  gap: 0.5rem;
+  gap: 0.625rem 0.75rem;
   align-items: center;
-  padding: 0.65rem;
-  background: var(--ui-bg);
+  min-width: 0;
+  padding: 0 0 0.875rem;
+  border-bottom: 1px solid var(--ui-border-muted);
+  background: transparent;
 }
 
 .hd-color-scales td {
@@ -154,6 +156,7 @@
 
 .hd-color-scales td:first-child {
   grid-area: shade;
+  min-width: 0;
 }
 
 .hd-color-scales td:nth-child(2) {
@@ -165,9 +168,14 @@
   grid-area: chip;
 }
 
+.hd-color-scales td code {
+  white-space: nowrap;
+}
+
 .hd-color-scales .hd-color-chip {
   width: 100%;
-  height: 2.25rem;
+  height: 3rem;
+  min-width: 0;
 }
 
 .hd-coverage-table code {

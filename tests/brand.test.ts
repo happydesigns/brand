@@ -34,7 +34,12 @@ describe('adapter outputs', () => {
     }
 
     expect(happydesignsUiConfig.textarea.slots.base).toContain('min-h-24')
-    expect(happydesignsUiConfig.prose.pre.slots.filename).toContain('text-xs/6')
+    expect(happydesignsUiConfig.prose.th.base).toBe('border-default')
+    expect(happydesignsUiConfig.prose.td.base).toBe('border-default')
+    expect(happydesignsUiConfig.prose.table.slots.root).toBe('brand-table-scroll')
+    expect(happydesignsUiConfig.prose.pre.slots.header).toBe('border-default bg-code-header')
+    expect(happydesignsUiConfig.prose.pre.slots.base).toBe('border-default bg-code')
+    expect(happydesignsUiConfig.prose.codeGroup.slots.list).toBe('border-default bg-code-header')
   })
 
   it('keeps generated layer files equal to the adapter outputs', () => {

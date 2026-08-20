@@ -25,6 +25,8 @@
   --hd-bg-surface: var(--ui-bg);
   --hd-bg-card: var(--ui-bg-elevated);
   --hd-bg-raised: #FFFDFB;
+  --hd-bg-code: var(--ui-bg-elevated);
+  --hd-bg-code-header: var(--ui-bg-muted);
   --hd-bg-inset: var(--color-sand-200);
   --hd-bg-separator: var(--ui-bg-accented);
   --hd-bg-tinted: color-mix(in srgb, var(--color-sand-200) 55%, transparent);
@@ -58,6 +60,8 @@
   --hd-bg-surface: var(--ui-bg);
   --hd-bg-card: var(--ui-bg-elevated);
   --hd-bg-raised: #383532;
+  --hd-bg-code: var(--ui-bg-muted);
+  --hd-bg-code-header: var(--ui-bg);
   --hd-bg-inset: var(--color-sand-950);
   --hd-bg-separator: var(--ui-bg-accented);
   --hd-bg-tinted: color-mix(in srgb, var(--color-sand-800) 25%, transparent);

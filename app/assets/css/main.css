@@ -22,6 +22,14 @@
   background-color: var(--hd-bg-raised);
 }
 
+@utility bg-code {
+  background-color: var(--hd-bg-code);
+}
+
+@utility bg-code-header {
+  background-color: var(--hd-bg-code-header);
+}
+
 @utility bg-inset {
   background-color: var(--hd-bg-inset);
 }
@@ -72,27 +80,6 @@ body {
 .prose a {
   text-decoration-color: var(--color-coral-500);
   text-underline-offset: 0.18em;
-}
-
-.prose thead {
-  background: var(--ui-bg-elevated);
-}
-
-.prose th,
-.prose td {
-  border-color: var(--ui-border) !important;
-}
-
-.prose tbody tr {
-  background: var(--ui-bg);
-}
-
-.prose tbody tr:nth-child(even) {
-  background: var(--ui-bg-muted);
-}
-
-.prose tbody tr:hover {
-  background: var(--hd-bg-hover);
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
