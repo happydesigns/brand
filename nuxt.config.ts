@@ -6,7 +6,7 @@ const brandCss = join(layerDir, 'app/assets/css/main.css')
 const brandComponents = join(layerDir, 'app/components/brand')
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui'],
+  extends: ['@happydesigns/id/nuxt'],
 
   $meta: {
     name: 'happydesigns-brand'

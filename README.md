@@ -2,7 +2,7 @@
 
 Nuxt UI brand layer for happydesigns: thoughtful design for the modern web.
 
-This package provides Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logo and brand primitives. The repository also contains the brand guide as a separate consumer of the public layer.
+This package specializes the reusable `@happydesigns/id/nuxt` runtime with happydesigns Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logos, and brand primitives. The repository also contains the brand guide as a separate consumer of the public layer and the optional `@happydesigns/id/guide` helpers.
 
 ## Brand sources and adapters
 
@@ -20,7 +20,7 @@ brand-data.json → defineBrand() → adapters → generated JSON and CSS artifa
 
 ## Usage
 
-The repository and package root is the guide-free Nuxt layer. The Docus application in `docs/` extends that same root layer and acts as its reference consumer.
+The repository and package root is the guide-free Nuxt layer. It extends `@happydesigns/id/nuxt`, while the Docus application in `docs/` extends the root plus `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need to compose the `id` layers themselves.
 
 Until the package is published, pin the remote layer to a reviewed commit:
 

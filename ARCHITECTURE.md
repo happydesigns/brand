@@ -1,6 +1,6 @@
 # Architecture
 
-`@happydesigns/brand` is both the canonical happydesigns brand guide and a Nuxt layer that consumes the reusable contracts from `@happydesigns/id`.
+`@happydesigns/brand` is both the canonical happydesigns brand guide and a concrete brand layer built on the reusable contracts and runtime from `@happydesigns/id`.
 
 ## Data Flow
 
@@ -32,6 +32,20 @@ Tests reject drift between the neutral definition, adapter output, generated CSS
 - homepage composition and local demonstration state
 
 A mechanism moves to `id` only after it is demonstrably brand-neutral. Visual taste, copy, tokens, and happydesigns examples stay here.
+
+## Layer Composition
+
+The public root layer extends `@happydesigns/id/nuxt` and adds only happydesigns theme data, generated CSS, assets, metadata, and brand primitives. A product extends `@happydesigns/brand` and receives the complete happydesigns runtime without separately composing `id`.
+
+The Docus application extends the public root layer, the optional `@happydesigns/id/guide` add-on, and Docus. The guide add-on contributes neutral documentation components such as example frames and install surfaces; it is not part of the production brand layer.
+
+```text
+@happydesigns/id/nuxt
+  -> @happydesigns/brand
+    -> docs + @happydesigns/id/guide + docus
+```
+
+Other brands depend directly on `@happydesigns/id`; they must not extend this package or inherit happydesigns tokens, assets, doctrine, or component styling.
 
 ## Guide Composition
 
