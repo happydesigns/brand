@@ -44,6 +44,7 @@
     "@iconify-json/simple-icons": "^1.2.93",
     "@iconify-json/vscode-icons": "^1.2.61",
     "@nuxt/eslint": "^1.17.0",
+    "@nuxtjs/mdc": "^0.22.0",
     "@playwright/test": "^1.62.1",
     "@tiptap/y-tiptap": "^3.0.8",
     "docus": "^5.12.3",
