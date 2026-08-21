@@ -34,6 +34,8 @@ describe('adapter outputs', () => {
     }
 
     expect(happydesignsUiConfig.textarea.slots.base).toContain('min-h-24')
+    expect(happydesignsUiConfig.inputDate.compoundVariants[0]?.class.segment).toContain('focus:bg-accented')
+    expect(happydesignsUiConfig.inputTime.compoundVariants[0]?.class.segment).toContain('focus:bg-accented')
     expect(happydesignsUiConfig.prose.th.base).toBe('border-default')
     expect(happydesignsUiConfig.prose.td.base).toBe('border-default')
     expect(happydesignsUiConfig.prose.table.slots.root).toBe('brand-table-scroll')
@@ -147,7 +149,8 @@ describe('public layer and guide separation', () => {
 
     expect(readFileSync(resolve(process.cwd(), 'app/brand.generated.json'), 'utf8')).not.toContain('componentCoverage')
     expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).not.toContain('docus')
-    expect(readFileSync(resolve(process.cwd(), 'docs/nuxt.config.ts'), 'utf8')).toContain('extends: [\'..\', \'@happydesigns/id/nuxt\', \'docus\']')
+    expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).toContain('extends: [\'@happydesigns/id/nuxt\']')
+    expect(readFileSync(resolve(process.cwd(), 'docs/nuxt.config.ts'), 'utf8')).toContain('extends: [\'..\', \'@happydesigns/id/guide\', \'docus\']')
 
     for (const asset of Object.values(happydesignsRuntimeAssets.logos)) {
       expect(readFileSync(resolve(process.cwd(), 'public', asset.src.replace(/^\//, '')))).toBeTruthy()

@@ -58,6 +58,16 @@ test('color mode changes without animating theme colors', async ({ page }) => {
   await expect(transitionTarget).not.toHaveAttribute('data-theme-transition-started', 'true')
 })
 
+test('segmented date and time inputs show the active field', async ({ page }) => {
+  await page.goto('/docs/components/forms')
+
+  const hour = page.getByRole('spinbutton', { name: 'hour,' })
+  await hour.focus()
+
+  await expect(hour).toHaveClass(/focus:bg-accented/)
+  await expect(hour).not.toHaveClass(/focus:bg-elevated/)
+})
+
 test('homepage keeps its desktop composition', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveScreenshot('homepage.png', { fullPage: true })
@@ -66,4 +76,73 @@ test('homepage keeps its desktop composition', async ({ page }) => {
 test('@mobile homepage keeps its mobile first fold', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveScreenshot('homepage-mobile.png')
+})
+
+test('guide tables keep the shared prose treatment', async ({ page }) => {
+  await page.goto('/docs/guide/colors')
+
+  const table = page.locator('.brand-table-scroll').first()
+  await expect(table).toHaveScreenshot('palette-table.png')
+})
+
+test('code examples keep their dark-mode hierarchy', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await page.goto('/docs/components/docs-prose')
+
+  const code = page.locator('pre').filter({ hasText: 'pnpm add @happydesigns/brand' }).first()
+  await expect(code).toHaveScreenshot('code-example-dark.png')
+})
+
+test('editor examples initialize mentions as atomic editor content', async ({ page }) => {
+  await page.goto('/docs/components/chat-editor')
+  await expect(page.locator('[contenteditable="true"]')).toBeVisible({ timeout: 15_000 })
+
+  const mention = page.locator('[data-type="mention"]', { hasText: '@Design review' })
+  const paragraph = mention.locator('..')
+
+  await expect(mention).toHaveCount(1)
+  await expect(mention).toHaveClass(/mention/)
+  await expect(paragraph).toHaveText(
+    'Use @Design review for questions about hierarchy or brand expression.'
+  )
+
+  const colors = await mention.evaluate(element => ({
+    mention: getComputedStyle(element).color,
+    paragraph: getComputedStyle(element.parentElement!).color
+  }))
+  expect(colors.mention).not.toBe(colors.paragraph)
+
+  await mention.click()
+  await expect(paragraph).toHaveText(
+    'Use @Design review for questions about hierarchy or brand expression.'
+  )
+})
+
+test('@mobile code trees clip their content to the rounded frame', async ({ page }) => {
+  await page.goto('/docs/components/docs-prose')
+
+  const tree = page.getByRole('tree').first()
+  const frame = tree.locator('..')
+  const frameStyles = await frame.evaluate((element) => {
+    const styles = getComputedStyle(element)
+    return {
+      borderBottomLeftRadius: styles.borderBottomLeftRadius,
+      overflow: styles.overflow
+    }
+  })
+
+  expect(frameStyles.overflow).toBe('hidden')
+  expect(frameStyles.borderBottomLeftRadius).not.toBe('0px')
+})
+
+test('@mobile wide tables remain horizontally accessible', async ({ page }) => {
+  await page.goto('/docs/guide/colors')
+
+  const table = page.locator('.brand-table-scroll').first()
+  const dimensions = await table.evaluate(element => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth
+  }))
+
+  expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth)
 })
