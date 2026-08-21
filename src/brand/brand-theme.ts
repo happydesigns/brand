@@ -134,6 +134,26 @@ export const happydesignsUiConfig = {
       base: 'bg-default text-highlighted ring-default focus-visible:ring-primary'
     }
   },
+  inputDate: {
+    compoundVariants: [
+      {
+        variant: 'outline',
+        class: {
+          segment: 'focus:bg-accented focus:text-highlighted'
+        }
+      }
+    ]
+  },
+  inputTime: {
+    compoundVariants: [
+      {
+        variant: 'outline',
+        class: {
+          segment: 'focus:bg-accented focus:text-highlighted'
+        }
+      }
+    ]
+  },
   textarea: {
     slots: {
       base: 'min-h-24 resize-y bg-default text-highlighted ring-default focus-visible:ring-primary'
