@@ -5,6 +5,11 @@ import { happydesignsBrandTheme } from '../../src/brand/brand-theme'
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
 type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
   icons?: Record<string, string>
+  prose?: {
+    codeTree?: {
+      slots?: Record<string, string>
+    }
+  }
 }
 
 const happydesignsUiConfig = (happydesignsUiAppConfig.ui ?? {}) as UiConfigWithIcons
@@ -31,6 +36,16 @@ export default defineAppConfig({
       light: 'i-lucide-sun',
       dark: 'i-lucide-moon',
       system: 'i-lucide-monitor'
+    },
+    prose: {
+      ...happydesignsUiConfig.prose,
+      codeTree: {
+        ...happydesignsUiConfig.prose?.codeTree,
+        slots: {
+          ...happydesignsUiConfig.prose?.codeTree?.slots,
+          root: 'overflow-hidden'
+        }
+      }
     }
   },
   id: {

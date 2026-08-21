@@ -11,7 +11,7 @@ const links = [
 
 <template>
   <UPageSection
-    class="border-b border-default bg-muted"
+    class="border-b border-default bg-default"
     :ui="{ container: 'px-7 py-12 sm:px-12 sm:py-14' }"
   >
     <UPageCTA

@@ -16,7 +16,7 @@ const content = ref(`
     <li>Feedback stays close to the action it confirms.</li>
     <li>Labels describe outcomes instead of generic actions.</li>
   </ul>
-  <p>Use <strong>@Design review</strong> for questions about hierarchy or brand expression.</p>
+  <p>Use <span data-type="mention" data-label="Design review" data-mention-suggestion-char="@">@Design review</span> for questions about hierarchy or brand expression.</p>
 `)
 
 const toolbarItems = [
