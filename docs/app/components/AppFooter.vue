@@ -23,7 +23,8 @@ const columns = computed(() => [
     title: 'Application',
     links: [
       { label: 'Voice', to: '/docs/guide/voice' },
-      { label: 'Components', to: '/docs/components' }
+      { label: 'Components', to: '/studio?browse=true' },
+      { label: 'Use the brand', to: '/use' }
     ]
   }
 ])

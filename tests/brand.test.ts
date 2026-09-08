@@ -51,6 +51,9 @@ describe('adapter outputs', () => {
       includeRoles: false
     })
     const generated = createBrandLayerFiles()
+    for (const [path, content] of Object.entries(generated)) {
+      expect(readFileSync(resolve(process.cwd(), path), 'utf8')).toBe(content)
+    }
 
     expect(generated['app/assets/css/tokens.generated.css']).toContain(output.css)
     expect(output.variables['--color-sand-100']).toBe('#F5F0EA')
@@ -92,6 +95,9 @@ function contrastRatio(first: string, second: string) {
 
 describe('accessible text pairs', () => {
   it.each([
+    ['light primary', happydesignsBrand.colors.coral[700], happydesignsBrand.colors.warmWhite],
+    ['light success', happydesignsBrand.colors.seafoam[700], happydesignsBrand.colors.warmWhite],
+    ['light warning', happydesignsBrand.colors.butter[800], happydesignsBrand.colors.warmWhite],
     ['light body', happydesignsBrand.colors.sand[700], happydesignsBrand.colors.warmWhite],
     ['light label', happydesignsBrand.colors.plum[600], happydesignsBrand.colors.warmWhite],
     ['dark body', happydesignsBrand.colors.sand[300], happydesignsBrand.colors.graphite],
@@ -150,7 +156,7 @@ describe('public layer and guide separation', () => {
     expect(readFileSync(resolve(process.cwd(), 'app/brand.generated.json'), 'utf8')).not.toContain('componentCoverage')
     expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).not.toContain('docus')
     expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).toContain('extends: [\'@happydesigns/id/nuxt\']')
-    expect(readFileSync(resolve(process.cwd(), 'docs/nuxt.config.ts'), 'utf8')).toContain('extends: [\'..\', \'@happydesigns/id/guide\', \'docus\']')
+    expect(readFileSync(resolve(process.cwd(), 'docs/nuxt.config.ts'), 'utf8')).toContain('@happydesigns/id/studio')
 
     for (const asset of Object.values(happydesignsRuntimeAssets.logos)) {
       expect(readFileSync(resolve(process.cwd(), 'public', asset.src.replace(/^\//, '')))).toBeTruthy()

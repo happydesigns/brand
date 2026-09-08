@@ -1,6 +1,7 @@
 import { createNuxtUiAppConfig } from '@happydesigns/id'
-import { happydesignsBrandGuide, happydesignsComponentCoverage, happydesignsRuntimeAssets } from '../../src/brand/brand-guide'
+import { happydesignsBrandGuide, happydesignsRuntimeAssets } from '../../src/brand/brand-guide'
 import { happydesignsBrandTheme } from '../../src/brand/brand-theme'
+import studioDocument from '../../src/brand/brand.studio.json'
 
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
 type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
@@ -13,14 +14,13 @@ type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
 }
 
 const happydesignsUiConfig = (happydesignsUiAppConfig.ui ?? {}) as UiConfigWithIcons
-const happydesignsAppConfigGuide = {
-  ...happydesignsBrandGuide,
-  // Nuxt app.config merges arrays from extended layers. defuFn calls function
-  // values with the merged default, so this replaces the generic id coverage.
-  componentCoverage: () => happydesignsComponentCoverage
-}
 
 export default defineAppConfig({
+  idStudio: {
+    document: studioDocument,
+    sourcePath: 'src/brand/brand.studio.json',
+    home: '/'
+  },
   ...happydesignsUiAppConfig,
   ui: {
     ...happydesignsUiConfig,
@@ -54,7 +54,7 @@ export default defineAppConfig({
     defaultTheme: happydesignsBrandTheme.name,
     themes: [happydesignsBrandTheme],
     assets: happydesignsRuntimeAssets,
-    guide: happydesignsAppConfigGuide
+    guide: happydesignsBrandGuide
   },
   docus: {
     locale: 'en',
@@ -71,7 +71,9 @@ export default defineAppConfig({
     title: 'happydesigns',
     links: [
       { label: 'Guide', to: '/docs/guide/overview', activePrefix: '/docs/guide' },
-      { label: 'Components', to: '/docs/components', activePrefix: '/docs/components' }
+      { label: 'Components', to: '/studio?browse=true', activePrefix: '/studio' },
+      { label: 'Templates', to: '/studio?browse=true&view=landing' },
+      { label: 'Use the brand', to: '/use' }
     ]
   },
   socials: {

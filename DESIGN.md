@@ -39,15 +39,9 @@ Static guide cards should not signal interactivity through hover states. Use sur
 
 ## Page Composition
 
-Homepage and guide pages should guide the reader through a clear sequence:
+The homepage combines a tangible theme comparison with three entry points: see the brand in Studio, understand its principles, and use the layer. Shared Components, Landing and Docs scenes belong to id; brand owns the identity applied to them.
 
-1. Foundations: color roles, type hierarchy, and base system decisions.
-2. Identity: wordmark, symbol, lockups, and voice behavior.
-3. Application: components, forms, feedback, and repeated interface patterns.
-
-Sections may use framed layouts, separators, and contrasting warm surfaces to create rhythm, but they should remain calm and ordered. Avoid stacking visually similar blocks without a clear heading, route, or reason for the next section.
-
-The homepage keeps this sequence visible in its component structure. `app/pages/index.vue` only composes the page; `BrandHomeHero`, `BrandHomeGuidance`, `BrandHomeFoundations`, `BrandHomeIdentity`, `BrandHomeApplication`, and `BrandHomeInstall` own their respective content and local interaction state. Keep those boundaries brand-specific and readable. Extract a mechanism to `id` only after another consumer proves the same API.
+Customization stays in the same Studio preview. The inspector exposes identity, palettes, typography and a few useful component defaults. Before/after frames share scene, mode and viewport while keeping their styles and interaction state isolated. Original source, local draft and reviewed export are distinct states.
 
 ## Reusable Layer Expectations
 
@@ -57,7 +51,7 @@ When refining the layer, keep changes token-driven and Nuxt-native where possibl
 
 ## ID Extraction Boundary
 
-The public brand layer extends `@happydesigns/id/nuxt`; its guide adds `@happydesigns/id/guide`. `brand` remains the canonical happydesigns guide. Use `id` for reusable Nuxt UI runtime and brand-guide infrastructure; keep happydesigns identity decisions in this repository.
+The public brand layer extends `@happydesigns/id/nuxt`; its guide adds `@happydesigns/id/studio` and `@happydesigns/id/guide`. `brand` remains the canonical happydesigns guide. Use `id` for reusable Nuxt UI runtime and brand-guide infrastructure; keep happydesigns identity decisions in this repository.
 
 Keep in `brand`:
 

@@ -7,7 +7,7 @@ const checkBuildDir = process.env.HD_DOCS_BUILD_DIR
   : undefined
 
 export default defineNuxtConfig({
-  extends: ['..', '@happydesigns/id/guide', 'docus'],
+  extends: ['..', '@happydesigns/id/studio', '@happydesigns/id/guide', 'docus'],
 
   modules: [
     '@nuxt/eslint'
@@ -37,6 +37,7 @@ export default defineNuxtConfig({
   // server. Nuxt Content emits empty browser dumps during prepare.
   buildDir: checkBuildDir,
   routeRules: {
+    '/docs/components/**': { redirect: '/studio?browse=true' },
     '/docs': { redirect: '/docs/guide/overview' },
     '/docs/guide': { redirect: '/docs/guide/overview' },
     '/docs/guide/': { redirect: '/docs/guide/overview' },

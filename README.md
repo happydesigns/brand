@@ -2,25 +2,25 @@
 
 Nuxt UI brand layer for happydesigns: thoughtful design for the modern web.
 
-This package specializes the reusable `@happydesigns/id/nuxt` runtime with happydesigns Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logos, and brand primitives. The repository also contains the brand guide as a separate consumer of the public layer and the optional `@happydesigns/id/guide` helpers.
+This package specializes the reusable `@happydesigns/id/nuxt` runtime with happydesigns Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logos, and brand primitives. The repository also contains the brand guide as a separate consumer of the public layer and the optional `@happydesigns/id/studio` and `@happydesigns/id/guide` helpers.
 
 ## Brand sources and adapters
 
-Tool-independent color scales and typography live in `src/brand/brand-data.json`. `src/brand/brand.ts` adds identity metadata, structured runtime assets, and optional happydesigns role aliases through `defineBrand()`. The guide reuses those sources and adds explanatory usage text without becoming a runtime dependency.
+The editable source is `src/brand/brand.studio.json`: identity, named palettes, typography, asset roles and the complete Nuxt UI theme. `src/brand/brand.ts` and `src/brand/brand-theme.ts` validate and expose its values. The guide reuses those sources and adds explanatory usage text without becoming a runtime dependency.
 
-The explicit Nuxt UI integration stays in `src/brand/brand-theme.ts`. It maps those named colors to Nuxt UI roles with `nuxtUiAdapter`; Nuxt UI keeps its normal color-mode behavior, while the brand supplies targeted CSS-variable overrides for the surfaces it owns.
+The explicit Nuxt UI integration stays in `src/brand/brand-theme.ts`. It preserves the explicit mapping from named brand colors to Nuxt UI roles; Nuxt UI keeps its normal color-mode behavior, while the brand supplies targeted CSS-variable overrides for the surfaces it owns.
 
 The runtime data flow is deliberately one-way:
 
 ```text
-brand-data.json → defineBrand() → adapters → generated JSON and CSS artifacts
+brand.studio.json → validation → generated runtime JSON and CSS
 ```
 
 `app/brand.generated.json`, `app/assets/css/tokens.generated.css`, and `app/assets/css/theme.generated.css` are generated from these sources. Run `pnpm generate:layer` after editing brand data or adapter mappings. Build, dev, and typecheck regenerate them automatically, and `pnpm test` rejects drift. See `ARCHITECTURE.md` for the ownership boundary between this package and `@happydesigns/id`.
 
 ## Usage
 
-The repository and package root is the guide-free Nuxt layer. It extends `@happydesigns/id/nuxt`, while the Docus application in `docs/` extends the root plus `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need to compose the `id` layers themselves.
+The repository and package root is the guide-free Nuxt layer. It extends `@happydesigns/id/nuxt`, while the Docus application in `docs/` extends the root plus `@happydesigns/id/studio` and `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need to compose the `id` layers themselves.
 
 Until the package is published, pin the remote layer to a reviewed commit:
 
@@ -104,3 +104,9 @@ pnpm verify
 ```
 
 The browser suite covers representative brand integration rather than retesting Nuxt UI itself. It guards the homepage composition, mobile first fold, the custom theme-reveal interaction, and unexpected accessibility-rule regressions on central guide pages.
+
+## Explore and customize
+
+Open `/studio?browse=true` for the shared Components and Templates views. Choose Customize brand to edit a browser-local draft, compare it with the original, and download the reviewed source. Replace `src/brand/brand.studio.json` and run `pnpm generate:layer` followed by the repository checks. New client brands start with New brand; they do not inherit happydesigns doctrine.
+
+The short guide keeps palette meaning, typography, logos and voice. Nuxt UI owns the component API documentation. Legacy component-family URLs redirect to the shared preview. `/use` explains installation and the source workflow.

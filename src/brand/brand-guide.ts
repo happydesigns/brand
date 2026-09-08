@@ -78,12 +78,12 @@ export const brandGuide = {
     {
       slug: 'components',
       title: 'Components',
-      to: '/docs/components',
+      to: '/studio?browse=true',
       eyebrow: 'interface system',
-      summary: 'Nuxt UI component families, brand behavior, and coverage guidance.',
-      description: 'Component guidance connects brand tokens to real interface states. The section groups Nuxt UI components by use so the happydesigns layer can stay useful, structured, and consistent.',
+      summary: 'Real Nuxt UI components and page templates in the shared Brand Studio.',
+      description: 'Explore the identity in shared Components, Landing and Docs scenes. Customize a copy and compare it with the original before exporting.',
       icon: 'i-lucide-component',
-      anchors: ['Component philosophy', 'Component families', 'Theme ownership', 'Coverage model']
+      anchors: []
     }
   ]),
   colors: [
@@ -254,102 +254,11 @@ export const brandGuide = {
 export const happydesignsRuntimeAssets = happydesignsBrand.assets
 
 export const happydesignsComponentCoverage = [
-  {
-    family: 'Actions',
-    components: ['UButton', 'UBadge', 'UChip', 'UFieldGroup', 'UKbd', 'UTooltip'],
-    status: 'documented',
-    notes: 'Focused examples'
-  },
-  {
-    family: 'Forms',
-    components: ['UForm', 'UFormField', 'UFieldGroup', 'UInput', 'UTextarea', 'USelect', 'USelectMenu', 'UInputMenu', 'UInputNumber', 'UInputTags', 'UInputDate', 'UInputTime', 'UCheckbox', 'UCheckboxGroup', 'URadioGroup', 'USwitch', 'USlider', 'UPinInput', 'UFileUpload', 'UColorPicker', 'UCalendar', 'UListbox'],
-    status: 'documented',
-    notes: 'Focused examples'
-  },
-  {
-    family: 'Feedback',
-    components: ['UAlert', 'UBanner', 'UProgress', 'USkeleton', 'UToast', 'UEmpty', 'UIcon'],
-    status: 'documented',
-    notes: 'Focused state examples'
-  },
-  {
-    family: 'Feedback infrastructure',
-    components: ['UToaster'],
-    status: 'documented',
-    notes: 'Covered through toast behavior'
-  },
-  {
-    family: 'Navigation',
-    components: ['UNavigationMenu', 'UBreadcrumb', 'UTabs', 'UStepper', 'UAccordion', 'UPagination', 'ULink', 'UCommandPalette', 'UTree', 'USidebar'],
-    status: 'documented',
-    notes: 'Focused examples'
-  },
-  {
-    family: 'Data and content',
-    components: ['UTable', 'UCard', 'UPageCard', 'UAvatar', 'UAvatarGroup', 'UUser', 'USeparator', 'UCollapsible', 'UCarousel', 'UTimeline', 'UScrollArea'],
-    status: 'documented',
-    notes: 'Focused examples'
-  },
-  {
-    family: 'Overlays',
-    components: ['UModal', 'USlideover', 'UDrawer', 'UPopover', 'UTooltip', 'UDropdownMenu', 'UContextMenu'],
-    status: 'documented',
-    notes: 'Focused flow examples'
-  },
-  {
-    family: 'Overlay infrastructure',
-    components: ['UDropdownMenuContent', 'UContextMenuContent', 'UOverlayProvider'],
-    status: 'documented',
-    notes: 'Covered through parent patterns'
-  },
-  {
-    family: 'Layout and page',
-    components: ['UHeader', 'UFooter', 'UFooterColumns', 'UMain', 'UContainer', 'UPageHero', 'UPageSection', 'UPageCTA', 'UPageGrid', 'UPageCard', 'UPageFeature', 'UPageLinks', 'UPageHeader', 'UPageBody', 'UPageColumns', 'UPageList', 'UPageLogos', 'UPageAnchors'],
-    status: 'documented',
-    notes: 'Pattern examples'
-  },
-  {
-    family: 'Page structure',
-    components: ['UApp', 'UPage', 'UPageAside'],
-    status: 'documented',
-    notes: 'Used by the docs shell'
-  },
-  {
-    family: 'Docs and prose',
-    components: ['Markdown prose', 'Callout', 'Card', 'CardGroup', 'Steps', 'Tabs', 'TabsItem', 'CodeGroup', 'Code', 'Pre', 'Kbd', 'Icon', 'Badge', 'Field', 'FieldGroup', 'Collapsible', 'Accordion', 'CodeCollapse', 'CodePreview', 'CodeTree'],
-    status: 'documented',
-    notes: 'Focused prose examples'
-  },
-  {
-    family: 'Content infrastructure',
-    components: ['UContentNavigation', 'UContentToc', 'UContentSurround', 'UContentSearch', 'UContentSearchButton'],
-    status: 'documented',
-    notes: 'Integrated docs-navigation example'
-  },
-  {
-    family: 'System helpers',
-    components: ['UColorModeAvatar', 'UColorModeButton', 'UColorModeImage', 'UColorModeSelect', 'UColorModeSwitch', 'ULocaleSelect', 'UAuthForm', 'UError', 'UTheme'],
-    status: 'documented',
-    notes: 'Focused examples'
-  },
-  {
-    family: 'Dashboard',
-    components: ['UDashboardGroup', 'UDashboardNavbar', 'UDashboardPanel', 'UDashboardResizeHandle', 'UDashboardSearch', 'UDashboardSearchButton', 'UDashboardSidebar', 'UDashboardSidebarCollapse', 'UDashboardSidebarToggle', 'UDashboardToolbar'],
-    status: 'documented',
-    notes: 'Integrated application-shell example'
-  },
-  {
-    family: 'Publishing and marketing',
-    components: ['UBlogPost', 'UBlogPosts', 'UChangelogVersion', 'UChangelogVersions', 'UPricingPlan', 'UPricingPlans', 'UPricingTable', 'UMarquee'],
-    status: 'documented',
-    notes: 'Integrated publishing examples'
-  },
-  {
-    family: 'Chat and editor',
-    components: ['UChatMessage', 'UChatMessages', 'UChatPalette', 'UChatPrompt', 'UChatPromptSubmit', 'UChatReasoning', 'UChatShimmer', 'UChatTool', 'UEditor', 'UEditorToolbar', 'UEditorDragHandle', 'UEditorEmojiMenu', 'UEditorMentionMenu', 'UEditorSuggestionMenu'],
-    status: 'documented',
-    notes: 'Integrated chat/editor examples'
-  }
+  { family: 'Actions', components: ['UButton', 'UBadge'], status: 'documented', notes: 'Shared Studio actions and status labels' },
+  { family: 'Forms', components: ['UFormField', 'UInput', 'USelect', 'USwitch'], status: 'documented', notes: 'Interactive invitation form and validation state' },
+  { family: 'Feedback', components: ['UAlert', 'UProgress'], status: 'documented', notes: 'Shared Studio success, error and progress states' },
+  { family: 'Content', components: ['UCard', 'UTable'], status: 'documented', notes: 'Shared Components, Landing and Docs scenes' },
+  { family: 'Overlays', components: ['UModal'], status: 'documented', notes: 'Interactive review dialog' }
 ] satisfies BrandComponentCoverage[]
 
 export const happydesignsBrandGuide = defineBrandGuide({
