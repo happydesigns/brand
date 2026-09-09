@@ -246,3 +246,33 @@ test('feedback validates real fields and template controls stay relevant', async
   await frame.getByRole('button', { name: 'Create project', exact: true }).click()
   await expect(frame.getByText('Project created', { exact: true })).toBeVisible()
 })
+
+test('@mobile header keeps project actions secondary and keyboard accessible', async ({ page }) => {
+  await page.goto('/studio?browse=true&view=academy')
+  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 })
+    const header = page.locator('.studio-header')
+    expect((await header.boundingBox())!.height).toBeLessThanOrEqual(56)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    await expect(page.getByRole('button', { name: 'Export', exact: true })).toBeHidden()
+    await expect(page.getByRole('button', { name: 'New brand', exact: true })).toBeHidden()
+  }
+  await page.screenshot({ path: 'test-results/studio-academy-mobile-header.png', animations: 'disabled' })
+  const actions = page.getByRole('button', { name: 'Project actions' })
+  await actions.focus()
+  await page.keyboard.press('Enter')
+  await page.getByRole('menuitem', { name: 'Export', exact: true }).focus()
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('dialog', { name: 'Export brand' })).toBeVisible()
+  await page.keyboard.press('Escape')
+  await actions.click()
+  const fileChooser = page.waitForEvent('filechooser')
+  await page.getByRole('menuitem', { name: 'Open brand', exact: true }).click()
+  await fileChooser
+  await actions.click()
+  await page.getByRole('menuitem', { name: 'New brand', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'New brand', exact: true })).toBeVisible()
+  await choose(page, 'Template', 'Components')
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+})
