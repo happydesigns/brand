@@ -174,12 +174,12 @@ test('capability template shares real course navigation and isolates learner sta
   await page.goto('/studio?browse=true')
   await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   await choose(page, 'Template', 'Academy')
-  await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   await page.screenshot({ path: 'test-results/studio-academy-home.png', animations: 'disabled' })
   expect((await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()).violations).toEqual([])
-  await draft(page).getByRole('button', { name: 'Explore the course' }).click()
+  await draft(page).getByRole('link', { name: 'Explore the course' }).click()
   await expect(page.getByRole('combobox', { name: 'Template page' })).toContainText('Course overview')
-  await expect(draft(page).getByRole('heading', { name: 'Build a thoughtful interface', exact: true })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Build an accessible page', exact: true })).toBeVisible()
   await page.getByLabel('Compare original').check()
   const original = page.frameLocator('iframe[title="Original brand preview"]')
   await choose(page, 'Template page', 'Lesson')
@@ -198,7 +198,7 @@ test('capability template shares real course navigation and isolates learner sta
 
 test('@mobile capability template stays usable within the studio viewport', async ({ page }) => {
   await page.goto('/studio?browse=true&view=academy')
-  await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
   await page.screenshot({ path: 'test-results/studio-academy-mobile.png', animations: 'disabled' })
@@ -221,7 +221,7 @@ test('production loads capability scene only when selected', async ({ page }, te
   const before = requests.length
   const start = Date.now()
   await choose(page, 'Template', 'Academy')
-  await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   expect(requests.some(url => url.endsWith(scene!.file))).toBe(true)
   const module = readFileSync(resolve(client, '_nuxt', scene!.file))
   const report = { sceneChunk: scene!.file, sceneBytes: module.length, sceneGzipBytes: gzipSync(module).length, selectionToVisibleMs: Date.now() - start, initialRequestCount: before, additionalRequests: requests.slice(before) }
