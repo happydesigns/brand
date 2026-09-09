@@ -6,14 +6,19 @@ import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 import source from '../../src/brand/brand.studio.json' with { type: 'json' }
 
+async function choose(page: import('@playwright/test').Page, name: string, option: string) {
+  await page.getByRole('combobox', { name, exact: true }).click()
+  await page.getByRole('option', { name: option, exact: true }).click()
+}
+
 const draft = (page: import('@playwright/test').Page) => page.frameLocator('iframe[title="Draft brand preview"]')
 
 test('brand editing isolates previews and supports undo, redo, reset and real states', async ({ page }) => {
   await page.goto('/studio')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   await page.getByLabel('Compare original').check()
   const original = page.frameLocator('iframe[title="Original brand preview"]')
-  await expect(original.getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(original.getByRole('heading', { name: 'Component examples' })).toBeVisible()
   await page.getByLabel(/^Brand name/).fill('A considered revision')
   await page.getByLabel(/^Brand name/).press('Tab')
   await expect(page.getByRole('heading', { name: 'A considered revision', exact: true })).toBeVisible()
@@ -21,7 +26,7 @@ test('brand editing isolates previews and supports undo, redo, reset and real st
   await expect(page.getByRole('heading', { name: source.theme.label, exact: true })).toBeVisible()
   await page.getByRole('button', { name: 'Redo change' }).click()
   await expect(page.getByRole('heading', { name: 'A considered revision', exact: true })).toBeVisible()
-  await page.getByRole('button', { name: 'details', exact: true }).click()
+  await page.getByRole('button', { name: 'Appearance', exact: true }).click()
   await page.getByLabel(/^Page background/).fill('#e0f2fe')
   await page.getByLabel(/^Page background/).press('Tab')
   await expect(draft(page).locator('body')).toHaveCSS('background-color', 'rgb(224, 242, 254)')
@@ -29,7 +34,7 @@ test('brand editing isolates previews and supports undo, redo, reset and real st
   await page.getByRole('button', { name: 'Dark', exact: true }).click()
   await expect(draft(page).locator('html')).toHaveClass(/dark/)
   await expect(original.locator('html')).toHaveClass(/dark/)
-  await page.getByLabel('Preview state').selectOption('error')
+  await choose(page, 'Preview state', 'Validation error')
   await expect(draft(page).getByText('Enter a valid email address.')).toBeVisible()
   await draft(page).getByRole('button', { name: 'Preview dialog' }).click()
   await expect(draft(page).getByRole('dialog')).toBeVisible()
@@ -42,10 +47,10 @@ test('brand editing isolates previews and supports undo, redo, reset and real st
 
 test('source export preserves the complete brand and invalid imports leave it intact', async ({ page }) => {
   await page.goto('/studio')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   await page.getByLabel('Open brand document').setInputFiles({ name: 'invalid.json', mimeType: 'application/json', buffer: Buffer.from('{"version":2}') })
   await expect(page.getByRole('alert')).toBeVisible()
-  await page.getByRole('button', { name: 'Review & export' }).click()
+  await page.getByRole('button', { name: 'Export', exact: true }).click()
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Download source' }).click()
   const download = await downloadPromise
@@ -62,7 +67,7 @@ test('source export preserves the complete brand and invalid imports leave it in
 
 test('new brands clear inherited styles and keep a recoverable local draft', async ({ page }) => {
   await page.goto('/studio')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   await page.getByRole('button', { name: 'New brand', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'New brand', exact: true })).toBeVisible()
   await expect(draft(page).locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)')
@@ -73,16 +78,16 @@ test('new brands clear inherited styles and keep a recoverable local draft', asy
   await page.reload()
   await page.getByRole('button', { name: 'Restore draft' }).click()
   await expect(page.getByRole('heading', { name: 'My saved draft', exact: true })).toBeVisible()
-  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('landing')
+  await choose(page, 'Template', 'Landing')
   await expect(draft(page).getByText('Make it your own.', { exact: true })).toBeVisible()
-  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('docs')
-  await expect(draft(page).getByRole('heading', { name: 'A shared language', exact: true })).toBeVisible()
+  await choose(page, 'Template', 'Docs')
+  await expect(draft(page).getByRole('heading', { name: 'Use your brand', exact: true })).toBeVisible()
 })
 
 // Independent iframe UApp regions have the same upstream notification label.
 test('studio shell and component scene have no new semantic accessibility violations', async ({ page }) => {
   await page.goto('/studio')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   await page.screenshot({ path: 'test-results/studio-desktop.png', fullPage: true, animations: 'disabled' })
   const result = await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()
   expect(result.violations).toEqual([])
@@ -94,9 +99,9 @@ test('studio shell and component scene have no new semantic accessibility violat
 
 test('@mobile studio keeps controls and preview inside the viewport', async ({ page }) => {
   await page.goto('/studio')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-  await page.getByRole('button', { name: 'colors', exact: true }).click()
+  await page.getByRole('button', { name: 'Palette', exact: true }).click()
   await expect(page.getByText('Map your palettes to Nuxt UI roles.')).toBeVisible()
   await page.screenshot({ path: 'test-results/studio-mobile.png', fullPage: true, animations: 'disabled' })
 })
@@ -105,7 +110,7 @@ for (const viewport of [{ width: 1716, height: 1300 }, { width: 1440, height: 90
   test(`preview owns scrolling at ${viewport.width} × ${viewport.height}`, async ({ page }) => {
     await page.setViewportSize(viewport)
     await page.goto('/studio?browse=true')
-    await expect(draft(page).getByRole('heading', { name: 'Stay in the loop' })).toBeVisible()
+    await expect(draft(page).getByRole('heading', { name: 'Notifications' })).toBeVisible()
     const geometry = await page.evaluate(() => {
       const frame = document.querySelector<HTMLIFrameElement>('iframe')!
       const rect = frame.getBoundingClientRect()
@@ -167,17 +172,17 @@ test('@mobile preview and settings remain independently reachable without page s
 
 test('capability template shares real course navigation and isolates learner state', async ({ page }) => {
   await page.goto('/studio?browse=true')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
-  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('academy')
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await choose(page, 'Template', 'Academy')
   await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
   await page.screenshot({ path: 'test-results/studio-academy-home.png', animations: 'disabled' })
   expect((await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()).violations).toEqual([])
   await draft(page).getByRole('button', { name: 'Explore the course' }).click()
-  await expect(page.getByRole('combobox', { name: 'Template page' })).toHaveValue('overview')
+  await expect(page.getByRole('combobox', { name: 'Template page' })).toContainText('Course overview')
   await expect(draft(page).getByRole('heading', { name: 'Build a thoughtful interface', exact: true })).toBeVisible()
   await page.getByLabel('Compare original').check()
   const original = page.frameLocator('iframe[title="Original brand preview"]')
-  await page.getByRole('combobox', { name: 'Template page' }).selectOption('lesson')
+  await choose(page, 'Template page', 'Lesson')
   await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
   await expect(original.getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
   const checkpoint = draft(page).getByRole('checkbox').first()
@@ -197,7 +202,7 @@ test('@mobile capability template stays usable within the studio viewport', asyn
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
   await page.screenshot({ path: 'test-results/studio-academy-mobile.png', animations: 'disabled' })
-  await page.getByRole('combobox', { name: 'Template page' }).selectOption('lesson')
+  await choose(page, 'Template page', 'Lesson')
   await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
   expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
 })
@@ -211,11 +216,11 @@ test('production loads capability scene only when selected', async ({ page }, te
   const requests: string[] = []
   page.on('request', request => requests.push(request.url()))
   await page.goto('/studio?browse=true')
-  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
   expect(requests.some(url => url.endsWith(scene!.file))).toBe(false)
   const before = requests.length
   const start = Date.now()
-  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('academy')
+  await choose(page, 'Template', 'Academy')
   await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
   expect(requests.some(url => url.endsWith(scene!.file))).toBe(true)
   const module = readFileSync(resolve(client, '_nuxt', scene!.file))
@@ -223,4 +228,21 @@ test('production loads capability scene only when selected', async ({ page }, te
   const reportPath = testInfo.outputPath('academy-loading.json')
   writeFileSync(reportPath, JSON.stringify(report, null, 2))
   await testInfo.attach('academy-loading.json', { path: reportPath, contentType: 'application/json' })
+})
+
+test('feedback validates real fields and template controls stay relevant', async ({ page }) => {
+  await page.goto('/studio?browse=true')
+  const frame = draft(page)
+  await frame.getByRole('button', { name: 'Send feedback', exact: true }).click()
+  await expect(frame.getByText('Enter a title.', { exact: true })).toBeVisible()
+  await frame.getByRole('textbox', { name: /^Title/ }).fill('Keyboard focus')
+  await frame.getByRole('textbox', { name: /^Description/ }).fill('The save button needs a visible focus ring.')
+  await frame.getByRole('button', { name: 'Send feedback', exact: true }).click()
+  await expect(frame.getByRole('status').filter({ hasText: 'Feedback validated.' })).toBeVisible()
+  await choose(page, 'Template', 'Landing')
+  await expect(page.getByRole('combobox', { name: 'Preview state' })).toHaveCount(0)
+  await frame.getByRole('button', { name: 'Create a project', exact: true }).click()
+  await frame.getByRole('textbox', { name: 'Project name', exact: true }).fill('Website redesign')
+  await frame.getByRole('button', { name: 'Create project', exact: true }).click()
+  await expect(frame.getByText('Project created', { exact: true })).toBeVisible()
 })

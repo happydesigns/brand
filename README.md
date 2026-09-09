@@ -107,7 +107,7 @@ The browser suite covers representative brand integration rather than retesting 
 
 ## Explore and customize
 
-Open `/studio?browse=true` for the shared Components and Templates views. Choose Customize brand to edit a browser-local draft, compare it with the original, and download the reviewed source. Replace `src/brand/brand.studio.json` and run `pnpm generate:layer` followed by the repository checks. New client brands start with New brand; they do not inherit happydesigns doctrine.
+Open `/studio?browse=true` for the shared Components and Templates views. Choose Brand, Palette, Typography or Appearance to edit a browser-local draft, compare it with the original, and download the reviewed source. Replace `src/brand/brand.studio.json` and run `pnpm generate:layer` followed by the repository checks. New client brands start with New brand; they do not inherit happydesigns doctrine.
 
 The short guide keeps palette meaning, typography, logos and voice. Nuxt UI owns the component API documentation. Legacy component-family URLs redirect to the shared preview. `/use` explains installation and the source workflow.
 
