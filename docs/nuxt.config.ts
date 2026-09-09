@@ -7,7 +7,7 @@ const checkBuildDir = process.env.HD_DOCS_BUILD_DIR
   : undefined
 
 export default defineNuxtConfig({
-  extends: ['..', '@happydesigns/id/studio', '@happydesigns/id/guide', 'docus'],
+  extends: ['..', '@happydesigns/id/studio', '@happydesigns/id/guide', 'docus', '@happydesigns/course-nuxt/preview'],
 
   modules: [
     '@nuxt/eslint'

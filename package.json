@@ -39,10 +39,12 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@happydesigns/course-nuxt": "file:../course/packages/nuxt",
     "@axe-core/playwright": "^4.13.0",
     "@iconify-json/lucide": "^1.2.123",
     "@iconify-json/simple-icons": "^1.2.93",
     "@iconify-json/vscode-icons": "^1.2.61",
+    "@nuxt/content": "3.16.0",
     "@nuxt/eslint": "^1.17.0",
     "@nuxtjs/mdc": "^0.22.0",
     "@playwright/test": "^1.62.1",

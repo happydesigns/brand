@@ -1,3 +1,7 @@
+import { readFileSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { gzipSync } from 'node:zlib'
+import { pathToFileURL } from 'node:url'
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 import source from '../../src/brand/brand.studio.json' with { type: 'json' }
@@ -69,9 +73,9 @@ test('new brands clear inherited styles and keep a recoverable local draft', asy
   await page.reload()
   await page.getByRole('button', { name: 'Restore draft' }).click()
   await expect(page.getByRole('heading', { name: 'My saved draft', exact: true })).toBeVisible()
-  await page.getByRole('button', { name: 'Landing', exact: true }).click()
+  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('landing')
   await expect(draft(page).getByText('Make it your own.', { exact: true })).toBeVisible()
-  await page.getByRole('button', { name: 'Docs', exact: true }).click()
+  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('docs')
   await expect(draft(page).getByRole('heading', { name: 'A shared language', exact: true })).toBeVisible()
 })
 
@@ -159,4 +163,64 @@ test('@mobile preview and settings remain independently reachable without page s
   expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBe(await page.evaluate(() => innerHeight))
   await page.getByLabel('Compare original').uncheck()
   await page.screenshot({ path: 'test-results/studio-mobile-browse.png', animations: 'disabled' })
+})
+
+test('capability template shares real course navigation and isolates learner state', async ({ page }) => {
+  await page.goto('/studio?browse=true')
+  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('academy')
+  await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
+  await page.screenshot({ path: 'test-results/studio-academy-home.png', animations: 'disabled' })
+  expect((await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()).violations).toEqual([])
+  await draft(page).getByRole('button', { name: 'Explore the course' }).click()
+  await expect(page.getByRole('combobox', { name: 'Template page' })).toHaveValue('overview')
+  await expect(draft(page).getByRole('heading', { name: 'Build a thoughtful interface', exact: true })).toBeVisible()
+  await page.getByLabel('Compare original').check()
+  const original = page.frameLocator('iframe[title="Original brand preview"]')
+  await page.getByRole('combobox', { name: 'Template page' }).selectOption('lesson')
+  await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
+  await expect(original.getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
+  const checkpoint = draft(page).getByRole('checkbox').first()
+  await checkpoint.check()
+  await expect(checkpoint).toBeChecked()
+  await expect(original.getByRole('checkbox').first()).not.toBeChecked()
+  await page.getByRole('button', { name: 'Dark', exact: true }).click()
+  await expect(checkpoint).toBeChecked()
+  await expect(draft(page).locator('html')).toHaveClass(/dark/)
+  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.includes('academy')).length)).toBe(0)
+  await page.screenshot({ path: 'test-results/studio-academy-compare.png', animations: 'disabled' })
+})
+
+test('@mobile capability template stays usable within the studio viewport', async ({ page }) => {
+  await page.goto('/studio?browse=true&view=academy')
+  await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+  await page.screenshot({ path: 'test-results/studio-academy-mobile.png', animations: 'disabled' })
+  await page.getByRole('combobox', { name: 'Template page' }).selectOption('lesson')
+  await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
+  expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+})
+
+test('production loads capability scene only when selected', async ({ page }, testInfo) => {
+  test.skip(process.env.STUDIO_PRODUCTION !== 'true', 'Run against the production build with STUDIO_PRODUCTION=true.')
+  const client = resolve('docs/node_modules/.cache/nuxt/.nuxt/dist/client')
+  const manifest = (await import(pathToFileURL(resolve(client, '../server/client.manifest.mjs')).href)).default as Record<string, { file: string }>
+  const scene = Object.entries(manifest).find(([key]) => key.includes('CourseAcademyPreview.vue'))?.[1]
+  expect(scene, 'The capability must have its own production chunk').toBeTruthy()
+  const requests: string[] = []
+  page.on('request', request => requests.push(request.url()))
+  await page.goto('/studio?browse=true')
+  await expect(draft(page).getByRole('heading', { name: 'One brand. Every detail.' })).toBeVisible()
+  expect(requests.some(url => url.endsWith(scene!.file))).toBe(false)
+  const before = requests.length
+  const start = Date.now()
+  await page.getByRole('combobox', { name: 'Template', exact: true }).selectOption('academy')
+  await expect(draft(page).getByRole('heading', { name: 'Small lessons. Lasting skills.' })).toBeVisible()
+  expect(requests.some(url => url.endsWith(scene!.file))).toBe(true)
+  const module = readFileSync(resolve(client, '_nuxt', scene!.file))
+  const report = { sceneChunk: scene!.file, sceneBytes: module.length, sceneGzipBytes: gzipSync(module).length, selectionToVisibleMs: Date.now() - start, initialRequestCount: before, additionalRequests: requests.slice(before) }
+  const reportPath = testInfo.outputPath('academy-loading.json')
+  writeFileSync(reportPath, JSON.stringify(report, null, 2))
+  await testInfo.attach('academy-loading.json', { path: reportPath, contentType: 'application/json' })
 })

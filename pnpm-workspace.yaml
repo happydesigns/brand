@@ -19,8 +19,14 @@ ignoredBuiltDependencies:
   - vue-demi
 
 patchedDependencies:
-  '@nuxt/content@3.14.0': patches/@nuxt__content@3.14.0.patch
+  '@nuxt/content@3.16.0': patches/@nuxt__content@3.16.0.patch
+
   docus@5.12.3: patches/docus@5.12.3.patch
 
 overrides:
+  '@happydesigns/course': 'file:../course/packages/course'
+  '@nuxt/content': 3.16.0
+  oxc-parser: 0.141.0
+  unplugin: 3.3.0
+  vue-component-meta: 3.3.8
   h3: "1.15.11"

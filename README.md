@@ -110,3 +110,26 @@ The browser suite covers representative brand integration rather than retesting 
 Open `/studio?browse=true` for the shared Components and Templates views. Choose Customize brand to edit a browser-local draft, compare it with the original, and download the reviewed source. Replace `src/brand/brand.studio.json` and run `pnpm generate:layer` followed by the repository checks. New client brands start with New brand; they do not inherit happydesigns doctrine.
 
 The short guide keeps palette meaning, typography, logos and voice. Nuxt UI owns the component API documentation. Legacy component-family URLs redirect to the shared preview. `/use` explains installation and the source workflow.
+
+## Capability template previews
+
+The docs host opts into `@happydesigns/course-nuxt/preview`. Its Academy scene,
+Markdown fixtures and catalog entry live in **course**, and the Course playground
+uses that same scene at `/academy`. Brand contains no Academy implementation.
+The public brand layer does not extend Course; this dependency belongs only to the
+docs application. Selecting Academy in Studio previews the brand in a working course;
+it does not add Course to an exported brand project.
+
+For this unpublished integration, keep `id`, `course` and `brand` as sibling
+checkouts. Run `pnpm --dir ../course --filter @happydesigns/course build`, then
+`pnpm install` here. Local file dependencies and the workspace core override model
+the package boundaries without publishing experimental versions. Refresh the local
+file package installation after changing a sibling package. Replace these local
+references with reviewed published versions together when releasing this pilot.
+
+The host pins one Nuxt Content version for Docus and Course. The existing database
+startup patch is retained for that version. No separate lightweight Academy is
+maintained: the full scene is registered asynchronously and only mounted on selection.
+The host shell takes precedence over capability layers: keep Docus before the
+optional preview in the extends array. Otherwise an inherited foundation app shell
+can replace Docus navigation, metadata and footer.
