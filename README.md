@@ -2,7 +2,7 @@
 
 Nuxt UI brand layer for happydesigns: thoughtful design for the modern web.
 
-This package specializes the reusable `@happydesigns/id/nuxt` runtime with happydesigns Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logos, and brand primitives. The repository also contains the brand guide as a separate consumer of the public layer and the optional `@happydesigns/id/studio` and `@happydesigns/id/guide` helpers.
+This package uses native Nuxt UI configuration with happydesigns Tailwind v4 theme tokens, Nuxt UI semantic color mappings, warm brand CSS variables, typography defaults, logos, and brand primitives. The repository also contains the brand guide as a separate consumer of the public layer and the optional `@happydesigns/id/studio` and `@happydesigns/id/guide` helpers.
 
 ## Brand sources and adapters
 
@@ -13,14 +13,14 @@ The explicit Nuxt UI integration stays in `src/brand/brand-theme.ts`. It preserv
 The runtime data flow is deliberately one-way:
 
 ```text
-brand.studio.json → validation → generated runtime JSON and CSS
+brand.studio.json → validation → native app config, asset metadata and CSS
 ```
 
-`app/brand.generated.json`, `app/assets/css/tokens.generated.css`, and `app/assets/css/theme.generated.css` are generated from these sources. Run `pnpm generate:layer` after editing brand data or adapter mappings. Build, dev, and typecheck regenerate them automatically, and `pnpm test` rejects drift. See `ARCHITECTURE.md` for the ownership boundary between this package and `@happydesigns/id`.
+`app/app.config.ts`, `app/brand.generated.json`, `app/assets/css/tokens.generated.css`, and `app/assets/css/theme.generated.css` are generated from these sources. Run `pnpm generate:layer` after editing brand data or adapter mappings. Build, dev, and typecheck regenerate them automatically, and `pnpm test` rejects drift. See `ARCHITECTURE.md` for the ownership boundary between this package and `@happydesigns/id`.
 
 ## Usage
 
-The repository and package root is the guide-free Nuxt layer. It extends `@happydesigns/id/nuxt`, while the Docus application in `docs/` extends the root plus `@happydesigns/id/studio` and `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need to compose the `id` layers themselves.
+The repository and package root is the guide-free Nuxt layer. It registers `@nuxt/ui` and native generated app config, while the Docus application in `docs/` extends the root plus `@happydesigns/id/studio` and `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need id or Docus at runtime.
 
 Until the package is published, pin the remote layer to a reviewed commit:
 
@@ -107,7 +107,7 @@ The browser suite covers representative brand integration rather than retesting 
 
 ## Explore and customize
 
-Open `/studio?browse=true` for the shared Components and Templates views. Choose Brand, Palette, Typography or Appearance to edit a browser-local draft, compare it with the original, and download the reviewed source. Replace `src/brand/brand.studio.json` and run `pnpm generate:layer` followed by the repository checks. New client brands start with New brand; they do not inherit happydesigns doctrine.
+Open `/studio?browse=true` for Components and Templates. Customize opens Brand, Palette, Typography and Appearance. Compare the draft with the applied brand, then use Changes to review it. In local development, Apply updates the connected `src/brand/brand.studio.json` after a revision check and regenerates the derived files. On the public site, download the source and run `pnpm generate:layer` after applying it in your checkout. New client brands start from New brand in the project menu.
 
 The short guide keeps palette meaning, typography, logos and voice. Nuxt UI owns the component API documentation. Legacy component-family URLs redirect to the shared preview. `/use` explains installation and the source workflow.
 
@@ -137,3 +137,5 @@ can replace Docus navigation, metadata and footer.
 ## Studio project downloads
 
 The development and documentation build prepare a reviewed id tarball from the documented sibling id checkout using `pnpm prepare:studio`. It is served only by the docs host under `/studio-packages/id.tgz`, and bundled into Studio project ZIPs. Download recipients can install and build without sibling repositories. The generated asset is ignored by Git and is not part of the public Brand runtime layer.
+
+The Docs template renders the actual Docus guide routes. Its header, search, page layout and navigation come from Docus; only the logo config, Studio shortcut and copyright slot are brand-specific. The same content works in the guide and the isolated Studio frame.

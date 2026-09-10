@@ -1,6 +1,6 @@
 # Architecture
 
-`@happydesigns/brand` is both the canonical happydesigns brand guide and a concrete brand layer built on the reusable contracts and runtime from `@happydesigns/id`.
+`@happydesigns/brand` is both the canonical happydesigns brand guide and a concrete brand layer built on the reusable authoring contracts from `@happydesigns/id`.
 
 ## Data Flow
 
@@ -8,9 +8,9 @@ The runtime follows one directional path:
 
 1. `src/brand/brand.studio.json` owns identity data and the complete Nuxt UI theme.
 2. `src/brand/brand.ts` and `src/brand/brand-theme.ts` validate and expose that document.
-3. `scripts/brand-layer.ts` generates `app/brand.generated.json`, `tokens.generated.css` and `theme.generated.css`.
+3. `scripts/brand-layer.ts` generates native `app/app.config.ts`, `app/brand.generated.json`, `tokens.generated.css` and `theme.generated.css`.
 4. The public layer applies those generated assets; the guide adds human-readable brand principles.
-5. The optional `@happydesigns/id/studio` layer renders shared Components, Landing and Docs scenes. Browser drafts never mutate repository files. Applying a downloaded source follows the normal generation and validation workflow.
+5. The optional `@happydesigns/id/studio` layer renders shared Components and Landing scenes, capability-owned templates, and the real Docus guide routes. Draft changes stay local until reviewed Apply. The local development writer updates only the configured JSON source after a revision check; the source watcher regenerates native outputs. Public builds support downloads only.
 
 Tests reject drift between the neutral definition, adapter output, generated CSS, SSR variables, and app config.
 
@@ -34,12 +34,12 @@ A mechanism moves to `id` only after it is demonstrably brand-neutral. Visual ta
 
 ## Layer Composition
 
-The public root layer extends `@happydesigns/id/nuxt` and adds only happydesigns theme data, generated CSS, assets, metadata, and brand primitives. A product extends `@happydesigns/brand` and receives the complete happydesigns runtime without separately composing `id`.
+The public root layer registers `@nuxt/ui` and adds only happydesigns theme data, generated CSS, assets, metadata, and brand primitives. A product extends `@happydesigns/brand` and receives native app config, CSS and components without the id runtime.
 
 The Docus application extends the public root layer, the optional `@happydesigns/id/studio` and `@happydesigns/id/guide` add-ons, and Docus. The guide add-on contributes neutral documentation components such as example frames and install surfaces; it is not part of the production brand layer.
 
 ```text
-@happydesigns/id/nuxt
+@nuxt/ui
   -> @happydesigns/brand
     -> docs + @happydesigns/id/studio + @happydesigns/id/guide + docus
 ```
@@ -76,3 +76,5 @@ The earlier, larger guide was measured with Node's heap capped at 4 GB:
 - the static `nuxt generate` path also exhausts the heap while initializing the prerenderer and would remove Docus' MCP server capability
 
 OG-image generation therefore increases peak pressure but is not the root cause. The shared Docus, Nuxt Content, and Nitro build graph exceeds the 4 GB cap before brand-specific runtime code becomes relevant. The Studio integration was validated with an explicit 8 GB heap cap through NODE_OPTIONS; that successful run does not establish the minimum required heap, and it is not a requirement for projects that only consume this brand layer. Re-evaluate it when Docus, Nuxt Content, or Nitro changes rather than propagating the allowance to consumers.
+
+The Docs preview is the same Docus route subtree as the real guide. No local AppHeader/AppFooter/docs-layout replica is maintained. Docus configuration and small CTA/copyright slots supply the brand-specific additions. Generated native app config allows consumer Nuxt overrides to retain their normal precedence.
