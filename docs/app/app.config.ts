@@ -17,6 +17,7 @@ const happydesignsUiConfig = (happydesignsUiAppConfig.ui ?? {}) as UiConfigWithI
 
 export default defineAppConfig({
   idStudio: {
+    packageAsset: '/studio-packages/id.tgz',
     document: studioDocument,
     sourcePath: 'src/brand/brand.studio.json',
     home: '/'

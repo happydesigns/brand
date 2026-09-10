@@ -133,3 +133,7 @@ maintained: the full scene is registered asynchronously and only mounted on sele
 The host shell takes precedence over capability layers: keep Docus before the
 optional preview in the extends array. Otherwise an inherited foundation app shell
 can replace Docus navigation, metadata and footer.
+
+## Studio project downloads
+
+The development and documentation build prepare a reviewed id tarball from the documented sibling id checkout using `pnpm prepare:studio`. It is served only by the docs host under `/studio-packages/id.tgz`, and bundled into Studio project ZIPs. Download recipients can install and build without sibling repositories. The generated asset is ignored by Git and is not part of the public Brand runtime layer.

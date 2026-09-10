@@ -16,10 +16,10 @@
   },
   "scripts": {
     "generate:layer": "vitest run --config scripts/vitest.generate.config.ts",
-    "prebuild": "pnpm generate:layer",
+    "prebuild": "pnpm generate:layer && pnpm prepare:studio",
     "build": "nuxt build docs",
     "build:layer": "nuxt build",
-    "predev": "pnpm generate:layer",
+    "predev": "pnpm generate:layer && pnpm prepare:studio",
     "dev": "nuxt dev docs",
     "preview": "node .output/server/index.mjs",
     "prepare:docs": "node scripts/run-docs-check.mjs prepare docs",
@@ -31,7 +31,9 @@
     "test:e2e:update": "playwright test --update-snapshots",
     "pretypecheck": "pnpm generate:layer",
     "typecheck": "node scripts/run-docs-check.mjs typecheck docs",
-    "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build"
+    "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build",
+    "prepare:studio": "pnpm --dir ../id pack:studio && node scripts/copy-studio-package.mjs",
+    "verify:studio-export": "node scripts/verify-studio-export.mjs"
   },
   "dependencies": {
     "@happydesigns/id": "file:..\\id",
