@@ -36,13 +36,13 @@
     "verify:studio-export": "node scripts/verify-studio-export.mjs"
   },
   "dependencies": {
-    "@happydesigns/id": "file:..\\id",
     "@nuxt/ui": "^4.10.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@happydesigns/course-nuxt": "file:../course/packages/nuxt",
     "@axe-core/playwright": "^4.13.0",
+    "@happydesigns/course-nuxt": "file:../course/packages/nuxt",
+    "@happydesigns/id": "file:..\\id",
     "@iconify-json/lucide": "^1.2.123",
     "@iconify-json/simple-icons": "^1.2.93",
     "@iconify-json/vscode-icons": "^1.2.61",
@@ -50,6 +50,7 @@
     "@nuxt/eslint": "^1.17.0",
     "@nuxtjs/mdc": "^0.22.0",
     "@playwright/test": "^1.62.1",
+    "@takumi-rs/core": "1.8.7",
     "@tiptap/y-tiptap": "^3.0.8",
     "docus": "^5.12.3",
     "eslint": "^10.8.1",

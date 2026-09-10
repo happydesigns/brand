@@ -124,17 +124,11 @@ describe('public layer and guide separation', () => {
   })
 
   it('applies the public layer app config without guide content', async () => {
-    const updateAppConfig = vi.fn()
-    vi.stubGlobal('defineNuxtPlugin', <T>(plugin: T) => plugin)
-    vi.stubGlobal('updateAppConfig', updateAppConfig)
-
-    const { default: plugin, happydesignsBrandAppConfig: appConfig } = await import('../app/plugins/brand')
-    plugin()
-
-    expect(appConfig.id.assets).toEqual(happydesignsRuntimeAssets)
-    expect(appConfig.id.theme).toEqual(happydesignsBrandTheme)
-    expect(appConfig.id).not.toHaveProperty('guide')
-    expect(updateAppConfig).toHaveBeenCalledWith(appConfig)
+    vi.stubGlobal('defineAppConfig', <T>(config: T) => config)
+    const { default: appConfig } = await import('../app/app.config')
+    expect(appConfig.brand.assets).toEqual(happydesignsRuntimeAssets)
+    expect(appConfig.ui).toEqual(happydesignsBrandTheme.ui)
+    expect(appConfig).not.toHaveProperty('id')
   })
 
   it('adds guide content only in the guide app', async () => {
@@ -155,7 +149,7 @@ describe('public layer and guide separation', () => {
 
     expect(readFileSync(resolve(process.cwd(), 'app/brand.generated.json'), 'utf8')).not.toContain('componentCoverage')
     expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).not.toContain('docus')
-    expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).toContain('extends: [\'@happydesigns/id/nuxt\']')
+    expect(readFileSync(resolve(process.cwd(), 'nuxt.config.ts'), 'utf8')).toContain('modules: [\'@nuxt/ui\']')
     expect(readFileSync(resolve(process.cwd(), 'docs/nuxt.config.ts'), 'utf8')).toContain('@happydesigns/id/studio')
 
     for (const asset of Object.values(happydesignsRuntimeAssets.logos)) {

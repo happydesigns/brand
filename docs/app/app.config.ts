@@ -20,7 +20,8 @@ export default defineAppConfig({
     packageAsset: '/studio-packages/id.tgz',
     document: studioDocument,
     sourcePath: 'src/brand/brand.studio.json',
-    home: '/'
+    home: '/',
+    templates: { docs: { label: 'Docs', owner: 'docus', route: '/docs/guide/overview', routePrefix: '/docs/guide' } }
   },
   ...happydesignsUiAppConfig,
   ui: {
@@ -70,15 +71,15 @@ export default defineAppConfig({
   },
   header: {
     title: 'happydesigns',
-    links: [
-      { label: 'Guide', to: '/docs/guide/overview', activePrefix: '/docs/guide' },
-      { label: 'Components', to: '/studio?browse=true', activePrefix: '/studio' },
-      { label: 'Templates', to: '/studio?browse=true&view=landing' },
-      { label: 'Use the brand', to: '/use' }
-    ]
-  },
-  socials: {
-    github: 'https://github.com/happydesigns'
+    logo: {
+      light: happydesignsRuntimeAssets.logos?.wordmark?.src,
+      dark: happydesignsRuntimeAssets.logos?.wordmarkInverse?.src,
+      alt: 'happydesigns',
+      class: 'h-6 w-auto',
+      wordmark: { light: happydesignsRuntimeAssets.logos?.wordmark?.src, dark: happydesignsRuntimeAssets.logos?.wordmarkInverse?.src },
+      favicon: '/favicon.svg',
+      brandAssetsUrl: '/docs/guide/logos'
+    }
   },
   toc: {
     title: 'On this page'

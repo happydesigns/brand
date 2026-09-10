@@ -43,7 +43,7 @@ test('theme reveal supports the complete keyboard interaction', async ({ page })
 test('color mode changes without animating theme colors', async ({ page }) => {
   await page.goto('/docs/guide/overview')
 
-  const transitionTarget = page.locator('nav[aria-label="Main"] a').first()
+  const transitionTarget = page.locator('header a').first()
   const colorModeButton = page.getByRole('button', { name: /Switch to (light|dark) mode/ }).first()
 
   await transitionTarget.evaluate((element) => {
@@ -60,11 +60,13 @@ test('color mode changes without animating theme colors', async ({ page }) => {
 
 test('homepage keeps its desktop composition', async ({ page }) => {
   await page.goto('/')
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible()
   await expect(page).toHaveScreenshot('homepage.png', { fullPage: true })
 })
 
 test('@mobile homepage keeps its mobile first fold', async ({ page }) => {
   await page.goto('/')
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible()
   await expect(page).toHaveScreenshot('homepage-mobile.png')
 })
 

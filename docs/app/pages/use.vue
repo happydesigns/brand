@@ -21,7 +21,7 @@ useSeoMeta({ title: 'Use the brand', description: 'Use the happydesigns Nuxt UI 
       Make a considered change
     </h2>
     <p class="mt-4 leading-7 text-muted">
-      Open Brand Studio, compare your draft with the original, and download the reviewed source. Replace <code>src/brand/brand.studio.json</code>, then run <code>pnpm generate:layer</code> and the repository checks. Existing component overrides and all other asset roles stay in the document.
+      Open Brand Studio and compare your draft with the applied brand. In local development, Changes lets you review and apply it to <code>src/brand/brand.studio.json</code>; generated files update automatically. On the public site, download the source and apply it in your checkout with <code>pnpm generate:layer</code>. Run the repository checks before committing.
     </p>
     <div class="mt-6 flex flex-wrap gap-3">
       <UButton to="/studio">
