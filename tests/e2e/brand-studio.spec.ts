@@ -44,6 +44,9 @@ async function lesson(page: import('@playwright/test').Page) {
 test('viewport presets preserve CSS dimensions, rotate and share custom sizes', async ({ page }) => {
   await page.goto('/studio?browse=true&compare=true&mode=light')
   await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await page.getByRole('combobox', { name: 'Preview width', exact: true }).click()
+  await page.screenshot({ path: 'test-results/studio-viewport-options.png', animations: 'disabled' })
+  await page.keyboard.press('Escape')
   await choose(page, 'Preview width', 'Desktop · 1440 × 900')
   const viewport = () => page.locator('iframe[title="Draft brand preview"]').evaluate((frame: HTMLIFrameElement) => ({ width: frame.contentWindow!.innerWidth, height: frame.contentWindow!.innerHeight }))
   await expect.poll(viewport).toEqual({ width: 1440, height: 900 })
