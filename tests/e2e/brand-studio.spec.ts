@@ -699,3 +699,26 @@ test('inspector uses progressive controls and preserves explicit browse mode', a
   await expect(dialog).toHaveCSS('opacity', '1')
   await page.screenshot({ path: 'test-results/studio-clean-download-mobile.png', animations: 'disabled' })
 })
+
+test('header positions stay fixed across template and brand labels', async ({ page }) => {
+  await page.goto('/studio?browse=true')
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible({ timeout: 30000 })
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 })
+    const geometry = () => page.locator('.studio-header').evaluate(header => [...header.querySelectorAll('[aria-label="Brand picker"], [aria-label="Template"], [aria-label="Brand actions"]')].map((element) => {
+      const { x, y, width, height } = element.getBoundingClientRect()
+      return { x, y, width, height }
+    }))
+    const before = await geometry()
+    for (const template of ['Landing', 'Docs', 'Components']) {
+      await choose(page, 'Template', template)
+      await expect.poll(geometry).toEqual(before)
+    }
+    const brandDocument = structuredClone(source)
+    brandDocument.theme.label = width === 1440 ? 'A considerably longer saved brand name' : 'Short'
+    await page.getByLabel('Open brand document').setInputFiles({ name: 'brand.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(brandDocument)) })
+    await expect(page.getByRole('button', { name: 'Brand picker' })).toHaveText(brandDocument.theme.label)
+    await expect.poll(geometry).toEqual(before)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
+  }
+})
