@@ -29,6 +29,11 @@ async function openPanel(page: import('@playwright/test').Page, panel: string) {
   if (await trigger.getAttribute('aria-expanded') !== 'true') await trigger.click()
 }
 async function setCompare(page: import('@playwright/test').Page, checked: boolean) {
+  const desktop = page.getByRole('button', { name: 'Compare applied brand', exact: true })
+  if (await desktop.isVisible()) {
+    if ((await desktop.getAttribute('aria-pressed') === 'true') !== checked) await desktop.click()
+    return
+  }
   await page.getByRole('button', { name: 'View', exact: true }).click()
   await page.getByRole('checkbox', { name: 'Compare applied brand', exact: true }).setChecked(checked)
   await page.keyboard.press('Escape')
@@ -50,6 +55,17 @@ test('viewport presets preserve CSS dimensions, rotate and share custom sizes', 
   await choose(page, 'Preview width', 'Desktop · 1440 × 900')
   const viewport = () => page.locator('iframe[title="Draft brand preview"]').evaluate((frame: HTMLIFrameElement) => ({ width: frame.contentWindow!.innerWidth, height: frame.contentWindow!.innerHeight }))
   await expect.poll(viewport).toEqual({ width: 1440, height: 900 })
+  const handle = page.locator('.studio-frame-wrap').last().getByRole('button', { name: 'Resize viewport width', exact: true })
+  const box = await handle.boundingBox()
+  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(box!.x + box!.width / 2 - 50, box!.y + box!.height / 2, { steps: 5 })
+  await page.mouse.up()
+  await expect.poll(async () => (await viewport()).width).toBeLessThan(1440)
+  await choose(page, 'Preview width', 'Desktop · 1440 × 900')
+  await page.getByRole('button', { name: 'View', exact: true }).click()
+  await expect(page.getByRole('combobox', { name: 'Preview width', exact: true })).toHaveCount(1)
+  await page.keyboard.press('Escape')
   await expect(page.locator('iframe[title="Original brand preview"]')).toHaveCSS('width', '1440px')
   await page.getByRole('button', { name: 'Rotate viewport' }).click()
   await expect.poll(viewport).toEqual({ width: 900, height: 1440 })
