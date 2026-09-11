@@ -49,6 +49,9 @@ async function lesson(page: import('@playwright/test').Page) {
 test('viewport presets preserve CSS dimensions, rotate and share custom sizes', async ({ page }) => {
   await page.goto('/studio?browse=true&compare=true&mode=light')
   await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await expect(page.locator('.viewport-handle')).toHaveCount(0)
+  await expect(page.getByRole('combobox', { name: 'Preview width', exact: true })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Responsive preview', exact: true }).click()
   await page.getByRole('combobox', { name: 'Preview width', exact: true }).click()
   await page.screenshot({ path: 'test-results/studio-viewport-options.png', animations: 'disabled' })
   await page.keyboard.press('Escape')
@@ -86,6 +89,10 @@ test('viewport presets preserve CSS dimensions, rotate and share custom sizes', 
   await expect.poll(viewport).toEqual({ width: 320, height: 568 })
   await expect(draft(page).locator('.component-gallery')).toHaveCSS('padding-bottom', '12px')
   await page.screenshot({ path: 'test-results/studio-viewport-mobile.png', animations: 'disabled' })
+  await page.getByRole('button', { name: 'Responsive preview', exact: true }).click()
+  await expect(page.locator('.viewport-handle')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Responsive preview', exact: true }).click()
+  await expect.poll(viewport).toEqual({ width: 320, height: 568 })
 })
 
 test('saved brand management renames duplicates and deletes only confirmed local copies', async ({ page }) => {
