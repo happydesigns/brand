@@ -46,6 +46,34 @@ async function lesson(page: import('@playwright/test').Page) {
   await draft(page).getByRole('link', { name: 'Start course', exact: true }).click()
 }
 
+test('reload shows the saved brand before the preview is ready without a download counter', async ({ page }) => {
+  await page.goto('/studio?browse=true')
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible({ timeout: 30000 })
+  await projectAction(page, 'New brand')
+  await openPanel(page, 'Brand')
+  await page.getByLabel(/^Brand name/).fill('Reload brand')
+  await page.getByLabel(/^Brand name/).press('Tab')
+  let release!: () => void
+  const gate = new Promise<void>((resolve) => {
+    release = resolve
+  })
+  await page.route('**/studio/preview?**', async (route) => {
+    await gate
+    await route.continue()
+  })
+  try {
+    await page.reload({ waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('button', { name: 'Brand picker', exact: true })).toHaveText('Reload brand')
+    await expect(page.locator('.studio-review')).toHaveText('Download')
+    await expect(page.getByText('Loading preview', { exact: true })).toHaveCount(1)
+    const before = await page.locator('.studio-workspace').boundingBox()
+    release()
+    await expect(page.getByText('Loading preview', { exact: true })).toHaveCount(0, { timeout: 30000 })
+    await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+    expect(await page.locator('.studio-workspace').boundingBox()).toEqual(before)
+  } finally { release() }
+})
+
 test('viewport presets preserve CSS dimensions, rotate and share custom sizes', async ({ page }) => {
   await page.goto('/studio?browse=true&compare=true&mode=light')
   await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
@@ -188,10 +216,23 @@ test('brand editing isolates previews and supports undo, redo, reset and real st
 
 test('source export preserves the complete brand and invalid imports leave it intact', async ({ page }) => {
   await page.goto('/studio?browse=true&mode=light')
-  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible({ timeout: 30000 })
   await page.getByLabel('Open brand document').setInputFiles({ name: 'invalid.json', mimeType: 'application/json', buffer: Buffer.from('{"version":2}') })
   await expect(page.getByRole('region', { name: 'Notifications (F8)' }).getByRole('listitem')).toHaveCount(1)
   await projectAction(page, 'Review changes')
+  const tabs = page.getByRole('tablist')
+  const panel = page.getByRole('tabpanel')
+  await expect(panel).toBeVisible()
+  const dialog = page.getByRole('dialog')
+  const height = await dialog.evaluate(element => element.clientHeight)
+  expect((await panel.boundingBox())!.y).toBeGreaterThan((await tabs.boundingBox())!.y)
+  await page.getByRole('tab', { name: 'Source', exact: true }).click()
+  await expect(panel.locator('pre')).toContainText('"version"')
+  await expect.poll(() => dialog.evaluate(element => element.clientHeight)).toBe(height)
+  await page.getByRole('tab', { name: 'CSS', exact: true }).click()
+  await expect(panel.locator('pre')).toContainText('--ui-')
+  await expect.poll(() => dialog.evaluate(element => element.clientHeight)).toBe(height)
+  await page.getByRole('tab', { name: 'Changes', exact: true }).click()
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Download source' }).click()
   const download = await downloadPromise
