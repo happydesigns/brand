@@ -25,7 +25,7 @@ test('real Docus routes render and share navigation between draft and applied br
   await background.press('Tab')
   await expect(draft.locator('body')).toHaveCSS('background-color', 'rgb(240, 244, 255)')
   await expect(applied.locator('body')).not.toHaveCSS('background-color', 'rgb(240, 244, 255)')
-  await page.getByRole('button', { name: 'Preview', exact: true }).click()
+  await page.getByRole('button', { name: 'Customize', exact: true }).click()
   await draft.getByRole('button', { name: 'Menu', exact: true }).click()
   await draft.getByRole('dialog', { name: 'Guide', exact: true }).getByRole('link', { name: 'Colors', exact: true }).click()
   await expect(applied.getByRole('heading', { name: 'Colors', exact: true })).toBeVisible()
