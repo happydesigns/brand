@@ -16,6 +16,12 @@ const draft = (page: import('@playwright/test').Page) => page.frameLocator('ifra
 async function projectAction(page: import('@playwright/test').Page, action: string) {
   await page.getByRole('button', { name: 'Brand actions', exact: true }).click()
   await page.getByRole('menuitem', { name: action === 'New brand' ? 'Create new brand' : action, exact: true }).click()
+  if (action === 'New brand') await nameBrand(page)
+}
+async function nameBrand(page: import('@playwright/test').Page) {
+  const dialog = page.getByRole('dialog', { name: 'Create brand', exact: true })
+  await dialog.getByLabel('New brand name', { exact: true }).fill('New brand')
+  await dialog.getByRole('button', { name: 'Create brand', exact: true }).click()
 }
 async function openPanel(page: import('@playwright/test').Page, panel: string) {
   if (!await page.getByLabel('Brand settings').isVisible()) await page.getByRole('button', { name: 'Customize', exact: true }).click()
@@ -300,6 +306,7 @@ test('@mobile header keeps project actions secondary and keyboard accessible', a
   await fileChooser
   await actions.click()
   await page.getByRole('menuitem', { name: 'Create new brand', exact: true }).click()
+  await nameBrand(page)
   await expect(page.locator('.studio-project-name').filter({ hasText: 'New brand' })).toBeVisible()
   await choose(page, 'Template', 'Components')
   await page.getByRole('button', { name: 'Preview', exact: true }).click()
@@ -377,6 +384,7 @@ test('brand picker isolates brands, preserves drafts and protects the Nuxt UI ba
   await page.getByRole('button', { name: 'Brand picker', exact: true }).click()
   await page.getByRole('option', { name: 'Nuxt UI', exact: true }).click()
   await page.getByRole('button', { name: 'Create brand', exact: true }).click()
+  await nameBrand(page)
   await openPanel(page, 'Brand')
   await page.getByLabel(/^Brand name/).fill('Independent brand')
   await page.getByLabel(/^Brand name/).press('Tab')
@@ -452,4 +460,41 @@ test('storage failures protect edits until an export is downloaded', async ({ pa
   await openPanel(page, 'Brand')
   await expect(page.locator('.studio-project-name').filter({ hasText: 'New brand' })).toBeVisible()
   await expect(page.getByRole('dialog', { name: 'Replace this draft?' })).toHaveCount(0)
+})
+
+test('creating a brand requires a distinct name and browsing creates no saved copies', async ({ page }) => {
+  await page.goto('/studio?browse=true&mode=light')
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  const savedCount = () => page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('id-studio:project:2:')).length)
+  expect(await savedCount()).toBe(0)
+  await page.getByRole('button', { name: 'Brand actions' }).click()
+  await page.getByRole('menuitem', { name: 'Create new brand', exact: true }).click()
+  const dialog = page.getByRole('dialog', { name: 'Create brand', exact: true })
+  await expect(dialog.getByRole('button', { name: 'Create brand', exact: true })).toBeDisabled()
+  await dialog.getByRole('button', { name: 'Cancel', exact: true }).click()
+  expect(await savedCount()).toBe(0)
+  await page.getByRole('button', { name: 'Brand picker' }).click()
+  await page.getByRole('option', { name: 'Nuxt UI', exact: true }).click()
+  expect(await savedCount()).toBe(0)
+  await page.getByRole('button', { name: 'Create brand', exact: true }).click()
+  await dialog.getByLabel('New brand name', { exact: true }).fill('Nuxt UI')
+  await dialog.getByRole('button', { name: 'Create brand', exact: true }).click()
+  await expect(dialog.getByText('A brand with this name already exists. Choose a different name.')).toBeVisible()
+  await dialog.getByLabel('New brand name', { exact: true }).fill('A named brand')
+  await dialog.getByRole('button', { name: 'Create brand', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Brand picker' })).toHaveText('A named brand')
+  expect(await savedCount()).toBe(1)
+  await page.evaluate((document) => {
+    document.theme.label = 'New brand'
+    for (const [id, updatedAt] of [['old-a', 1700000000000], ['old-b', 1700003600000]] as const) {
+      localStorage.setItem(`id-studio:project:2:${id}`, JSON.stringify({ id, baseline: document, draft: document, updatedAt }))
+    }
+  }, structuredClone(source))
+  await page.reload()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await page.getByRole('button', { name: 'Brand picker' }).click()
+  const legacy = page.getByRole('option', { name: /^New brand / })
+  await expect(legacy).toHaveCount(2)
+  expect(new Set(await legacy.allTextContents()).size).toBe(2)
+  await page.screenshot({ path: 'test-results/studio-named-brands.png', animations: 'disabled' })
 })
