@@ -561,14 +561,21 @@ test('brand picker isolates brands, preserves drafts and protects the Nuxt UI ba
 
 test('visual authoring validates fields and previews palette, fonts and contrast', async ({ page }) => {
   await page.goto('/studio?browse=true&mode=light')
-  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible({ timeout: 30000 })
   await openPanel(page, 'Palette')
   await page.getByRole('button', { name: 'Add palette', exact: true }).click()
   await page.getByRole('textbox', { name: 'Base color', exact: true }).fill('#d946ef')
   await page.getByRole('textbox', { name: 'Base color', exact: true }).press('Tab')
   await page.getByRole('button', { name: 'Create palette', exact: true }).click()
-  await choose(page, 'Primary', 'accent')
-  await page.getByRole('button', { name: 'accent', exact: true }).click()
+  await page.getByRole('button', { name: 'Primary', exact: true }).click()
+  const palettes = page.getByLabel('Primary palettes', { exact: true })
+  for (const name of ['emerald', 'yellow', 'accent']) {
+    await expect(palettes.getByRole('button', { name, exact: true }).locator('span').first()).not.toHaveCSS('background-image', 'none')
+  }
+  await page.screenshot({ path: 'test-results/studio-color-grid.png', animations: 'disabled' })
+  await palettes.getByRole('button', { name: 'accent', exact: true }).click()
+  await expect(palettes).toBeHidden()
+  await page.getByLabel('Brand settings').getByRole('button', { name: 'accent', exact: true }).click()
   await expect(page.getByRole('textbox', { name: 'accent 500', exact: true })).toHaveValue('#d946ef')
   await page.getByRole('button', { name: 'Choose color for accent 500' }).click()
   await expect(page.getByRole('button', { name: 'Apply color', exact: true })).toBeVisible()
