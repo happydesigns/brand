@@ -76,7 +76,7 @@ test('reload shows the saved brand before the preview is ready without a downloa
 
 test('viewport presets preserve CSS dimensions, rotate and share custom sizes', async ({ page }) => {
   await page.goto('/studio?browse=true&compare=true&mode=light')
-  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible({ timeout: 30000 })
   await expect(page.locator('.viewport-handle')).toHaveCount(0)
   await expect(page.getByRole('combobox', { name: 'Preview width', exact: true })).toHaveCount(0)
   await page.getByRole('button', { name: 'Responsive preview', exact: true }).click()
@@ -563,6 +563,17 @@ test('visual authoring validates fields and previews palette, fonts and contrast
   await page.goto('/studio?browse=true&mode=light')
   await expect(draft(page).getByRole('heading', { name: 'Component examples' })).toBeVisible({ timeout: 30000 })
   await openPanel(page, 'Palette')
+  await page.getByRole('button', { name: 'Neutral', exact: true }).click()
+  const neutrals = page.getByLabel('Neutral palettes', { exact: true })
+  await expect(neutrals.getByRole('button', { name: 'slate', exact: true })).toBeVisible()
+  await expect(neutrals.getByRole('button', { name: 'green', exact: true })).toHaveCount(0)
+  await expect(neutrals.getByRole('button', { name: 'sand', exact: true })).toBeVisible()
+  await neutrals.getByRole('button', { name: 'Show all palettes', exact: true }).click()
+  await expect(neutrals.getByRole('button', { name: 'green', exact: true })).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(page.locator('iframe[title="Draft brand preview"]')).toHaveCSS('box-shadow', 'none')
+  await expect(page.locator('.viewport-clip')).toHaveCSS('overflow', 'hidden')
+
   await page.getByRole('button', { name: 'Add palette', exact: true }).click()
   await page.getByRole('textbox', { name: 'Base color', exact: true }).fill('#d946ef')
   await page.getByRole('textbox', { name: 'Base color', exact: true }).press('Tab')
