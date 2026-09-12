@@ -28,10 +28,11 @@
     "pretest": "pnpm prepare:docs",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:e2e:production": "playwright test --config playwright.production.config.ts --project desktop",
     "test:e2e:update": "playwright test --update-snapshots",
     "pretypecheck": "pnpm generate:layer",
     "typecheck": "node scripts/run-docs-check.mjs typecheck docs",
-    "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build",
+    "verify": "pnpm lint && pnpm test && pnpm typecheck && pnpm test:e2e && pnpm build && pnpm test:e2e:production",
     "prepare:studio": "pnpm --dir ../id pack:studio && node scripts/copy-studio-package.mjs",
     "verify:studio-export": "node scripts/verify-studio-export.mjs"
   },
