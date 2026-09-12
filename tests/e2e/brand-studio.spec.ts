@@ -29,7 +29,8 @@ async function nameBrand(page: import('@playwright/test').Page) {
   await expect(dialog).toHaveCount(0)
 }
 async function lesson(page: import('@playwright/test').Page) {
-  if (await draft(page).getByRole('link', { name: 'Explore the course' }).isVisible()) await draft(page).getByRole('link', { name: 'Explore the course' }).click()
+  await expect(draft(page).locator('html')).toHaveAttribute('data-id-preview', 'ready', { timeout: 30000 })
+  if (await draft(page).getByRole('heading', { name: 'Courses', exact: true }).isVisible()) await draft(page).getByRole('link', { name: /RAP120 - Build SAP Fiori Apps/ }).click()
   await draft(page).getByRole('link', { name: 'Start course', exact: true }).click()
 }
 
@@ -328,47 +329,86 @@ test('Booking template navigates real components without creating a reservation'
 })
 
 test('capability template shares real course navigation and isolates learner state', async ({ page }) => {
+  test.setTimeout(90000)
+  const firstLesson = '/courses/abap-platform-rap120/getting-started'
+  await page.goto(firstLesson)
+  // The standalone page is server-rendered; retry the idempotent action until
+  // hydration has attached the checkpoint's event handler.
+  await expect(async () => {
+    await page.getByRole('checkbox').first().check()
+  }).toPass({ timeout: 15000 })
+  await page.getByRole('textbox', { name: 'Group ID', exact: true }).fill('ABC')
+  await page.getByRole('textbox', { name: 'Group ID', exact: true }).press('Tab')
+  await page.reload()
+  await expect(page.getByRole('checkbox').first()).toBeChecked()
+  await expect(page.getByRole('textbox', { name: 'Group ID', exact: true })).toHaveValue('ABC')
+  const savedProgress = await page.evaluate(() => Object.fromEntries(Object.entries(localStorage).filter(([key]) => key.startsWith('course'))))
   await page.goto('/studio?browse=true')
   await expect(draft(page).getByRole('textbox', { name: 'Your email' })).toBeVisible({ timeout: 30000 })
   await choose(page, 'Template', 'Course')
-  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
-  await page.screenshot({ path: 'test-results/studio-academy-home.png', animations: 'disabled' })
+  await expect(draft(page).getByRole('heading', { name: 'Courses', exact: true })).toBeVisible({ timeout: 30000 })
+  await expect(draft(page).locator('html')).toHaveAttribute('data-id-preview', 'ready', { timeout: 30000 })
+  await expect(draft(page).getByRole('banner')).toHaveCount(1)
+  await page.screenshot({ path: 'test-results/studio-course-home.png', animations: 'disabled' })
   expect((await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()).violations).toEqual([])
-  await draft(page).getByRole('link', { name: 'Explore the course' }).click()
-  await expect(page).toHaveURL(/page=overview/)
-  await expect(draft(page).getByRole('heading', { name: 'Build an accessible page', exact: true })).toBeVisible()
+  await draft(page).getByRole('link', { name: /RAP120 - Build SAP Fiori Apps/ }).click()
+  await expect.poll(() => new URL(page.url()).searchParams.get('path')).toBe('/courses/abap-platform-rap120')
+  await expect(draft(page).getByRole('heading', { name: 'RAP120 - Build SAP Fiori Apps with ABAP Cloud and SAP Joule for Developers', exact: true })).toBeVisible()
   await setCompare(page, true)
   const original = page.frameLocator('iframe[title="Original brand preview"]')
   await lesson(page)
-  await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
-  await expect(original.getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Getting Started', exact: true })).toBeVisible({ timeout: 30000 })
+  await expect(original.getByRole('heading', { name: 'Getting Started', exact: true })).toBeVisible({ timeout: 30000 })
   const checkpoint = draft(page).getByRole('checkbox').first()
+  await expect(checkpoint).not.toBeChecked()
+  await expect(draft(page).getByRole('textbox', { name: 'Group ID', exact: true })).toHaveValue('')
   await checkpoint.check()
+  await draft(page).getByRole('textbox', { name: 'Group ID', exact: true }).fill('XYZ')
+  await draft(page).getByRole('textbox', { name: 'Group ID', exact: true }).press('Tab')
   await expect(checkpoint).toBeChecked()
   await expect(original.getByRole('checkbox').first()).not.toBeChecked()
   await setMode(page, 'Dark')
   await expect(checkpoint).toBeChecked()
   await expect(draft(page).locator('html')).toHaveClass(/dark/)
-  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.includes('academy')).length)).toBe(0)
-  await page.screenshot({ path: 'test-results/studio-academy-compare.png', animations: 'disabled' })
+  await draft(page).getByRole('link', { name: 'Course home', exact: true }).click()
+  await lesson(page)
+  await expect(checkpoint).toBeChecked()
+  await expect(draft(page).getByRole('textbox', { name: 'Group ID', exact: true })).toHaveValue('XYZ')
+  await expect(original.getByRole('checkbox').first()).not.toBeChecked()
+  await expect(original.getByRole('textbox', { name: 'Group ID', exact: true })).toHaveValue('')
+  expect(await page.evaluate(() => Object.fromEntries(Object.entries(localStorage).filter(([key]) => key.startsWith('course'))))).toEqual(savedProgress)
+  await page.screenshot({ path: 'test-results/studio-course-compare.png', animations: 'disabled' })
 })
 
 test('@mobile capability template stays usable within the studio viewport', async ({ page }) => {
   await page.goto('/studio?browse=true&view=course')
-  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Courses', exact: true })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
-  await page.screenshot({ path: 'test-results/studio-academy-mobile.png', animations: 'disabled' })
+  await page.screenshot({ path: 'test-results/studio-course-mobile.png', animations: 'disabled' })
   await lesson(page)
-  await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Getting Started', exact: true })).toBeVisible({ timeout: 30000 })
   expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+})
+
+test('Course template exposes the real project workspace', async ({ page }) => {
+  await page.goto('/studio?browse=true&view=course&path=/courses/abap-platform-rap120/generate-application')
+  await expect(draft(page).getByRole('heading', { name: 'Generate the Travel Application', exact: true })).toBeVisible({ timeout: 30000 })
+  await expect(draft(page).locator('html')).toHaveAttribute('data-id-preview', 'ready', { timeout: 30000 })
+  const workspace = draft(page).getByRole('navigation', { name: 'Project files', exact: true })
+  await expect(workspace).toBeVisible()
+  await draft(page).locator('.course-reader pre').first().scrollIntoViewIfNeeded()
+  await expect(workspace.getByRole('tree')).toBeVisible()
+  await expect(workspace.locator('pre')).toContainText(/.+/)
+  await page.screenshot({ path: 'test-results/studio-course-workspace.png', animations: 'disabled' })
 })
 
 test('production loads capability scene only when selected', async ({ page }, testInfo) => {
   test.skip(process.env.STUDIO_PRODUCTION !== 'true', 'Run against the production build with STUDIO_PRODUCTION=true.')
-  const client = resolve('docs/node_modules/.cache/nuxt/.nuxt/dist/client')
+  const buildDir = process.env.HD_DOCS_BUILD_DIR ? resolve('docs', process.env.HD_DOCS_BUILD_DIR) : resolve('docs/node_modules/.cache/nuxt/.nuxt')
+  const client = resolve(buildDir, 'dist/client')
   const manifest = (await import(pathToFileURL(resolve(client, '../server/client.manifest.mjs')).href)).default as Record<string, { file: string }>
-  const scene = Object.entries(manifest).find(([key]) => key.includes('CourseAcademyPreview.vue'))?.[1]
+  const scene = Object.entries(manifest).find(([key]) => key.replaceAll('\\', '/').includes('preview/app/pages/courses/index.vue'))?.[1]
   expect(scene, 'The capability must have its own production chunk').toBeTruthy()
   const requests: string[] = []
   page.on('request', request => requests.push(request.url()))
@@ -378,13 +418,13 @@ test('production loads capability scene only when selected', async ({ page }, te
   const before = requests.length
   const start = Date.now()
   await choose(page, 'Template', 'Course')
-  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Courses', exact: true })).toBeVisible()
   expect(requests.some(url => url.endsWith(scene!.file))).toBe(true)
   const module = readFileSync(resolve(client, '_nuxt', scene!.file))
   const report = { sceneChunk: scene!.file, sceneBytes: module.length, sceneGzipBytes: gzipSync(module).length, selectionToVisibleMs: Date.now() - start, initialRequestCount: before, additionalRequests: requests.slice(before) }
-  const reportPath = testInfo.outputPath('academy-loading.json')
+  const reportPath = testInfo.outputPath('course-loading.json')
   writeFileSync(reportPath, JSON.stringify(report, null, 2))
-  await testInfo.attach('academy-loading.json', { path: reportPath, contentType: 'application/json' })
+  await testInfo.attach('course-loading.json', { path: reportPath, contentType: 'application/json' })
 })
 
 test('feedback validates real fields and template controls stay relevant', async ({ page }) => {
@@ -407,7 +447,7 @@ test('feedback validates real fields and template controls stay relevant', async
 
 test('@mobile header keeps project actions secondary and keyboard accessible', async ({ page }) => {
   await page.goto('/studio?browse=true&view=course')
-  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Courses', exact: true })).toBeVisible()
   for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 844 })
     expect((await page.locator('.studio-header').boundingBox())!.height).toBeLessThanOrEqual(110)
@@ -464,14 +504,14 @@ test('projects survive switching and export preserves the comparison baseline', 
 })
 
 test('view URLs restore safe navigation state without including draft data', async ({ page }) => {
-  await page.goto('/studio?browse=true&view=course&page=lesson&mode=dark&compare=true')
-  await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
+  await page.goto('/studio?browse=true&view=course&path=/courses/abap-platform-rap120/getting-started&mode=dark&compare=true')
+  await expect(draft(page).getByRole('heading', { name: 'Getting Started', exact: true })).toBeVisible({ timeout: 30000 })
   await expect(draft(page).locator('html')).toHaveClass(/dark/)
   await expect(page.locator('iframe')).toHaveCount(2)
-  await draft(page).getByRole('link', { name: /academy/i }).first().click()
-  await expect(page).toHaveURL(/page=home/)
+  await draft(page).getByRole('link', { name: 'Course home', exact: true }).click()
+  await expect.poll(() => new URL(page.url()).searchParams.get('path')).toBe('/courses')
   await page.reload()
-  await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
+  await expect(draft(page).getByRole('heading', { name: 'Courses', exact: true })).toBeVisible()
   expect(page.url()).not.toContain('brand.studio')
   await page.goto('/studio?browse=true&view=invalid&page=bad&mode=invalid')
   await expect(draft(page).getByRole('textbox', { name: 'Your email' })).toBeVisible({ timeout: 30000 })

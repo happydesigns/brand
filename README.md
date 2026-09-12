@@ -21,8 +21,8 @@ brand.studio.json → validation → native app config, asset metadata and CSS
 ## Usage
 
 The Studio host opts into the Course and Booking packages' `/preview` layers.
-The catalog uses stable capability names and keys (`course`, `booking`); example
-website names such as Academy are scenario content. Each capability owns its
+The catalog uses stable capability names and keys (`course`, `booking`).
+Course embeds its real `/courses` application. Each capability owns its
 renderer, page navigation and isolated fixtures. ID owns the editor and preview
 protocol, without depending on the capability packages.
 
@@ -122,11 +122,12 @@ The short guide keeps palette meaning, typography, logos and voice. Nuxt UI owns
 
 ## Capability template previews
 
-The docs host opts into `@happydesigns/course-nuxt/preview`. Its Academy scene,
-Markdown fixtures and catalog entry live in **course**, and the Course playground
-uses that same scene at `/academy`. Brand contains no Academy implementation.
+The docs host opts into `@happydesigns/course-nuxt/preview`. Its real `/courses`
+catalog, course and lesson routes, shared layout and Markdown content live in
+**course**. The Course playground and Studio render those same pages. There is
+no separate Academy implementation.
 The public brand layer does not extend Course; this dependency belongs only to the
-docs application. Selecting Academy in Studio previews the brand in a working course;
+docs application. Selecting Course in Studio previews the brand in the full application;
 it does not add Course to an exported brand project.
 
 For this unpublished integration, keep `id`, `course` and `brand` as sibling
@@ -144,8 +145,11 @@ Replace these local references with reviewed published versions together when
 releasing this pilot.
 
 The host pins one Nuxt Content version for Docus and Course. The existing database
-startup patch is retained for that version. No separate lightweight Academy is
-maintained: the full scene is registered asynchronously and only mounted on selection.
+startup patch is retained for that version. ID's route-preview protocol opens
+`/courses` on selection and synchronizes course navigation between comparison
+frames. Each Studio frame keeps learner state in memory; normal Course visits
+retain browser persistence. The catalog, lessons, checkpoints and code workspace
+use the same components and content in both contexts.
 The host shell takes precedence over capability layers: keep Docus before the
 optional preview in the extends array. Otherwise an inherited foundation app shell
 can replace Docus navigation, metadata and footer.
