@@ -25,6 +25,15 @@ jobs:
       - name: Place id package for local dependency
         run: mv id ../id
 
+      - name: Checkout course preview package
+        uses: actions/checkout@v6
+        with:
+          repository: happydesigns/course
+          path: course
+
+      - name: Place course package for local dependency
+        run: mv course ../course
+
       - name: Install pnpm
         uses: pnpm/action-setup@v6
 
