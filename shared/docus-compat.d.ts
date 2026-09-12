@@ -12,7 +12,7 @@ declare global {
 
 declare module '@nuxt/schema' {
   interface NuxtConfig {
-    content?: NuxtContentOptions
+    content?: Partial<NuxtContentOptions>
     icon?: NuxtIconOptions
     mdc?: NuxtMdcOptions
     ogImage?: NuxtOgImageOptions

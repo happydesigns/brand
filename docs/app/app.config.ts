@@ -1,6 +1,7 @@
 import { createNuxtUiAppConfig } from '@happydesigns/id'
-import { happydesignsBrandGuide, happydesignsComponentCoverage, happydesignsRuntimeAssets } from '../../src/brand/brand-guide'
+import { happydesignsBrandGuide, happydesignsRuntimeAssets } from '../../src/brand/brand-guide'
 import { happydesignsBrandTheme } from '../../src/brand/brand-theme'
+import studioDocument from '../../src/brand/brand.studio.json'
 
 const happydesignsUiAppConfig = createNuxtUiAppConfig(happydesignsBrandTheme)
 type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
@@ -13,14 +14,20 @@ type UiConfigWithIcons = NonNullable<typeof happydesignsUiAppConfig.ui> & {
 }
 
 const happydesignsUiConfig = (happydesignsUiAppConfig.ui ?? {}) as UiConfigWithIcons
-const happydesignsAppConfigGuide = {
-  ...happydesignsBrandGuide,
-  // Nuxt app.config merges arrays from extended layers. defuFn calls function
-  // values with the merged default, so this replaces the generic id coverage.
-  componentCoverage: () => happydesignsComponentCoverage
-}
 
 export default defineAppConfig({
+  idStudio: {
+    packageAsset: '/studio-packages/id.tgz',
+    document: studioDocument,
+    sourcePath: 'src/brand/brand.studio.json',
+    home: '/',
+    documentation: '/docs/guide/overview',
+    host: {
+      name: 'happydesigns/brand',
+      logo: { kind: 'wordmark', light: '/logos/happydesigns-wordmark.svg', dark: '/logos/happydesigns-wordmark-inverse.svg' }
+    },
+    templates: { docs: { label: 'Docs', owner: 'docus', route: '/docs/guide/overview', routePrefix: '/docs/guide' } }
+  },
   ...happydesignsUiAppConfig,
   ui: {
     ...happydesignsUiConfig,
@@ -54,7 +61,7 @@ export default defineAppConfig({
     defaultTheme: happydesignsBrandTheme.name,
     themes: [happydesignsBrandTheme],
     assets: happydesignsRuntimeAssets,
-    guide: happydesignsAppConfigGuide
+    guide: happydesignsBrandGuide
   },
   docus: {
     locale: 'en',
@@ -69,13 +76,15 @@ export default defineAppConfig({
   },
   header: {
     title: 'happydesigns',
-    links: [
-      { label: 'Guide', to: '/docs/guide/overview', activePrefix: '/docs/guide' },
-      { label: 'Components', to: '/docs/components', activePrefix: '/docs/components' }
-    ]
-  },
-  socials: {
-    github: 'https://github.com/happydesigns'
+    logo: {
+      light: happydesignsRuntimeAssets.logos?.wordmark?.src,
+      dark: happydesignsRuntimeAssets.logos?.wordmarkInverse?.src,
+      alt: 'happydesigns',
+      class: 'h-6 w-auto',
+      wordmark: { light: happydesignsRuntimeAssets.logos?.wordmark?.src, dark: happydesignsRuntimeAssets.logos?.wordmarkInverse?.src },
+      favicon: '/favicon.svg',
+      brandAssetsUrl: '/docs/guide/logos'
+    }
   },
   toc: {
     title: 'On this page'

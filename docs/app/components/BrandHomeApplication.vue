@@ -73,8 +73,8 @@ const badgeUi = {
             <div class="flex flex-wrap items-center justify-between gap-3">
               <HDSectionLabel>component behavior</HDSectionLabel>
               <BrandHomeSectionLink
-                to="/docs/components"
-                label="Open components"
+                to="/studio?browse=true"
+                label="Open Brand Studio"
               />
             </div>
 

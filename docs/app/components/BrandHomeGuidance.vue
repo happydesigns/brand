@@ -19,7 +19,7 @@ const guideRoute = [
     phase: 'Finally',
     title: 'Apply it through components',
     description: 'Turn those decisions into clear, reusable product behavior.',
-    to: '/docs/components'
+    to: '/studio?browse=true'
   }
 ]
 </script>

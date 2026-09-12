@@ -1,0 +1,45 @@
+diff --git a/dist/module.js b/dist/module.js
+index 539850a..d6b6a7c 100644
+--- a/dist/module.js
++++ b/dist/module.js
+@@ -1,5 +1,6 @@
+ import { defineNuxtModule, createResolver, addImports, addComponent, extendViteConfig } from '@nuxt/kit';
+ import fs from 'node:fs/promises';
++import { fileURLToPath } from 'node:url';
+ import comark from '@comark/vue/vite';
+ export default defineNuxtModule({
+     moduleDependencies: {
+@@ -17,28 +18,29 @@ export default defineNuxtModule({
+     // Default configuration options of the Nuxt module
+     defaults: {},
+     async setup(_options, nuxt) {
++        const vueRuntime = fileURLToPath(import.meta.resolve('@comark/vue')).replaceAll('\\', '/');
+         addComponent({
+             name: 'Markdown',
+             export: 'Markdown',
+-            filePath: '@comark/vue',
++            filePath: vueRuntime,
+             priority: 1,
+         });
+         addComponent({
+             name: 'MarkdownDocument',
+             export: 'MarkdownDocument',
+-            filePath: '@comark/vue',
++            filePath: vueRuntime,
+             priority: 1,
+         });
+         addImports([
+             {
+                 name: 'defineMarkdownComponent',
+                 as: 'defineMarkdownComponent',
+-                from: '@comark/vue',
++                from: vueRuntime,
+             },
+             {
+                 name: 'defineMarkdownDocumentComponent',
+                 as: 'defineMarkdownDocumentComponent',
+-                from: '@comark/vue',
++                from: vueRuntime,
+             },
+         ]);
+         const resolver = createResolver(import.meta.url);

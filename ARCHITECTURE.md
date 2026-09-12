@@ -1,17 +1,16 @@
 # Architecture
 
-`@happydesigns/brand` is both the canonical happydesigns brand guide and a concrete brand layer built on the reusable contracts and runtime from `@happydesigns/id`.
+`@happydesigns/brand` is both the canonical happydesigns brand guide and a concrete brand layer built on the reusable authoring contracts from `@happydesigns/id`.
 
 ## Data Flow
 
 The runtime follows one directional path:
 
-1. `app/utils/brand-data.json` contains tool-independent palette and typography values.
-2. `app/utils/brand.ts` validates those values with `defineBrand()` and adds happydesigns identity metadata and assets.
-3. `app/utils/brand-theme.ts` maps the neutral definition to Nuxt UI semantic roles and component configuration through `nuxtUiAdapter()`.
-4. `app/app.config.ts` turns that theme into Nuxt app config with `createNuxtUiAppConfig()` and adds guide-specific metadata.
-5. The `id` Nuxt plugin renders semantic theme variables during SSR. `app/assets/css/main.css` consumes them; it does not redeclare them.
-6. `scripts/generate-brand-css.mjs` generates the Tailwind palette in `app/assets/css/brand.generated.css` through the generic CSS-variable adapter.
+1. `src/brand/brand.studio.json` owns identity data and the complete Nuxt UI theme.
+2. `src/brand/brand.ts` and `src/brand/brand-theme.ts` validate and expose that document.
+3. `scripts/brand-layer.ts` generates native `app/app.config.ts`, `app/brand.generated.json`, `tokens.generated.css` and `theme.generated.css`.
+4. The public layer applies those generated assets; the guide adds human-readable brand principles.
+5. The optional `@happydesigns/id/studio` layer renders shared Components and Landing scenes, capability-owned templates, and the real Docus guide routes. Draft changes stay local until reviewed Apply. The local development writer updates only the configured JSON source after a revision check; the source watcher regenerates native outputs. Public builds support downloads only.
 
 Tests reject drift between the neutral definition, adapter output, generated CSS, SSR variables, and app config.
 
@@ -35,30 +34,30 @@ A mechanism moves to `id` only after it is demonstrably brand-neutral. Visual ta
 
 ## Layer Composition
 
-The public root layer extends `@happydesigns/id/nuxt` and adds only happydesigns theme data, generated CSS, assets, metadata, and brand primitives. A product extends `@happydesigns/brand` and receives the complete happydesigns runtime without separately composing `id`.
+The public root layer registers `@nuxt/ui` and adds only happydesigns theme data, generated CSS, assets, metadata, and brand primitives. A product extends `@happydesigns/brand` and receives native app config, CSS and components without the id runtime.
 
-The Docus application extends the public root layer, the optional `@happydesigns/id/guide` add-on, and Docus. The guide add-on contributes neutral documentation components such as example frames and install surfaces; it is not part of the production brand layer.
+The Docus application extends the public root layer, the optional `@happydesigns/id/studio` and `@happydesigns/id/guide` add-ons, and Docus. The guide add-on contributes neutral documentation components such as example frames and install surfaces; it is not part of the production brand layer.
 
 ```text
-@happydesigns/id/nuxt
+@nuxt/ui
   -> @happydesigns/brand
-    -> docs + @happydesigns/id/guide + docus
+    -> docs + @happydesigns/id/studio + @happydesigns/id/guide + docus
 ```
 
 Other brands depend directly on `@happydesigns/id`; they must not extend this package or inherit happydesigns tokens, assets, doctrine, or component styling.
 
 ## Guide Composition
 
-`app/pages/index.vue` is intentionally a short composition root. Its sections are split by reader intent:
+The Colors, Typography, Icons, Styles and asset reference use `IdBrandReference`
+from the optional ID guide layer. It derives values from `idStudio.document`,
+the same source that generates the public Nuxt layer. Studio route previews
+replace that document per frame, so documented values follow the draft too.
+Brand-owned prose describes intent and usage; it must not duplicate palette
+tables, font stacks, icon mappings or generated component settings.
 
-- `BrandHomeHero` demonstrates the change from default Nuxt UI to the happydesigns theme.
-- `BrandHomeGuidance` explains the path through the guide.
-- `BrandHomeFoundations` covers palette and typography.
-- `BrandHomeIdentity` covers logos and voice.
-- `BrandHomeApplication` demonstrates product behavior and local form state.
-- `BrandHomeInstall` shows the minimal consumer entrypoint.
+`docs/app/pages/index.vue` pairs the interactive `BrandHomeHero` with three clear entry points: Studio, principles, and installation. `/studio?browse=true` presents the shared Components scene; Landing and Docs offer the same identity in page contexts. Customize opens the inspector without switching to another preview implementation.
 
-These are guide components, not a parallel product component library.
+Brand-owned documentation covers meaning, typography, logo usage, and voice. Component API documentation stays upstream in Nuxt UI. Historical component URLs redirect into Studio. `/use` explains installation and applying a reviewed source export.
 
 ## Verification Boundary
 
@@ -69,17 +68,20 @@ Playwright covers the integration surface changed by this repository:
 - representative guide pages load without unexpected accessibility-rule categories
 - the custom theme-reveal slider supports keyboard interaction
 - desktop and mobile homepage composition remain stable
+- Studio isolates draft/original styles and dialogs, restores local work, rejects invalid imports, and exports source plus assets
 
-Known visual contrast and Docus shell findings remain explicit baseline debt until the dedicated visual and accessibility pass. The suite fails when a new rule category appears. It does not retest unchanged Nuxt UI internals.
+The Studio suite includes contrast checks. Light-mode semantic colors use accessible steps within the existing palettes. Independent iframe notification regions share an upstream label, so the cross-frame landmark-unique rule is excluded explicitly. Existing guide-shell accessibility categories remain bounded by the guide tests; those are not a claim of full WCAG conformance.
 
 ## Build Boundary
 
 Docus, Nuxt Content, and OG-image generation make this guide heavier than a normal consumer of the brand layer. Build-memory and bundle findings must therefore be attributed to a measured build phase before changing runtime brand code or raising resource limits further.
 
-The current Windows reference build was measured with Node's heap capped at 4 GB:
+The earlier, larger guide was measured with Node's heap capped at 4 GB:
 
 - the regular Node-server build exhausts the heap while Nitro initializes the prerenderer
 - disabling `nuxt-og-image` allows all 69 routes to prerender, but the build then exhausts the heap while bundling the Nitro server
 - the static `nuxt generate` path also exhausts the heap while initializing the prerenderer and would remove Docus' MCP server capability
 
-OG-image generation therefore increases peak pressure but is not the root cause. The shared Docus, Nuxt Content, and Nitro build graph exceeds the 4 GB cap before brand-specific runtime code becomes relevant. The `pnpm build` script keeps the explicit 8 GB heap allowance as a documented compatibility measure; it is not a requirement for projects that only consume this brand layer. Re-evaluate it when Docus, Nuxt Content, or Nitro changes rather than propagating the allowance to consumers.
+OG-image generation therefore increases peak pressure but is not the root cause. The shared Docus, Nuxt Content, and Nitro build graph exceeds the 4 GB cap before brand-specific runtime code becomes relevant. The Studio integration was validated with an explicit 8 GB heap cap through NODE_OPTIONS; that successful run does not establish the minimum required heap, and it is not a requirement for projects that only consume this brand layer. Re-evaluate it when Docus, Nuxt Content, or Nitro changes rather than propagating the allowance to consumers.
+
+The Docs preview is the same Docus route subtree as the real guide. No local AppHeader/AppFooter/docs-layout replica is maintained. Docus configuration and small CTA/copyright slots supply the brand-specific additions. Generated native app config allows consumer Nuxt overrides to retain their normal precedence.

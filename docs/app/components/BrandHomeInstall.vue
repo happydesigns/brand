@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const links = [
   {
-    label: 'Open docs',
+    label: 'Use the brand',
     icon: 'i-lucide-arrow-right',
     trailing: true,
-    to: '/docs/guide/overview'
+    to: '/use'
   }
 ]
 </script>
@@ -36,15 +36,10 @@ const links = [
           class="h-full border-t border-default bg-transparent p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
         >
           <div class="h-full rounded-sm border border-default bg-default p-5 sm:p-6">
-            <IdLayerInstall
-              class="h-full !border-0 !bg-transparent !p-0"
-              package-name="@happydesigns/brand"
-              title="Build with the layer."
-            >
-              <template #default="{ snippets }">
-                <LayerInstallCodeGroup :snippets="snippets" />
-              </template>
-            </IdLayerInstall>
+            <h3 class="mb-5 text-xl font-semibold text-highlighted">
+              Build with the layer.
+            </h3>
+            <BrandLayerInstallSteps layout="tabs" />
           </div>
         </div>
       </template>

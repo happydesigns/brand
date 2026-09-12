@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url'
+import { writeBrandLayer } from '../scripts/brand-layer'
 
 const guideCss = fileURLToPath(new URL('./app/assets/css/guide.css', import.meta.url))
 const outputDir = fileURLToPath(new URL('../.output', import.meta.url))
@@ -7,7 +8,7 @@ const checkBuildDir = process.env.HD_DOCS_BUILD_DIR
   : undefined
 
 export default defineNuxtConfig({
-  extends: ['..', '@happydesigns/id/guide', 'docus'],
+  extends: ['..', '@happydesigns/id/studio', '@happydesigns/id/guide', 'docus', '@happydesigns/course-nuxt/preview', '@happydesigns/booking/preview'],
 
   modules: [
     '@nuxt/eslint'
@@ -32,11 +33,15 @@ export default defineNuxtConfig({
   ui: {
     prose: true
   },
+  runtimeConfig: {
+    idStudioSource: fileURLToPath(new URL('../src/brand/brand.studio.json', import.meta.url))
+  },
 
   // Validation runs must not overwrite the content database of an active dev
   // server. Nuxt Content emits empty browser dumps during prepare.
   buildDir: checkBuildDir,
   routeRules: {
+    '/docs/components/**': { redirect: '/studio?browse=true' },
     '/docs': { redirect: '/docs/guide/overview' },
     '/docs/guide': { redirect: '/docs/guide/overview' },
     '/docs/guide/': { redirect: '/docs/guide/overview' },
@@ -58,6 +63,10 @@ export default defineNuxtConfig({
       // serial so the content database and page payloads stay within CI memory.
       concurrency: 1,
       failOnError: true
+    }
+  }, hooks: {
+    'builder:watch': (_event, path) => {
+      if (path.replaceAll('\\', '/').endsWith('src/brand/brand.studio.json')) writeBrandLayer()
     }
   },
 

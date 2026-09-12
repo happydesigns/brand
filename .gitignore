@@ -3,6 +3,8 @@
 .data
 .nuxt
 .nuxt-check
+.nuxt-build
+.tmp
 .nitro
 .cache
 dist
@@ -26,3 +28,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Built editor package for self-contained Studio exports
+docs/public/studio-packages/

@@ -1,0 +1,324 @@
+// Generated from src/brand/brand.studio.json.
+export default defineAppConfig({
+  "ui": {
+    "button": {
+      "defaultVariants": {
+        "color": "primary",
+        "size": "md"
+      },
+      "compoundVariants": [
+        {
+          "color": "primary",
+          "variant": "solid",
+          "class": "bg-inverted text-inverted hover:bg-inverted/90 active:bg-inverted focus-visible:ring-2 focus-visible:ring-primary"
+        },
+        {
+          "color": "neutral",
+          "variant": "outline",
+          "class": "border-default bg-elevated text-highlighted hover:bg-muted"
+        },
+        {
+          "color": "secondary",
+          "variant": "subtle",
+          "class": "bg-muted text-secondary hover:bg-accented"
+        }
+      ]
+    },
+    "badge": {
+      "defaultVariants": {
+        "color": "neutral",
+        "variant": "subtle",
+        "size": "sm"
+      },
+      "slots": {
+        "base": "rounded-full font-medium ring-1 ring-inset"
+      }
+    },
+    "card": {
+      "slots": {
+        "root": "rounded-sm bg-default shadow-none transition-colors",
+        "header": "border-b border-default",
+        "footer": "border-t border-default"
+      }
+    },
+    "pageCard": {
+      "slots": {
+        "root": "rounded-sm bg-default shadow-none transition-colors"
+      },
+      "variants": {
+        "variant": {
+          "outline": {
+            "root": "bg-default ring-default"
+          }
+        }
+      },
+      "compoundVariants": [
+        {
+          "variant": "outline",
+          "to": true,
+          "class": {
+            "root": "hover:bg-muted"
+          }
+        }
+      ]
+    },
+    "pageHero": {
+      "slots": {
+        "container": "py-20 sm:py-24 lg:py-28 gap-10 sm:gap-y-14",
+        "title": "font-semibold leading-[0.98] tracking-normal",
+        "description": "text-body"
+      }
+    },
+    "pageSection": {
+      "slots": {
+        "container": "py-12 sm:py-14 lg:py-16 gap-8 sm:gap-10",
+        "title": "font-semibold tracking-normal",
+        "description": "text-body"
+      }
+    },
+    "pageCTA": {
+      "slots": {
+        "root": "rounded-sm",
+        "container": "px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12",
+        "title": "font-semibold tracking-normal",
+        "description": "text-body"
+      }
+    },
+    "page": {
+      "slots": {
+        "root": "isolate lg:gap-0",
+        "left": "lg:border-r lg:border-default",
+        "center": "lg:px-10",
+        "right": "lg:border-l lg:border-default lg:pl-8"
+      }
+    },
+    "pageAside": {
+      "slots": {
+        "root": "lg:pe-6 lg:ps-6 lg:ms-0",
+        "topHeader": "bg-transparent",
+        "topBody": "bg-transparent",
+        "topFooter": "bg-transparent"
+      }
+    },
+    "pageAnchors": {
+      "slots": {
+        "linkLeading": "bg-muted ring-default text-primary group-hover:bg-primary group-hover:ring-primary group-hover:text-inverted",
+        "link": "hover:text-primary"
+      }
+    },
+    "pageHeader": {
+      "slots": {
+        "root": "relative border-b border-default py-8",
+        "description": "text-body"
+      }
+    },
+    "contentSurround": {
+      "slots": {
+        "link": "rounded-sm border border-default bg-default transition-colors hover:bg-muted",
+        "linkLeading": "bg-muted ring-default group-hover:bg-primary/10 group-hover:ring-primary"
+      }
+    },
+    "input": {
+      "slots": {
+        "base": "bg-default text-highlighted ring-default focus-visible:ring-primary"
+      }
+    },
+    "inputDate": {
+      "compoundVariants": [
+        {
+          "variant": "outline",
+          "class": {
+            "segment": "focus:bg-accented focus:text-highlighted"
+          }
+        }
+      ]
+    },
+    "inputTime": {
+      "compoundVariants": [
+        {
+          "variant": "outline",
+          "class": {
+            "segment": "focus:bg-accented focus:text-highlighted"
+          }
+        }
+      ]
+    },
+    "textarea": {
+      "slots": {
+        "base": "min-h-24 resize-y bg-default text-highlighted ring-default focus-visible:ring-primary"
+      }
+    },
+    "select": {
+      "slots": {
+        "base": "bg-default text-highlighted ring-default focus-visible:ring-primary"
+      }
+    },
+    "formField": {
+      "slots": {
+        "label": "text-sm font-medium text-highlighted",
+        "help": "text-xs/5 text-muted",
+        "hint": "font-mono text-xs text-muted"
+      }
+    },
+    "tabs": {
+      "defaultVariants": {
+        "color": "primary",
+        "variant": "link",
+        "size": "md"
+      }
+    },
+    "alert": {
+      "slots": {
+        "root": "rounded-sm border shadow-none"
+      }
+    },
+    "kbd": {
+      "base": "rounded-[3px] border border-default bg-elevated font-mono text-highlighted shadow-none"
+    },
+    "prose": {
+      "pre": {
+        "slots": {
+          "header": "border-default bg-code-header",
+          "base": "border-default bg-code"
+        }
+      },
+      "th": {
+        "base": "border-default"
+      },
+      "td": {
+        "base": "border-default"
+      },
+      "code": {
+        "variants": {
+          "color": {
+            "neutral": "border border-default bg-elevated text-highlighted"
+          }
+        }
+      },
+      "codeGroup": {
+        "slots": {
+          "list": "border-default bg-code-header"
+        }
+      },
+      "table": {
+        "slots": {
+          "root": "brand-table-scroll"
+        }
+      }
+    },
+    "colors": {
+      "primary": "coral",
+      "secondary": "petrol",
+      "success": "seafoam",
+      "info": "plum",
+      "warning": "butter",
+      "error": "rose",
+      "neutral": "sand"
+    }
+  },
+  "brand": {
+    "name": "happydesigns",
+    "assets": {
+      "logos": {
+        "wordmark": {
+          "name": "Wordmark",
+          "src": "/logos/happydesigns-wordmark.svg",
+          "role": "wordmark",
+          "media": "light",
+          "alt": "happydesigns wordmark"
+        },
+        "wordmarkInverse": {
+          "name": "Wordmark inverse",
+          "src": "/logos/happydesigns-wordmark-inverse.svg",
+          "role": "wordmarkInverse",
+          "media": "dark",
+          "alt": "happydesigns wordmark"
+        },
+        "symbol": {
+          "name": "Symbol",
+          "src": "/logos/happydesigns-symbol.svg",
+          "role": "symbol",
+          "media": "any",
+          "alt": "happydesigns symbol"
+        },
+        "symbolReduced": {
+          "name": "Symbol reduced",
+          "src": "/logos/happydesigns-symbol-reduced.svg",
+          "role": "symbolReduced",
+          "media": "light",
+          "alt": "happydesigns reduced symbol"
+        },
+        "symbolReducedInverse": {
+          "name": "Symbol reduced inverse",
+          "src": "/logos/happydesigns-symbol-reduced-inverse.svg",
+          "role": "symbolReducedInverse",
+          "media": "dark",
+          "alt": "happydesigns reduced symbol"
+        },
+        "symbolReducedTile": {
+          "name": "Symbol reduced tile",
+          "src": "/logos/happydesigns-symbol-reduced-tile.svg",
+          "role": "symbolReducedTile",
+          "media": "light",
+          "alt": "happydesigns reduced symbol tile"
+        },
+        "symbolReducedTileInverse": {
+          "name": "Symbol reduced tile inverse",
+          "src": "/logos/happydesigns-symbol-reduced-tile-inverse.svg",
+          "role": "symbolReducedTileInverse",
+          "media": "dark",
+          "alt": "happydesigns reduced symbol tile"
+        },
+        "lockup": {
+          "name": "Lockup",
+          "src": "/logos/happydesigns-lockup.svg",
+          "role": "lockup",
+          "media": "light",
+          "alt": "happydesigns lockup"
+        },
+        "lockupInverse": {
+          "name": "Lockup inverse",
+          "src": "/logos/happydesigns-lockup-inverse.svg",
+          "role": "lockupInverse",
+          "media": "dark",
+          "alt": "happydesigns lockup"
+        },
+        "lockupReduced": {
+          "name": "Lockup reduced",
+          "src": "/logos/happydesigns-lockup-reduced.svg",
+          "role": "lockupReduced",
+          "media": "light",
+          "alt": "happydesigns reduced lockup"
+        },
+        "lockupReducedInverse": {
+          "name": "Lockup reduced inverse",
+          "src": "/logos/happydesigns-lockup-reduced-inverse.svg",
+          "role": "lockupReducedInverse",
+          "media": "dark",
+          "alt": "happydesigns reduced lockup"
+        },
+        "signature": {
+          "name": "Brand signature",
+          "src": "/logos/happydesigns-signature.svg",
+          "role": "signature",
+          "media": "light",
+          "alt": "happydesigns brand signature"
+        },
+        "signatureInverse": {
+          "name": "Brand signature inverse",
+          "src": "/logos/happydesigns-signature-inverse.svg",
+          "role": "signatureInverse",
+          "media": "dark",
+          "alt": "happydesigns brand signature"
+        },
+        "appIcon": {
+          "name": "App icon PNG",
+          "src": "/app-icon.png",
+          "role": "appIcon",
+          "media": "any",
+          "alt": "happydesigns app icon"
+        }
+      }
+    }
+  }
+})

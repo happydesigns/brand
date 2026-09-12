@@ -80,17 +80,17 @@ const defaultUi = {
 
 const links = [
   {
-    label: 'Start the guide',
+    label: 'Explore the brand',
     icon: 'i-lucide-arrow-right',
     trailing: true,
-    to: '/docs/guide/overview'
+    to: '/studio?browse=true'
   },
   {
-    label: 'Browse components',
+    label: 'Brand principles',
     icon: 'i-lucide-component',
     color: 'neutral' as const,
     variant: 'outline' as const,
-    to: '/docs/components'
+    to: '/docs/guide/overview'
   }
 ]
 </script>
