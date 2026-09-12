@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@happydesigns/booking": "file:../booking",
     "@happydesigns/course-nuxt": "file:../course/packages/nuxt",
     "@happydesigns/id": "file:..\\id",
     "@iconify-json/lucide": "^1.2.123",

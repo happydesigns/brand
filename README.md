@@ -20,6 +20,15 @@ brand.studio.json → validation → native app config, asset metadata and CSS
 
 ## Usage
 
+The Studio host opts into the Course and Booking packages' `/preview` layers.
+The catalog uses stable capability names and keys (`course`, `booking`); example
+website names such as Academy are scenario content. Each capability owns its
+renderer, page navigation and isolated fixtures. ID owns the editor and preview
+protocol, without depending on the capability packages.
+
+For local development, keep `id`, `course` and `booking` as sibling checkouts and
+build Booking with `pnpm --dir ../booking build` before installing this host.
+
 The repository and package root is the guide-free Nuxt layer. It registers `@nuxt/ui` and native generated app config, while the Docus application in `docs/` extends the root plus `@happydesigns/id/studio` and `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need id or Docus at runtime.
 
 Until the package is published, pin the remote layer to a reviewed commit:

@@ -303,10 +303,34 @@ test('@mobile preview and settings remain independently reachable without page s
   await setCompare(page, false)
 })
 
+test('@mobile Booking template fits the preview and follows dark mode', async ({ page }) => {
+  await page.goto('/studio?browse=true&view=booking&mode=dark')
+  await expect(draft(page).getByRole('heading', { name: 'Find your next experience' })).toBeVisible({ timeout: 30000 })
+  expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+  await expect(draft(page).locator('html')).toHaveClass(/dark/)
+  await page.screenshot({ path: 'test-results/studio-booking-mobile.png', animations: 'disabled' })
+  expect((await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()).violations).toEqual([])
+})
+
+test('Booking template navigates real components without creating a reservation', async ({ page }) => {
+  await page.goto('/studio?browse=true&view=booking')
+  await expect(draft(page).getByRole('heading', { name: 'Find your next experience' })).toBeVisible({ timeout: 30000 })
+  await page.screenshot({ path: 'test-results/studio-booking.png', animations: 'disabled' })
+  await draft(page).getByRole('button', { name: 'Photography walk', exact: true }).click()
+  await expect(page).toHaveURL(/view=booking/)
+  await expect(page).toHaveURL(/page=summary/)
+  await expect(draft(page).getByRole('heading', { name: 'Photography walk', exact: true })).toBeVisible()
+  await setCompare(page, true)
+  await expect(page.frameLocator('iframe[title="Original brand preview"]').getByRole('heading', { name: 'Design workshop', exact: true })).toBeVisible()
+  await draft(page).getByRole('button', { name: 'Back to sessions' }).click()
+  await expect(page).toHaveURL(/page=home/)
+  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => /booking/i.test(key)))).toEqual([])
+})
+
 test('capability template shares real course navigation and isolates learner state', async ({ page }) => {
   await page.goto('/studio?browse=true')
   await expect(draft(page).getByRole('textbox', { name: 'Your email' })).toBeVisible({ timeout: 30000 })
-  await choose(page, 'Template', 'Academy')
+  await choose(page, 'Template', 'Course')
   await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   await page.screenshot({ path: 'test-results/studio-academy-home.png', animations: 'disabled' })
   expect((await new AxeBuilder({ page }).disableRules(['landmark-unique']).analyze()).violations).toEqual([])
@@ -330,7 +354,7 @@ test('capability template shares real course navigation and isolates learner sta
 })
 
 test('@mobile capability template stays usable within the studio viewport', async ({ page }) => {
-  await page.goto('/studio?browse=true&view=academy')
+  await page.goto('/studio?browse=true&view=course')
   await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(await draft(page).locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
@@ -353,7 +377,7 @@ test('production loads capability scene only when selected', async ({ page }, te
   expect(requests.some(url => url.endsWith(scene!.file))).toBe(false)
   const before = requests.length
   const start = Date.now()
-  await choose(page, 'Template', 'Academy')
+  await choose(page, 'Template', 'Course')
   await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   expect(requests.some(url => url.endsWith(scene!.file))).toBe(true)
   const module = readFileSync(resolve(client, '_nuxt', scene!.file))
@@ -382,7 +406,7 @@ test('feedback validates real fields and template controls stay relevant', async
 })
 
 test('@mobile header keeps project actions secondary and keyboard accessible', async ({ page }) => {
-  await page.goto('/studio?browse=true&view=academy')
+  await page.goto('/studio?browse=true&view=course')
   await expect(draft(page).getByRole('heading', { name: 'Build your first interface' })).toBeVisible()
   for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 844 })
@@ -440,7 +464,7 @@ test('projects survive switching and export preserves the comparison baseline', 
 })
 
 test('view URLs restore safe navigation state without including draft data', async ({ page }) => {
-  await page.goto('/studio?browse=true&view=academy&page=lesson&mode=dark&compare=true')
+  await page.goto('/studio?browse=true&view=course&page=lesson&mode=dark&compare=true')
   await expect(draft(page).getByRole('heading', { name: 'Start with a clear hierarchy', exact: true })).toBeVisible()
   await expect(draft(page).locator('html')).toHaveClass(/dark/)
   await expect(page.locator('iframe')).toHaveCount(2)
