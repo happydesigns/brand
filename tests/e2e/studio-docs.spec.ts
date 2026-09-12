@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
+import { closeEditor, surfaces } from './studio-helpers'
 
 test('real Docus routes render and share navigation between draft and applied brand', async ({ page }) => {
   test.setTimeout(60_000)
@@ -18,14 +19,13 @@ test('real Docus routes render and share navigation between draft and applied br
   await expect(draft.getByRole('heading', { level: 1 })).toBeVisible({ timeout: 30_000 })
   await expect(applied.getByRole('heading', { level: 1 })).toBeVisible()
   await expect(draft.getByRole('button', { name: /Search/ }).first()).toBeVisible()
-  await page.getByRole('button', { name: 'Customize', exact: true }).click()
-  await page.getByRole('button', { name: 'Appearance', exact: true }).click()
+  await surfaces(page)
   const background = page.getByRole('textbox', { name: 'Page background', exact: true })
   await background.fill('#f0f4ff')
   await background.press('Tab')
   await expect(draft.locator('body')).toHaveCSS('background-color', 'rgb(240, 244, 255)')
   await expect(applied.locator('body')).not.toHaveCSS('background-color', 'rgb(240, 244, 255)')
-  await page.getByRole('button', { name: 'Customize', exact: true }).click()
+  await closeEditor(page)
   await draft.getByRole('button', { name: 'Menu', exact: true }).click()
   await draft.getByRole('dialog', { name: 'Guide', exact: true }).getByRole('link', { name: 'Colors', exact: true }).click()
   await expect(applied.getByRole('heading', { name: 'Colors', exact: true })).toBeVisible()
