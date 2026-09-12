@@ -133,8 +133,15 @@ For this unpublished integration, keep `id`, `course` and `brand` as sibling
 checkouts. Run `pnpm --dir ../course --filter @happydesigns/course build`, then
 `pnpm install` here. Local file dependencies and the workspace core override model
 the package boundaries without publishing experimental versions. Refresh the local
-file package installation after changing a sibling package. Replace these local
-references with reviewed published versions together when releasing this pilot.
+file package installation after changing a sibling package. Stop the Brand dev
+server, run `pnpm install --frozen-lockfile --ignore-scripts` in this repository,
+then restart `pnpm dev`. Existing files can reflect sibling edits through pnpm's
+hard links while newly added files are still missing from the installed package;
+refreshing the installation restores a consistent package file set. If a sibling's
+dependencies changed, use `pnpm install` and review the resulting lockfile changes.
+Rebuild the Course core or Booking first when their compiled output changed.
+Replace these local references with reviewed published versions together when
+releasing this pilot.
 
 The host pins one Nuxt Content version for Docus and Course. The existing database
 startup patch is retained for that version. No separate lightweight Academy is
