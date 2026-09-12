@@ -38,7 +38,7 @@ const monoExamples = [
           Primary sans
         </p>
         <h2 class="mt-5 text-5xl font-semibold leading-none tracking-normal text-highlighted @min-[38rem]/typography:text-6xl @min-[54rem]/typography:text-7xl">
-          Bricolage Grotesque
+          Primary sans
         </h2>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-body">
           Warm, modern, and readable enough to carry both brand expression and product documentation.
@@ -61,7 +61,7 @@ const monoExamples = [
           Technical mono
         </p>
         <h3 class="mt-5 font-mono text-2xl leading-tight text-highlighted">
-          Geist Mono
+          Technical mono
         </h3>
         <p class="mt-5 text-sm leading-7 text-body">
           Use mono for exact implementation details, not for normal prose.

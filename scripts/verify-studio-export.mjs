@@ -78,6 +78,10 @@ try {
   })
   if (await frame.getByRole('link', { name: 'Edit this page', exact: true }).count()) throw new Error('Export exposes an unconfigured repository link')
   if ((await fetch(`${url}/api/id-studio/source`)).status !== 404) throw new Error('Production exposes a local source writer')
+  await page.goto(`${url}/docs/brand-reference`)
+  await page.locator('[data-brand-reference]').waitFor()
+  await page.getByRole('heading', { name: 'Typography', exact: true }).waitFor()
+  await page.getByRole('heading', { name: 'Assets', exact: true }).waitFor()
   if (errors.length) throw new Error(errors.join('\n'))
   await page.screenshot({ path: '.output/studio-export.png' })
   report.rendered = true

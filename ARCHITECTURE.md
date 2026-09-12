@@ -48,6 +48,13 @@ Other brands depend directly on `@happydesigns/id`; they must not extend this pa
 
 ## Guide Composition
 
+The Colors, Typography, Icons, Styles and asset reference use `IdBrandReference`
+from the optional ID guide layer. It derives values from `idStudio.document`,
+the same source that generates the public Nuxt layer. Studio route previews
+replace that document per frame, so documented values follow the draft too.
+Brand-owned prose describes intent and usage; it must not duplicate palette
+tables, font stacks, icon mappings or generated component settings.
+
 `docs/app/pages/index.vue` pairs the interactive `BrandHomeHero` with three clear entry points: Studio, principles, and installation. `/studio?browse=true` presents the shared Components scene; Landing and Docs offer the same identity in page contexts. Customize opens the inspector without switching to another preview implementation.
 
 Brand-owned documentation covers meaning, typography, logo usage, and voice. Component API documentation stays upstream in Nuxt UI. Historical component URLs redirect into Studio. `/use` explains installation and applying a reviewed source export.

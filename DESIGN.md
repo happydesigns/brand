@@ -51,7 +51,7 @@ When refining the layer, keep changes token-driven and Nuxt-native where possibl
 
 ## ID Extraction Boundary
 
-The public brand layer extends `@happydesigns/id/nuxt`; its guide adds `@happydesigns/id/studio` and `@happydesigns/id/guide`. `brand` remains the canonical happydesigns guide. Use `id` for reusable Nuxt UI runtime and brand-guide infrastructure; keep happydesigns identity decisions in this repository.
+The public brand layer uses generated native Nuxt UI configuration, CSS and assets; its guide adds `@happydesigns/id/studio` and `@happydesigns/id/guide`. `brand` remains the canonical happydesigns guide. Use `id` for reusable authoring and guide infrastructure; keep happydesigns identity decisions in this repository.
 
 Keep in `brand`:
 
