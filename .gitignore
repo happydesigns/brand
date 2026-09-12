@@ -3,6 +3,8 @@
 .data
 .nuxt
 .nuxt-check
+.nuxt-build
+.tmp
 .nitro
 .cache
 dist

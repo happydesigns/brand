@@ -2,7 +2,7 @@
 import withNuxt from './docs/.nuxt-check/eslint.config.mjs'
 
 export default withNuxt(
-  { ignores: ['app/app.config.ts'] },
+  { ignores: ['app/app.config.ts', '.tmp/**', '**/.nuxt-build/**'] },
   {
     files: [
       'docs/app/layouts/**/*.vue',
