@@ -21,6 +21,11 @@ export default defineAppConfig({
     document: studioDocument,
     sourcePath: 'src/brand/brand.studio.json',
     home: '/',
+    documentation: '/docs/guide/overview',
+    host: {
+      name: 'happydesigns/brand',
+      logo: { light: '/logos/happydesigns-symbol-reduced.svg', dark: '/logos/happydesigns-symbol-reduced-inverse.svg' }
+    },
     templates: { docs: { label: 'Docs', owner: 'docus', route: '/docs/guide/overview', routePrefix: '/docs/guide' } }
   },
   ...happydesignsUiAppConfig,

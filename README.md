@@ -26,6 +26,10 @@ Course embeds its real `/courses` application. Each capability owns its
 renderer, page navigation and isolated fixtures. ID owns the editor and preview
 protocol, without depending on the capability packages.
 
+Studio's product link returns to the Brand homepage; its Docs link opens the
+brand guide. Template cards show the real applications with the current draft
+and color mode, loading only while the template picker is open.
+
 For local development, keep `id`, `course` and `booking` as sibling checkouts and
 build Booking with `pnpm --dir ../booking build` before installing this host.
 
