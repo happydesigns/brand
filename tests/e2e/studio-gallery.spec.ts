@@ -1,6 +1,30 @@
 import { expect, test } from '@playwright/test'
 import { closeEditor, openPanel, setMode } from './studio-helpers'
 
+test('catalog payload is compact and Landing defers the component gallery until selected', async ({ page }) => {
+  const componentRequests: string[] = []
+  page.on('request', (request) => {
+    if (/\/StudioComponents\.vue(?:\?|$)/.test(request.url())) componentRequests.push(request.url())
+  })
+  await page.goto('/studio?browse=true&view=course')
+  const draft = page.frameLocator('iframe[title="Draft brand preview"]')
+  await expect(draft.getByRole('heading', { name: 'Courses', exact: true })).toBeVisible({ timeout: 30000 })
+  await expect(draft.getByText('0/6 complete', { exact: true })).toBeVisible()
+  const payload = await draft.locator('script#__NUXT_DATA__').textContent()
+  expect(payload).toContain('course-catalog')
+  expect(payload!.length).toBeLessThan(50000)
+  console.log(`Course catalog hydration payload: ${payload!.length} characters`)
+  await page.getByRole('button', { name: 'Templates', exact: true }).click()
+  const gallery = page.getByRole('group', { name: 'Choose a template' })
+  await expect(gallery.locator('[data-preview-state="ready"]')).toHaveCount(4, { timeout: 30000 })
+  expect(componentRequests).toEqual([])
+  await gallery.getByRole('button', { name: 'Landing', exact: true }).click()
+  await expect(draft.getByRole('heading', { name: 'Your projects, in one place' })).toBeVisible()
+  expect(componentRequests).toEqual([])
+  await page.getByRole('button', { name: 'Components', exact: true }).click()
+  await expect(draft.getByRole('textbox', { name: 'Your email' })).toBeVisible()
+})
+
 test('live template cards follow the draft without changing the workspace or persisted preferences', async ({ page }, testInfo) => {
   test.setTimeout(90000)
   await page.goto('/studio?browse=true&view=course&mode=system')
