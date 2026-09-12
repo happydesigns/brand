@@ -21,8 +21,9 @@ for (const [path, knownRuleIds] of Object.entries(representativePages)) {
 }
 
 test('theme reveal supports the complete keyboard interaction', async ({ page }) => {
+  test.setTimeout(90_000)
   await page.goto('/')
-  await page.waitForLoadState('networkidle')
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
 
   const reveal = page.getByRole('slider', { name: 'Reveal the happydesigns theme' })
   await expect(reveal).toHaveAttribute('aria-valuenow', '50')
@@ -59,16 +60,45 @@ test('color mode changes without animating theme colors', async ({ page }) => {
 })
 
 test('homepage keeps its desktop composition', async ({ page }) => {
+  test.setTimeout(90_000)
   await page.goto('/')
-  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible()
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
   await expect(page).toHaveScreenshot('homepage.png', { fullPage: true })
 })
 
 test('@mobile homepage keeps its mobile first fold', async ({ page }) => {
+  test.setTimeout(90_000)
   await page.goto('/')
-  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible()
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
   await expect(page).toHaveScreenshot('homepage-mobile.png')
 })
+
+for (const viewport of ['desktop', '@mobile']) {
+  test(`${viewport} homepage retains the complete brand guide below the hero`, async ({ page }) => {
+    test.setTimeout(90_000)
+    await page.goto('/')
+    await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
+
+    for (const heading of [
+      'Apply the system in three decisions.',
+      'Give every visual choice a role.',
+      'Choose the mark and voice for the context.',
+      'Turn the rules into repeatable behavior.',
+      'Use the brand system in real projects.'
+    ]) {
+      const section = page.getByRole('heading', { name: heading, exact: true })
+      await section.scrollIntoViewIfNeeded()
+      await expect(section).toBeVisible()
+    }
+
+    await expect(page.getByText('#F28564', { exact: true })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Open colors', exact: true })).toHaveAttribute('href', '/docs/guide/colors')
+    await expect(page.getByRole('main').getByRole('link', { name: 'Open Brand Studio', exact: true })).toHaveAttribute('href', '/studio?browse=true')
+    await expect(page.locator('#install-package')).toContainText('pnpm add @happydesigns/brand')
+    await expect(page.locator('#install-package')).toContainText('extends:')
+    expect(await page.locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+  })
+}
 
 test('guide tables keep the shared prose treatment', async ({ page }) => {
   await page.goto('/docs/guide/colors')

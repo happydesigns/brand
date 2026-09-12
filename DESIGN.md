@@ -39,7 +39,7 @@ Static guide cards should not signal interactivity through hover states. Use sur
 
 ## Page Composition
 
-The homepage combines a tangible theme comparison with three entry points: see the brand in Studio, understand its principles, and use the layer. Shared Components, Landing and Docs scenes belong to id; brand owns the identity applied to them.
+The homepage combines the interactive theme comparison with the brand journey, foundations (palette and typography), identity (logos and voice), applied component examples, and installation. These brand-specific sections remain part of the homepage when shared component catalogs move to Studio. Studio complements this content; three navigation links are not a replacement for it. Shared Components, Landing and Docs scenes belong to id; brand owns the identity applied to them.
 
 Customization stays in the same Studio preview. The inspector exposes identity, palettes, typography and a few useful component defaults. Before/after frames share scene, mode and viewport while keeping their styles and interaction state isolated. Original source, local draft and reviewed export are distinct states.
 
