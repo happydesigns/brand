@@ -6,6 +6,7 @@ import {
 
 const props = defineProps<{
   snippets?: LayerInstallSnippets
+  layout?: 'steps' | 'tabs'
 }>()
 
 const defaultSnippets = createLayerInstallSnippets({
@@ -28,6 +29,7 @@ ${resolvedSnippets.value.nuxtConfig}
 
 const cacheKey = computed(() => [
   'brand-layer-install-steps',
+  props.layout ?? 'steps',
   resolvedSnippets.value.packageName,
   resolvedSnippets.value.layer,
   resolvedSnippets.value.packageManager
@@ -60,6 +62,11 @@ const { data: parsedSteps } = await useAsyncData(
       }
     } satisfies ParseMarkdownOptions
 
+    if (props.layout === 'tabs') {
+      const group = await parseMarkdown(`::code-group\n${installMarkdown.value}\n\n${configMarkdown.value}\n::`, options)
+      return { group }
+    }
+
     const [install, config] = await Promise.all([
       parseMarkdown(installMarkdown.value, options),
       parseMarkdown(configMarkdown.value, options)
@@ -71,14 +78,28 @@ const { data: parsedSteps } = await useAsyncData(
 </script>
 
 <template>
-  <ol class="grid gap-6 [&_.group>div:first-child]:!bg-default [&_.group>pre]:!bg-elevated">
+  <div
+    v-if="layout === 'tabs'"
+    class="[&>div]:my-0 [&_pre]:py-2.5"
+  >
+    <MDCRenderer
+      v-if="parsedSteps?.group?.body"
+      :body="parsedSteps.group.body"
+      :data="parsedSteps.group.data"
+      :tag="false"
+    />
+  </div>
+  <ol
+    v-else
+    class="grid gap-6 [&_.group>div:first-child]:!bg-default [&_.group>pre]:!bg-elevated"
+  >
     <li>
       <p class="mb-3 text-sm font-semibold text-highlighted">
         Install the package
       </p>
       <div class="[&>.group]:my-0 [&_pre]:py-2.5">
         <MDCRenderer
-          v-if="parsedSteps?.install.body"
+          v-if="parsedSteps?.install?.body"
           :body="parsedSteps.install.body"
           :data="parsedSteps.install.data"
           :tag="false"
@@ -91,7 +112,7 @@ const { data: parsedSteps } = await useAsyncData(
       </p>
       <div class="[&>.group]:my-0 [&_pre]:py-2.5">
         <MDCRenderer
-          v-if="parsedSteps?.config.body"
+          v-if="parsedSteps?.config?.body"
           :body="parsedSteps.config.body"
           :data="parsedSteps.config.data"
           :tag="false"

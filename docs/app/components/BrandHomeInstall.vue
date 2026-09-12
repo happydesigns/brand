@@ -39,7 +39,7 @@ const links = [
             <h3 class="mb-5 text-xl font-semibold text-highlighted">
               Build with the layer.
             </h3>
-            <BrandLayerInstallSteps />
+            <BrandLayerInstallSteps layout="tabs" />
           </div>
         </div>
       </template>
