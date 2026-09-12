@@ -371,6 +371,7 @@ test('capability template shares real course navigation and isolates learner sta
   await expect(checkpoint).toBeChecked()
   await expect(draft(page).locator('html')).toHaveClass(/dark/)
   await draft(page).getByRole('link', { name: 'Course home', exact: true }).click()
+  await expect(draft(page).getByRole('heading', { name: 'Courses', exact: true })).toBeVisible()
   await lesson(page)
   await expect(checkpoint).toBeChecked()
   await expect(draft(page).getByRole('textbox', { name: 'Group ID', exact: true })).toHaveValue('XYZ')
