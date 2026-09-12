@@ -33,6 +33,12 @@ and color mode, loading only while the template picker is open.
 For local development, keep `id`, `course` and `booking` as sibling checkouts and
 build Booking with `pnpm --dir ../booking build` before installing this host.
 
+CI checks out the same packages at pinned commits. For the private Booking
+repository, configure the `HAPPYDESIGNS_BOOKING_TOKEN` Actions secret with
+read-only repository contents access to `happydesigns/booking`. The default
+GitHub token can only read the current private repository. If ID is private,
+provide `HAPPYDESIGNS_ID_TOKEN` with the corresponding read-only access as well.
+
 The repository and package root is the guide-free Nuxt layer. It registers `@nuxt/ui` and native generated app config, while the Docus application in `docs/` extends the root plus `@happydesigns/id/studio` and `@happydesigns/id/guide` and acts as its reference consumer. Downstream applications extend only `@happydesigns/brand`; they do not need id or Docus at runtime.
 
 Until the package is published, pin the remote layer to a reviewed commit:
