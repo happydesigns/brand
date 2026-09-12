@@ -33,6 +33,17 @@ and color mode, loading only while the template picker is open.
 For local development, keep `id`, `course` and `booking` as sibling checkouts and
 build Booking with `pnpm --dir ../booking build` before installing this host.
 
+Course uses Comark 0.6 while Docus's assistant still uses Comark 0.4. The
+versioned `@comark/nuxt` patch resolves its component and helper imports from
+the module's own package, so both runtimes can coexist. It adds no global
+alias or version override. Remove the patch once the upstream module resolves
+these imports itself; the Course workspace and Docus browser tests cover this
+integration.
+
+`pnpm prepare:docs` generates the isolated `.nuxt-check` types referenced by
+`docs/tsconfig.json`. Lint, tests and typechecking prepare that directory
+automatically, without reusing a running dev server's generated types.
+
 CI checks out the same packages at pinned commits. For the private Booking
 repository, configure the `HAPPYDESIGNS_BOOKING_TOKEN` Actions secret with
 read-only repository contents access to `happydesigns/booking`. The default

@@ -36,7 +36,7 @@
     "verify:studio-export": "node scripts/verify-studio-export.mjs"
   },
   "dependencies": {
-    "@nuxt/ui": "^4.10.0",
+    "@nuxt/ui": "^4.11.1",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

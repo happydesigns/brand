@@ -19,6 +19,7 @@ ignoredBuiltDependencies:
   - vue-demi
 
 patchedDependencies:
+  '@comark/nuxt@0.6.2': patches/@comark__nuxt@0.6.2.patch
   '@nuxt/content@3.16.0': patches/@nuxt__content@3.16.0.patch
 
   docus@5.12.3: patches/docus@5.12.3.patch
