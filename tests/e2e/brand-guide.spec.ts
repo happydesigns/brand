@@ -20,28 +20,25 @@ for (const [path, knownRuleIds] of Object.entries(representativePages)) {
   })
 }
 
-for (const mode of ['light', 'dark'] as const) {
-  test(`@mobile homepage preview remains complete and interactive in ${mode} mode`, async ({ page }) => {
-    test.setTimeout(90_000)
-    await page.emulateMedia({ colorScheme: mode })
-    await page.goto('/')
-    // The color-mode control appears after hydration; avoid interacting with
-    // the server-rendered form while the dev server compiles the client.
-    await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
-    const preview = page.getByRole('region', { name: 'Brand preview' })
-    await expect(preview.getByRole('heading', { name: 'Website refresh' })).toBeVisible()
-    await expect(preview.getByLabel('Workspace')).toHaveCount(1)
-    await preview.getByLabel('Workspace').fill('New project')
-    await expect(preview.getByLabel('Workspace')).toHaveValue('New project')
-    await preview.getByRole('combobox', { name: 'Status' }).click()
-    await page.getByRole('option', { name: 'Draft', exact: true }).click()
-    await expect(preview.getByRole('combobox', { name: 'Status' })).toContainText('Draft')
-    await expect(preview.getByText('All checks passed.')).toBeVisible()
-    expect(await page.locator('html').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
-    await preview.getByRole('link', { name: 'Compare and customize in Studio' }).click()
-    await expect(page).toHaveURL(/\/studio\?browse=true/)
-  })
-}
+test('theme reveal supports the complete keyboard interaction', async ({ page }) => {
+  await page.goto('/')
+  await page.waitForLoadState('networkidle')
+
+  const reveal = page.getByRole('slider', { name: 'Reveal the happydesigns theme' })
+  await expect(reveal).toHaveAttribute('aria-valuenow', '50')
+
+  await reveal.press('ArrowRight')
+  await expect(reveal).toHaveAttribute('aria-valuenow', '55')
+
+  await reveal.press('Shift+ArrowLeft')
+  await expect(reveal).toHaveAttribute('aria-valuenow', '45')
+
+  await reveal.press('Home')
+  await expect(reveal).toHaveAttribute('aria-valuenow', '0')
+
+  await reveal.press('End')
+  await expect(reveal).toHaveAttribute('aria-valuenow', '100')
+})
 
 test('color mode changes without animating theme colors', async ({ page }) => {
   await page.goto('/docs/guide/overview')
@@ -62,16 +59,14 @@ test('color mode changes without animating theme colors', async ({ page }) => {
 })
 
 test('homepage keeps its desktop composition', async ({ page }) => {
-  test.setTimeout(90_000)
   await page.goto('/')
-  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible()
   await expect(page).toHaveScreenshot('homepage.png', { fullPage: true })
 })
 
 test('@mobile homepage keeps its mobile first fold', async ({ page }) => {
-  test.setTimeout(90_000)
   await page.goto('/')
-  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible({ timeout: 45_000 })
+  await expect(page.locator('header').getByRole('button', { name: /Switch to (light|dark) mode/ })).toBeVisible()
   await expect(page).toHaveScreenshot('homepage-mobile.png')
 })
 

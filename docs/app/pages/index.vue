@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-default">
-    <div class="mx-auto w-full max-w-(--ui-container)">
+  <div class="min-h-screen bg-default">
+    <div class="mx-auto w-full max-w-(--ui-container) overflow-hidden border-x border-default bg-default">
       <BrandHomeHero />
 
       <section
-        class="grid border-y border-default md:grid-cols-3"
+        class="grid border-b border-default md:grid-cols-3"
         aria-label="Explore the brand"
       >
         <NuxtLink
