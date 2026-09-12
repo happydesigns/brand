@@ -40,6 +40,12 @@ alias or version override. Remove the patch once the upstream module resolves
 these imports itself; the Course workspace and Docus browser tests cover this
 integration.
 
+The host also aligns Unhead and its Vue adapter at 3.4.0: Nuxt and Nuxt UI
+otherwise resolve different versions, which Nitro can incompletely trace into
+the production server. The production browser checks cover server startup.
+Run `pnpm test:e2e:production` after `pnpm build` to check the built server,
+including Course's deferred loading. `pnpm verify` includes this final check.
+
 `pnpm prepare:docs` generates the isolated `.nuxt-check` types referenced by
 `docs/tsconfig.json`. Lint, tests and typechecking prepare that directory
 automatically, without reusing a running dev server's generated types.

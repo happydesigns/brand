@@ -25,6 +25,8 @@ patchedDependencies:
   docus@5.12.3: patches/docus@5.12.3.patch
 
 overrides:
+  '@unhead/vue': 3.4.0
+  unhead: 3.4.0
   '@happydesigns/course': 'file:../course/packages/course'
   '@nuxt/content': 3.16.0
   oxc-parser: 0.141.0
