@@ -39,7 +39,7 @@ Static guide cards should not signal interactivity through hover states. Use sur
 
 ## Page Composition
 
-The homepage combines a tangible theme comparison with three entry points: see the brand in Studio, understand its principles, and use the layer. Shared Components, Landing and Docs scenes belong to id; brand owns the identity applied to them.
+The homepage shows one complete branded example with three entry points: see the brand in Studio, understand its principles, and use the layer. Use the native responsive PageHero and Card layouts without fixed panel heights. Theme comparison belongs in Studio's isolated previews; do not overlap and clip interactive forms on the homepage. Shared Components, Landing and Docs scenes belong to id; brand owns the identity applied to them.
 
 Customization stays in the same Studio preview. The inspector exposes identity, palettes, typography and a few useful component defaults. Before/after frames share scene, mode and viewport while keeping their styles and interaction state isolated. Original source, local draft and reviewed export are distinct states.
 
