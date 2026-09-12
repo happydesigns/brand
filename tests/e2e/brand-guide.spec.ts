@@ -11,6 +11,12 @@ for (const [path, knownRuleIds] of Object.entries(representativePages)) {
   test(`${path} has no unexpected automatically detectable accessibility violations`, async ({ page }) => {
     await page.goto(path)
 
+    if (path === '/docs/components') {
+      // This legacy URL redirects to the client-mounted Studio workspace.
+      await expect(page.getByRole('main', { name: 'Brand Studio' })).toBeVisible({ timeout: 30000 })
+      await expect(page.frameLocator('iframe[title="Draft brand preview"]').getByRole('listbox', { name: 'Users and actions' })).toBeVisible({ timeout: 30000 })
+    }
+
     const results = await new AxeBuilder({ page }).analyze()
     const unexpectedViolations = results.violations.filter(violation => (
       !(knownRuleIds as readonly string[]).includes(violation.id)
