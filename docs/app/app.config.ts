@@ -24,7 +24,7 @@ export default defineAppConfig({
     documentation: '/docs/guide/overview',
     host: {
       name: 'happydesigns/brand',
-      logo: { light: '/logos/happydesigns-symbol-reduced.svg', dark: '/logos/happydesigns-symbol-reduced-inverse.svg' }
+      logo: { kind: 'wordmark', light: '/logos/happydesigns-wordmark.svg', dark: '/logos/happydesigns-wordmark-inverse.svg' }
     },
     templates: { docs: { label: 'Docs', owner: 'docus', route: '/docs/guide/overview', routePrefix: '/docs/guide' } }
   },
