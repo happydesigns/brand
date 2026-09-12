@@ -46,6 +46,7 @@ test('Studio native controls preserve editing and preview behavior', async ({ pa
   await editor.getByRole('button', { name: 'Unpin editor', exact: true }).click()
   await expect(page.locator('.studio-editor-overlay')).toBeVisible()
   await editor.getByRole('button', { name: 'Close settings', exact: true }).click()
+  await expect(editor).toHaveCount(0)
   await brand.click()
   await page.getByPlaceholder('Search brands…').fill('standard')
   await expect(page.getByRole('menuitem', { name: /Standardized/ })).toBeVisible()
