@@ -52,7 +52,7 @@ describe('adapter outputs', () => {
     })
     const generated = createBrandLayerFiles()
     for (const [path, content] of Object.entries(generated)) {
-      expect(readFileSync(resolve(process.cwd(), path), 'utf8')).toBe(content)
+      expect(readFileSync(resolve(process.cwd(), path), 'utf8').replace(/\r\n/g, '\n')).toBe(content)
     }
 
     expect(generated['app/assets/css/tokens.generated.css']).toContain(output.css)
